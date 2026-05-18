@@ -1,0 +1,2441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Value Investing Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+/* ── Reset ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:       #0d1117;
+  --surf:     #161b22;
+  --surf2:    #21262d;
+  --border:   #30363d;
+  --text:     #e6edf3;
+  --muted:    #8b949e;
+  --accent:   #f0a500;
+  --acc-bg:   rgba(240,165,0,.1);
+  --acc-bdr:  rgba(240,165,0,.25);
+  --ok:       #3fb950;
+  --ok-bg:    rgba(63,185,80,.1);
+  --ok-bdr:   rgba(63,185,80,.3);
+  --blue:     #58a6ff;
+  --blue-bg:  rgba(88,166,255,.1);
+  --amber:    #e8912d;
+  --amber-bg: rgba(232,145,45,.12);
+  --amber-bdr:rgba(232,145,45,.3);
+  --sidebar:  240px;
+  --notes-w:  268px;
+}
+html,body { height:100%; overflow:hidden; }
+body { background:var(--bg); color:var(--text); font-family:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; display:flex; }
+::-webkit-scrollbar { width:5px; height:5px; }
+::-webkit-scrollbar-track { background:transparent; }
+::-webkit-scrollbar-thumb { background:var(--border); border-radius:3px; }
+button { cursor:pointer; font-family:inherit; }
+textarea { font-family:inherit; resize:vertical; }
+
+/* ── Sidebar ───────────────────────────────────────── */
+#sidebar {
+  width:var(--sidebar); min-width:var(--sidebar);
+  background:var(--surf); border-right:1px solid var(--border);
+  display:flex; flex-direction:column; overflow:hidden;
+}
+.sb-head {
+  padding:14px 14px 12px;
+  border-bottom:1px solid var(--border);
+  flex-shrink:0;
+}
+.sb-logo {
+  font-size:13px; font-weight:700; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--accent); margin-bottom:10px;
+}
+.prog-track { height:3px; background:var(--border); border-radius:2px; overflow:hidden; margin-bottom:5px; }
+.prog-fill  { height:100%; background:var(--accent); border-radius:2px; transition:width .4s; }
+.prog-label { font-size:11px; color:var(--muted); }
+#topic-nav  { flex:1; overflow-y:auto; padding:4px 0 12px; }
+.ph-head {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:8px 14px 4px; cursor:pointer;
+}
+.ph-name { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); }
+.ph-badge { font-size:10px; color:var(--muted); background:var(--surf2); border-radius:10px; padding:1px 7px; }
+.t-item {
+  display:flex; align-items:flex-start; gap:8px;
+  padding:5px 14px 5px 16px; cursor:pointer; transition:background .1s;
+}
+.t-item:hover { background:var(--surf2); }
+.t-item.active { background:var(--acc-bg); }
+.t-item.active::before { content:''; position:absolute; left:0; top:0; bottom:0; width:2px; background:var(--accent); }
+.t-item { position:relative; }
+.t-item.locked { opacity:.35; cursor:default; }
+.t-item.locked:hover { background:transparent; }
+.t-icon {
+  width:17px; height:17px; border-radius:50%; flex-shrink:0; margin-top:1px;
+  display:flex; align-items:center; justify-content:center; font-size:9px; font-weight:700;
+}
+.t-icon.done    { background:var(--ok);     color:#fff; }
+.t-icon.current { background:var(--accent); color:#000; }
+.t-icon.avail   { background:var(--surf2);  border:1px solid var(--border); color:var(--muted); }
+.t-icon.locked  { background:var(--surf2);  border:1px solid var(--border); color:var(--border); }
+.t-label { font-size:12px; color:var(--muted); line-height:1.4; flex:1; }
+.t-item.active .t-label { color:var(--text); }
+
+/* ── Main area ─────────────────────────────────────── */
+#main { flex:1; display:flex; overflow:hidden; }
+
+/* ── Welcome ───────────────────────────────────────── */
+#welcome {
+  flex:1; display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  padding:40px; text-align:center;
+}
+#welcome.off { display:none; }
+.wlc-icon { font-size:44px; margin-bottom:20px; }
+.wlc-title { font-size:24px; font-weight:700; margin-bottom:10px; }
+.wlc-sub { font-size:14px; color:var(--muted); max-width:400px; line-height:1.65; margin-bottom:28px; }
+.btn-go { padding:11px 26px; background:var(--accent); color:#000; font-size:14px; font-weight:700; border:none; border-radius:8px; }
+.btn-go:hover { opacity:.88; }
+
+/* ── Lesson view ───────────────────────────────────── */
+#lesson-view { display:none; flex:1; overflow:hidden; }
+#lesson-view.on { display:flex; }
+
+/* lesson column */
+#lesson-col {
+  flex:1; display:flex; flex-direction:column; overflow:hidden;
+}
+.l-topbar {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:9px 20px; border-bottom:1px solid var(--border);
+  background:var(--bg); flex-shrink:0; gap:10px;
+}
+.l-topbar-left { display:flex; align-items:center; gap:10px; }
+.phase-pill {
+  font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.06em;
+  color:var(--accent); background:var(--acc-bg); border:1px solid var(--acc-bdr);
+  padding:3px 10px; border-radius:20px;
+}
+.topic-of { font-size:12px; color:var(--muted); }
+.l-topbar-right { display:flex; gap:8px; }
+.tbtn {
+  padding:5px 12px; font-size:12px; font-weight:600;
+  background:var(--surf2); border:1px solid var(--border); color:var(--text);
+  border-radius:6px;
+}
+.tbtn:hover { border-color:var(--muted); }
+.notes-toggle-btn {
+  padding:5px 12px; font-size:12px; font-weight:600;
+  background:var(--surf2); border:1px solid var(--border); color:var(--muted);
+  border-radius:6px;
+}
+.notes-toggle-btn.active { color:var(--accent); border-color:var(--acc-bdr); }
+.notes-toggle-btn:hover { color:var(--text); }
+
+/* scrollable lesson body */
+#lesson-scroll { flex:1; overflow-y:auto; }
+.l-body { padding:28px 36px 20px; }
+
+.l-title {
+  font-size:24px; font-weight:700; line-height:1.3; margin-bottom:8px;
+}
+.l-meta { display:flex; align-items:center; gap:14px; font-size:12px; color:var(--muted); margin-bottom:28px; }
+.done-badge { color:var(--ok); }
+
+/* reading typography */
+.l-content {
+  font-family:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:16px; line-height:1.8; color:#c9d1d9;
+  user-select:text;
+}
+.l-content h2 {
+  font-family:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:17px; font-weight:700; color:var(--text);
+  margin:30px 0 12px; padding-bottom:7px; border-bottom:1px solid var(--border);
+}
+.l-content h3 {
+  font-family:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:13px; font-weight:700; color:var(--accent);
+  text-transform:uppercase; letter-spacing:.06em; margin:24px 0 8px;
+}
+.l-content p  { margin-bottom:16px; }
+.l-content strong { color:var(--text); font-weight:700; }
+.l-content em { font-style:italic; }
+.l-content ul { margin:10px 0 16px; padding-left:0; list-style:none; }
+.l-content ul li { position:relative; padding-left:18px; margin-bottom:8px; }
+.l-content ul li::before { content:'▸'; position:absolute; left:0; color:var(--accent); font-size:11px; top:4px; }
+.l-content hr { border:none; border-top:1px solid var(--border); margin:26px 0; }
+.reflection {
+  background:var(--acc-bg); border:1px solid var(--acc-bdr);
+  border-radius:8px; padding:16px 20px; margin-top:24px;
+}
+.reflection .r-label {
+  font-family:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:.08em;
+  color:var(--accent); margin-bottom:8px;
+}
+.reflection p {
+  font-family:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:14px; line-height:1.65; color:var(--text); margin:0;
+}
+
+/* highlights */
+mark.hl-y { background:#ffd70066; color:inherit; border-radius:2px; cursor:pointer; padding:1px 0; }
+mark.hl-g { background:#4caf5055; color:inherit; border-radius:2px; cursor:pointer; padding:1px 0; }
+mark.hl-b { background:#2196f355; color:inherit; border-radius:2px; cursor:pointer; padding:1px 0; }
+mark.hl-y:hover { background:#ffd700aa; }
+mark.hl-g:hover { background:#4caf5088; }
+mark.hl-b:hover { background:#2196f388; }
+
+/* lesson footer — now inside #lesson-scroll */
+.l-footer {
+  padding:14px 36px 18px;
+  border-top:1px solid var(--border);
+  display:flex; align-items:center; gap:10px;
+  background:var(--bg);
+}
+.btn-done {
+  padding:8px 18px; font-size:13px; font-weight:700;
+  background:var(--ok-bg); color:var(--ok); border:1px solid var(--ok-bdr);
+  border-radius:7px;
+}
+.btn-done:disabled { opacity:.45; cursor:default; }
+.btn-nav {
+  padding:8px 16px; font-size:13px; font-weight:600;
+  background:var(--surf2); border:1px solid var(--border); color:var(--text);
+  border-radius:7px;
+}
+.btn-nav:hover { border-color:var(--muted); }
+.footer-note { font-size:11.5px; color:var(--muted); margin-left:auto; }
+
+/* ── Q&A chat section ──────────────────────────────── */
+.qa-wrap {
+  border-top:1px solid var(--border);
+  background:var(--surf);
+}
+.qa-head {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 20px; cursor:pointer; user-select:none;
+}
+.qa-head-label {
+  font-size:12px; font-weight:700; text-transform:uppercase;
+  letter-spacing:.06em; color:var(--muted);
+  display:flex; align-items:center; gap:8px;
+}
+/* ── Q&A — Questions panel ─────────────────────────── */
+.qa-toggle { font-size:12px; color:var(--muted); }
+.qa-body   { padding:0 20px 14px; }
+
+/* pending questions list */
+.qa-q-list { margin-bottom:12px; }
+.qa-q-item {
+  display:flex; align-items:flex-start; gap:8px;
+  padding:7px 10px; background:var(--surf2); border:1px solid var(--border);
+  border-radius:7px; margin-bottom:6px;
+}
+.qa-q-num  { font-size:11px; font-weight:700; color:var(--accent); flex-shrink:0; margin-top:1px; }
+.qa-q-text { font-size:13px; color:var(--text); flex:1; line-height:1.5; }
+.qa-q-del  { font-size:14px; color:var(--muted); background:none; border:none; flex-shrink:0; line-height:1; margin-top:1px; }
+.qa-q-del:hover { color:var(--danger,#f85149); }
+
+.qa-input-row { display:flex; gap:8px; align-items:flex-end; margin-bottom:10px; }
+#qa-input {
+  flex:1; padding:8px 12px; background:var(--surf2); border:1px solid var(--border);
+  border-radius:7px; color:var(--text); font-size:13px; line-height:1.5;
+  min-height:38px; max-height:90px;
+}
+#qa-input:focus { outline:none; border-color:var(--accent); }
+#qa-input::placeholder { color:var(--muted); }
+.btn-add-q {
+  padding:8px 14px; background:var(--surf2); border:1px solid var(--border);
+  color:var(--text); font-size:13px; font-weight:600; border-radius:7px; flex-shrink:0;
+}
+.btn-add-q:hover { border-color:var(--accent); color:var(--accent); }
+.qa-empty-msg { font-size:12px; color:var(--muted); font-style:italic; padding:2px 0 10px; }
+
+.btn-copy-q {
+  width:100%; padding:9px; background:var(--blue-bg); border:1px solid rgba(88,166,255,.3);
+  color:var(--blue); font-size:13px; font-weight:700; border-radius:7px; text-align:center;
+}
+.btn-copy-q:hover { background:rgba(88,166,255,.2); }
+.btn-copy-q:disabled { opacity:.4; cursor:default; }
+.btn-copy-q.copied { background:var(--ok-bg); border-color:var(--ok-bdr); color:var(--ok); }
+
+/* ── Q&A — Answers section ─────────────────────────── */
+.qa-answers-wrap {
+  border-top:1px solid var(--border); background:var(--surf);
+}
+.qa-answers-head {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 20px; cursor:pointer; user-select:none;
+}
+.qa-answers-label {
+  font-size:12px; font-weight:700; text-transform:uppercase;
+  letter-spacing:.06em; color:var(--muted);
+}
+.btn-load-ans {
+  padding:4px 12px; font-size:11.5px; font-weight:600;
+  background:var(--surf2); border:1px solid var(--border); color:var(--muted);
+  border-radius:5px;
+}
+.btn-load-ans:hover { color:var(--text); border-color:var(--muted); }
+.qa-answers-body {
+  padding:0 20px 16px;
+  font-family:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:15px; line-height:1.75; color:#c9d1d9;
+}
+.qa-answers-body h2 { font-family:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; font-size:14px; font-weight:700; color:var(--text); margin:16px 0 6px; }
+.qa-answers-body h3 { font-family:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; font-size:12px; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:.06em; margin:12px 0 4px; }
+.qa-answers-body p  { margin-bottom:12px; }
+.qa-answers-body strong { color:var(--text); font-weight:700; }
+.qa-answers-body em { font-style:italic; }
+.qa-answers-body hr { border:none; border-top:1px solid var(--border); margin:16px 0; }
+.qa-ans-empty { font-size:12px; color:var(--muted); font-style:italic; }
+
+/* ── Notes & Highlights panel ──────────────────────── */
+#notes-panel {
+  width:var(--notes-w); min-width:var(--notes-w);
+  background:var(--surf); border-left:1px solid var(--border);
+  display:flex; flex-direction:column; overflow:hidden;
+  transition:width .2s, min-width .2s;
+}
+#notes-panel.collapsed { width:0; min-width:0; border-left:none; }
+.np-head {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 14px 10px; border-bottom:1px solid var(--border); flex-shrink:0;
+}
+.np-title { font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); }
+.np-close { font-size:16px; color:var(--muted); background:none; border:none; line-height:1; }
+.np-close:hover { color:var(--text); }
+.np-body { flex:1; overflow-y:auto; padding:12px 14px; display:flex; flex-direction:column; gap:14px; }
+.np-section-label {
+  font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.08em;
+  color:var(--muted); margin-bottom:6px;
+}
+#topic-notes-ta {
+  width:100%; padding:8px 10px; background:var(--surf2); border:1px solid var(--border);
+  border-radius:7px; color:var(--text); font-size:12.5px; line-height:1.55;
+  min-height:90px;
+}
+#topic-notes-ta:focus { outline:none; border-color:var(--accent); }
+#topic-notes-ta::placeholder { color:var(--muted); }
+.hl-list { display:flex; flex-direction:column; gap:8px; }
+.hl-card {
+  background:var(--surf2); border:1px solid var(--border);
+  border-radius:7px; padding:8px 10px; font-size:12px;
+}
+.hl-card .hl-text { color:var(--text); line-height:1.4; margin-bottom:4px; cursor:pointer; }
+.hl-card .hl-text.expanded { white-space:normal; }
+.hl-card .hl-text .hl-expand-hint { font-size:10px; color:var(--accent); margin-left:4px; }
+.hl-card .hl-note-txt { color:var(--muted); font-style:italic; margin-bottom:6px; }
+.hl-card .hl-note-input {
+  width:100%; padding:4px 8px; background:var(--bg); border:1px solid var(--border);
+  border-radius:5px; color:var(--text); font-size:11.5px; margin-top:4px;
+}
+.hl-card .hl-note-input:focus { outline:none; border-color:var(--accent); }
+.hl-card-actions { display:flex; gap:6px; margin-top:4px; }
+.hl-action { font-size:10.5px; color:var(--muted); background:none; border:none; padding:0; }
+.hl-action:hover { color:var(--accent); }
+.no-hl { font-size:12px; color:var(--muted); font-style:italic; }
+.hl-dot { width:8px; height:8px; border-radius:50%; display:inline-block; margin-right:6px; }
+.hl-dot.y { background:#ffd700; }
+.hl-dot.g { background:#4caf50; }
+.hl-dot.b { background:#2196f3; }
+
+/* ── Highlight floating toolbar ────────────────────── */
+#hl-bar {
+  position:fixed; background:var(--surf2); border:1px solid var(--border);
+  border-radius:8px; padding:6px 8px; display:flex; gap:6px; align-items:center;
+  box-shadow:0 4px 16px rgba(0,0,0,.5); z-index:200;
+  display:none;
+}
+.hl-btn {
+  width:22px; height:22px; border-radius:50%; border:2px solid transparent;
+  cursor:pointer; transition:transform .1s;
+}
+.hl-btn:hover { transform:scale(1.15); }
+.hl-btn.y { background:#ffd700; }
+.hl-btn.g { background:#4caf50; }
+.hl-btn.b { background:#2196f3; }
+.hl-note-btn {
+  font-size:11px; font-weight:600; padding:3px 9px;
+  background:var(--surf); border:1px solid var(--border); color:var(--text);
+  border-radius:5px;
+}
+.hl-note-btn:hover { border-color:var(--accent); color:var(--accent); }
+.hl-del-btn {
+  font-size:11px; color:var(--muted); background:none; border:none; padding:3px 6px;
+}
+.hl-del-btn:hover { color:var(--danger,#f85149); }
+.hl-sep { width:1px; height:16px; background:var(--border); }
+
+/* ── Loading overlay ───────────────────────────────── */
+#loading {
+  position:fixed; inset:0; background:rgba(0,0,0,.75);
+  display:flex; align-items:center; justify-content:center; z-index:300;
+  display:none;
+}
+.ld-card {
+  background:var(--surf); border:1px solid var(--border); border-radius:14px;
+  padding:32px 40px; text-align:center; max-width:360px;
+}
+.spinner {
+  width:36px; height:36px; border:3px solid var(--border);
+  border-top-color:var(--accent); border-radius:50%;
+  animation:spin .8s linear infinite; margin:0 auto 18px;
+}
+@keyframes spin { to { transform:rotate(360deg); } }
+.ld-title { font-size:16px; font-weight:700; margin-bottom:8px; }
+.ld-msg   { font-size:13px; color:var(--muted); line-height:1.55; }
+
+/* ── Toast ─────────────────────────────────────────── */
+#toast {
+  position:fixed; bottom:24px; left:50%; transform:translateX(-50%);
+  background:var(--surf2); border:1px solid var(--border); border-radius:8px;
+  padding:10px 20px; font-size:13px; font-weight:600;
+  box-shadow:0 4px 16px rgba(0,0,0,.4); z-index:400;
+  opacity:0; transition:opacity .25s; pointer-events:none;
+}
+#toast.show { opacity:1; }
+
+/* ── Quiz sidebar items ─────────────────────────────── */
+.quiz-sb-item { align-items:flex-start !important; padding:8px 12px 8px 8px !important; gap:10px !important; }
+.quiz-sb-item.active { background:var(--acc-bg) !important; }
+.quiz-icon {
+  width:32px; height:32px; min-width:32px; border-radius:8px;
+  background:rgba(88,166,255,.15); color:var(--blue);
+  font-size:13px; display:flex; align-items:center; justify-content:center;
+}
+.quiz-sb-info { display:flex; flex-direction:column; gap:2px; min-width:0; }
+.quiz-sb-name { font-size:12px; font-weight:700; color:var(--blue); line-height:1.3; }
+.quiz-sb-status { font-size:10px; color:var(--muted); }
+.quiz-sb-status.in_progress { color:var(--blue); }
+.quiz-sb-status.submitted   { color:var(--accent); }
+.quiz-sb-status.evaluated   { color:var(--ok); }
+
+/* ── Quiz view ─────────────────────────────────────── */
+#quiz-view { display:none; flex:1; overflow-hidden; }
+#quiz-view.on { display:flex; }
+.quiz-col {
+  flex:1; overflow-y:auto; padding:28px 36px 40px;
+  max-width:820px; display:flex; flex-direction:column;
+}
+.quiz-title { font-size:22px; font-weight:700; margin-bottom:6px; }
+.quiz-sub   { font-size:13px; color:var(--muted); margin-bottom:10px; }
+.quiz-topics-covered {
+  display:flex; flex-wrap:wrap; gap:6px; margin-bottom:20px;
+}
+.quiz-topics-covered span {
+  background:var(--surf2); border:1px solid var(--border);
+  border-radius:20px; padding:3px 10px; font-size:11px; color:var(--muted);
+}
+.quiz-instructions {
+  background:var(--acc-bg); border:1px solid var(--acc-bdr);
+  border-radius:8px; padding:12px 16px; font-size:13px; color:var(--text);
+  line-height:1.6; margin-bottom:24px;
+}
+.quiz-q-block { margin-bottom:28px; }
+.quiz-q-num { font-size:11px; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:.06em; margin-bottom:6px; }
+.quiz-q-text { font-size:15px; font-weight:600; color:var(--text); margin-bottom:10px; line-height:1.55; }
+.quiz-ans-ta {
+  width:100%; padding:12px 14px; background:var(--surf2); border:1px solid var(--border);
+  border-radius:8px; color:var(--text); font-size:14px; line-height:1.7;
+  min-height:100px; box-sizing:border-box; resize:vertical;
+  font-family:inherit;
+}
+.quiz-ans-ta:focus { outline:none; border-color:var(--accent); }
+.quiz-ans-ta::placeholder { color:var(--muted); }
+.quiz-ans-ta[readonly] { opacity:.8; cursor:default; }
+.eval-box {
+  background:rgba(46,160,67,.08); border:1px solid rgba(46,160,67,.25);
+  border-radius:8px; padding:14px 16px; margin-top:10px;
+  font-size:13px; color:var(--text); line-height:1.7; display:none;
+}
+.eval-box.show { display:block; }
+.eval-box-label {
+  font-size:10px; font-weight:700; color:var(--ok);
+  text-transform:uppercase; letter-spacing:.06em; margin-bottom:6px;
+}
+.quiz-footer {
+  padding:16px 36px 24px; border-top:1px solid var(--border);
+  display:flex; gap:10px; align-items:center; flex-shrink:0; background:var(--bg);
+  flex-wrap:wrap;
+}
+.btn-submit {
+  padding:9px 22px; background:var(--accent); color:#000;
+  font-size:14px; font-weight:700; border:none; border-radius:8px;
+}
+.btn-submit:disabled { opacity:.45; cursor:default; }
+.btn-load-eval {
+  padding:9px 16px; background:var(--surf2); border:1px solid var(--blue);
+  color:var(--blue); font-size:13px; font-weight:600; border-radius:8px;
+}
+.btn-back-lesson {
+  padding:9px 18px; background:var(--surf2); border:1px solid var(--border);
+  color:var(--text); font-size:13px; font-weight:600; border-radius:8px;
+}
+.eval-overall {
+  background:var(--acc-bg); border:1px solid var(--acc-bdr);
+  border-radius:10px; padding:20px 24px; margin-top:32px;
+  font-size:14px; line-height:1.75; color:var(--text); display:none;
+}
+.eval-overall.show { display:block; }
+.eval-overall-label {
+  font-size:11px; font-weight:700; color:var(--accent);
+  text-transform:uppercase; letter-spacing:.06em; margin-bottom:10px;
+}
+
+/* ── Case Study sidebar items ──────────────────────── */
+.cs-sb-item  { align-items:flex-start !important; padding:8px 12px 8px 8px !important; gap:10px !important; }
+.cs-sb-item.active { background:var(--amber-bg) !important; }
+.cs-icon {
+  width:32px; height:32px; min-width:32px; border-radius:8px;
+  background:var(--amber-bg); color:var(--amber);
+  font-size:13px; display:flex; align-items:center; justify-content:center;
+}
+.cs-sb-info  { display:flex; flex-direction:column; gap:2px; min-width:0; }
+.cs-sb-name  { font-size:12px; font-weight:700; color:var(--amber); line-height:1.3; }
+.cs-sb-status { font-size:10px; color:var(--muted); }
+.cs-sb-status.in_progress { color:var(--amber); }
+.cs-sb-status.submitted   { color:var(--accent); }
+.cs-sb-status.evaluated   { color:var(--ok); }
+
+/* ── Case Study view ────────────────────────────────── */
+#case-view { display:none; flex:1; overflow:hidden; }
+#case-view.on { display:flex; }
+.case-col  { flex:1; overflow-y:auto; padding:28px 36px 40px; display:flex; flex-direction:column; }
+
+/* Scenario reading area */
+.cs-scenario {
+  background:var(--surf2); border:1px solid var(--border);
+  border-radius:10px; padding:28px 32px; margin-bottom:32px;
+}
+.cs-scenario-label {
+  font-size:10px; font-weight:700; color:var(--amber);
+  text-transform:uppercase; letter-spacing:.08em; margin-bottom:14px;
+}
+.cs-scenario h2 {
+  font-size:16px; font-weight:700; color:var(--text);
+  margin:22px 0 10px; padding-bottom:6px; border-bottom:1px solid var(--border);
+}
+.cs-scenario h3 {
+  font-size:11px; font-weight:700; color:var(--amber);
+  text-transform:uppercase; letter-spacing:.07em; margin:18px 0 8px;
+}
+.cs-scenario p  { font-size:14px; line-height:1.75; color:var(--text); margin-bottom:12px; }
+.cs-scenario ul { padding-left:18px; margin-bottom:12px; }
+.cs-scenario li { font-size:14px; line-height:1.7; color:var(--text); margin-bottom:4px; }
+.cs-scenario strong { color:var(--text); font-weight:700; }
+.cs-scenario em { color:var(--muted); font-style:italic; }
+.cs-scenario hr { border:none; border-top:1px solid var(--border); margin:20px 0; }
+
+/* Financial data table inside scenario */
+.cs-table { width:100%; border-collapse:collapse; margin:14px 0 18px; font-size:13px; }
+.cs-table th {
+  background:var(--surf); padding:8px 12px; text-align:left;
+  font-size:11px; font-weight:700; text-transform:uppercase;
+  letter-spacing:.05em; color:var(--muted); border-bottom:1px solid var(--border);
+}
+.cs-table td {
+  padding:8px 12px; border-bottom:1px solid rgba(48,54,61,.6);
+  color:var(--text); vertical-align:top;
+}
+.cs-table td:first-child { color:var(--muted); font-size:12px; }
+.cs-table tr:last-child td { border-bottom:none; }
+
+/* Risk / note tags */
+.cs-tag {
+  display:inline-block; border-radius:4px; padding:2px 8px;
+  font-size:11px; font-weight:700; margin:0 4px 4px 0;
+}
+.cs-tag.risk    { background:rgba(248,81,73,.12); color:#f85149; }
+.cs-tag.moat    { background:var(--ok-bg); color:var(--ok); }
+.cs-tag.neutral { background:var(--surf2); color:var(--muted); border:1px solid var(--border); }
+
+/* Case Study questions section */
+.cs-q-header {
+  font-size:15px; font-weight:700; margin-bottom:6px; color:var(--text);
+}
+.cs-q-sub {
+  font-size:12px; color:var(--muted); margin-bottom:24px; line-height:1.5;
+}
+.cs-rubric-note {
+  background:var(--amber-bg); border:1px solid var(--amber-bdr);
+  border-radius:8px; padding:12px 16px; font-size:12px;
+  color:var(--text); line-height:1.6; margin-bottom:24px;
+}
+
+/* ── Responsive ────────────────────────────────────── */
+@media(max-width:900px){
+  #notes-panel { display:none; }
+}
+@media(max-width:640px){
+  #sidebar { width:200px; min-width:200px; }
+  .l-body, .quiz-col { padding:20px 18px 16px; }
+  .l-footer, .quiz-footer { padding:12px 18px 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── Sidebar ─────────────────────────────────────── -->
+<aside id="sidebar">
+  <div class="sb-head">
+    <div class="sb-logo">📈 Value Investing</div>
+    <div class="prog-track"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
+    <div class="prog-label" id="prog-label">0 of 120 topics</div>
+  </div>
+  <div id="topic-nav"></div>
+</aside>
+
+<!-- ── Main ───────────────────────────────────────── -->
+<div id="main">
+
+  <!-- Welcome -->
+  <div id="welcome">
+    <div class="wlc-icon">📖</div>
+    <div class="wlc-title">Your Value Investing Course</div>
+    <div class="wlc-sub">10–12 minutes a day. One concept at a time.<br>Compounding over 12 months.</div>
+    <button class="btn-go" onclick="loadTopic(1)">Start Topic 1 →</button>
+  </div>
+
+  <!-- Lesson view -->
+  <div id="lesson-view">
+
+    <!-- Lesson column -->
+    <div id="lesson-col">
+      <div class="l-topbar">
+        <div class="l-topbar-left">
+          <span class="phase-pill" id="phase-pill">Phase 1</span>
+          <span class="topic-of"  id="topic-of">Topic 1 of 120</span>
+        </div>
+        <div class="l-topbar-right">
+          <button class="tbtn" id="btn-prev" onclick="navigate(-1)">← Prev</button>
+          <button class="tbtn" id="btn-next-top" onclick="navigate(1)">Next →</button>
+          <button class="notes-toggle-btn" id="notes-toggle" onclick="toggleNotes()">📝 Notes</button>
+        </div>
+      </div>
+
+      <div id="lesson-scroll">
+        <div class="l-body">
+          <h1 class="l-title" id="l-title"></h1>
+          <div class="l-meta">
+            <span>⏱ ~10 min read</span>
+            <span id="done-badge"></span>
+          </div>
+          <div class="l-content" id="l-content"></div>
+        </div>
+
+        <div class="l-footer">
+          <button class="btn-done" id="btn-mark-done" onclick="markDone()">✓ Mark as Complete</button>
+          <button class="btn-nav"  onclick="navigate(1)">Next Topic →</button>
+          <span class="footer-note" id="footer-note"></span>
+        </div>
+
+        <!-- Q&A: My Questions -->
+        <div class="qa-wrap">
+          <div class="qa-head" onclick="toggleQA()">
+            <span class="qa-head-label">💬 My Questions <span id="qa-count" style="color:var(--blue);font-weight:700;"></span></span>
+            <span class="qa-toggle" id="qa-toggle">▼</span>
+          </div>
+          <div id="qa-body" class="qa-body" style="display:none;">
+            <div class="qa-q-list" id="qa-q-list">
+              <div class="qa-empty-msg" id="qa-empty">No questions yet. Type one below and click Add.</div>
+            </div>
+            <div class="qa-input-row">
+              <textarea id="qa-input" rows="1" placeholder="Type a question about this topic…"></textarea>
+              <button class="btn-add-q" onclick="addQuestion()">+ Add</button>
+            </div>
+            <button class="btn-copy-q" id="btn-copy-q" onclick="copyQuestions()" disabled>
+              📋 Copy Questions to Ask Claude
+            </button>
+          </div>
+        </div>
+
+        <!-- Q&A: Answers loaded from qa.md -->
+        <div class="qa-answers-wrap">
+          <div class="qa-answers-head" onclick="toggleAnswers()">
+            <span class="qa-answers-label">📖 Answers from Claude Code</span>
+            <div style="display:flex;gap:8px;align-items:center;">
+              <button class="btn-load-ans" onclick="event.stopPropagation();loadAnswers()">↻ Load Answers</button>
+              <span class="qa-toggle" id="answers-toggle">▼</span>
+            </div>
+          </div>
+          <div id="qa-answers-body" class="qa-answers-body" style="display:none;">
+            <div class="qa-ans-empty">Paste your questions in Claude Code chat, get answers, then click Load Answers.</div>
+          </div>
+        </div>
+
+      </div><!-- /lesson-scroll -->
+    </div>
+
+    <!-- Notes & Highlights panel -->
+    <div id="notes-panel">
+      <div class="np-head">
+        <span class="np-title">📝 Notes &amp; Highlights</span>
+        <button class="np-close" onclick="toggleNotes()">×</button>
+      </div>
+      <div class="np-body">
+        <div>
+          <div class="np-section-label">Topic Notes</div>
+          <textarea id="topic-notes-ta" placeholder="Write your own notes here…"></textarea>
+        </div>
+        <div>
+          <div class="np-section-label">Highlights</div>
+          <div id="hl-list" class="hl-list">
+            <div class="no-hl" id="no-hl-msg">Select any text in the lesson to highlight it.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quiz view -->
+  <div id="quiz-view">
+    <div style="display:flex;flex-direction:column;flex:1;overflow:hidden;">
+      <div class="l-topbar">
+        <div class="l-topbar-left">
+          <span class="phase-pill" id="quiz-phase-pill">Quiz</span>
+          <span class="topic-of" id="quiz-label"></span>
+        </div>
+        <div class="l-topbar-right">
+          <button class="tbtn" onclick="showLesson()">← Back to Lesson</button>
+        </div>
+      </div>
+      <div class="quiz-col" id="quiz-col"></div>
+      <div class="quiz-footer">
+        <button class="btn-submit" id="btn-submit-quiz" onclick="submitQuiz()">Submit for Evaluation →</button>
+        <button class="btn-load-eval" id="btn-load-eval" onclick="loadEvaluation(activeQuizId)" style="display:none;">↻ Load Evaluation</button>
+        <button class="btn-back-lesson" onclick="showLesson()">← Back to Topics</button>
+        <span class="footer-note" id="quiz-footer-note"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Case Study view -->
+  <div id="case-view">
+    <div style="display:flex;flex-direction:column;flex:1;overflow:hidden;">
+      <div class="l-topbar">
+        <div class="l-topbar-left">
+          <span class="phase-pill" id="cs-phase-pill" style="background:var(--amber-bg);color:var(--amber);">Case Study</span>
+          <span class="topic-of" id="cs-label"></span>
+        </div>
+        <div class="l-topbar-right">
+          <button class="tbtn" onclick="showFromCase()">← Back to Topics</button>
+        </div>
+      </div>
+      <div class="case-col" id="case-col"></div>
+      <div class="quiz-footer">
+        <button class="btn-submit" id="btn-submit-case" onclick="submitCaseStudy()">Submit for Evaluation →</button>
+        <button class="btn-load-eval" id="btn-load-case-eval" onclick="loadCaseEvaluation(activeCaseId)" style="display:none;">↻ Load Evaluation</button>
+        <button class="btn-back-lesson" onclick="showFromCase()">← Back to Topics</button>
+        <span class="footer-note" id="case-footer-note"></span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<!-- Highlight toolbar -->
+<div id="hl-bar">
+  <button class="hl-btn y" title="Yellow highlight" onclick="applyHL('y')"></button>
+  <button class="hl-btn g" title="Green highlight"  onclick="applyHL('g')"></button>
+  <button class="hl-btn b" title="Blue highlight"   onclick="applyHL('b')"></button>
+  <div class="hl-sep"></div>
+  <button class="hl-note-btn" onclick="applyHLNote()">+ Note</button>
+</div>
+
+<!-- Loading overlay -->
+<div id="loading">
+  <div class="ld-card">
+    <div class="spinner"></div>
+    <div class="ld-title">Working on it...</div>
+    <div class="ld-msg"  id="ld-msg">Please wait</div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast"></div>
+
+<script>
+// ═══════════════════════════════════════════════════════
+// COURSE DATA
+// ═══════════════════════════════════════════════════════
+const PHASES = [
+  {id:1,  name:'Core Foundations',              weeks:'Wks 1–4',   ids:range(1,10)},
+  {id:2,  name:'Financial Statements',          weeks:'Wks 5–6',   ids:range(11,20)},
+  {id:3,  name:'Business Quality & Moats',      weeks:'Wks 7–9',   ids:range(21,30)},
+  {id:4,  name:'Management & Capital',          weeks:'Wks 10–11', ids:range(31,40)},
+  {id:5,  name:'Returns & Metrics',             weeks:'Wks 12–13', ids:range(41,50)},
+  {id:6,  name:'Valuation',                     weeks:'Wks 14–16', ids:range(51,60)},
+  {id:7,  name:'Industries & Biz Models',       weeks:'Wks 17–19', ids:range(61,70)},
+  {id:8,  name:'Behaviour & Psychology',        weeks:'Wks 20–21', ids:range(71,80)},
+  {id:9,  name:'Portfolio Construction',        weeks:'Wks 22–23', ids:range(81,90)},
+  {id:10, name:'Finding Opportunities',         weeks:'Wks 24–25', ids:range(91,100)},
+  {id:11, name:'Thesis Building & Review',      weeks:'Wks 26–27', ids:range(101,110)},
+  {id:12, name:'Master Thinking',               weeks:'Wks 28+',   ids:range(111,120)},
+];
+function range(a,b){const r=[];for(let i=a;i<=b;i++)r.push(i);return r;}
+
+const ALL_TITLES = {
+  1:'What is intrinsic value (and what it is not)',
+  2:'Margin of safety (why it matters more than precision)',
+  3:'Time horizon as an edge',4:'Circle of competence',
+  5:'Second-order thinking',6:'Inversion in investing',
+  7:'Probabilistic thinking vs certainty',8:'Opportunity cost in capital allocation',
+  9:'Why most investors underperform',10:'Investing vs trading vs speculation',
+  11:'How income statements lie',12:'Revenue quality vs revenue growth',
+  13:'Gross margin vs operating margin',14:'Operating leverage (friend and enemy)',
+  15:'Balance sheet strength vs cosmetic strength',16:'Working capital',
+  17:'Cash flow vs reported earnings',18:'Free cash flow quality',
+  19:'Maintenance capex vs growth capex',20:'Accounting red flags investors miss',
+  21:"What makes a business 'high quality'",22:'Sustainable vs temporary competitive advantage',
+  23:'Pricing power (real vs claimed)',24:'Brand as a moat',
+  25:'Switching costs',26:'Network effects',
+  27:'Cost leadership and scale advantages',28:'Intangible assets (licenses, IP, regulation)',
+  29:'Moat erosion signals',30:'Why most moats fade',
+  31:'Management incentives and behavior',32:"Capital allocation skill as the CEO's main job",
+  33:'Reinvestment vs dividends vs buybacks',34:'When buybacks destroy value',
+  35:'When dilution is actually good',36:'M&A: value creation vs empire building',
+  37:'Reading shareholder letters effectively',38:'Founder-led vs professional management',
+  39:'Skin in the game',40:'Red flags in management communication',
+  41:'ROE: when it lies',42:'ROIC: the most important metric',
+  43:'ROCE vs ROIC',44:'Incremental returns on capital',
+  45:'Capital intensity',46:'Unit economics',
+  47:'Scale benefits and diseconomies',48:'Cash conversion cycles',
+  49:'Reinvestment runway',50:'Why growth without returns is useless',
+  51:'Price vs value',52:'Why valuation is a range, not a point',
+  53:'Discount rates (what really matters)',54:"DCF: what matters and what doesn't",
+  55:'Reverse DCF thinking',56:'Relative valuation traps',
+  57:'When to ignore valuation',58:'Multiple expansion vs business performance',
+  59:'Terminal value assumptions',60:'Valuation in cyclical businesses',
+  61:'Cyclical vs secular businesses',62:'Commodity businesses and mean reversion',
+  63:'Financial businesses (banks, NBFCs, insurers)',64:'Asset-light vs asset-heavy models',
+  65:'Platform businesses',66:'Subscription models',
+  67:'Regulated industries',68:'Winner-take-most markets',
+  69:'Fragmented industries and consolidation',70:'Technology as enabler vs moat',
+  71:'Behavioral biases in investing',72:'Confirmation bias',
+  73:'Loss aversion',74:'Overconfidence',
+  75:'Recency bias',76:'Narrative fallacy',
+  77:'FOMO and envy',78:'How great investors stay rational',
+  79:'Boredom as an edge',80:'Emotional discipline during drawdowns',
+  81:'Concentration vs diversification',82:'Position sizing frameworks',
+  83:'Portfolio turnover',84:'Cash as an option',
+  85:'Rebalancing logic',86:'Correlation vs diversification',
+  87:'Risk of ruin',88:'When to add vs when to cut',
+  89:'Portfolio construction mistakes',90:'Long-term compounding math',
+  91:'How great investors find ideas',92:'Screens vs qualitative discovery',
+  93:'Under-researched companies',94:'Spin-offs and special situations',
+  95:'Small-cap inefficiencies',96:'Temporary bad news vs permanent impairment',
+  97:'Mispriced risk',98:'Inflection points',
+  99:'When to be contrarian',100:'Knowing when NOT to invest',
+  101:'What makes a good investment thesis',102:'Difference between story and thesis',
+  103:'Key variables that matter',104:'Disconfirming evidence',
+  105:'Variant perception',106:'Base rates vs narratives',
+  107:'Thesis decay over time',108:'Sell discipline',
+  109:'Post-mortems',110:'Learning from mistakes',
+  111:'How Buffett thinks about businesses',112:'How Munger thinks about problems',
+  113:'Long-term vs short-term advantage',114:'Incentives drive outcomes',
+  115:'Simplicity on the far side of complexity',116:'Building your personal investing philosophy',
+  117:'Creating your decision checklist',118:'Designing your yearly investing cycle',
+  119:'Writing your personal annual letter',120:'What lifelong compounding really means',
+};
+
+// Lessons stored dynamically; topics 1–2 embedded
+const LESSONS = {
+  1:`## A Quick Orientation
+
+Before you can invest intelligently, you need to understand the single most important distinction in all of investing: the difference between *price* and *value*. Price is what the market charges you today. Value is what the business is actually worth. These two numbers are often quite different — and that gap is where all the opportunity in investing lives.
+
+Intrinsic value is the formal name for what something is actually worth. The definition that matters most for a working investor is deceptively simple: **intrinsic value is the present value of all the cash a business will generate from now until it stops existing, discounted back to today.** That sentence deserves unpacking — and the second half of this lesson is dedicated to clarifying what intrinsic value is *not*, which is just as important.
+
+## What Intrinsic Value Actually Is
+
+A business exists to produce cash. Not accounting profits, not revenue, not growth — cash. Specifically, cash that can be taken out of the business and given to owners without impairing the company's ability to keep operating. Every time you think about intrinsic value, start with this question: *how much cash will this business generate for its owners over its entire lifetime?*
+
+That cash flow stream — year by year, decade by decade — has a present value. A dollar received ten years from now is worth less than a dollar in your hand today, because the dollar in your hand can be invested and grow. Intrinsic value is the lump-sum equivalent, today, of all those future cash flows. If a business will reliably produce $10 million in free cash every year for the next 20 years, that stream of $200 million is worth a specific amount *today* — less than $200 million, because of the time cost of money, but a real, calculable figure.
+
+This gives you a rational basis for comparison. If a business is worth $100 per share in discounted future cash flows, and the market is selling it for $60, you have found something interesting. If it's selling for $140, you haven't — regardless of how exciting the story sounds.
+
+## What Intrinsic Value Is NOT
+
+This is equally important. Intrinsic value is **not** any of the following:
+
+- **The stock price.** The market price is what someone will pay you *right now*. It reflects sentiment, momentum, fear, greed, and liquidity. On any given day it may be far above or far below intrinsic value — and that discrepancy is the entire basis of value investing.
+
+- **Book value.** Book value is an accounting artifact: the historical cost of assets minus liabilities as recorded on the balance sheet. A business can have a low book value and enormous intrinsic value (think Visa or Google — they require almost no hard assets to generate billions in cash). It can also have a high book value and near-zero intrinsic value (a steel mill full of equipment that can no longer compete).
+
+- **Reported earnings per share.** EPS is full of accounting choices, non-cash adjustments, and timing differences. A company can report growing earnings while actually consuming cash. Earnings tell you what the accountants have decided to show you — not what the business is putting in your pocket.
+
+- **A precise number.** This is the trap most beginners fall into. Intrinsic value is inherently an estimate based on uncertain future cash flows. Anyone who gives you a figure like "$47.23 per share" is confusing the output of a model with reality. The correct way to think about it is as a *range*: "I believe this business is worth somewhere between $40 and $60 per share, under reasonable assumptions." The range is not a weakness — it is an honest acknowledgment of how the future works.
+
+## A Real Company to Make This Concrete: Coca-Cola
+
+In the early 1970s, most professional investors could see Coca-Cola's financial statements. They knew the revenues, the profits, the assets. But they priced the stock based on near-term earnings and macroeconomic mood. Warren Buffett did something different — he looked at the *nature* of the business: a system of brand loyalty, distribution infrastructure, and repeat purchase behavior so deeply embedded in consumer habit that it would produce enormous and growing cash flows for decades, requiring very little capital to maintain.
+
+He wasn't forecasting Coca-Cola's exact earnings for 2005. He was making a judgment: *this business, because of what it is and how it works, will generate reliable and growing cash for a very long time.* That judgment about the quality and durability of the cash flow stream — not a precise DCF model — was what gave him a useful estimate of intrinsic value. When the stock was available at a price that seemed clearly low relative to that estimate, he bought aggressively.
+
+## The Most Common Mistake
+
+Most people, when they first encounter intrinsic value, immediately reach for a spreadsheet. They build a discounted cash flow model, plug in numbers, and arrive at a "value." Then they compare that to the stock price and feel like they're doing sophisticated analysis.
+
+The mistake is believing that model precision equals analytical accuracy. Your intrinsic value estimate is only as good as your understanding of the business. If you don't understand *why* a business generates cash, *what could threaten that*, and *how durable the competitive position is*, your model is just arithmetic built on guesses. Garbage in, garbage out — but printed to two decimal places.
+
+The right sequence is: understand the business deeply → form a judgment about the quality and trajectory of its cash flows → *then* think about what that stream of cash is worth today.
+
+## Reflection Question
+
+REFLECTION:Think of a business you interact with daily — a brand you use, a store you visit, an app you rely on. Can you articulate *why* that business generates cash, and what would have to be true for it to keep doing so for the next 10 years? What would threaten that?`,
+
+  2:`## A Quick Orientation
+
+You've just learned that intrinsic value is a range, not a precise number — that it's your best judgment about what a business is worth based on uncertain future cash flows. This creates an immediate practical problem: if you can never know intrinsic value exactly, how do you decide when to buy?
+
+The answer is one of the most powerful ideas in all of investing, introduced by Benjamin Graham in *The Intelligent Investor* and described by Warren Buffett as "the three most important words in investing": **margin of safety.** It is not a technique or a formula. It is a philosophy about how to act rationally when the future is unknowable. Understanding it will protect you from the most costly investing mistakes you will ever face.
+
+## What Margin of Safety Actually Is
+
+Margin of safety means buying a business at a price *significantly below* your estimate of its intrinsic value. If you believe a business is worth between $80 and $100 per share, and you can buy it at $55, you have a margin of safety. If you buy at $90 because you're feeling optimistic, you don't.
+
+The logic is simple but profound. Your estimate of intrinsic value *will be wrong* — not because you're careless, but because the future is genuinely uncertain. Things you couldn't anticipate will happen: a new competitor emerges, management makes a bad acquisition, a recession slows growth, a regulatory change alters the industry. You'll also make analytical errors — misjudging the strength of the competitive position, or how capital-intensive the business really is.
+
+The margin of safety is your buffer against these inevitable errors. If you're wrong about the value by 20% but you bought at a 40% discount, you still haven't lost money. If you bought at what looked like fair value, that same 20% analytical error puts you in the red immediately.
+
+Think of it the way a structural engineer designs a bridge. If a bridge must hold 10,000 pounds, you don't build it to exactly that spec — you build it to hold 30,000. The extra capacity isn't waste. It's the recognition that real-world conditions are always messier than the design document.
+
+## Why Precision Is the Wrong Goal
+
+Here is a counterintuitive truth that takes most investors years to internalize: the more precisely you try to calculate intrinsic value, the more dangerous you become to yourself.
+
+A precise valuation model creates an illusion of certainty. When your spreadsheet outputs "$74.37" and the stock trades at $68, it *feels* like a confirmed, quantified margin of safety. But that precision is false. The model's output is only as reliable as its assumptions — and a 1% change in your assumed long-term growth rate can shift "intrinsic value" by 30% or more. You haven't found a margin of safety; you've found a sensitive equation that can justify almost any conclusion depending on inputs.
+
+Graham and Buffett's insight was to deliberately aim for *obvious*, *fat* margins of safety — situations where the business is so clearly undervalued that precision is unnecessary. Buffett's phrase: "I don't need to know a man's exact weight to know he's fat." If the margin of safety is large enough, small errors in your analysis don't matter. If the investment only works if your precise model is correct, the margin of safety probably isn't really there.
+
+## A Real Example: The Washington Post in 1973
+
+In 1973, amid a brutal bear market, Buffett began buying shares of The Washington Post Company. The stock market was pricing the entire enterprise at roughly $80 million. Buffett estimated — without needing a detailed model — that if you sold all the assets in a rational private-market transaction, you'd get somewhere between $400 million and $500 million.
+
+This wasn't a close call. The discount wasn't 20% or 30% — it was roughly 80%. He could be wrong about the asset values by a significant margin and still be obviously right about the opportunity. He didn't need precision. He needed only to recognize that the gap between price and value was so enormous that a wide range of errors still left him with a compelling investment.
+
+This is what a real margin of safety looks like in practice. Not a spreadsheet showing you're buying at 5% below fair value. A situation where the gap is visible without sophisticated calculation.
+
+## The Most Common Mistake
+
+Investors frequently confuse *cheapness* with margin of safety. A stock trading at a low P/E ratio, near its 52-week low, or down 40% from its peak can *seem* to offer a margin of safety. It doesn't — not automatically.
+
+A low price relative to some metric is only meaningful if you have a reasonable estimate of intrinsic value and the price is clearly below it. If a business is deteriorating — if its competitive position is eroding, if it's burning cash, if the industry is in secular decline — then "cheap" can keep getting cheaper. Value investors call these **value traps**, and they are one of the most common and painful mistakes beginners make.
+
+The distinction is critical: margin of safety is not about buying things that have fallen a lot. It is about buying things that are priced far below what they are rationally worth.
+
+## Reflection Question
+
+REFLECTION:Think about a "sale" you've encountered recently — a discounted product, a promotional offer, or a stock that had fallen sharply. How did you know it was actually a good deal rather than a trap? Did you have an independent sense of what the item was worth *before* you saw the discount? What would have to be true for the discounted price to be misleading rather than genuinely attractive?`,
+
+  3:`## A Quick Orientation
+
+You now understand that intrinsic value is an estimate of what a business is worth based on its future cash flows, and that margin of safety means buying well below that estimate. Here's the question most investors never ask seriously: *future over how long?* Time horizon is not a neutral factor — it is one of the most powerful and most consistently misused edges in investing.
+
+## Why Shorter Is the Default
+
+The financial industry runs on a quarterly clock. Fund managers report performance every three months. Analysts update their models based on last week's earnings release. Financial media asks daily: is this stock going up or down? This creates a self-reinforcing system optimized for the short term, which means the market's pricing of most assets reflects a one-to-three-year view of the world.
+
+If you have a genuine five-to-ten-year view and the discipline to hold it, you are not competing in the same game as everyone else. You are bidding on a different thing — the long-run economics of a business, not its next quarterly beat. This structural mismatch is where the edge lives.
+
+Compounding amplifies this. A business earning 20% returns on capital for one year is worth a modest premium. A business earning 20% returns on capital for 15 years and reinvesting those returns into new growth is worth a staggering multiple of what it appears to be worth on short-term metrics. The entire value of the latter shows up in years 8–15 — years the market barely prices in because its participants are focused on quarters.
+
+## What You Are Really Buying
+
+When you buy a business at fair terms, you are buying a *stream of cash flows over time*. The earlier years of that stream are usually visible and widely understood. The later years — the part that requires real conviction about the durability of the business — are what most investors discount too heavily or ignore entirely.
+
+This is why great investors talk about *competitive advantage period*: not just "does this business have a moat" but "how long can it sustain above-average returns before competition erodes them?" A longer advantage period is exponentially more valuable than a short one. Pricing the advantage period correctly requires being willing to think out five, ten, or fifteen years — territory most market participants abandon.
+
+## A Real Company to Make This Concrete: Amazon
+
+From 1997 to 2002, Amazon was repeatedly pilloried. The stock fell 90% from its 1999 peak. Jeff Bezos's 1997 shareholder letter was explicit: "We believe that a fundamental measure of our success will be the shareholder value we create over the *long term*... We will make bold rather than timid investment decisions where we see a sufficient probability of gaining market leadership advantages, even if the expected outcome will cause short-term financial losses."
+
+Investors who read that letter, believed it, and held through the drawdown experienced one of the greatest wealth-creation events in investment history. The lesson isn't that Amazon was obviously a winner — it wasn't, in 2000. The lesson is that its *long-run economics* were dramatically underpriced relative to what even a conservative estimate of its 10-year cash flows would have implied. Only a patient investor with a long time horizon could see and hold that.
+
+## The Most Common Mistake
+
+The most dangerous version of this mistake is confusing time horizon with *patience for bad businesses*. Holding a terrible business for five years is not the same as having a five-year edge in a great business. Long-term investing is not about being passive or stubborn — it is about having a well-founded view on the durability of a business's economics that extends further out than the market's typical pricing horizon.
+
+The second mistake is folding: starting with a long-term view, then abandoning it when the market moves against you for six months. A ten-year edge is worthless if you sell in year two because the stock is down 30%. The time horizon must live in your conviction, not just your stated strategy.
+
+REFLECTION:Think of a business you use regularly. What would have to be true about that business for it to generate significantly more cash in ten years than it does today? What could destroy that future — and how likely is each threat? Doing this exercise before looking at a stock price is the foundation of long-horizon thinking.`,
+
+  4:`## A Quick Orientation
+
+You've now established a framework: estimate intrinsic value, require a margin of safety, and extend your time horizon beyond what the market is pricing. Each of these requires a prerequisite that most investors skip: you must genuinely *understand* the business you are analyzing. This is what Buffett and Munger call the circle of competence — and its borders matter more than its size.
+
+## What Competence Actually Means
+
+Your circle of competence is the domain in which you have real, hard-won understanding — not just familiarity, not surface-level knowledge, but the ability to reason from first principles about how a business works, what drives its economics, and what could threaten it.
+
+This is much narrower than most investors realize. Reading a company's annual report does not put the company in your circle. Using a product as a consumer does not mean you understand the business. Having followed a sector casually for two years does not mean you can evaluate competitive dynamics accurately.
+
+True competence means: you understand *why* the business earns the margins it earns. You understand the cost structure well enough to predict what happens when revenue drops 20%. You can identify what information would change your view. You understand the customer well enough to know whether the business has pricing power or is one price increase away from losing them.
+
+## Why the Border Matters More Than the Center
+
+Munger's observation is precise: "Knowing the edge of your competence is more important than the competence itself." This sounds paradoxical — the edge matters more than what's inside?
+
+Yes — because mistakes in investing almost always come from acting outside your circle while believing you are inside it. The worst losses come not from being wrong about things you knew were hard to analyze, but from being confidently wrong about things you thought were easy. The confident but incorrect investor is far more dangerous than the cautious and uncertain one.
+
+The edge of your circle is the most important line in your investment process. When you encounter a business and think "I understand this," you should ask: "Do I understand it well enough to value it? Do I know what I don't know about it?" If the answer is uncertain, you are at or beyond your border.
+
+## A Real Company to Make This Concrete: Buffett and Technology in the 1990s
+
+During the technology bubble of the late 1990s, Warren Buffett was publicly criticized — even ridiculed — for not participating. He explained clearly: he did not understand how to predict which technology companies would dominate in ten years, which would be disrupted, and what their economics would look like. He couldn't estimate their cash flows with sufficient confidence.
+
+He did not say technology was a bad sector. He said he couldn't evaluate it well enough to invest. By refusing to act outside his circle — which included consumer businesses, insurance, and banks he had studied for decades — he avoided the destruction that hit most portfolios in 2000–2002. His circle was smaller than most people thought appropriate. His returns were among the best ever recorded.
+
+## The Most Common Mistake
+
+The most common mistake is confusing familiarity with understanding. An engineer assumes they understand semiconductor companies because they work in the industry. A doctor assumes they understand biotech because they use the treatments. A consumer assumes they understand retail because they shop.
+
+Familiarity with a product or sector is the *beginning* of research, not a substitute for it. The relevant question is always: can you model the economics of this business, explain the competitive dynamics, and estimate a range of intrinsic values — with enough accuracy to make a decision? If the honest answer is no, the business is not in your circle, regardless of how familiar it feels.
+
+REFLECTION:Name one industry or business where you have genuine, earned understanding from direct experience — not just from reading about it. What do you understand about the economics of that business that a typical analyst who only reads reports would likely miss? Now name an industry where you feel familiar but probably lack true competence. What would it take to actually build competence there?`,
+
+  5:`## A Quick Orientation
+
+The previous concepts established what to look for in a business. This topic is about *how to think* about the implications of what you find — specifically, how to think one layer deeper than the obvious interpretation of any piece of information. Virtually everyone who invests reacts to the same news. What separates good investors is how far they follow the chain of consequences.
+
+## First-Order vs Second-Order
+
+First-order thinking is fast and based on the immediate, obvious consequence of a fact. Second-order thinking asks: *and then what?* It follows the consequence to its next stage, and sometimes further.
+
+In markets, first-order thinking is almost entirely priced in. If a company reports bad earnings, the first-order reaction — "bad earnings means bad stock" — happens instantly across millions of market participants. By the time you read the headline and react to the first-order interpretation, you are not gaining an edge. You are trading with the crowd against itself.
+
+The opportunity lives at the second and third order. The company reports bad earnings — first order: bad. But *why* are earnings bad? Are they bad because the business is deteriorating, or because the company chose to accelerate investment spending that will generate returns in three years? If the latter, the first-order negative reaction creates a buying opportunity for anyone who thinks one step further.
+
+## Why the Market Stops at First Order
+
+Market participants are not lazy — they are *incentivized to be short-term*. An analyst who says "this company's earnings miss is actually a positive signal disguised as a negative one, and you should buy" faces enormous career risk if the stock drops further before recovering. It is safer professionally to make the first-order call.
+
+This creates a systematic and exploitable gap. Events that look bad on the surface but are good underneath — or events that look good but are bad underneath — are consistently mispriced in the direction of the first-order reading. The investor who does the second-order thinking and has the patience to wait for the market to catch up has found a repeatable edge.
+
+## A Real Company to Make This Concrete: Tobacco Divestment
+
+In the 1980s and 1990s, large institutions began divesting tobacco stocks on ethical grounds. The first-order interpretation was obvious: forced sellers → stock price falls → bad investment. Most investors followed the first-order signal and avoided tobacco.
+
+The second-order thinker asked: *what happens when large institutional sellers are forced to sell for non-economic reasons?* The price falls below intrinsic value. Who benefits? The patient investor not constrained by those same mandates. The tobacco stocks became deeply undervalued relative to their actual cash flows — which were enormous, stable, and growing — and delivered some of the highest long-run returns of any sector during that period. The second-order thinker got paid for thinking one step further.
+
+## The Most Common Mistake
+
+The most common mistake is believing that second-order thinking means being contrarian — betting against the crowd as a matter of habit. This is wrong and dangerous. Second-order thinking does not mean the first-order interpretation is always wrong. Sometimes bad news is simply bad news.
+
+The skill is recognizing *when* the first-order interpretation is likely to be incomplete or misleading, and then doing the additional work to follow the chain of consequences further. This requires genuine analysis of the business, not just a reflexive contrarian posture. The second-order thinker asks "and then what?" — not "what does the crowd think, so I should do the opposite."
+
+REFLECTION:Think of a recent piece of negative business news — a company reported disappointing results, faced regulatory scrutiny, or lost a major customer. What was the first-order interpretation? If you follow the consequence one step further — what happens *because* of this negative event — does a different picture emerge? Could this be an opportunity, or does the second-order analysis simply confirm the bad news?`,
+
+  6:`## A Quick Orientation
+
+You've learned to think about what makes a business valuable and what could make a thesis wrong. This lesson introduces a specific and powerful tool for stress-testing any analysis: *inversion*. The mathematician Carl Jacobi's maxim — "invert, always invert" — was Munger's favourite mental model, and for good reason. Thinking backwards from failure is often the fastest route to clarity.
+
+## What Inversion Means
+
+Inversion means approaching a problem by asking: *what would make this go wrong?* Instead of asking "how do I make this investment succeed?" you ask "what would have to be true for this investment to fail — and how likely is each of those things?"
+
+This is not pessimism. It is a structured form of honesty. Most investment analysis is built forward: you start with a thesis, gather supporting evidence, construct a valuation, and decide to buy. This process is vulnerable to a well-documented cognitive trap: confirmation bias. You tend to find what you are looking for. Evidence that supports the thesis gets weighted heavily; evidence against it gets explained away.
+
+Inversion reverses the flow. You start by building the *bear case* first — the clearest, most honest argument for why this investment will fail. You steel-man it. Then you ask whether your actual view can withstand that bear case. This forces you to engage with disconfirming evidence before you are emotionally committed to the thesis.
+
+## Three Inversions Every Investor Should Run
+
+**First: What would destroy this business?** Not hypothetically — specifically. Which competitive threat is most credible? Which regulatory change would hurt it most? If management made the worst possible capital allocation decision, what would it look like? Getting specific forces you to think about each risk's probability and magnitude.
+
+**Second: What does the current price imply?** Work backwards from the market's pricing to infer what assumptions must be embedded in it. Are those assumptions correct, too optimistic, or too pessimistic? Answering this is often more illuminating than building your own model from scratch.
+
+**Third: What would make me wrong?** Identify the one or two pieces of information that, if they proved true, would change your entire thesis. If you cannot specify what would change your mind, your thesis is not falsifiable — and unfalsifiable theses are almost always driven by conviction rather than analysis.
+
+## A Real Company to Make This Concrete: Buffett and Berkshire's Textile Mills
+
+In the 1960s, Buffett acquired control of Berkshire Hathaway, then primarily a textile manufacturer. He initially tried to make it work. But an honest inversion revealed a bleak picture: *what would have to be true for textiles to be a good long-run business?* The answers were devastating. Textiles are a commodity; customers buy on price. Labour costs cannot be reduced below certain limits. Foreign competition is structural, not cyclical. No amount of managerial excellence could overcome the underlying economics.
+
+This inversion eventually led Buffett to stop allocating new capital to the textile operations and redirect Berkshire's cash flows into insurance and other businesses. He said later that buying Berkshire was his worst investment decision — he was seduced by the apparent cheapness without inverting hard enough on whether the industry could ever generate real returns.
+
+## The Most Common Mistake
+
+The most common mistake is inverting without intellectual honesty. It is easy to run through the bear case quickly, dismiss each point with a rebuttal, and arrive back at your original thesis feeling more confident. This is confirmation bias in disguise.
+
+True inversion requires giving the bear case its full force — not just listing risks to check a box, but genuinely asking whether each risk could be fatal. The test: if a smart, well-informed person arrived at a bear case for your investment, could you clearly and specifically refute each point? If not, the investment deserves more scrutiny before you commit capital.
+
+REFLECTION:Take an investment thesis you currently hold or find interesting. Write down the three strongest arguments *against* it. Don't rebut them yet — just let them sit. Does confronting those arguments change how you feel about the investment? Which of those arguments would you find hardest to answer? That is the risk most worth understanding.`,
+
+  7:`## A Quick Orientation
+
+We've established that intrinsic value is a range, not a number, and that margin of safety protects you from being wrong. This topic addresses the mental framework underneath all of that: investing is fundamentally a probabilistic activity. Investors who demand certainty before acting will always be too late — certainty, by the time it arrives, has already been priced in.
+
+## The Certainty Trap
+
+Human beings are poorly wired for probabilistic reasoning. We prefer stories to distributions, certainties to odds. When we say we are "confident" in an investment, we usually mean we have constructed a narrative that feels coherent — not that we have genuinely reasoned about the range of outcomes and their probabilities.
+
+The market consistently misprices probability in predictable ways. When an outcome seems certain, it is priced in — sometimes so aggressively that the "certain" investment becomes the risky one. When an outcome is genuinely uncertain — a company facing a lawsuit, an industry in a cyclical downturn, a business navigating a CEO transition — the market often prices in the worst case as if it were certain, when the actual probability of the worst case may be quite low.
+
+The investor who can think clearly about probability finds opportunity in uncertainty — not by being reckless, but by recognising when fear has distorted pricing beyond what the probability distribution actually warrants.
+
+## Expected Value Thinking
+
+The concept that resolves this is *expected value*: the probability-weighted average of all possible outcomes. An investment has a 70% chance of returning 40% and a 30% chance of losing 20%. The expected value is (0.7 × 40%) + (0.3 × −20%) = +22%. The fact that the investment might lose money does not make it a bad investment — what matters is the expected value across all outcomes.
+
+This framework changes how you evaluate risk. Risk is not "this investment could go wrong." Risk is the probability-weighted cost of all the ways it could go wrong, relative to the probability-weighted benefit of all the ways it could go right. A highly uncertain investment can be excellent if the odds are sufficiently in your favour. A seemingly safe investment can be terrible if the expected value is negative because the price is too high.
+
+## A Real Company to Make This Concrete: Wells Fargo, 1990
+
+In 1990, California real estate collapsed. Wells Fargo had large exposure to California commercial real estate loans. The market was pricing the stock as if the bank might fail. Buffett began buying aggressively.
+
+He was not certain Wells Fargo would survive. He was making a probabilistic judgment: if the real estate losses were manageable — a plausible scenario — the bank was worth several times the prevailing stock price. If the losses were catastrophic — a less likely scenario given the bank's reserves and underlying earnings power — the investment would fail. He weighted these outcomes honestly and concluded the expected value was strongly positive, even accounting for the downside scenario. He bought enough to own nearly 10% of the bank. Certainty was impossible. Clear probabilistic reasoning was not.
+
+## The Most Common Mistake
+
+The most dangerous mistake is demanding certainty before investing — because certainty is always priced in. By the time an investment feels safe, every other market participant has also concluded it feels safe, and the price reflects that consensus. The expected value has been arbitraged away.
+
+The inverse mistake is equally dangerous: treating uncertainty as if it eliminates analysis. "I don't know what will happen" is never a reason to skip the work of estimating probabilities. Uncertainty means the distribution of outcomes is wide — it does not mean all outcomes are equally likely. The job of the investor is to reason carefully about the distribution, not to retreat from it.
+
+REFLECTION:Think of an investment or major decision you've made or considered. What were the possible outcomes? Did you ever explicitly assign rough probabilities to each? How would the decision look different if you framed it as "expected value" rather than "this feels safe" or "this feels risky"? Which outcome were you implicitly treating as certain when it wasn't?`,
+
+  8:`## A Quick Orientation
+
+Every tool in your analytical arsenal — intrinsic value, margin of safety, time horizon, circle of competence — leads to a final question: should I invest my capital *here*, or *somewhere else*? This topic addresses that comparison directly. Every investment decision is implicitly a comparison to alternatives, and failing to think clearly about alternatives is one of the most common and costly errors in investing.
+
+## The Invisible Hurdle
+
+When an investor evaluates an investment, they typically ask: "Is this attractive?" The more precise question is: "Is this more attractive than everything else available to me?"
+
+Your hurdle rate — the minimum return you require before committing capital — should not be an arbitrary number. It should be determined by the best alternative available to you. If your portfolio contains a position returning an estimated 15% annually with high confidence, and you are considering a new position with an estimated 10% return, you are not adding an attractive investment — you are diluting your best one.
+
+Buffett describes this discipline in terms of a punch card with 20 slots for lifetime investments. The scarcity of slots forces the right question: is this good enough to displace something I might invest in later? This framing prevents the "good enough" trap — accepting mediocre opportunities because they seem attractive in absolute terms.
+
+## The Full Cost of Capital
+
+The true cost of capital for any investor is the opportunity cost — what you give up by committing capital to this investment rather than to the next-best alternative.
+
+Cash in a portfolio is not free. It has an opportunity cost equal to the best investment foregone. Holding cash is therefore a conscious investment decision: you are implicitly stating that no available investment justifies deploying capital at this moment. This is sometimes correct — Buffett held very large cash balances at Berkshire before 2008 precisely because he could not find investments that cleared his hurdle rate. The cash was not idle; it was waiting for the right deployment.
+
+This also clarifies when to sell. You do not hold a position because it is a good company. You hold it because it is the *best current use of your capital* at the prevailing price. When something else becomes a better use of that capital, holding becomes the wrong decision — even if the original thesis remains intact.
+
+## A Real Company to Make This Concrete: Buffett Selling PetroChina
+
+In 2007, Buffett sold Berkshire's entire position in PetroChina, realising roughly $3.5 billion on an initial investment of $400 million. His stated reason was not that PetroChina had become a bad company. It was that PetroChina's price had risen to a level where the expected future return from holding it was no longer the highest-value use of that capital — other opportunities offered better risk-adjusted returns.
+
+This is opportunity cost thinking in practice. The decision to sell was not about the quality of the business but about the comparative attractiveness of alternatives. The business was fine; the opportunity cost of holding it had risen to the point where exiting was rational.
+
+## The Most Common Mistake
+
+The most common mistake is evaluating investments in isolation. An investor looks at a company, concludes it is a good business trading at a fair price, and buys — without ever asking what else they could do with that capital. The relevant comparison is not "is this better than nothing?" but "is this better than my current best idea?"
+
+The second mistake is anchoring the hurdle rate to an abstract benchmark. The right hurdle rate is dynamic — it rises when better opportunities are available and falls when nothing attractive exists. Investors who apply a fixed hurdle rate regardless of the opportunity set will deploy too much capital when good investments are scarce and too little when they are abundant.
+
+REFLECTION:Look at your current portfolio or your list of investment ideas. What is your single best idea — the opportunity with the highest expected return for the risk? Now examine everything else: does each position genuinely clear that hurdle? If you could only hold one investment for the next five years, what would it be — and what does that answer tell you about your current allocation?`,
+
+  9:`## A Quick Orientation
+
+The evidence is unambiguous: the vast majority of individual investors, and most professional money managers, underperform a simple index fund over long periods. This is not a mystery — the causes are well understood. Understanding *why* underperformance happens tells you precisely what behaviours and structures you must avoid to do better.
+
+## The Behavioural Layer
+
+The most consistent cause of underperformance is buying high and selling low — not as an explicit strategy, but as the emotional response to market prices. When markets rise, investors feel optimistic and add money; when they fall, investors feel fear and withdraw. This is the exact opposite of rational capital allocation.
+
+DALBAR's annual studies have tracked this for decades. The average equity investor has earned 2–4% per year less than the funds they invested in, simply because of mistimed purchases and redemptions. They own the right instruments but participate at the wrong times. The instrument does not cause the underperformance — the investor's emotional response to price movement does.
+
+A related failure is overtrading. Each transaction has costs: spreads, commissions, and taxes on gains. An investor who turns over their portfolio twice per year needs to generate meaningfully higher gross returns just to match a buy-and-hold investor's net returns. Activity creates friction, and friction compounds into significant drag over time. The appearance of doing something is not the same as creating value.
+
+## The Structural Layer
+
+Professional money managers face a structural trap that individual investors are largely free from: *career risk*. A fund manager who holds cash when stocks are expensive, or who concentrates heavily in unloved positions, can be right and still lose their job if the market moves against them before they are vindicated.
+
+This forces institutional managers toward index-hugging behaviour — owning a diversified portfolio that broadly resembles the benchmark, ensuring that performance deviations remain small in either direction. The result is a fee charged for near-zero chance of meaningful outperformance. A manager who deviates too far from the benchmark takes career risk that is not rewarded by their compensation structure, even when their investment judgment is sound.
+
+The individual investor who understands this has a genuine structural advantage: they are not subject to performance attribution, quarterly review, or client redemptions. They can hold a concentrated portfolio of businesses they understand deeply, do nothing during market panics, and wait years for a thesis to play out. These behaviours are rational and profitable — and structurally impossible for most professionals.
+
+## A Real Company to Make This Concrete: 2008–2009 Mutual Fund Redemptions
+
+During the financial crisis, mutual fund managers faced a structural catastrophe: as markets fell, retail investors redeemed in panic. Fund managers were legally required to meet those redemptions — which meant selling their best liquid positions, often at the worst prices of the decade.
+
+The individual investor who sat still during this period, or better yet who added capital when prices were lowest, earned returns over the following decade that most institutional managers could not match — not because the individual was smarter, but because they were not subject to the structural forces that forced professional selling precisely when buying was optimal.
+
+## The Most Common Mistake
+
+The most dangerous belief an investor can hold is: "I will know when to get out before the next crash." This belief rationalises overtrading, market timing, and speculation masquerading as investing. The historical evidence is consistent: investors who attempt to time the market underperform those who hold through volatility, because they are almost always wrong on both the exit and the re-entry.
+
+The second mistake is measuring performance over too short a period. Three years of underperformance does not indicate a failed strategy if the strategy is sound and the time horizon is ten years. Conversely, three years of outperformance does not validate a strategy that involved excessive risk-taking. Evaluation must match the time horizon of the strategy.
+
+REFLECTION:Think honestly about your own investment behaviour: the market drops 35% over six months. What do you actually do? What does your emotional response tell you about the gap between your stated strategy and your likely real behaviour? What specific rule or structure could you put in place — before the next crash — to prevent yourself from acting on that emotion?`,
+
+  10:`## A Quick Orientation
+
+Before proceeding to the next phase of this curriculum — which goes deeper into financial statements and business analysis — it is worth establishing a clear vocabulary. Three activities often get conflated under the word "investing." They are fundamentally different in their logic, their required skills, and their failure modes. Confusing them is one of the most reliable paths to poor outcomes.
+
+## Three Different Activities
+
+**Investing** means buying an ownership stake in a business based on a judgment about the present value of its future cash flows. The investor's return comes from the actual performance of the business — earnings, cash flows, dividends — over a long period. The price paid matters enormously; the price trajectory in the interim does not. The investor does not care what the stock does next month. They care what the business does over the next decade.
+
+**Trading** means buying and selling financial assets based on expected near-term price movements. The trader's return comes from correctly anticipating what other market participants will pay for the asset in the near future. The underlying business's economics are largely irrelevant; what matters is positioning, liquidity, and price dynamics. Trading is a legitimate and highly skilled activity — but it requires skills almost entirely unrelated to business analysis.
+
+**Speculation** means buying an asset based on the expectation that someone else will pay more for it later — without a principled basis for estimating what it is actually worth or why another buyer will want it. Speculation is not necessarily irrational — sometimes momentum is predictable — but it has no analytical foundation in business value and is better described as a bet than an investment.
+
+## Why the Distinction Matters
+
+Each activity has its own logic and appropriate analytical tools. Applying the wrong tools produces predictably bad results.
+
+A trader trying to analyse a stock the way an investor does — estimating ten-year cash flows — will be perpetually confused by price movements that have nothing to do with business performance. An investor trying to trade — watching price charts and reacting to momentum — will make emotionally driven decisions at exactly the wrong times. The speculator using either framework is in the most precarious position of all.
+
+The confusion is most dangerous during market bubbles. In a rising market, speculation generates returns indistinguishable from — or better than — genuine investment returns. This validates the wrong behaviour. The speculator concludes they were "investing," when in fact the only thing that worked was rising prices. When prices stop rising, the distinction becomes catastrophic.
+
+## A Real Company to Make This Concrete: The Dot-Com Era
+
+In 1999, a plausible-sounding investment thesis existed for almost every technology company: the internet was transforming commerce; these companies were early movers; first-mover advantages would compound. Millions of people who thought they were investing were speculating.
+
+The distinction: genuine investors were asking "what cash flows will this business produce, and are those cash flows worth more than the current price?" Most participants were not asking this question — because the honest answer for most dot-com companies was "none for many years, if ever." They were speculating that prices would keep rising, which worked until it didn't. Investors in businesses with durable economics — Buffett's portfolio, for instance — suffered much smaller losses and recovered faster because their returns were grounded in business performance, not price momentum.
+
+## The Most Common Mistake
+
+The most dangerous error is mistaking the source of returns. When an investment goes up for a year, it is easy to attribute the gain to smart analysis. The more honest question: did the price rise because the business performed better than expected (investing), because sentiment improved (partly speculative), or simply because all prices rose (entirely unrelated to your analysis)?
+
+Understanding the actual source of past returns is necessary to predict whether they will continue. If you got the right answer for the wrong reason, you are flying blind going forward.
+
+REFLECTION:Look at the last three financial decisions you made — purchases of stocks, funds, real estate, or anything else. Were they investments, trades, or speculations by the definitions in this lesson? Were you honest with yourself at the time about which category each belonged to? Does re-examining them through this lens change how you evaluate the decision?`
+};
+
+// ═══════════════════════════════════════════════════════
+// QUIZ DATA — pre-authored, one quiz per 3 topics
+// ═══════════════════════════════════════════════════════
+const QUIZ_DATA = {
+  1: {
+    id: 1,
+    title: 'Quiz 1 — Core Foundations',
+    topicIds: [1, 2, 3],
+    folder: 'quiz-01-topics-1-3',
+    questions: [
+      'Define intrinsic value in your own words. What exactly is being measured, and why does this definition change how you should approach an investment decision?',
+      'A company reports ₹80 crore in net profit this year, and a friend says the company should be worth roughly ₹800 crore (10× earnings). What is wrong with this reasoning, and what would you actually need to know to estimate intrinsic value?',
+      'Explain margin of safety in your own words. Why does Buffett argue that precision in valuation is unnecessary — even counterproductive — if you have a genuinely wide margin of safety?',
+      'A stock is down 45% from its 52-week high. A colleague argues this automatically gives it a margin of safety. Do you agree? Walk through your reasoning carefully.',
+      'What structural advantage does a longer time horizon give an individual investor over most institutional fund managers? Why can\'t most professionals simply choose to adopt a 10-year view?',
+      'Amazon\'s stock fell 90% between 1999 and 2001 while the business was simultaneously building real long-term economic value. What does this episode reveal about the relationship between price and intrinsic value? What would a rational long-horizon investor have done differently?',
+      'You are analyzing a consumer goods company with a dominant brand, stable demand, minimal capital requirements, and 30 years of consistent market leadership. Its stock has just fallen 25% after a disappointing quarterly earnings report. Using all three concepts from this quiz — intrinsic value, margin of safety, and time horizon — explain how you would think about this situation.',
+    ],
+  },
+};
+
+// ═══════════════════════════════════════════════════════
+// CASE STUDY DATA — pre-authored, one per 3 topics + phase capstones
+// ═══════════════════════════════════════════════════════
+const CASE_DATA = {
+  1: {
+    id: 1,
+    title: 'Case Study 1 — The Price of Certainty',
+    subtitle: 'Pidilite Industries Ltd.',
+    topicIds: [1, 2, 3],
+    folder: 'cs-01-topics-1-3',
+    rubric: {
+      dimensions: [
+        { name: 'Framework Accuracy',   max: 3, desc: 'Concepts from Topics 1–3 applied correctly and precisely' },
+        { name: 'Case Specificity',     max: 3, desc: 'Uses the actual numbers and facts provided — not generic principles' },
+        { name: 'Analytical Depth',     max: 3, desc: 'Surfaces non-obvious economic insights beyond surface observations' },
+        { name: 'Intellectual Honesty', max: 2, desc: 'States assumptions; acknowledges what would change the answer' },
+        { name: 'Synthesis',            max: 2, desc: 'Connects multiple frameworks or draws cross-concept conclusions' },
+      ],
+      maxPerQuestion: 13,
+      grades: [
+        { min: 88, label: 'Exceptional',  note: 'Practitioner-level thinking — ready for real capital allocation decisions' },
+        { min: 75, label: 'Strong',        note: 'Solid analyst-level reasoning with good depth' },
+        { min: 50, label: 'Developing',   note: 'Frameworks present but applied mechanically; depth lacking' },
+        { min: 0,  label: 'Foundational', note: 'Significant conceptual gaps; re-read Topics 1–3 before proceeding' },
+      ],
+    },
+    scenario: `## Background
+
+Pidilite Industries Ltd. is India's dominant adhesives and construction chemicals company. Founded in 1959, it has spent six decades building a business that most investors struggle to value correctly — because it looks expensive on every standard metric, yet has compounded returns at ~18% CAGR for 20 years.
+
+Its flagship product is **Fevicol**, a carpenter's adhesive so dominant that the brand name has become a verb in Indian languages. Carpenters don't ask for adhesive — they ask for Fevicol. This is not marketing hyperbole. It reflects a 70% market share in the organised adhesives segment that has held for three decades despite determined efforts by Henkel, 3M, and Sika to break it.
+
+The company also owns M-Seal, Fevikwik, Dr. Fixit (waterproofing), and Roff (tile adhesives). Its products reach **4 million retail outlets** across India, a distribution network built over 40 years that no competitor has replicated.
+
+## Financial Snapshot (FY2022–23, simplified)
+
+| Metric | Value |
+|---|---|
+| Revenue | ₹12,780 crore |
+| EBITDA | ₹2,100 crore (margin: 16.4%) |
+| Net Profit (PAT) | ₹1,720 crore |
+| Capital Expenditure | ₹320 crore |
+| Free Cash Flow (approx) | ₹1,400 crore |
+| Net Cash on Balance Sheet | ₹1,100 crore (zero debt) |
+| Market Capitalisation | ~₹1,10,000 crore |
+| Price-to-Earnings | ~64× |
+| Price-to-Free-Cash-Flow | ~79× |
+| 15-Year Revenue CAGR | ~13% |
+| 15-Year PAT CAGR | ~15% |
+| Avg. Return on Equity (15 yr) | ~27% |
+
+## Why the Business Works
+
+The economics are unusual. Fevicol is used in carpentry, construction, and packaging. It is a **consumable** — used once and gone, which means repeat purchase is structural, not optional. Yet it requires almost no capital to produce at scale: the factories are simple, inventory turns fast, and the customer does not require credit terms.
+
+This combination — consumable product, brand loyalty, low capital intensity — means Pidilite converts roughly **₹8 out of every ₹10 of net profit into free cash flow**. Most manufacturing businesses convert 4–5. The company has no need for external capital; it funds all growth internally and still accumulates cash.
+
+The moat is layered. First, brand trust built over 40 years with carpenters who train apprentices in its use. Second, distribution depth into rural outlets that took decades to build. Third, a product that fails visibly if substituted — a carpenter who switches adhesive brands risks a job coming apart. This makes trial of alternatives career-risky for the end user.
+
+## The Risks
+
+The primary cost input is **VAM (Vinyl Acetate Monomer)**, an imported petrochemical. VAM prices are volatile — they can move ±50% based on global supply cycles. In FY2022, VAM prices spiked 80%. Pidilite's EBITDA margin compressed from a normalised 21% to 16.4%, and PAT fell 18% year-on-year. The stock fell 35% from its peak over 12 months.
+
+The company typically passes through cost increases over 2–4 quarters with modest pricing actions. This cycle has repeated several times in its history; each time, margins recovered within 12–18 months.
+
+A secondary risk is disruption — new adhesive chemistries, construction methods, or a well-funded competitor executing a sustained price war. None has succeeded in 40 years. That is evidence of durability but not proof of permanence.
+
+## The Valuation Question
+
+An investor analysing Pidilite in mid-2023 faces a genuine dilemma. The business quality is clear. The question is price. At 64× earnings and 79× FCF, the stock embeds aggressive assumptions about future growth. An investor who paid 40× earnings in 2012 — when the stock felt equally "expensive" — earned approximately **18% CAGR** over the next decade as revenue tripled and FCF compounded.
+
+The question is whether 2023 is more like 2012 (expensive but justified) or whether the market has finally priced in enough of the future that the long-run returns from here are merely average.`,
+    questions: [
+      'Using the financial data provided, explain how you would approach estimating Pidilite\'s intrinsic value. Which specific numbers from the case matter most, and why? What additional things would you need to believe about the business — beyond the current figures — to form a useful estimate?',
+      'Pidilite trades at 64× earnings and 79× free cash flow. A colleague says this valuation offers no margin of safety — "you\'re paying for 80 years of free cash flow upfront." Another says great businesses always deserve premium multiples. Engage seriously with both positions. Under what specific conditions does the current valuation offer genuine margin of safety? Under what conditions is your colleague right?',
+      'An investor bought Pidilite in 2012 at 40× earnings, when the stock felt equally expensive. By 2023, revenue had grown 3× and the investment returned ~18% CAGR. What does this episode reveal about the relationship between time horizon and "expensiveness" in a high-quality business? What specific things would have had to go wrong for this investor to have lost money — and how probable were those outcomes?',
+      'In FY2022, VAM prices spiked 80%. Pidilite\'s margins compressed from 21% to 16.4% and profits fell 18%. The stock dropped 35% from its peak. Apply each of the three frameworks from this module — intrinsic value, margin of safety, time horizon — explicitly and separately to explain what a rational value investor should have thought and done at that specific moment.',
+    ],
+  },
+};
+
+// ═══════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════
+let ST = {
+  completed: [], availableThrough: 2, currentTopic: null,
+  highlights: {}, topicNotes: {}, qa: {}, quizzes: {},
+  quizResponses: {}, caseResponses: {},
+};
+let activeTopic = null;
+let qaOpen = false;
+let answersOpen = false;
+let notesOpen = true;
+let activeQuizKey = null;
+let activeQuizId  = null;
+let activeCaseId  = null;
+let currentSelection = null;
+const API = window.location.port === '8080' ? '' : 'http://localhost:8080';
+
+function apiPost(path, body) {
+  return fetch(`${API}${path}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+}
+
+async function fetchState() {
+  try {
+    const r = await fetch(`${API}/api/state`);
+    if (r.ok) { ST = await r.json(); }
+  } catch { /* server not running — use defaults */ }
+}
+async function pushState() {
+  try {
+    await fetch(`${API}/api/state`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(ST),
+    });
+  } catch { /* ignore if server offline */ }
+}
+
+// ═══════════════════════════════════════════════════════
+// MARKDOWN → HTML
+// ═══════════════════════════════════════════════════════
+function mdToHtml(md) {
+  const lines = md.split('\n');
+  let html = '', inList = false, pBuf = '', tableRows = [];
+
+  function flushP() {
+    if (pBuf.trim()) { html += '<p>' + fmt(pBuf.trim()) + '</p>'; pBuf = ''; }
+  }
+  function flushList() { if (inList) { html += '</ul>'; inList = false; } }
+  function flushTable() {
+    if (!tableRows.length) return;
+    html += '<table class="cs-table">';
+    tableRows.forEach((row, i) => {
+      const tag = i === 0 ? 'th' : 'td';
+      html += '<tr>' + row.map(c => `<${tag}>${fmt(c)}</${tag}>`).join('') + '</tr>';
+    });
+    html += '</table>';
+    tableRows = [];
+  }
+
+  for (const raw of lines) {
+    const line = raw.trimEnd();
+    if (line.startsWith('## ')) {
+      flushP(); flushList(); flushTable();
+      html += '<h2>' + fmt(line.slice(3)) + '</h2>';
+    } else if (line.startsWith('### ')) {
+      flushP(); flushList(); flushTable();
+      html += '<h3>' + fmt(line.slice(4)) + '</h3>';
+    } else if (line.startsWith('- ')) {
+      flushP(); flushTable();
+      if (!inList) { html += '<ul>'; inList = true; }
+      html += '<li>' + fmt(line.slice(2)) + '</li>';
+    } else if (line.startsWith('|')) {
+      flushP(); flushList();
+      if (/^\|[\s\-|]+\|$/.test(line)) { /* skip separator row */ }
+      else {
+        const cells = line.split('|').slice(1, -1).map(c => c.trim());
+        tableRows.push(cells);
+      }
+    } else if (line === '---') {
+      flushP(); flushList(); flushTable(); html += '<hr>';
+    } else if (line.startsWith('REFLECTION:')) {
+      flushP(); flushList(); flushTable();
+      html += '<div class="reflection"><div class="r-label">✦ Reflection Question</div><p>' + fmt(line.slice(11).trim()) + '</p></div>';
+    } else if (line === '') {
+      flushP(); flushList(); flushTable();
+    } else {
+      if (inList) flushList();
+      flushTable();
+      pBuf += (pBuf ? ' ' : '') + line;
+    }
+  }
+  flushP(); flushList(); flushTable();
+  return html;
+}
+
+function fmt(t) {
+  return t
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*([^*]+?)\*/g, '<em>$1</em>');
+}
+
+// ═══════════════════════════════════════════════════════
+// SIDEBAR
+// ═══════════════════════════════════════════════════════
+function renderSidebar() {
+  const nav = document.getElementById('topic-nav');
+  let html = '';
+  PHASES.forEach(ph => {
+    const doneInPh = ph.ids.filter(id => ST.completed.includes(id)).length;
+    html += `<div class="ph-head"><span class="ph-name">Phase ${ph.id} · ${ph.name}</span><span class="ph-badge">${doneInPh}/${ph.ids.length}</span></div>`;
+    ph.ids.forEach((id, i) => {
+      const isDone    = ST.completed.includes(id);
+      const isCurrent = activeTopic && activeTopic.id === id;
+      const isAvail   = id <= ST.availableThrough;
+      let cls = 't-item', iconCls = 't-icon', iconTxt = id;
+      if (isDone)         { iconCls += ' done';    iconTxt = '✓'; }
+      else if (isCurrent) { iconCls += ' current'; }
+      else if (isAvail)   { iconCls += ' avail'; }
+      else                { iconCls += ' locked'; iconTxt = '○'; cls += ' locked'; }
+      if (isCurrent) cls += ' active';
+      if (isDone)    cls += ' done';
+      const click = isAvail || isDone ? `onclick="loadTopic(${id})"` : '';
+      html += `<div class="${cls}" ${click}><div class="${iconCls}">${iconTxt}</div><span class="t-label">${ALL_TITLES[id]}</span></div>`;
+
+      // After every 3rd topic, insert quiz + case study entries
+      if ((i + 1) % 3 === 0) {
+        // Quiz
+        const quiz = Object.values(QUIZ_DATA).find(q => q.topicIds[q.topicIds.length - 1] === id);
+        if (quiz && quiz.topicIds.every(tid => tid <= ST.availableThrough)) {
+          const qr = (ST.quizResponses || {})[String(quiz.id)] || {};
+          const status = qr.status || 'not_started';
+          const isActive = activeQuizId === quiz.id;
+          const icons  = { not_started:'📝', in_progress:'✏️', submitted:'⏳', evaluated:'⭐' };
+          const labels = { not_started:'Not started', in_progress:'In progress', submitted:'Awaiting evaluation', evaluated:'Evaluated' };
+          html += `<div class="t-item quiz-sb-item${isActive ? ' active' : ''}" onclick="showQuiz(${quiz.id})">
+            <div class="quiz-icon">${icons[status]}</div>
+            <div class="quiz-sb-info">
+              <span class="quiz-sb-name">${quiz.title}</span>
+              <span class="quiz-sb-status ${status}">${labels[status]}</span>
+            </div>
+          </div>`;
+        }
+        // Case Study
+        const cs = Object.values(CASE_DATA).find(c => c.topicIds[c.topicIds.length - 1] === id);
+        if (cs && cs.topicIds.every(tid => tid <= ST.availableThrough)) {
+          const cr = (ST.caseResponses || {})[String(cs.id)] || {};
+          const cstatus = cr.status || 'not_started';
+          const isActiveCs = activeCaseId === cs.id;
+          const cicons  = { not_started:'📋', in_progress:'✍️', submitted:'⏳', evaluated:'⭐' };
+          const clabels = { not_started:'Not started', in_progress:'In progress', submitted:'Awaiting evaluation', evaluated:'Evaluated' };
+          html += `<div class="t-item cs-sb-item${isActiveCs ? ' active' : ''}" onclick="showCaseStudy(${cs.id})">
+            <div class="cs-icon">${cicons[cstatus]}</div>
+            <div class="cs-sb-info">
+              <span class="cs-sb-name">${cs.title}</span>
+              <span class="cs-sb-status ${cstatus}">${clabels[cstatus]}</span>
+            </div>
+          </div>`;
+        }
+      }
+    });
+  });
+  nav.innerHTML = html;
+}
+
+function updateProgress() {
+  const pct = (ST.completed.length / 120) * 100;
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-label').textContent = ST.completed.length + ' of 120 topics';
+}
+
+// ═══════════════════════════════════════════════════════
+// LOAD TOPIC
+// ═══════════════════════════════════════════════════════
+function loadTopic(id) {
+  if (id < 1 || id > 120) return;
+  if (id > ST.availableThrough && !ST.completed.includes(id)) return;
+
+  activeTopic = {id, title: ALL_TITLES[id]};
+  ST.currentTopic = id;
+  pushState();
+
+  // Switch to lesson view
+  document.getElementById('welcome').classList.add('off');
+  document.getElementById('lesson-view').classList.add('on');
+  document.getElementById('quiz-view').classList.remove('on');
+
+  const phase = PHASES.find(p => p.ids.includes(id));
+  document.getElementById('phase-pill').textContent = `Phase ${phase.id} · ${phase.name}`;
+  document.getElementById('topic-of').textContent = `Topic ${id} of 120`;
+  document.getElementById('l-title').textContent = `Topic ${id}: ${ALL_TITLES[id]}`;
+
+  const isDone = ST.completed.includes(id);
+  document.getElementById('done-badge').innerHTML = isDone ? '<span class="done-badge">✓ Completed</span>' : '';
+
+  // Render lesson content
+  const lesson = LESSONS[id];
+  const lc = document.getElementById('l-content');
+  if (lesson) {
+    lc.innerHTML = mdToHtml(lesson);
+  } else {
+    lc.innerHTML = '<p style="color:var(--muted);font-style:italic;margin-top:20px;">This lesson is not yet unlocked. Complete your current topics and trigger generation.</p>';
+  }
+
+  // Re-apply highlights
+  reapplyHighlights(id);
+
+  // Mark done button
+  const btn = document.getElementById('btn-mark-done');
+  btn.disabled = isDone;
+  btn.textContent = isDone ? '✓ Completed' : '✓ Mark as Complete';
+
+  // Footer note
+  updateFooterNote();
+
+  // Reset Q&A panels to collapsed on topic switch
+  qaOpen = false;
+  answersOpen = false;
+  document.getElementById('qa-body').style.display = 'none';
+  document.getElementById('qa-toggle').textContent = '▼';
+  document.getElementById('qa-answers-body').style.display = 'none';
+  document.getElementById('answers-toggle').textContent = '▼';
+
+  // Questions list + answers
+  renderQuestionsList(id);
+  loadAnswers();
+
+  // Notes panel
+  const notesTA = document.getElementById('topic-notes-ta');
+  notesTA.value = (ST.topicNotes && ST.topicNotes[id]) || '';
+  notesTA.oninput = debounce(() => {
+    ST.topicNotes = ST.topicNotes || {};
+    ST.topicNotes[id] = notesTA.value;
+    pushState();
+  }, 1000);
+
+  renderHighlightsList(id);
+  renderSidebar();
+  document.getElementById('lesson-scroll').scrollTo(0,0);
+}
+
+function updateFooterNote() {
+  const avail = range(1, ST.availableThrough);
+  const done  = avail.filter(id => ST.completed.includes(id));
+  const note  = document.getElementById('footer-note');
+  if (done.length < avail.length) {
+    note.textContent = `${done.length}/${avail.length} current topics done`;
+    note.style.color = 'var(--muted)';
+  } else {
+    note.textContent = 'Batch complete ✓';
+    note.style.color = 'var(--ok)';
+  }
+}
+
+function navigate(dir) {
+  if (!activeTopic) return;
+  const accessible = Object.keys(LESSONS).map(Number).filter(id => id <= ST.availableThrough || ST.completed.includes(id)).sort((a,b)=>a-b);
+  const idx = accessible.indexOf(activeTopic.id);
+  const next = accessible[idx + dir];
+  if (next) loadTopic(next);
+}
+
+// ═══════════════════════════════════════════════════════
+// MARK DONE + AUTO-GENERATE
+// ═══════════════════════════════════════════════════════
+async function markDone() {
+  if (!activeTopic) return;
+  const id = activeTopic.id;
+  if (!ST.completed.includes(id)) {
+    ST.completed.push(id);
+    await pushState();
+  }
+
+  const btn = document.getElementById('btn-mark-done');
+  btn.disabled = true;
+  btn.textContent = '✓ Completed';
+  document.getElementById('done-badge').innerHTML = '<span class="done-badge">✓ Completed</span>';
+  updateProgress();
+  updateFooterNote();
+  renderSidebar();
+
+  // Check if batch complete → auto-generate
+  const avail = range(1, ST.availableThrough);
+  const allDone = avail.every(id => ST.completed.includes(id));
+  if (allDone) {
+    await autoGenerate();
+  }
+}
+
+async function autoGenerate() {
+  const completedBatch = range(1, ST.availableThrough).map(id => ({id, title: ALL_TITLES[id]}));
+  const nextStart = ST.availableThrough + 1;
+  const nextTopics = [nextStart, nextStart + 1]
+    .filter(id => id <= 120 && ALL_TITLES[id])
+    .map(id => ({id, title: ALL_TITLES[id]}));
+
+  showLoading(`Generating your quiz for Topics ${completedBatch.map(t=>t.id).join(' & ')} and unlocking Topics ${nextTopics.map(t=>t.id).join(' & ')}…`);
+
+  try {
+    const r = await apiPost('/api/generate', {completedBatch, nextTopics});
+    const data = await r.json();
+    if (data.error) throw new Error(data.error);
+
+    // Store new lessons
+    nextTopics.forEach((t, i) => {
+      if (data.lessons && data.lessons[i]) {
+        LESSONS[t.id] = data.lessons[i].lesson;
+      }
+    });
+
+    // Update state from server
+    await fetchState();
+    updateProgress();
+    renderSidebar();
+
+    hideLoading();
+    toast(`✓ Quiz ready · Topics ${nextTopics.map(t=>t.id).join(' & ')} unlocked!`);
+  } catch(e) {
+    hideLoading();
+    toast('⚠ Server not reachable. Run: python3 server.py', 5000);
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+// Q&A — QUESTIONS (no API needed)
+// ═══════════════════════════════════════════════════════
+
+function topicFolder(id) {
+  const title = ALL_TITLES[id] || '';
+  const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  return `${String(id).padStart(2, '0')}-${slug}`;
+}
+
+// Questions stored in localStorage so they survive server restarts / fetchState
+function getPQ(topicId) {
+  return JSON.parse(localStorage.getItem('vic_pq') || '{}')[topicId] || [];
+}
+function savePQ(topicId, arr) {
+  const all = JSON.parse(localStorage.getItem('vic_pq') || '{}');
+  all[topicId] = arr;
+  localStorage.setItem('vic_pq', JSON.stringify(all));
+}
+
+function renderQuestionsList(topicId) {
+  const questions = getPQ(topicId);
+  const list    = document.getElementById('qa-q-list');
+  const copyBtn = document.getElementById('btn-copy-q');
+  const count   = document.getElementById('qa-count');
+
+  if (questions.length === 0) {
+    list.innerHTML = '<div class="qa-empty-msg">No questions yet. Type one below and click Add.</div>';
+    copyBtn.disabled = true;
+    count.textContent = '';
+  } else {
+    copyBtn.disabled = false;
+    count.textContent = `(${questions.length})`;
+    list.innerHTML = questions.map((q, i) => `
+      <div class="qa-q-item">
+        <span class="qa-q-num">Q${i + 1}</span>
+        <span class="qa-q-text">${escHtml(q)}</span>
+        <button class="qa-q-del" data-del-q="${i}" title="Remove">×</button>
+      </div>`).join('');
+  }
+}
+
+function addQuestion() {
+  if (!activeTopic) return;
+  const input = document.getElementById('qa-input');
+  const q = input.value.trim();
+  if (!q) return;
+  const id = activeTopic.id;
+  const arr = getPQ(id);
+  arr.push(q);
+  savePQ(id, arr);
+  input.value = '';
+  input.focus();
+  renderQuestionsList(id);
+}
+
+function deleteQuestion(topicId, index) {
+  const arr = getPQ(topicId);
+  arr.splice(index, 1);
+  savePQ(topicId, arr);
+  renderQuestionsList(topicId);
+}
+
+// Event delegation for question delete buttons
+document.getElementById('qa-q-list').addEventListener('click', e => {
+  const btn = e.target.closest('[data-del-q]');
+  if (btn && activeTopic) deleteQuestion(activeTopic.id, Number(btn.dataset.delQ));
+});
+
+function copyQuestions() {
+  if (!activeTopic) return;
+  const questions = getPQ(activeTopic.id);
+  if (!questions.length) return;
+
+  const numbered = questions.map((q, i) => `${i + 1}. ${q}`).join('\n');
+  const prompt =
+`I'm studying Topic ${activeTopic.id}: "${activeTopic.title}".
+
+Here are my questions:
+
+${numbered}
+
+Please answer each one clearly and concisely as my value investing tutor. After answering, save the Q&A to topics/${topicFolder(activeTopic.id)}/qa.md`;
+
+  navigator.clipboard.writeText(prompt).then(() => {
+    const btn = document.getElementById('btn-copy-q');
+    btn.textContent = '✓ Copied! Paste in Claude Code chat';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = '📋 Copy Questions to Ask Claude';
+      btn.classList.remove('copied');
+    }, 3000);
+  });
+}
+
+async function loadAnswers() {
+  if (!activeTopic) return;
+  const folder = topicFolder(activeTopic.id);
+  const url = `${API}/topics/${folder}/qa.md`;
+  const body = document.getElementById('qa-answers-body');
+
+  try {
+    const r = await fetch(url);
+    if (r.status === 404) {
+      body.innerHTML = '<div class="qa-ans-empty">No answers yet. Copy your questions, paste in Claude Code, then click Load Answers.</div>';
+      return;
+    }
+    if (!r.ok) throw new Error(`Server error ${r.status}`);
+    const md = await r.text();
+    // Strip header block (title + blockquote + first ---), show remainder
+    const afterHeader = md.replace(/^[\s\S]*?---\n\n/, '');
+    const isEmpty = !afterHeader.trim() || /^\*No questions yet/.test(afterHeader.trim());
+    if (isEmpty) {
+      body.innerHTML = '<div class="qa-ans-empty">No answers yet. Copy your questions, paste in Claude Code, then click Load Answers.</div>';
+    } else {
+      body.innerHTML = mdToHtml(afterHeader);
+      // Auto-expand answers panel when content loads
+      if (!answersOpen) {
+        answersOpen = true;
+        body.style.display = 'block';
+        document.getElementById('answers-toggle').textContent = '▲';
+      }
+    }
+  } catch(err) {
+    body.innerHTML = `<div class="qa-ans-empty">Could not reach server — make sure <code>python3 server.py</code> is running. (${err.message})</div>`;
+  }
+}
+
+document.getElementById('qa-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); addQuestion(); }
+});
+
+function toggleQA() {
+  qaOpen = !qaOpen;
+  document.getElementById('qa-body').style.display = qaOpen ? 'block' : 'none';
+  document.getElementById('qa-toggle').textContent = qaOpen ? '▲' : '▼';
+}
+
+function toggleAnswers() {
+  answersOpen = !answersOpen;
+  document.getElementById('qa-answers-body').style.display = answersOpen ? 'block' : 'none';
+  document.getElementById('answers-toggle').textContent = answersOpen ? '▲' : '▼';
+}
+
+// ═══════════════════════════════════════════════════════
+// HIGHLIGHTS & ANNOTATIONS
+// ═══════════════════════════════════════════════════════
+const HL_COLORS = { y:'#ffd70066', g:'#4caf5055', b:'#2196f355' };
+let pendingSel = null;
+
+document.getElementById('l-content').addEventListener('mouseup', onTextSelect);
+
+function onTextSelect(e) {
+  const sel = window.getSelection();
+  if (!sel || sel.isCollapsed || !sel.toString().trim()) {
+    hideHLBar(); return;
+  }
+  const text = sel.toString().trim();
+  if (text.length < 3 || text.length > 500) { hideHLBar(); return; }
+  pendingSel = {text, range: sel.getRangeAt(0).cloneRange()};
+  const rect = sel.getRangeAt(0).getBoundingClientRect();
+  const bar = document.getElementById('hl-bar');
+  bar.style.display = 'flex';
+  bar.style.top  = (rect.top + window.scrollY - 44) + 'px';
+  bar.style.left = (rect.left + rect.width/2 - 80) + 'px';
+}
+
+function hideHLBar() {
+  document.getElementById('hl-bar').style.display = 'none';
+  pendingSel = null;
+}
+
+document.addEventListener('mousedown', e => {
+  if (!e.target.closest('#hl-bar') && !e.target.closest('#l-content')) hideHLBar();
+});
+
+function applyHL(color) {
+  if (!pendingSel || !activeTopic) return;
+  const id = Date.now().toString();
+  ST.highlights = ST.highlights || {};
+  ST.highlights[activeTopic.id] = ST.highlights[activeTopic.id] || [];
+  ST.highlights[activeTopic.id].push({id, text: pendingSel.text, color, note: ''});
+  pushState();
+  hideHLBar();
+  window.getSelection().removeAllRanges();
+  reapplyHighlights(activeTopic.id);
+  renderHighlightsList(activeTopic.id);
+}
+
+function applyHLNote() {
+  if (!pendingSel || !activeTopic) return;
+  const note = prompt('Add a note to this highlight:') || '';
+  const color = 'y';
+  const id = Date.now().toString();
+  ST.highlights = ST.highlights || {};
+  ST.highlights[activeTopic.id] = ST.highlights[activeTopic.id] || [];
+  ST.highlights[activeTopic.id].push({id, text: pendingSel.text, color, note});
+  pushState();
+  hideHLBar();
+  window.getSelection().removeAllRanges();
+  reapplyHighlights(activeTopic.id);
+  renderHighlightsList(activeTopic.id);
+}
+
+function reapplyHighlights(topicId) {
+  const hls = (ST.highlights && ST.highlights[topicId]) || [];
+  // Re-render the lesson content cleanly first
+  const lesson = LESSONS[topicId];
+  if (!lesson) return;
+  const lc = document.getElementById('l-content');
+  lc.innerHTML = mdToHtml(lesson);
+  // Apply each highlight
+  hls.forEach(h => markTextInContainer(lc, h.text, h.color, h.id, h.note));
+}
+
+function markTextInContainer(container, searchText, color, id, note) {
+  // Build a combined string from all text nodes with their positions,
+  // so we can find text that spans across element boundaries (e.g. bold/italic).
+  const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT);
+  const nodes = [];
+  let combined = '';
+  let n;
+  while (n = walker.nextNode()) {
+    nodes.push({ node: n, start: combined.length });
+    combined += n.textContent;
+  }
+
+  const idx = combined.indexOf(searchText);
+  if (idx === -1) return;
+  const endIdx = idx + searchText.length;
+
+  const startEntry = nodes.find(e => e.start <= idx && idx < e.start + e.node.textContent.length);
+  const endEntry   = nodes.find(e => e.start < endIdx && endIdx <= e.start + e.node.textContent.length);
+  if (!startEntry || !endEntry) return;
+
+  const range = document.createRange();
+  range.setStart(startEntry.node, idx - startEntry.start);
+  range.setEnd(endEntry.node,     endIdx - endEntry.start);
+
+  const mark = document.createElement('mark');
+  mark.className = 'hl-' + color;
+  mark.dataset.hlId = id;
+  mark.title = note || 'Click to view';
+  mark.onclick = () => scrollToHighlightCard(id);
+  try {
+    const fragment = range.extractContents();
+    mark.appendChild(fragment);
+    range.insertNode(mark);
+  } catch(e) {}
+}
+
+function toggleHLText(el) {
+  const full  = el.dataset.full;
+  const short = el.dataset.short;
+  const dot   = el.querySelector('.hl-dot');
+  const isExpanded = el.dataset.expanded === '1';
+  if (isExpanded) {
+    el.innerHTML = '';
+    el.appendChild(dot);
+    el.insertAdjacentHTML('beforeend', escHtml(short) + (full.length > 120 ? '<span class="hl-expand-hint">▸ show more</span>' : ''));
+    el.dataset.expanded = '0';
+  } else {
+    el.innerHTML = '';
+    el.appendChild(dot);
+    el.insertAdjacentHTML('beforeend', escHtml(full) + '<span class="hl-expand-hint">▴ show less</span>');
+    el.dataset.expanded = '1';
+  }
+}
+
+function scrollToHighlightCard(id) {
+  const card = document.getElementById('hl-card-' + id);
+  if (card) {
+    card.scrollIntoView({behavior:'smooth', block:'nearest'});
+    card.style.borderColor = 'var(--accent)';
+    setTimeout(() => card.style.borderColor = '', 1500);
+  }
+}
+
+function renderHighlightsList(topicId) {
+  const hls = (ST.highlights && ST.highlights[topicId]) || [];
+  const list = document.getElementById('hl-list');
+  if (hls.length === 0) {
+    list.innerHTML = '<div class="no-hl">Select any text in the lesson to highlight it.</div>';
+    return;
+  }
+  list.innerHTML = hls.map(h => `
+    <div class="hl-card" id="hl-card-${h.id}" style="border-color:var(--border);transition:border-color .3s;">
+      <div class="hl-text" title="${escHtml(h.text)}" onclick="toggleHLText(this)" data-full="${escHtml(h.text)}" data-short="${escHtml(h.text.slice(0,120))}"><span class="hl-dot ${h.color}"></span>${escHtml(h.text.slice(0,120))}${h.text.length > 120 ? '<span class="hl-expand-hint">▸ show more</span>' : ''}</div>
+      ${h.note ? `<div class="hl-note-txt">${escHtml(h.note)}</div>` : ''}
+      <input class="hl-note-input" placeholder="Add note…" value="${escHtml(h.note || '')}"
+        data-hl-id="${h.id}" data-topic-id="${topicId}"
+        onchange="updateHLNote(${topicId},'${h.id}',this.value)" />
+      <div class="hl-card-actions">
+        <button class="hl-action" data-del-hl="${h.id}" data-topic-id="${topicId}">✕ Remove</button>
+      </div>
+    </div>`).join('');
+}
+
+// Event delegation for highlight delete — avoids inline onclick scoping issues
+document.getElementById('hl-list').addEventListener('click', e => {
+  const btn = e.target.closest('[data-del-hl]');
+  if (btn) deleteHL(Number(btn.dataset.topicId), btn.dataset.delHl);
+});
+
+function updateHLNote(topicId, hlId, note) {
+  ST.highlights = ST.highlights || {};
+  const hls = ST.highlights[topicId] || [];
+  const h = hls.find(x => x.id === hlId);
+  if (h) { h.note = note; pushState(); }
+}
+
+function deleteHL(topicId, hlId) {
+  ST.highlights = ST.highlights || {};
+  ST.highlights[topicId] = (ST.highlights[topicId] || []).filter(h => h.id !== String(hlId));
+  pushState();
+  reapplyHighlights(topicId);
+  renderHighlightsList(topicId);
+}
+
+// ═══════════════════════════════════════════════════════
+// NOTES PANEL
+// ═══════════════════════════════════════════════════════
+function toggleNotes() {
+  notesOpen = !notesOpen;
+  const panel = document.getElementById('notes-panel');
+  const btn = document.getElementById('notes-toggle');
+  panel.classList.toggle('collapsed', !notesOpen);
+  btn.classList.toggle('active', notesOpen);
+}
+
+// ═══════════════════════════════════════════════════════
+// QUIZ VIEW
+// ═══════════════════════════════════════════════════════
+function showQuiz(quizId) {
+  const quiz = QUIZ_DATA[quizId];
+  if (!quiz) return;
+
+  activeQuizId = quizId;
+  activeTopic  = null;
+
+  document.getElementById('welcome').classList.remove('off');
+  document.getElementById('welcome').classList.add('off');
+  document.getElementById('lesson-view').classList.remove('on');
+  document.getElementById('quiz-view').classList.add('on');
+
+  document.getElementById('quiz-phase-pill').textContent = `Topics ${quiz.topicIds.join(', ')}`;
+  document.getElementById('quiz-label').textContent = quiz.title;
+
+  const qr         = (ST.quizResponses || {})[String(quizId)] || { status: 'not_started', responses: {} };
+  const isSubmitted = qr.status === 'submitted' || qr.status === 'evaluated';
+  const isEvaluated = qr.status === 'evaluated';
+
+  // Build quiz HTML
+  let html = `<div class="quiz-title">${escHtml(quiz.title)}</div>`;
+  html += `<div class="quiz-sub">${quiz.questions.length} open-ended questions · No time limit · Responses auto-saved</div>`;
+  html += `<div class="quiz-topics-covered">`;
+  quiz.topicIds.forEach(id => {
+    html += `<span>Topic ${id}: ${escHtml(ALL_TITLES[id])}</span>`;
+  });
+  html += `</div>`;
+
+  if (!isSubmitted) {
+    html += `<div class="quiz-instructions">Answer each question in your own words. Responses are saved automatically as you type. When finished, click <strong>Submit for Evaluation</strong> — your answers will be written to a file. Then type <strong>evaluate quiz ${quizId}</strong> in Claude Code chat to receive detailed feedback on each answer.</div>`;
+  } else if (!isEvaluated) {
+    html += `<div class="quiz-instructions">Your responses have been submitted. Type <strong>evaluate quiz ${quizId}</strong> in Claude Code chat, then click <strong>Load Evaluation</strong> to see your feedback.</div>`;
+  }
+
+  quiz.questions.forEach((q, i) => {
+    const savedAns = (qr.responses || {})[String(i)] || '';
+    html += `<div class="quiz-q-block">
+      <div class="quiz-q-num">Question ${i + 1} of ${quiz.questions.length}</div>
+      <div class="quiz-q-text">${escHtml(q)}</div>
+      <textarea class="quiz-ans-ta" id="qta-${i}"
+        placeholder="Write your answer here…"
+        ${isSubmitted ? 'readonly' : ''}
+        oninput="autoSaveQuizResponse(${quizId}, ${i}, this.value)"
+      >${escHtml(savedAns)}</textarea>
+      <div class="eval-box" id="eval-box-${i}">
+        <div class="eval-box-label">Feedback</div>
+        <div id="eval-text-${i}"></div>
+      </div>
+    </div>`;
+  });
+
+  html += `<div class="eval-overall" id="eval-overall"><div class="eval-overall-label">⭐ Overall Assessment</div><div id="eval-overall-text"></div></div>`;
+
+  document.getElementById('quiz-col').innerHTML = html;
+
+  // Footer state
+  const submitBtn  = document.getElementById('btn-submit-quiz');
+  const loadEvalBtn = document.getElementById('btn-load-eval');
+
+  if (isSubmitted) {
+    submitBtn.disabled = true;
+    submitBtn.textContent = '✓ Submitted';
+    loadEvalBtn.style.display = 'inline-block';
+    document.getElementById('quiz-footer-note').textContent =
+      isEvaluated ? 'Scroll down to see your feedback' : 'Awaiting evaluation from Claude Code';
+  } else {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Submit for Evaluation →';
+    loadEvalBtn.style.display = 'none';
+    document.getElementById('quiz-footer-note').textContent = 'Complete all questions, then submit';
+  }
+
+  // If already evaluated, load the evaluation immediately
+  if (isEvaluated) loadEvaluation(quizId);
+
+  renderSidebar();
+}
+
+// Auto-save each response with a 1-second debounce
+const _qzDebounce = {};
+function autoSaveQuizResponse(quizId, qIdx, value) {
+  const key = `${quizId}-${qIdx}`;
+  clearTimeout(_qzDebounce[key]);
+  _qzDebounce[key] = setTimeout(() => {
+    ST.quizResponses = ST.quizResponses || {};
+    const qr = ST.quizResponses[String(quizId)] = ST.quizResponses[String(quizId)] || { status: 'not_started', responses: {} };
+    qr.responses[String(qIdx)] = value;
+    if (qr.status === 'not_started') qr.status = 'in_progress';
+    pushState();
+    renderSidebar();
+  }, 800);
+}
+
+async function submitQuiz() {
+  if (!activeQuizId) return;
+  const quiz = QUIZ_DATA[activeQuizId];
+  const qr   = (ST.quizResponses || {})[String(activeQuizId)] || { responses: {} };
+
+  // Collect current textarea values (may differ from saved state if debounce hasn't fired)
+  const responses = {};
+  quiz.questions.forEach((_, i) => {
+    const ta = document.getElementById(`qta-${i}`);
+    responses[String(i)] = ta ? ta.value.trim() : (qr.responses[String(i)] || '');
+  });
+
+  const empty = quiz.questions.filter((_, i) => !responses[String(i)]);
+  if (empty.length > 0) {
+    toast(`Please answer all ${quiz.questions.length} questions before submitting`); return;
+  }
+
+  showLoading('Saving your responses…');
+
+  try {
+    const r = await apiPost('/api/save-quiz-responses', {
+      quizId:       activeQuizId,
+      folder:       quiz.folder,
+      title:        quiz.title,
+      topicIds:     quiz.topicIds,
+      topicTitles:  quiz.topicIds.map(id => ALL_TITLES[id]),
+      questions:    quiz.questions,
+      responses,
+    });
+    const data = await r.json();
+    hideLoading();
+
+    if (data.ok) {
+      ST.quizResponses = ST.quizResponses || {};
+      ST.quizResponses[String(activeQuizId)] = {
+        status: 'submitted',
+        responses,
+        submittedAt: new Date().toISOString(),
+      };
+      await pushState();
+      showQuiz(activeQuizId);
+      toast(`Responses saved! Now type "evaluate quiz ${activeQuizId}" in Claude Code.`, 6000);
+    } else {
+      toast('Error: ' + (data.error || 'unknown'), 5000);
+    }
+  } catch {
+    hideLoading();
+    toast('⚠ Cannot reach server — is python3 server.py running?', 5000);
+  }
+}
+
+async function loadEvaluation(quizId) {
+  const quiz = QUIZ_DATA[quizId];
+  if (!quiz) return;
+
+  try {
+    const r = await fetch(`${API}/quizzes/${quiz.folder}/responses.md`);
+    if (r.status === 404) { toast('No evaluation file found yet'); return; }
+    const text = await r.text();
+
+    // Extract per-question evaluations (between **Evaluation:** and next --- or ## Overall)
+    const qEvalRe = /\*\*Evaluation:\*\*\n([\s\S]*?)(?=\n---|\n## Overall|$)/g;
+    let match;
+    let qIdx = 0;
+    while ((match = qEvalRe.exec(text)) !== null) {
+      const evalText = match[1].trim();
+      if (evalText && !evalText.startsWith('*Pending')) {
+        const box  = document.getElementById(`eval-box-${qIdx}`);
+        const body = document.getElementById(`eval-text-${qIdx}`);
+        if (box && body) {
+          body.innerHTML = escHtml(evalText).replace(/\n/g, '<br>');
+          box.classList.add('show');
+        }
+        qIdx++;
+      }
+    }
+
+    // Extract Overall Assessment
+    const overallMatch = /## Overall Assessment\n+([\s\S]+)$/.exec(text);
+    if (overallMatch && !overallMatch[1].trim().startsWith('*Pending')) {
+      const ov = document.getElementById('eval-overall');
+      const ot = document.getElementById('eval-overall-text');
+      if (ov && ot) {
+        ot.innerHTML = escHtml(overallMatch[1].trim()).replace(/\n/g, '<br>');
+        ov.classList.add('show');
+      }
+    }
+
+    // Update status to evaluated if evaluations were found
+    if (qIdx > 0) {
+      ST.quizResponses = ST.quizResponses || {};
+      const qr = ST.quizResponses[String(quizId)] || {};
+      if (qr.status !== 'evaluated') {
+        qr.status = 'evaluated';
+        ST.quizResponses[String(quizId)] = qr;
+        pushState();
+        renderSidebar();
+      }
+      document.getElementById('quiz-footer-note').textContent = 'Scroll down to see your feedback';
+    } else {
+      toast('Evaluation not yet written — type "evaluate quiz ' + quizId + '" in Claude Code first');
+    }
+  } catch(e) {
+    toast('Could not load evaluation file');
+    console.error(e);
+  }
+}
+
+function showLesson() {
+  activeQuizId = null;
+  document.getElementById('quiz-view').classList.remove('on');
+  if (activeTopic) {
+    document.getElementById('lesson-view').classList.add('on');
+  } else {
+    document.getElementById('welcome').classList.remove('off');
+  }
+  renderSidebar();
+}
+
+// ═══════════════════════════════════════════════════════
+// CASE STUDY VIEW
+// ═══════════════════════════════════════════════════════
+function showCaseStudy(caseId) {
+  const cs = CASE_DATA[caseId];
+  if (!cs) return;
+
+  activeCaseId = caseId;
+  activeTopic  = null;
+  activeQuizId = null;
+
+  document.getElementById('welcome').classList.add('off');
+  document.getElementById('lesson-view').classList.remove('on');
+  document.getElementById('quiz-view').classList.remove('on');
+  document.getElementById('case-view').classList.add('on');
+
+  document.getElementById('cs-phase-pill').textContent = `Topics ${cs.topicIds.join(', ')}`;
+  document.getElementById('cs-label').textContent = cs.title;
+
+  const cr         = (ST.caseResponses || {})[String(caseId)] || { status: 'not_started', responses: {} };
+  const isSubmitted = cr.status === 'submitted' || cr.status === 'evaluated';
+  const isEvaluated = cr.status === 'evaluated';
+
+  // Render scenario
+  let html = `
+    <div style="margin-bottom:8px;">
+      <span style="font-size:22px;font-weight:700;">${escHtml(cs.title)}</span>
+      <span style="font-size:14px;color:var(--muted);margin-left:12px;">${escHtml(cs.subtitle)}</span>
+    </div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:24px;">
+      Topics ${cs.topicIds.join(', ')} · ${cs.questions.length} analytical questions · Open response
+    </div>
+    <div class="cs-scenario">
+      <div class="cs-scenario-label">📋 Case Background</div>
+      ${mdToHtml(cs.scenario)}
+    </div>`;
+
+  // Questions section
+  html += `<div class="cs-q-header">Your Analysis</div>`;
+  html += `<div class="cs-q-sub">Each question requires applying the frameworks from Topics 1–3 to the specific data above. Use the actual numbers provided — generic answers score poorly.</div>`;
+
+  if (!isSubmitted) {
+    html += `<div class="cs-rubric-note">Each response is scored on five dimensions: <strong>Framework Accuracy · Case Specificity · Analytical Depth · Intellectual Honesty · Synthesis</strong> (max 13 pts per question). Answers that reference the case data specifically and acknowledge uncertainty score highest. When finished, submit — then type <strong>evaluate case study ${caseId}</strong> in Claude Code.</div>`;
+  } else if (!isEvaluated) {
+    html += `<div class="cs-rubric-note">Responses submitted. Type <strong>evaluate case study ${caseId}</strong> in Claude Code, then click <strong>Load Evaluation</strong>.</div>`;
+  }
+
+  cs.questions.forEach((q, i) => {
+    const savedAns = (cr.responses || {})[String(i)] || '';
+    html += `<div class="quiz-q-block">
+      <div class="quiz-q-num">Question ${i + 1} of ${cs.questions.length}</div>
+      <div class="quiz-q-text">${escHtml(q)}</div>
+      <textarea class="quiz-ans-ta" id="cta-${i}"
+        placeholder="Write your analysis here — reference specific figures from the case…"
+        ${isSubmitted ? 'readonly' : ''}
+        oninput="autoSaveCaseResponse(${caseId}, ${i}, this.value)"
+      >${escHtml(savedAns)}</textarea>
+      <div class="eval-box" id="cs-eval-box-${i}">
+        <div class="eval-box-label">Evaluation</div>
+        <div id="cs-eval-text-${i}"></div>
+      </div>
+    </div>`;
+  });
+
+  html += `<div class="eval-overall" id="cs-eval-overall"><div class="eval-overall-label">⭐ Overall Assessment &amp; Score</div><div id="cs-eval-overall-text"></div></div>`;
+
+  document.getElementById('case-col').innerHTML = html;
+
+  // Footer state
+  const submitBtn  = document.getElementById('btn-submit-case');
+  const loadEvalBtn = document.getElementById('btn-load-case-eval');
+
+  if (isSubmitted) {
+    submitBtn.disabled = true;
+    submitBtn.textContent = '✓ Submitted';
+    loadEvalBtn.style.display = 'inline-block';
+    document.getElementById('case-footer-note').textContent =
+      isEvaluated ? 'Scroll down to see your evaluation' : 'Awaiting evaluation from Claude Code';
+  } else {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Submit for Evaluation →';
+    loadEvalBtn.style.display = 'none';
+    document.getElementById('case-footer-note').textContent = 'Answer all questions using case data, then submit';
+  }
+
+  if (isEvaluated) loadCaseEvaluation(caseId);
+
+  renderSidebar();
+}
+
+const _csDebounce = {};
+function autoSaveCaseResponse(caseId, qIdx, value) {
+  const key = `cs-${caseId}-${qIdx}`;
+  clearTimeout(_csDebounce[key]);
+  _csDebounce[key] = setTimeout(() => {
+    ST.caseResponses = ST.caseResponses || {};
+    const cr = ST.caseResponses[String(caseId)] = ST.caseResponses[String(caseId)] || { status: 'not_started', responses: {} };
+    cr.responses[String(qIdx)] = value;
+    if (cr.status === 'not_started') cr.status = 'in_progress';
+    pushState();
+    renderSidebar();
+  }, 800);
+}
+
+async function submitCaseStudy() {
+  if (!activeCaseId) return;
+  const cs = CASE_DATA[activeCaseId];
+  const cr = (ST.caseResponses || {})[String(activeCaseId)] || { responses: {} };
+
+  const responses = {};
+  cs.questions.forEach((_, i) => {
+    const ta = document.getElementById(`cta-${i}`);
+    responses[String(i)] = ta ? ta.value.trim() : (cr.responses[String(i)] || '');
+  });
+
+  const empty = cs.questions.filter((_, i) => !responses[String(i)]);
+  if (empty.length > 0) {
+    toast(`Please answer all ${cs.questions.length} questions before submitting`); return;
+  }
+
+  showLoading('Saving your analysis…');
+  try {
+    const r = await apiPost('/api/save-case-responses', {
+      caseId:      activeCaseId,
+      folder:      cs.folder,
+      title:       cs.title,
+      subtitle:    cs.subtitle,
+      topicIds:    cs.topicIds,
+      topicTitles: cs.topicIds.map(id => ALL_TITLES[id]),
+      questions:   cs.questions,
+      responses,
+      rubric:      cs.rubric,
+    });
+    const data = await r.json();
+    hideLoading();
+
+    if (data.ok) {
+      ST.caseResponses = ST.caseResponses || {};
+      ST.caseResponses[String(activeCaseId)] = {
+        status: 'submitted', responses,
+        submittedAt: new Date().toISOString(),
+      };
+      await pushState();
+      showCaseStudy(activeCaseId);
+      toast(`Responses saved! Type "evaluate case study ${activeCaseId}" in Claude Code.`, 6000);
+    } else {
+      toast('Error: ' + (data.error || 'unknown'), 5000);
+    }
+  } catch {
+    hideLoading();
+    toast('⚠ Cannot reach server — is python3 server.py running?', 5000);
+  }
+}
+
+async function loadCaseEvaluation(caseId) {
+  const cs = CASE_DATA[caseId];
+  if (!cs) return;
+
+  try {
+    const r = await fetch(`${API}/case-studies/${cs.folder}/responses.md`);
+    if (r.status === 404) { toast('No evaluation file found yet'); return; }
+    const text = await r.text();
+
+    // Extract per-question evaluations
+    const qEvalRe = /\*\*Evaluation:\*\*\n([\s\S]*?)(?=\n---|\n## Overall|$)/g;
+    let match, qIdx = 0;
+    while ((match = qEvalRe.exec(text)) !== null) {
+      const evalText = match[1].trim();
+      if (evalText && !evalText.startsWith('*Pending')) {
+        const box  = document.getElementById(`cs-eval-box-${qIdx}`);
+        const body = document.getElementById(`cs-eval-text-${qIdx}`);
+        if (box && body) {
+          body.innerHTML = evalText.replace(/\n/g, '<br>');
+          box.classList.add('show');
+        }
+        qIdx++;
+      }
+    }
+
+    // Extract Overall Assessment
+    const overallMatch = /## Overall Assessment[\s\S]*?\n+([\s\S]+)$/.exec(text);
+    if (overallMatch && !overallMatch[1].trim().startsWith('*Pending')) {
+      const ov = document.getElementById('cs-eval-overall');
+      const ot = document.getElementById('cs-eval-overall-text');
+      if (ov && ot) {
+        ot.innerHTML = overallMatch[1].trim().replace(/\n/g, '<br>');
+        ov.classList.add('show');
+      }
+    }
+
+    if (qIdx > 0) {
+      ST.caseResponses = ST.caseResponses || {};
+      const cr = ST.caseResponses[String(caseId)] || {};
+      if (cr.status !== 'evaluated') {
+        cr.status = 'evaluated';
+        ST.caseResponses[String(caseId)] = cr;
+        pushState();
+        renderSidebar();
+      }
+      document.getElementById('case-footer-note').textContent = 'Scroll down to see your evaluation';
+    } else {
+      toast('Evaluation not yet written — type "evaluate case study ' + caseId + '" in Claude Code first');
+    }
+  } catch(e) {
+    toast('Could not load evaluation file');
+    console.error(e);
+  }
+}
+
+function showFromCase() {
+  activeCaseId = null;
+  document.getElementById('case-view').classList.remove('on');
+  if (activeTopic) {
+    document.getElementById('lesson-view').classList.add('on');
+  } else {
+    document.getElementById('welcome').classList.remove('off');
+  }
+  renderSidebar();
+}
+
+// ═══════════════════════════════════════════════════════
+// UTILS
+// ═══════════════════════════════════════════════════════
+function showLoading(msg) {
+  document.getElementById('ld-msg').textContent = msg;
+  document.getElementById('loading').style.display = 'flex';
+}
+function hideLoading() {
+  document.getElementById('loading').style.display = 'none';
+}
+
+let toastTimer;
+function toast(msg, ms=3000) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), ms);
+}
+
+function escHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function debounce(fn, ms) {
+  let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); };
+}
+
+// ═══════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════
+async function init() {
+  await fetchState();
+  renderSidebar();
+  updateProgress();
+  if (ST.currentTopic) loadTopic(ST.currentTopic);
+}
+
+init();
+</script>
+</body>
+</html>

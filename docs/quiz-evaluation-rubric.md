@@ -1,0 +1,2 @@
+
+I want you to be evaluate every response and grade it as if you were the best value investor in the world. Give me clear notes on 1. What did I miss 2. How could I have articulated this better 3. What should I focus more on 4. What answer to the same question would have blown your mind. 5. What should I improve about the way I m digesting the content before I take the next quiz.
