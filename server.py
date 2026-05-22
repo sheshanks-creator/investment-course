@@ -15,10 +15,10 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib.parse import urlparse
 import anthropic
 
-PORT = 8080
+PORT = int(os.environ.get('COURSE_PORT', 8080))
 BASE = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE, 'data')
-STATE_FILE = os.path.join(DATA_DIR, 'state.json')
+STATE_FILE = os.environ.get('COURSE_STATE', os.path.join(DATA_DIR, 'state.json'))
 os.makedirs(DATA_DIR, exist_ok=True)
 
 # ── All 120 topic titles (for lesson generation context) ────────────────
