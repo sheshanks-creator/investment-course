@@ -490,6 +490,30 @@ mark.hl-b:hover { background:#2196f388; }
   text-transform:uppercase; letter-spacing:.06em; margin-bottom:10px;
 }
 
+/* ── Markdown rendering inside eval boxes ──────────── */
+.eval-box p, .eval-overall p { margin:0 0 10px; }
+.eval-box h2, .eval-overall h2 { font-size:15px; font-weight:700; margin:14px 0 8px; color:var(--text); }
+.eval-box h3, .eval-overall h3 { font-size:13.5px; font-weight:700; margin:12px 0 6px; color:var(--text); }
+.eval-box ul, .eval-overall ul { margin:6px 0 12px 22px; padding:0; }
+.eval-box li, .eval-overall li { margin:3px 0; }
+.eval-box hr, .eval-overall hr { border:none; border-top:1px solid var(--border); margin:14px 0; }
+.eval-box blockquote, .eval-overall blockquote {
+  border-left:3px solid var(--accent); padding:6px 12px;
+  margin:10px 0; background:rgba(240,165,0,.06);
+  color:var(--text); font-style:italic;
+}
+.eval-box strong, .eval-overall strong { color:var(--text); }
+.eval-box table, .eval-overall table {
+  border-collapse:collapse; margin:10px 0; font-size:12.5px; width:auto;
+}
+.eval-box th, .eval-overall th {
+  background:var(--surf2); padding:6px 12px; text-align:left;
+  border:1px solid var(--border); font-weight:700;
+}
+.eval-box td, .eval-overall td {
+  padding:6px 12px; border:1px solid var(--border);
+}
+
 /* ── Case Study sidebar items ──────────────────────── */
 .cs-sb-item  { align-items:flex-start !important; padding:8px 12px 8px 8px !important; gap:10px !important; }
 .cs-sb-item.active { background:var(--amber-bg) !important; }
@@ -1390,6 +1414,9 @@ function mdToHtml(md) {
       }
     } else if (line === '---') {
       flushP(); flushList(); flushTable(); html += '<hr>';
+    } else if (line.startsWith('> ')) {
+      flushP(); flushList(); flushTable();
+      html += '<blockquote>' + fmt(line.slice(2)) + '</blockquote>';
     } else if (line.startsWith('REFLECTION:')) {
       flushP(); flushList(); flushTable();
       html += '<div class="reflection"><div class="r-label">✦ Reflection Question</div><p>' + fmt(line.slice(11).trim()) + '</p></div>';
@@ -2128,7 +2155,7 @@ async function loadEvaluation(quizId) {
         const box  = document.getElementById(`eval-box-${qIdx}`);
         const body = document.getElementById(`eval-text-${qIdx}`);
         if (box && body) {
-          body.innerHTML = escHtml(evalText).replace(/\n/g, '<br>');
+          body.innerHTML = mdToHtml(evalText);
           box.classList.add('show');
         }
         qIdx++;
@@ -2141,7 +2168,7 @@ async function loadEvaluation(quizId) {
       const ov = document.getElementById('eval-overall');
       const ot = document.getElementById('eval-overall-text');
       if (ov && ot) {
-        ot.innerHTML = escHtml(overallMatch[1].trim()).replace(/\n/g, '<br>');
+        ot.innerHTML = mdToHtml(overallMatch[1].trim());
         ov.classList.add('show');
       }
     }
@@ -2349,7 +2376,7 @@ async function loadCaseEvaluation(caseId) {
         const box  = document.getElementById(`cs-eval-box-${qIdx}`);
         const body = document.getElementById(`cs-eval-text-${qIdx}`);
         if (box && body) {
-          body.innerHTML = evalText.replace(/\n/g, '<br>');
+          body.innerHTML = mdToHtml(evalText);
           box.classList.add('show');
         }
         qIdx++;
@@ -2362,7 +2389,7 @@ async function loadCaseEvaluation(caseId) {
       const ov = document.getElementById('cs-eval-overall');
       const ot = document.getElementById('cs-eval-overall-text');
       if (ov && ot) {
-        ot.innerHTML = overallMatch[1].trim().replace(/\n/g, '<br>');
+        ot.innerHTML = mdToHtml(overallMatch[1].trim());
         ov.classList.add('show');
       }
     }
