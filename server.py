@@ -159,6 +159,8 @@ def load_state():
         'quizzes': {},
         'quizResponses': {},
         'caseResponses': {},
+        'coachVisits': {},
+        'numQuizResponses': {},
     }
     try:
         with open(STATE_FILE) as f:

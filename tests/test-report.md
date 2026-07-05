@@ -1,9 +1,9 @@
 # Test Report — Value Investing Course
 
-**Run date:** 2026-05-29 07:30
-**Duration:** 0.2s
+**Run date:** 2026-07-05 08:28
+**Duration:** 0.6s
 **Result:** ✅ ALL PASS
-**Summary:** 118 passed · 0 failed · 0 skipped · 118 total
+**Summary:** 134 passed · 0 failed · 0 skipped · 134 total
 
 ---
 
@@ -32,16 +32,18 @@
 | requirements txt exists | ✅ PASS |  |
 | server py exists | ✅ PASS |  |
 
-## ✅ Content — quiz & case folders (4/4)
+## ✅ Content — quiz & case folders (6/6)
 
 | Test | Status | Detail |
 |------|--------|--------|
 | case studies dir exists | ✅ PASS |  |
+| coach 01 folder exists | ✅ PASS |  |
+| coach cases dir exists | ✅ PASS |  |
 | cs 01 folder exists | ✅ PASS |  |
 | quiz 01 folder exists | ✅ PASS |  |
 | quizzes dir exists | ✅ PASS |  |
 
-## ✅ Content — state.example.json (7/7)
+## ✅ Content — state.example.json (9/9)
 
 | Test | Status | Detail |
 |------|--------|--------|
@@ -50,7 +52,9 @@
 | file is valid json | ✅ PASS |  |
 | has available through key | ✅ PASS |  |
 | has case responses key | ✅ PASS |  |
+| has coach visits key | ✅ PASS |  |
 | has completed key | ✅ PASS |  |
+| has num quiz responses key | ✅ PASS |  |
 | has quiz responses key | ✅ PASS |  |
 
 ## ✅ Content — topic folders (5/5)
@@ -72,7 +76,7 @@
 | api save quiz responses referenced | ✅ PASS |  |
 | api state get referenced | ✅ PASS |  |
 
-## ✅ Frontend — CSS variables (6/6)
+## ✅ Frontend — CSS variables (8/8)
 
 | Test | Status | Detail |
 |------|--------|--------|
@@ -81,17 +85,21 @@
 | amber bg variable | ✅ PASS |  |
 | amber variable | ✅ PASS |  |
 | blue variable | ✅ PASS |  |
+| green variable | ✅ PASS |  |
 | ok variable | ✅ PASS |  |
+| teal variable | ✅ PASS |  |
 
-## ✅ Frontend — HTML structure (8/8)
+## ✅ Frontend — HTML structure (10/10)
 
 | Test | Status | Detail |
 |------|--------|--------|
 | case submit button | ✅ PASS |  |
 | has case view | ✅ PASS |  |
+| has coach view | ✅ PASS |  |
 | has doctype | ✅ PASS |  |
 | has inter font link | ✅ PASS |  |
 | has main element | ✅ PASS |  |
+| has num quiz view | ✅ PASS |  |
 | has quiz view | ✅ PASS |  |
 | has sidebar element | ✅ PASS |  |
 | quiz submit button | ✅ PASS |  |
@@ -103,20 +111,24 @@
 | file exists | ✅ PASS |  |
 | file is non trivial | ✅ PASS |  |
 
-## ✅ Frontend — JS data objects (3/3)
+## ✅ Frontend — JS data objects (5/5)
 
 | Test | Status | Detail |
 |------|--------|--------|
 | CASE DATA present | ✅ PASS |  |
+| COACH DATA present | ✅ PASS |  |
 | LESSONS present | ✅ PASS |  |
+| NUM QUIZ DATA present | ✅ PASS |  |
 | QUIZ DATA present | ✅ PASS |  |
 
-## ✅ Frontend — JS functions (16/16)
+## ✅ Frontend — JS functions (20/20)
 
 | Test | Status | Detail |
 |------|--------|--------|
+| addCoachQuestion | ✅ PASS |  |
 | autoSaveCaseResponse | ✅ PASS |  |
 | autoSaveQuizResponse | ✅ PASS |  |
+| checkNumQuestion | ✅ PASS |  |
 | fetchState | ✅ PASS |  |
 | init | ✅ PASS |  |
 | loadCaseEvaluation | ✅ PASS |  |
@@ -127,7 +139,9 @@
 | pushState | ✅ PASS |  |
 | renderSidebar | ✅ PASS |  |
 | showCaseStudy | ✅ PASS |  |
+| showCoach | ✅ PASS |  |
 | showFromCase | ✅ PASS |  |
+| showNumQuiz | ✅ PASS |  |
 | showQuiz | ✅ PASS |  |
 | submitCaseStudy | ✅ PASS |  |
 | submitQuiz | ✅ PASS |  |
@@ -140,7 +154,7 @@
 | options has allow methods | ✅ PASS |  |
 | options preflight returns 200 | ✅ PASS |  |
 
-## ✅ API — GET /api/state (12/12)
+## ✅ API — GET /api/state (14/14)
 
 | Test | Status | Detail |
 |------|--------|--------|
@@ -148,9 +162,11 @@
 | content type is json | ✅ PASS |  |
 | required key available through | ✅ PASS |  |
 | required key case responses | ✅ PASS |  |
+| required key coach visits | ✅ PASS |  |
 | required key completed | ✅ PASS |  |
 | required key current topic | ✅ PASS |  |
 | required key highlights | ✅ PASS |  |
+| required key num quiz responses | ✅ PASS |  |
 | required key qa | ✅ PASS |  |
 | required key quiz responses | ✅ PASS |  |
 | required key quizzes | ✅ PASS |  |

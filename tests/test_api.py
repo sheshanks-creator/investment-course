@@ -115,6 +115,12 @@ class TestGetState(unittest.TestCase):
     def test_required_key_case_responses(self):
         self.assertIn('caseResponses', self._state().json())
 
+    def test_required_key_coach_visits(self):
+        self.assertIn('coachVisits', self._state().json())
+
+    def test_required_key_num_quiz_responses(self):
+        self.assertIn('numQuizResponses', self._state().json())
+
 
 # ---------------------------------------------------------------------------
 # POST /api/state

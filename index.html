@@ -29,6 +29,15 @@
   --amber:    #e8912d;
   --amber-bg: rgba(232,145,45,.12);
   --amber-bdr:rgba(232,145,45,.3);
+  --teal:     #4dd0e1;
+  --teal-bg:  rgba(77,208,225,.12);
+  --teal-bdr: rgba(77,208,225,.30);
+  --green:    #10b981;
+  --green-bg: rgba(16,185,129,.12);
+  --green-bdr:rgba(16,185,129,.30);
+  --red:      #ef4444;
+  --red-bg:   rgba(239,68,68,.12);
+  --red-bdr:  rgba(239,68,68,.30);
   --sidebar:  240px;
   --notes-w:  268px;
 }
@@ -594,6 +603,258 @@ mark.hl-b:hover { background:#2196f388; }
   color:var(--text); line-height:1.6; margin-bottom:24px;
 }
 
+/* ── Coach sidebar items ────────────────────────────── */
+.coach-sb-item  { align-items:flex-start !important; padding:8px 12px 8px 8px !important; gap:10px !important; }
+.coach-sb-item.active { background:var(--teal-bg) !important; }
+.coach-icon {
+  width:32px; height:32px; min-width:32px; border-radius:8px;
+  background:var(--teal-bg); color:var(--teal);
+  font-size:14px; display:flex; align-items:center; justify-content:center;
+}
+.coach-sb-info  { display:flex; flex-direction:column; gap:2px; min-width:0; }
+.coach-sb-name  { font-size:12px; font-weight:700; color:var(--teal); line-height:1.3; }
+.coach-sb-status { font-size:10px; color:var(--muted); }
+.coach-sb-status.visited { color:var(--teal); }
+
+/* ── Numerical Quiz sidebar items ───────────────────── */
+.num-sb-item  { align-items:flex-start !important; padding:8px 12px 8px 8px !important; gap:10px !important; }
+.num-sb-item.active { background:var(--green-bg) !important; }
+.num-icon {
+  width:32px; height:32px; min-width:32px; border-radius:8px;
+  background:var(--green-bg); color:var(--green);
+  font-size:14px; display:flex; align-items:center; justify-content:center;
+}
+.num-sb-info  { display:flex; flex-direction:column; gap:2px; min-width:0; }
+.num-sb-name  { font-size:12px; font-weight:700; color:var(--green); line-height:1.3; }
+.num-sb-status { font-size:10px; color:var(--muted); }
+.num-sb-status.in_progress { color:var(--green); }
+.num-sb-status.completed   { color:var(--ok); }
+
+/* ── Coach view ─────────────────────────────────────── */
+#coach-view { display:none; flex:1; overflow:hidden; }
+#coach-view.on { display:flex; }
+.coach-col { flex:1; overflow-y:auto; padding:28px 36px 40px; display:flex; flex-direction:column; }
+
+.coach-intro {
+  background:var(--surf2); border:1px solid var(--border);
+  border-radius:10px; padding:24px 28px; margin-bottom:24px;
+  font-size:14px; color:var(--text); line-height:1.75;
+}
+.coach-intro-label {
+  font-size:10px; font-weight:700; color:var(--teal);
+  text-transform:uppercase; letter-spacing:.08em; margin-bottom:10px;
+}
+
+.coach-step-card {
+  background:var(--surf); border:1px solid var(--border);
+  border-radius:10px; padding:24px 28px; margin-bottom:20px;
+  color:var(--text); line-height:1.75; font-size:14px;
+}
+.coach-step-num {
+  display:inline-block; font-size:10px; font-weight:700;
+  color:var(--teal); text-transform:uppercase; letter-spacing:.08em;
+  margin-bottom:6px;
+}
+.coach-step-heading {
+  font-size:18px; font-weight:700; color:var(--text);
+  margin-bottom:16px; line-height:1.3;
+}
+.coach-step-body { margin-bottom:16px; }
+.coach-step-body p { margin:0 0 12px; }
+.coach-step-body strong { color:var(--text); }
+
+.coach-box {
+  border-radius:8px; padding:12px 16px; margin-top:10px;
+  font-size:13px; line-height:1.7;
+}
+.coach-box-label {
+  font-size:10px; font-weight:700; text-transform:uppercase;
+  letter-spacing:.06em; margin-bottom:4px; display:block;
+}
+.coach-keyidea {
+  background:var(--teal-bg); border:1px solid var(--teal-bdr);
+}
+.coach-keyidea .coach-box-label { color:var(--teal); }
+.coach-apply {
+  background:var(--blue-bg); border:1px solid rgba(88,166,255,.30);
+}
+.coach-apply .coach-box-label { color:var(--blue); }
+.coach-watchout {
+  background:var(--red-bg); border:1px solid var(--red-bdr);
+}
+.coach-watchout .coach-box-label { color:var(--red); }
+
+.coach-application {
+  background:var(--acc-bg); border:1px solid var(--acc-bdr);
+  border-radius:10px; padding:20px 24px; margin-top:28px;
+  color:var(--text); line-height:1.75; font-size:14px;
+}
+.coach-application-label {
+  font-size:11px; font-weight:700; color:var(--accent);
+  text-transform:uppercase; letter-spacing:.06em; margin-bottom:10px;
+}
+
+/* Coach Q&A panel */
+.coach-qa {
+  background:var(--surf); border:1px solid var(--border);
+  border-radius:10px; padding:20px 24px; margin-top:28px;
+}
+.coach-qa-label {
+  font-size:11px; font-weight:700; color:var(--teal);
+  text-transform:uppercase; letter-spacing:.06em; margin-bottom:12px;
+}
+.coach-qa-hint {
+  font-size:12px; color:var(--muted); margin-bottom:12px; line-height:1.6;
+}
+.coach-qa-input {
+  width:100%; min-height:60px; padding:10px 14px;
+  background:var(--surf2); border:1px solid var(--border); border-radius:8px;
+  color:var(--text); font-size:13px; margin-bottom:10px;
+}
+.coach-qa-list { margin-bottom:12px; }
+.coach-qa-item {
+  display:flex; gap:10px; align-items:flex-start;
+  padding:10px 12px; background:var(--surf2);
+  border-radius:8px; margin-bottom:6px;
+  font-size:13px; color:var(--text); line-height:1.5;
+}
+.coach-qa-item .q-text { flex:1; }
+.coach-qa-item .q-del {
+  background:transparent; border:none; color:var(--muted);
+  font-size:16px; cursor:pointer; padding:0 4px;
+}
+.coach-qa-item .q-del:hover { color:var(--red); }
+.coach-qa-controls { display:flex; gap:8px; flex-wrap:wrap; }
+.coach-qa-btn {
+  padding:7px 14px; background:var(--surf2); border:1px solid var(--border);
+  color:var(--text); font-size:12px; font-weight:600; border-radius:8px;
+}
+.coach-qa-btn.primary { background:var(--teal); color:#000; border:none; }
+.coach-qa-btn.load { border-color:var(--teal); color:var(--teal); }
+.coach-qa-answers {
+  margin-top:16px; padding:16px 20px;
+  background:var(--teal-bg); border:1px solid var(--teal-bdr);
+  border-radius:8px; display:none;
+  font-size:13px; line-height:1.75; color:var(--text);
+}
+.coach-qa-answers.show { display:block; }
+
+/* ── Numerical Quiz view ────────────────────────────── */
+#num-quiz-view { display:none; flex:1; overflow:hidden; }
+#num-quiz-view.on { display:flex; }
+.num-col { flex:1; overflow-y:auto; padding:28px 36px 40px; display:flex; flex-direction:column; }
+
+.num-scenario {
+  background:var(--surf2); border:1px solid var(--border);
+  border-radius:10px; padding:24px 28px; margin-bottom:24px;
+  color:var(--text); font-size:14px; line-height:1.75;
+}
+.num-scenario-label {
+  font-size:10px; font-weight:700; color:var(--green);
+  text-transform:uppercase; letter-spacing:.08em; margin-bottom:10px;
+}
+.num-hint {
+  background:var(--green-bg); border:1px solid var(--green-bdr);
+  border-radius:8px; padding:12px 16px; font-size:12px;
+  color:var(--text); line-height:1.6; margin-bottom:24px;
+}
+
+.num-q-block {
+  background:var(--surf); border:1px solid var(--border);
+  border-radius:10px; padding:20px 24px; margin-bottom:16px;
+  color:var(--text); line-height:1.7;
+}
+.num-q-num {
+  display:inline-block; font-size:10px; font-weight:700;
+  color:var(--green); text-transform:uppercase; letter-spacing:.08em;
+  margin-bottom:6px;
+}
+.num-q-prompt {
+  font-size:14px; margin-bottom:14px;
+}
+.num-q-prompt p { margin:0 0 8px; }
+.num-q-input-row {
+  display:flex; gap:10px; align-items:center; margin-bottom:8px; flex-wrap:wrap;
+}
+.num-q-input {
+  padding:9px 14px; background:var(--surf2); border:1px solid var(--border);
+  border-radius:8px; color:var(--text); font-size:14px; width:180px;
+  font-family:inherit;
+}
+.num-q-input:focus { outline:none; border-color:var(--green); }
+.num-q-unit {
+  font-size:13px; color:var(--muted); font-weight:600;
+}
+.num-q-check {
+  padding:8px 16px; background:var(--green); color:#000;
+  font-size:13px; font-weight:700; border:none; border-radius:8px;
+}
+.num-q-check:disabled { opacity:.45; cursor:default; }
+
+.num-result {
+  margin-top:10px; padding:10px 14px; border-radius:8px;
+  font-size:13px; font-weight:600; display:none;
+}
+.num-result.show { display:block; }
+.num-result.correct {
+  background:var(--green-bg); border:1px solid var(--green-bdr);
+  color:var(--green);
+}
+.num-result.wrong {
+  background:var(--red-bg); border:1px solid var(--red-bdr);
+  color:var(--red);
+}
+.num-explanation {
+  margin-top:10px; padding:14px 18px;
+  background:var(--surf2); border:1px solid var(--border);
+  border-radius:8px; font-size:13px; line-height:1.75; color:var(--text);
+  display:none;
+}
+.num-explanation.show { display:block; }
+.num-explanation-label {
+  font-size:10px; font-weight:700; color:var(--accent);
+  text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px;
+}
+
+.num-score {
+  background:var(--acc-bg); border:1px solid var(--acc-bdr);
+  border-radius:10px; padding:20px 24px; margin-top:24px;
+  text-align:center; display:none;
+}
+.num-score.show { display:block; }
+.num-score-label {
+  font-size:11px; font-weight:700; color:var(--accent);
+  text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px;
+}
+.num-score-value {
+  font-size:32px; font-weight:800; color:var(--text); margin-bottom:6px;
+}
+.num-score-band {
+  font-size:14px; color:var(--muted); line-height:1.5;
+}
+
+/* ── Markdown inside coach & num-quiz containers ────── */
+.coach-step-body p, .coach-application p, .num-scenario p, .num-q-prompt p, .num-explanation p, .coach-qa-answers p { margin:0 0 10px; }
+.coach-step-body h2, .coach-application h2, .num-scenario h2, .num-explanation h2, .coach-qa-answers h2 { font-size:15px; font-weight:700; margin:14px 0 8px; color:var(--text); }
+.coach-step-body h3, .coach-application h3, .num-scenario h3, .num-explanation h3, .coach-qa-answers h3 { font-size:13.5px; font-weight:700; margin:12px 0 6px; color:var(--text); }
+.coach-step-body ul, .coach-application ul, .num-scenario ul, .num-explanation ul, .coach-qa-answers ul { margin:6px 0 12px 22px; padding:0; }
+.coach-step-body li, .coach-application li, .num-scenario li, .num-explanation li, .coach-qa-answers li { margin:3px 0; }
+.coach-step-body hr, .coach-application hr, .num-scenario hr { border:none; border-top:1px solid var(--border); margin:14px 0; }
+.coach-step-body blockquote, .num-explanation blockquote {
+  border-left:3px solid var(--teal); padding:6px 12px; margin:10px 0;
+  background:var(--teal-bg); color:var(--text); font-style:italic;
+}
+.coach-step-body table, .coach-application table, .num-scenario table, .num-explanation table {
+  border-collapse:collapse; margin:10px 0; font-size:12.5px; width:auto;
+}
+.coach-step-body th, .coach-application th, .num-scenario th, .num-explanation th {
+  background:var(--surf2); padding:6px 12px; text-align:left;
+  border:1px solid var(--border); font-weight:700;
+}
+.coach-step-body td, .coach-application td, .num-scenario td, .num-explanation td {
+  padding:6px 12px; border:1px solid var(--border);
+}
+
 /* ── Responsive ────────────────────────────────────── */
 @media(max-width:900px){
   #notes-panel { display:none; }
@@ -738,6 +999,38 @@ mark.hl-b:hover { background:#2196f388; }
         <button class="btn-back-lesson" onclick="showLesson()">← Back to Topics</button>
         <span class="footer-note" id="quiz-footer-note"></span>
       </div>
+    </div>
+  </div>
+
+  <!-- Coach view -->
+  <div id="coach-view">
+    <div style="display:flex;flex-direction:column;flex:1;overflow:hidden;">
+      <div class="l-topbar">
+        <div class="l-topbar-left">
+          <span class="phase-pill" id="coach-phase-pill" style="background:var(--teal-bg);color:var(--teal);">Coach</span>
+          <span class="topic-of" id="coach-label"></span>
+        </div>
+        <div class="l-topbar-right">
+          <button class="tbtn" onclick="showFromCoach()">← Back to Topics</button>
+        </div>
+      </div>
+      <div class="coach-col" id="coach-col"></div>
+    </div>
+  </div>
+
+  <!-- Numerical Quiz view -->
+  <div id="num-quiz-view">
+    <div style="display:flex;flex-direction:column;flex:1;overflow:hidden;">
+      <div class="l-topbar">
+        <div class="l-topbar-left">
+          <span class="phase-pill" id="num-phase-pill" style="background:var(--green-bg);color:var(--green);">Numerical Quiz</span>
+          <span class="topic-of" id="num-label"></span>
+        </div>
+        <div class="l-topbar-right">
+          <button class="tbtn" onclick="showFromNumQuiz()">← Back to Topics</button>
+        </div>
+      </div>
+      <div class="num-col" id="num-col"></div>
     </div>
   </div>
 
@@ -1504,12 +1797,504 @@ The question is not "should you have known Maggi would come back?" It is: what w
 };
 
 // ═══════════════════════════════════════════════════════
+// COACH CASE STUDIES (worked walkthroughs)
+// ═══════════════════════════════════════════════════════
+const COACH_DATA = {
+  1: {
+    id: 1,
+    title: 'Coach 1 — Valuation Mechanics, Worked End-to-End',
+    subtitle: 'Britannia Industries Ltd.',
+    topicIds: [1, 2, 3],
+    folder: 'coach-01-topics-1-3',
+    intro: `## What this coach case does
+
+You said the numerical questions feel intimidating because intrinsic value and margin of safety seem like theoretical concepts without a way to actually *compute* them. That reaction is common and correct: the concepts are always taught before the mechanics, so most students end up with the philosophy but not the calculator. This walkthrough fixes that.
+
+We will value **Britannia Industries** (India's largest branded biscuit and dairy company) from scratch, using its FY2023 financials. You will see every calculation, exactly where each number comes from, and why we chose each assumption. Each step has three boxes at the bottom:
+
+- **Key Idea** — what this number tells you (the meaning, not the mechanics)
+- **Apply Elsewhere** — the transferable pattern for other companies
+- **Watch Out** — how this step misleads if applied blindly
+
+At the end you'll have a fair-value range for Britannia and know how to build the same range for any other business.
+
+## The company (short version)
+
+Britannia sells biscuits (Good Day, Marie Gold, Bourbon, Tiger, 50-50, NutriChoice), dairy (cheese, butter, ghee), and cake under a brand India has trusted for over 100 years. Its economics are the classic FMCG pattern: low unit price, extremely high purchase frequency, thin per-unit margins offset by enormous volume, and negative working capital because retailers pay Britannia after Britannia has already sold the product.
+
+## Financials we will use (FY2022–23, simplified for teaching)
+
+| Metric | Value |
+|---|---|
+| Revenue | ₹16,300 crore |
+| Operating Profit (EBITDA) | ₹2,770 crore (17% margin) |
+| Depreciation & Amortisation (D&A) | ₹230 crore |
+| Interest expense | ₹280 crore |
+| Tax | ₹840 crore |
+| **PAT (Net Profit)** | **₹2,320 crore** |
+| Capital expenditure (Capex) | ₹380 crore |
+| Change in working capital | −₹120 crore (i.e. WC *reduced* by ₹120 cr, releasing cash) |
+| Shareholders' Equity | ₹3,600 crore |
+| 15-year Revenue CAGR | ~12% |
+| 15-year PAT CAGR | ~19% |
+| Market cap (mid-2023) | ~₹1,15,000 crore |
+| Price-to-Earnings (headline) | ~50× |
+
+These are the ingredients. The rest is cooking.`,
+    steps: [
+      {
+        heading: 'Step 1 — Read the income statement in the right order',
+        body: `Most beginners read an income statement top-to-bottom (Revenue → PAT). That's the wrong order for valuation, because it treats every line as equally important. The right order is:
+
+1. **Revenue** — the top line. Ask: is it real (cash sales) or accounting (recognised but not received)? For Britannia, ~99% is cash-basis retail — safe.
+
+2. **Operating profit (EBITDA)** — profit *before* interest, tax, depreciation. This tells you what the *operating business* produces before financing decisions and non-cash charges. Britannia's ₹2,770 cr on ₹16,300 cr revenue = **17% operating margin**.
+
+3. **PAT (Profit After Tax)** — the bottom line. Britannia PAT = ₹2,320 cr. This is what shareholders "own" but it's *not* what they can spend — because PAT contains non-cash charges (D&A) and doesn't subtract the cash the business must reinvest (capex, working capital).
+
+**Key calculation to internalise:**
+
+> Revenue × Operating margin = Operating profit ≈ ₹16,300 × 17% = ₹2,770 cr
+
+If you understand this one identity, you can build the income statement forwards. If revenue grows 10% and margins stay put, operating profit grows 10%. If margins compress 200 basis points (from 17% to 15%), operating profit falls even though revenue grew. This is *operating leverage* — and it's the single most common way earnings surprise you.`,
+        keyIdea: 'PAT is the shareholders\' claim on the business, but it is not the same as the cash the business generates. The next step converts one to the other.',
+        applyElsewhere: 'For any company, always compute operating margin (EBITDA / Revenue). This single ratio, tracked over 10 years, tells you more about competitive quality than any other single number.',
+        watchOut: 'PAT can be inflated by one-time items (asset sales, tax refunds) or depressed by one-time charges (restructuring, litigation). Always look at PAT *excluding* one-time items — this is called "adjusted" or "normalised" PAT.'
+      },
+      {
+        heading: 'Step 2 — PAT to Free Cash Flow: the four bridges',
+        body: `**Free Cash Flow (FCF)** is the cash a business generates *after* all reinvestment needed to keep operating. It is what the intrinsic value calculation actually uses — not PAT.
+
+The bridge from PAT to FCF has four adjustments:
+
+**Bridge 1: Add back D&A (non-cash).** Depreciation is a *bookkeeping* charge — the accountant is spreading the cost of past equipment purchases across their useful life. But no cash left the business this year. So we add it back.
+
+> PAT ₹2,320 cr + D&A ₹230 cr = ₹2,550 cr
+
+**Bridge 2: Subtract capital expenditure (real cash out).** The business actually did buy new equipment this year — ₹380 cr worth. That's real cash out the door.
+
+> ₹2,550 − ₹380 = ₹2,170 cr
+
+**Bridge 3: Adjust for working capital.** If Britannia's inventory rose ₹100 cr, that's ₹100 cr of cash tied up in unsold biscuits, not available to shareholders. Britannia's working capital *fell* by ₹120 cr — releasing cash. So we *add* ₹120 cr.
+
+> ₹2,170 + ₹120 = ₹2,290 cr
+
+**Bridge 4: Other (usually small).** Interest already deducted in PAT; taxes already deducted. Ignore this line unless it's material.
+
+**Result: Free Cash Flow ≈ ₹2,290 crore**
+
+Notice: FCF (₹2,290 cr) is close to PAT (₹2,320 cr) — because Britannia has low capex intensity (light factories, no heavy machinery) and negative working capital (retailers pay before Britannia pays suppliers). **FCF / PAT = 99%.** For a heavy-industry business (steel, cement), this ratio can be 30–40%. For a bank, PAT itself is a poor proxy for cash.`,
+        keyIdea: 'FCF is what actually accrues to shareholders. If PAT and FCF diverge sharply, the difference is either capex-heavy growth (temporary) or an accounting problem (permanent).',
+        applyElsewhere: 'For any business, compute FCF / PAT. Consistently >70% suggests a capital-light, quality business. Consistently <40% signals capital-hungry — you must reinvest a lot to grow. Neither is bad; both need different valuation approaches.',
+        watchOut: 'Capex has two flavours: *maintenance* (keeping existing plants running) and *growth* (adding new capacity). Only maintenance capex is required. If a business spends ₹500 cr but only ₹200 cr is maintenance, real "FCF" is understated by the ₹300 cr of discretionary growth spend. Companies rarely disclose this split — you have to estimate it.'
+      },
+      {
+        heading: 'Step 3 — Normalising earnings when reported ≠ real',
+        body: `You will rarely value a business at a "normal" moment. Usually it's either boom (temporarily inflated margins) or bust (temporarily compressed margins). Using the reported number in either case gives a wrong intrinsic value.
+
+**Two examples you already know:**
+
+- **Pidilite in FY2022** (from Case Study 1): margins compressed from a normal 21% to 16.4% due to a VAM spike. Reported PAT was ₹1,720 cr. *Normalised* PAT (using 21% margin) would have been ~₹2,200 cr — nearly 28% higher.
+
+- **Nestlé India in CY2015** (from Case Study 3): PAT fell 52% because Maggi was off shelves for 5 months. Reported PAT ₹563 cr was clearly *not* the earnings power. Normalised was ~₹1,200 cr.
+
+**The mechanic:**
+
+Take the current reported earnings. Ask: what *would* it be if margins were at their multi-year average? That's normalised. The formula is:
+
+> Normalised earnings = Current revenue × Normalised margin × (1 − tax rate)
+
+**For Britannia:** margins have been ~17% steadily, so no normalisation is needed — reported PAT ≈ normalised PAT. That's actually a *feature* of a stable FMCG: less normalisation work required.
+
+**When would we normalise Britannia?** If wheat prices (Britannia's main raw material) spiked — say margins compressed from 17% to 12% for one year. Reported PAT would fall from ₹2,320 to ~₹1,600 cr, but the *earnings power* would still be ~₹2,320 cr. Buying at ₹1,600 × 50 = ₹80,000 cr market cap would look expensive on reported earnings but very cheap on normalised earnings.
+
+**This is the single most important tool for finding margin of safety in high-quality businesses.** Reported earnings scare people out at exactly the wrong time. Normalised earnings show you what the business will earn once conditions revert.`,
+        keyIdea: 'Reported earnings are a snapshot. Normalised earnings are the running average. Intrinsic value is anchored to the average, not the snapshot.',
+        applyElsewhere: 'Any cyclical business (commodities, autos, banks, capital goods) must be valued on multi-year average earnings, not the current year. Use a 5–7 year average earnings figure, or a "mid-cycle" margin estimate.',
+        watchOut: 'Not all margin compression is temporary. If Airtel\'s margins compressed because Jio\'s free plans structurally re-priced the industry, "normalising" back to old margins would give you a wrong answer. You must be able to tell the difference between a cycle and a structural break — otherwise normalisation becomes wishful thinking.'
+      },
+      {
+        heading: 'Step 4 — Picking a discount rate',
+        body: `Intrinsic value is the present value of future cash flows. "Present value" requires a **discount rate** — the interest rate at which you're happy to convert a future rupee into today's rupees.
+
+**Why a discount rate at all?**
+
+A rupee today > a rupee ten years from now, for two reasons:
+1. **Time value** — you could invest it and earn interest.
+2. **Risk** — the future is uncertain; that rupee may never actually arrive.
+
+**The formula (for one future cash flow):**
+
+> Present Value = Future Cash Flow / (1 + r)^n
+
+where **r** is the discount rate and **n** is the number of years.
+
+**Example:** ₹100 arriving 5 years from now, discounted at 10%:
+
+> PV = 100 / (1.10)^5 = 100 / 1.61 = **₹62**
+
+So ₹100 in 5 years is worth ₹62 today at a 10% discount rate.
+
+**How to pick the rate for India:**
+
+The right rate = *risk-free rate* + *equity risk premium*. In India (2023–24):
+- Risk-free rate: ~7% (10-year government bond yield)
+- Equity risk premium (extra you demand for taking business risk): ~4%
+- **Total ≈ 11%**
+
+Many practitioners use **10%** as a defensible round-number default for India, and I'll use 10% below. In the US, the equivalent number is ~8%.
+
+**Sensitivity to r:** If you compute Britannia's fair value at 10% and get ₹5,500/share, then at 9% you'd get ~₹6,200 and at 11% ~₹4,900. **A 1% change in discount rate moves fair value ~15%.** This is why value investors don't obsess over precision here — a range of assumptions gives a range of values.`,
+        keyIdea: 'The discount rate is the return you demand for taking the risk of holding this business. Higher discount rate = you demand more upside = you\'ll only buy at a lower price.',
+        applyElsewhere: 'For any long-duration asset (real estate, infrastructure, forestry), the discount rate is the single most important assumption. Small changes create large valuation swings — always compute a range across at least three discount rates.',
+        watchOut: 'A discount rate that\'s too low (say, 6%) makes almost anything look cheap. A rate that\'s too high (15%) makes almost nothing look cheap. Neither extreme is useful — stay in the 9–12% band for Indian equities unless you have a specific reason.'
+      },
+      {
+        heading: 'Step 5 — Picking a growth rate',
+        body: `The other big assumption. Growth compounds forward, so small errors compound too. Three ways to anchor a growth rate honestly:
+
+**Anchor 1: Historical CAGR.** Britannia's 15-year PAT CAGR is ~19%. That's the "empirical growth" — what the business has actually done. This is usually the *ceiling* of a reasonable forward growth assumption because businesses tend to slow down as they get larger.
+
+**Anchor 2: Reinvestment math (Gordon growth model).** A business can sustain growth = **ROE × retention ratio**, without external capital. For Britannia:
+- ROE ≈ 65% (₹2,320 cr PAT / ₹3,600 cr equity)
+- Retention ratio: Britannia pays ~50% of PAT as dividends, so retains 50%
+- Sustainable growth = 65% × 50% = **32.5%**
+
+That's the *mathematical* ceiling. The business *could* grow at up to 32.5% a year internally. It doesn't, because it can't find enough profitable places to invest that much money.
+
+**Anchor 3: Realistic near-term view.** Managements guide 10–14%. Analyst consensus: ~14%. Industry (Indian packaged foods) grows ~10–12% nominal.
+
+**Putting it together:** A defensible forward growth assumption for Britannia is **12–15% for the next 5–7 years**, then **8–10% for years 8–15**, then **5% terminal** (long-run India nominal GDP growth). This is the two-stage growth model — high growth phase, then normalisation.
+
+**Never use a single "forever" growth rate.** No business grows at 15% forever. If you plug 15% into a terminal formula, the answer will be infinity. Growth rates must decay.`,
+        keyIdea: 'Growth rate is not a hope — it\'s bounded by what the business has done, what it can reinvest at what returns, and what the market will absorb.',
+        applyElsewhere: 'For any company, do all three anchor calculations. If your assumed growth is higher than historical CAGR AND higher than ROE × retention, you\'re being aggressive. If it\'s lower than both, you\'re being conservative — potentially safely so.',
+        watchOut: 'Small companies in early growth phases can grow much faster than their ROE × retention math suggests (by raising equity or debt). But every rupee raised externally dilutes existing shareholders. Growth funded by dilution is not the same as growth funded internally.'
+      },
+      {
+        heading: 'Step 6 — Two-stage DCF: putting it all together',
+        body: `Now we compute Britannia's intrinsic value. This is the DCF (Discounted Cash Flow) model. We project FCF year by year, discount each year's FCF back to today, and sum.
+
+**Assumptions:**
+- Starting FCF (Year 0): ₹2,290 cr
+- Stage 1 (Years 1–7): 13% growth
+- Stage 2 (Years 8–15): 9% growth
+- Terminal growth (Year 15 onwards): 5%
+- Discount rate: 10%
+
+**Stage 1 projected FCF (₹ crore):**
+
+| Year | FCF | Discount factor 1/(1.1)^n | Present Value |
+|---|---|---|---|
+| 1 | 2,588 | 0.909 | 2,353 |
+| 2 | 2,924 | 0.826 | 2,415 |
+| 3 | 3,304 | 0.751 | 2,481 |
+| 4 | 3,733 | 0.683 | 2,550 |
+| 5 | 4,219 | 0.621 | 2,620 |
+| 6 | 4,767 | 0.564 | 2,689 |
+| 7 | 5,387 | 0.513 | 2,764 |
+
+**Sum of Stage 1 present values ≈ ₹17,870 cr**
+
+**Stage 2** — growth slows to 9% for years 8–15. Doing the same math and summing gives approximately **₹18,400 cr in present value.**
+
+**Terminal value** — the value of *all* cash flows from Year 15 onwards, growing at 5% forever:
+
+> Terminal Value = FCF(Year 16) / (r − g) = 10,900 / (0.10 − 0.05) = ₹2,18,000 cr
+
+Then discount that terminal value back 15 years to today:
+
+> Present value of terminal = 2,18,000 / (1.10)^15 = 2,18,000 / 4.18 ≈ **₹52,150 cr**
+
+**Total intrinsic value = ₹17,870 + ₹18,400 + ₹52,150 ≈ ₹88,400 crore**
+
+That's our central estimate. Compare to Britannia's market cap of ~₹1,15,000 crore (mid-2023).
+
+**Result: the stock trades at roughly 30% above our fair-value estimate.** No margin of safety at this price under these assumptions.
+
+**A range, not a point:** repeat with r=9%, g₁=15%: fair value ~₹1,25,000 cr. With r=11%, g₁=11%: fair value ~₹63,000 cr. **Our range is ₹63,000 – ₹1,25,000 crore.** The market is inside our range, at the higher end. That means: not obviously overvalued, but no clear margin of safety either.`,
+        keyIdea: 'Intrinsic value is a range, not a number. If the current market price is inside your range, you don\'t know if it\'s cheap or dear — you need more work or you need to wait.',
+        applyElsewhere: 'The two-stage DCF works for any stable, profitable business with predictable growth. It doesn\'t work for early-stage, cyclical, or turnaround businesses — for those you need different models (scenario-weighted, mid-cycle earnings power, or reverse DCF).',
+        watchOut: 'Terminal value usually dominates the total valuation (in Britannia\'s case ₹52,150 out of ₹88,400 = 59%). That means your answer is really a function of the *terminal* assumptions (growth, discount rate) rather than the near-term projections. Always sensitivity-check the terminal.'
+      },
+      {
+        heading: 'Step 7 — Margin of safety as a specific ratio',
+        body: `Margin of safety = the gap between price and intrinsic value, expressed as a percentage. The formula is straightforward:
+
+> Margin of Safety % = (Intrinsic Value − Market Price) / Intrinsic Value
+
+**For Britannia at ₹1,15,000 cr market cap and ₹88,400 cr fair value:**
+
+> MoS = (88,400 − 1,15,000) / 88,400 = **−30%**
+
+*Negative* margin of safety. The stock is 30% above our fair value estimate.
+
+**What would we need for a real margin of safety?** Value investors typically demand 20–30% MoS before buying. For Britannia that means:
+
+> Buy target = 88,400 × (1 − 0.30) = **~₹62,000 cr market cap**
+
+That's ~46% below the current price. So we would only buy Britannia if it fell to about ₹2,570 per share (from the current ~₹4,760).
+
+**Two important nuances:**
+
+**Nuance 1 — MoS scales with confidence.** For a business you understand deeply (long track record, stable industry, clean accounting), a 20% MoS is enough. For a business you understand less well (new sector, complex financials, cyclical earnings), demand 40–50% MoS. The size of the gap should reflect the *width* of your intrinsic-value range.
+
+**Nuance 2 — MoS is not the same as "cheap."** A stock down 50% from its 52-week high is *not* automatically at a margin of safety. What matters is the gap between current *price* and *your estimated intrinsic value*, not the gap between current price and past price. This is where most retail investors go wrong.
+
+**For Britannia's Q4 2015 dip (real example):** the stock fell 25% during a wheat-price shock. Reported earnings were down, so headline P/E stayed elevated. But *normalised* earnings power was unchanged. An investor using normalised earnings would have computed a ~15% MoS at that moment — modest but real. Someone using reported earnings would have thought there was no MoS at all.`,
+        keyIdea: 'Margin of safety is the ratio (IV − Price) / IV. If it\'s not at least 20%, you\'re not investing — you\'re speculating that your model is exactly right.',
+        applyElsewhere: 'Every position you take should have a documented margin of safety at entry. If you can\'t articulate the number, you don\'t have a thesis — you have a hope.',
+        watchOut: 'Never anchor MoS to the 52-week high, moving averages, or "historical P/E." All three can be arbitrarily wrong. MoS is always anchored to *your* intrinsic-value estimate, computed independently.'
+      },
+      {
+        heading: 'Step 8 — Time horizon math: return decomposition',
+        body: `Even if a business is fairly valued today (or slightly expensive), a long enough time horizon can still deliver good returns — because *business value compounds*.
+
+**The return-decomposition identity:**
+
+> Total return ≈ Earnings growth × Multiple change × (1 + dividend yield)^T
+
+Over long horizons, dividend and multiple effects matter less; earnings growth dominates.
+
+**Worked example — Britannia bought at today's price (₹4,760) and held for 10 years:**
+
+Assume PAT grows 12% CAGR for 10 years:
+
+> PAT in 10 years = ₹2,320 × (1.12)^10 = ₹2,320 × 3.10 = ₹7,200 cr
+
+Assume the P/E multiple compresses from 50× to 35× as growth slows (a realistic assumption — mature businesses trade at lower multiples):
+
+> Market cap in 10 years = ₹7,200 × 35 = ₹2,52,000 cr
+
+Today's market cap = ₹1,15,000 cr. So total return = 2,52,000 / 1,15,000 = **2.19×** over 10 years.
+
+**CAGR = (2.19)^(1/10) − 1 = 1.082 − 1 = 8.2% per year**
+
+Not great. Add ~1% dividend yield → ~9.2% CAGR. Below the 10% we\'d demand.
+
+**Compare: if we bought at ₹62,000 cr market cap (our 30% MoS entry):**
+
+> Total return = 2,52,000 / 62,000 = **4.06×** over 10 years
+> CAGR = (4.06)^(1/10) − 1 = **15.0% per year**
+
+Same business, same 10 years — just a different entry price. **The 46% cheaper entry converts a mediocre 9% return into an excellent 15% return.**
+
+**This is the entire point of value investing.** You can't control what the business does. You can control what price you pay. The gap between entry price and intrinsic value is the *only* variable you have full control over.
+
+**And time horizon amplifies both mistakes and correct calls.** Over 3 years, entry price is 40% of your return. Over 20 years, it\'s only 20%. So the longer your horizon, the less entry price matters — but for the first decade, it matters enormously.`,
+        keyIdea: 'Total return decomposes into (earnings growth) × (multiple change). Over shorter horizons the multiple dominates; over longer horizons growth dominates.',
+        applyElsewhere: 'Every prospective investment should get this decomposition. Write down: current earnings, expected earnings in 10 years, expected exit multiple. If the implied CAGR is under 10%, you probably shouldn\'t buy.',
+        watchOut: 'Assuming *multiple expansion* (from 50× today to 60× in future) is dangerous — you\'re betting other investors will pay more for the same earnings, which is speculation, not investment. Sober forecasts assume multiples *contract* over time as growth slows.'
+      }
+    ],
+    application: `## Putting it all together — the reusable checklist
+
+When you approach any company for valuation, run through these 8 steps in order:
+
+1. **Read the income statement.** Compute operating margin. Ask if PAT is normal or distorted.
+2. **PAT → FCF.** Do the 4 bridges (add D&A, subtract capex, adjust WC, other). Compute FCF/PAT.
+3. **Normalise.** If margins are cyclical or a one-off event happened, compute what earnings would look like at multi-year average conditions.
+4. **Pick a discount rate.** 10% is the Indian default. Justify any deviation.
+5. **Pick a growth rate.** Compare historical CAGR, ROE × retention ceiling, and consensus/industry. Use a two-stage model — high growth then decay.
+6. **Two-stage DCF.** Project 7 years of FCF, then 8 years of slower growth, then terminal at 5%. Sum discounted values.
+7. **Margin of safety.** (IV − Price) / IV. Demand at least 20%. More if the business is harder to understand.
+8. **Return decomposition.** Sanity-check by computing expected CAGR over 10 years, assuming multiple contraction. If < 10%, walk away.
+
+## What to do with this on Case Study 3 (Nestlé)
+
+Case Study 3 asks you to value Nestlé India in July 2015, after Maggi was banned. That's exactly the "normalisation" scenario (Step 3). Use *pre-crisis* margin and revenue trajectory as your normalised earnings, not the depressed FY2015 numbers. Then apply Steps 4–8 the same way we did for Britannia.
+
+You now have the mechanics. The next thing to do is the Numerical Quiz — 8 questions on Marico, testing that you can execute these calculations without a coach standing next to you.`
+  }
+};
+
+// ═══════════════════════════════════════════════════════
+// NUMERICAL QUIZ (auto-graded, client-side)
+// ═══════════════════════════════════════════════════════
+const NUM_QUIZ_DATA = {
+  1: {
+    id: 1,
+    title: 'Numerical Quiz 1 — Valuation Mechanics',
+    subtitle: 'Marico Ltd.',
+    topicIds: [1, 2, 3],
+    folder: 'num-01-topics-1-3',
+    scenario: `## Marico Ltd. — the scenario for this quiz
+
+Marico is an Indian FMCG company best known for **Parachute coconut oil** (~55% market share) and **Saffola edible oils** (~70% share in premium refined oils). It also owns Nihar, Livon, Set Wet, and Beardo. Like Britannia in the coach case, Marico is a capital-light, brand-driven, high-ROE business — but the numbers are different so you can't just copy answers from the coach case.
+
+**Financials to work with (FY2023–24, simplified for this quiz):**
+
+| Metric | Value |
+|---|---|
+| Revenue | ₹9,650 crore |
+| Operating Profit (EBITDA) | ₹1,930 crore (20% margin) |
+| Depreciation & Amortisation | ₹110 crore |
+| PAT | ₹1,470 crore |
+| Capital Expenditure | ₹85 crore |
+| Change in Working Capital | +₹90 crore (i.e. WC *rose* — cash tied up) |
+| Shareholders' Equity | ₹3,600 crore |
+| Dividend Payout Ratio | 80% (Marico pays out most of its profit) |
+| 15-year PAT CAGR | ~13% |
+| Current Market Cap | ~₹72,500 crore |
+| Current Price-to-Earnings | ~49× |
+
+**A note on tolerance:** each question accepts your answer within **±5%** of the canonical value. So if the answer is 100, anything between 95 and 105 will be marked correct. This gives you room for rounding — you don't need to compute to two decimals.
+
+**All amounts are in ₹ crore unless otherwise specified.** Percentages should be entered as numbers (e.g., 12.5, not 0.125). Multiples like P/E should be entered as numbers (e.g., 49, not 49×).`,
+    questions: [
+      {
+        prompt: '**Q1 — Free Cash Flow.** Using the four-bridge method (PAT + D&A − Capex − ΔWC), what is Marico\'s FCF for FY2023–24?',
+        answer: 1385,
+        unit: 'crore',
+        tolerance: 0.05,
+        explanation: `**Step-by-step:**
+
+- Start with PAT: **₹1,470 cr**
+- **Add D&A** (non-cash charge): +₹110 cr → ₹1,580 cr
+- **Subtract Capex** (real cash out): −₹85 cr → ₹1,495 cr
+- **Adjust Working Capital**: WC rose by ₹90 cr, so ₹90 cr of cash is tied up → subtract: ₹1,495 − ₹90 = **₹1,405 cr**
+
+The canonical answer is ~₹1,385–₹1,405 cr depending on rounding. Either is within tolerance.
+
+**FCF / PAT = 1,405 / 1,470 = 96%.** Very high — Marico converts almost all reported profit into cash. Same pattern as Britannia.`
+      },
+      {
+        prompt: '**Q2 — Return on Equity.** ROE = PAT / Shareholders\' Equity. What is Marico\'s ROE (as a percentage)?',
+        answer: 40.8,
+        unit: '%',
+        tolerance: 0.05,
+        explanation: `**Formula:** ROE = PAT / Equity = ₹1,470 cr / ₹3,600 cr = **0.408 = 40.8%**
+
+**What this means:** Marico earns 40.8 paise of profit for every ₹1 of shareholders' capital tied up in the business, every year. This is exceptionally high — global average is 12–15%, Indian FMCG average is 25–30%.
+
+**High ROE signals:** brand pricing power, capital-light operations, and negative working capital (retailers/distributors fund the business).`
+      },
+      {
+        prompt: '**Q3 — Sustainable growth ceiling (Gordon growth math).** A business can sustainably grow at ROE × retention ratio without external capital. Marico\'s payout is 80%, so retention is 20%. What is Marico\'s sustainable growth ceiling (as a percentage)?',
+        answer: 8.16,
+        unit: '%',
+        tolerance: 0.05,
+        explanation: `**Formula:** Sustainable growth = ROE × Retention ratio
+
+- ROE = 40.8% (from Q2)
+- Retention ratio = 1 − dividend payout = 1 − 0.80 = 0.20 (20%)
+- Sustainable growth = 40.8% × 20% = **8.16%**
+
+**What this means:** Even though Marico earns 40% on equity, it can only grow at ~8% a year internally because it *chooses* to pay out 80% of profits as dividends. If Marico retained more (say 60%), sustainable growth ceiling would rise to 40.8% × 60% = ~24%.
+
+**Historical PAT CAGR was 13%** — higher than the current sustainable growth. That gap was closed by (a) reducing dividend payout in earlier years, and (b) small acquisitions. Forward growth is likely constrained closer to 8–10% unless payout drops.`
+      },
+      {
+        prompt: '**Q4 — Present value of a single future cash flow.** ₹1,000 crore arriving 5 years from now, at a 10% discount rate. What is the present value (rounded to the nearest crore)?',
+        answer: 621,
+        unit: 'crore',
+        tolerance: 0.05,
+        explanation: `**Formula:** PV = FV / (1 + r)^n
+
+- FV = ₹1,000 cr
+- r = 10% = 0.10
+- n = 5 years
+- (1.10)^5 = 1.6105
+- PV = 1,000 / 1.6105 = **₹620.9 cr ≈ ₹621 cr**
+
+**Interpretation:** A rupee arriving in 5 years is worth about 62 paise today at a 10% discount rate. That "haircut" is the price of time and risk.
+
+**Extension:** At 8% discount rate, the same ₹1,000 cr would be worth ~₹681 cr today. At 12%, ~₹567 cr. **Discount rate has huge leverage on present values, especially for long-dated cash flows.**`
+      },
+      {
+        prompt: '**Q5 — Terminal value using Gordon growth formula.** Assume Marico\'s FCF grows at 5% forever after year 15, and the discount rate is 10%. Marico\'s FCF in year 16 (the first "terminal" year) is projected to be ₹4,000 crore. What is the terminal value (nominal, before discounting back)?',
+        answer: 80000,
+        unit: 'crore',
+        tolerance: 0.05,
+        explanation: `**Formula:** Terminal Value = FCF(t+1) / (r − g)
+
+- FCF in year 16 = ₹4,000 cr
+- r = 10% = 0.10
+- g (terminal growth) = 5% = 0.05
+- Terminal Value = 4,000 / (0.10 − 0.05) = 4,000 / 0.05 = **₹80,000 cr**
+
+**What this represents:** the present value (at end of year 15) of *all* cash flows from year 16 to infinity, growing at 5% forever.
+
+**Critical sensitivity:** If g = 6% instead of 5%, terminal value = 4,000 / 0.04 = ₹1,00,000 cr — a 25% increase from a 1% change in growth assumption. If g = 4%, TV = 4,000 / 0.06 = ₹66,667 cr — a 17% decrease. **Terminal value is where DCFs go wrong most often.** Always stress-test.`
+      },
+      {
+        prompt: '**Q6 — Margin of Safety percentage.** Suppose you\'ve computed Marico\'s intrinsic value at ₹58,000 crore. The current market cap is ₹72,500 crore. What is the margin of safety (as a percentage)? Enter a negative number if the market is above intrinsic value.',
+        answer: -25,
+        unit: '%',
+        tolerance: 0.05,
+        explanation: `**Formula:** MoS % = (Intrinsic Value − Market Price) / Intrinsic Value
+
+- IV = ₹58,000 cr
+- Market cap = ₹72,500 cr
+- MoS = (58,000 − 72,500) / 58,000 = −14,500 / 58,000 = **−25%**
+
+**Interpretation:** The market is trading 25% *above* your fair-value estimate. There is *no* margin of safety at the current price — in fact you\'d be paying a premium.
+
+**What would you need?** For a 20% margin of safety, market cap would need to fall to 58,000 × (1 − 0.20) = ₹46,400 cr. That\'s 36% below the current price — a significant drawdown would need to happen.
+
+**Value investor discipline:** if MoS is negative or under 15%, you wait. You don\'t "buy anyway because the business is high quality." The whole point of Topics 1–3 is that quality is a *given*; price is the variable.`
+      },
+      {
+        prompt: '**Q7 — CAGR from start and end values.** An investor bought Marico in 2013 at ₹200 per share. In 2023, the stock was at ₹520. What is the CAGR of the stock price over these 10 years (as a percentage)?',
+        answer: 10.0,
+        unit: '%',
+        tolerance: 0.05,
+        explanation: `**Formula:** CAGR = (End / Start)^(1/n) − 1
+
+- Start = ₹200
+- End = ₹520
+- n = 10 years
+- CAGR = (520 / 200)^(1/10) − 1 = (2.60)^(0.1) − 1
+
+To compute (2.60)^(0.1):
+- ln(2.60) = 0.955
+- 0.955 × 0.1 = 0.0955
+- e^0.0955 = 1.100
+
+So CAGR = 1.100 − 1 = **10.0%**
+
+**Interpretation:** ₹1 invested became ₹2.60 over 10 years, growing at 10% per year compounded. Not spectacular for an FMCG stock — typical Indian nominal GDP growth range.
+
+**Add dividends** (Marico pays ~2% yield): total return CAGR ≈ 12%. Still modest for the risk taken.`
+      },
+      {
+        prompt: '**Q8 — Return decomposition over a holding period.** An investor buys Marico today at 49× PAT. They expect PAT to grow 12% CAGR for 10 years, and the exit P/E to be 30× (multiple contraction as growth matures). What is the expected total return multiple over 10 years? (Enter as a multiple — e.g., if answer is 2×, enter 2.)',
+        answer: 1.9,
+        unit: '×',
+        tolerance: 0.05,
+        explanation: `**Formula:** Total return = Earnings growth × Multiple change
+
+**Step 1 — Earnings growth over 10 years:**
+- (1.12)^10 = 3.106
+- So PAT is 3.106× its current level
+
+**Step 2 — Multiple change:**
+- Exit multiple / Entry multiple = 30 / 49 = 0.612
+
+**Step 3 — Total return multiple:**
+- 3.106 × 0.612 = **1.90×**
+
+**Interpretation:** ₹1 invested becomes ₹1.90 over 10 years. That's a CAGR of (1.90)^(0.1) − 1 = **6.6%** — well below the 10% you should demand.
+
+**The lesson:** paying 49× is expensive. Even if earnings grow at 12% for a decade (excellent execution), *multiple contraction alone* eats most of the return. You need either:
+- (a) Lower entry multiple, or
+- (b) Faster earnings growth, or
+- (c) Higher exit multiple (dangerous assumption)
+
+**This is why entry price matters so much.** Same business, same 10-year holding period, but different entry P/E gives dramatically different outcomes.`
+      }
+    ]
+  }
+};
+
+// ═══════════════════════════════════════════════════════
 // STATE
 // ═══════════════════════════════════════════════════════
 let ST = {
   completed: [], availableThrough: 2, currentTopic: null,
   highlights: {}, topicNotes: {}, qa: {}, quizzes: {},
   quizResponses: {}, caseResponses: {},
+  coachVisits: {}, numQuizResponses: {},
 };
 let activeTopic = null;
 let qaOpen = false;
@@ -1518,6 +2303,8 @@ let notesOpen = true;
 let activeQuizKey = null;
 let activeQuizId  = null;
 let activeCaseId  = null;
+let activeCoachId = null;
+let activeNumQuizId = null;
 let currentSelection = null;
 const API = window.location.port === '8080' ? '' : 'http://localhost:8080';
 
@@ -1651,6 +2438,40 @@ function renderSidebar() {
             <div class="quiz-sb-info">
               <span class="quiz-sb-name">${quiz.title}</span>
               <span class="quiz-sb-status ${status}">${labels[status]}</span>
+            </div>
+          </div>`;
+        });
+        // Coach cases (multiple allowed per topic group)
+        const coaches = Object.values(COACH_DATA).filter(c => c.topicIds[c.topicIds.length - 1] === id);
+        coaches.forEach(coach => {
+          if (!coach.topicIds.every(tid => tid <= ST.availableThrough)) return;
+          const cv = (ST.coachVisits || {})[String(coach.id)] || {};
+          const cstatus = cv.lastVisited ? 'visited' : 'not_started';
+          const isActiveCoach = activeCoachId === coach.id;
+          const coachIcons  = { not_started:'📖', visited:'🎓' };
+          const coachLabels = { not_started:'Not started', visited:'Reviewed' };
+          html += `<div class="t-item coach-sb-item${isActiveCoach ? ' active' : ''}" onclick="showCoach(${coach.id})">
+            <div class="coach-icon">${coachIcons[cstatus]}</div>
+            <div class="coach-sb-info">
+              <span class="coach-sb-name">${coach.title}</span>
+              <span class="coach-sb-status ${cstatus}">${coachLabels[cstatus]}</span>
+            </div>
+          </div>`;
+        });
+        // Numerical quizzes (multiple allowed per topic group)
+        const nqs = Object.values(NUM_QUIZ_DATA).filter(n => n.topicIds[n.topicIds.length - 1] === id);
+        nqs.forEach(nq => {
+          if (!nq.topicIds.every(tid => tid <= ST.availableThrough)) return;
+          const nr = (ST.numQuizResponses || {})[String(nq.id)] || {};
+          const nstatus = nr.completedAt ? 'completed' : (nr.attempts && Object.keys(nr.attempts).length ? 'in_progress' : 'not_started');
+          const isActiveNq = activeNumQuizId === nq.id;
+          const nqIcons  = { not_started:'🧮', in_progress:'⚙️', completed:'⭐' };
+          const nqLabels = { not_started:'Not started', in_progress:'In progress', completed:`Completed · ${nr.score || 0}/${(nq.questions || []).length}` };
+          html += `<div class="t-item num-sb-item${isActiveNq ? ' active' : ''}" onclick="showNumQuiz(${nq.id})">
+            <div class="num-icon">${nqIcons[nstatus]}</div>
+            <div class="num-sb-info">
+              <span class="num-sb-name">${nq.title}</span>
+              <span class="num-sb-status ${nstatus}">${nqLabels[nstatus]}</span>
             </div>
           </div>`;
         });
@@ -2174,10 +2995,16 @@ function showQuiz(quizId) {
 
   activeQuizId = quizId;
   activeTopic  = null;
+  activeCaseId = null;
+  activeCoachId = null;
+  activeNumQuizId = null;
 
   document.getElementById('welcome').classList.remove('off');
   document.getElementById('welcome').classList.add('off');
   document.getElementById('lesson-view').classList.remove('on');
+  document.getElementById('case-view').classList.remove('on');
+  document.getElementById('coach-view').classList.remove('on');
+  document.getElementById('num-quiz-view').classList.remove('on');
   document.getElementById('quiz-view').classList.add('on');
 
   document.getElementById('quiz-phase-pill').textContent = `Topics ${quiz.topicIds.join(', ')}`;
@@ -2371,7 +3198,13 @@ async function loadEvaluation(quizId) {
 
 function showLesson() {
   activeQuizId = null;
+  activeCaseId = null;
+  activeCoachId = null;
+  activeNumQuizId = null;
   document.getElementById('quiz-view').classList.remove('on');
+  document.getElementById('case-view').classList.remove('on');
+  document.getElementById('coach-view').classList.remove('on');
+  document.getElementById('num-quiz-view').classList.remove('on');
   if (activeTopic) {
     document.getElementById('lesson-view').classList.add('on');
   } else {
@@ -2391,9 +3224,13 @@ function showCaseStudy(caseId) {
   activeTopic  = null;
   activeQuizId = null;
 
+  activeCoachId = null;
+  activeNumQuizId = null;
   document.getElementById('welcome').classList.add('off');
   document.getElementById('lesson-view').classList.remove('on');
   document.getElementById('quiz-view').classList.remove('on');
+  document.getElementById('coach-view').classList.remove('on');
+  document.getElementById('num-quiz-view').classList.remove('on');
   document.getElementById('case-view').classList.add('on');
 
   document.getElementById('cs-phase-pill').textContent = `Topics ${cs.topicIds.join(', ')}`;
@@ -2592,6 +3429,347 @@ async function loadCaseEvaluation(caseId) {
 function showFromCase() {
   activeCaseId = null;
   document.getElementById('case-view').classList.remove('on');
+  if (activeTopic) {
+    document.getElementById('lesson-view').classList.add('on');
+  } else {
+    document.getElementById('welcome').classList.remove('off');
+  }
+  renderSidebar();
+}
+
+// ═══════════════════════════════════════════════════════
+// COACH VIEW (worked walkthrough + Q&A)
+// ═══════════════════════════════════════════════════════
+function showCoach(coachId) {
+  const coach = COACH_DATA[coachId];
+  if (!coach) return;
+
+  activeCoachId = coachId;
+  activeTopic = null;
+  activeQuizId = null;
+  activeCaseId = null;
+  activeNumQuizId = null;
+
+  document.getElementById('welcome').classList.add('off');
+  document.getElementById('lesson-view').classList.remove('on');
+  document.getElementById('quiz-view').classList.remove('on');
+  document.getElementById('case-view').classList.remove('on');
+  document.getElementById('num-quiz-view').classList.remove('on');
+  document.getElementById('coach-view').classList.add('on');
+
+  document.getElementById('coach-phase-pill').textContent = `Topics ${coach.topicIds.join(', ')}`;
+  document.getElementById('coach-label').textContent = coach.title;
+
+  // Mark as visited
+  ST.coachVisits = ST.coachVisits || {};
+  if (!ST.coachVisits[String(coachId)]) {
+    ST.coachVisits[String(coachId)] = { lastVisited: new Date().toISOString() };
+    pushState();
+  }
+
+  // Build the coach content
+  let html = '';
+
+  // Intro
+  html += `<div class="coach-intro">`;
+  html += `<div class="coach-intro-label">Introduction</div>`;
+  html += mdToHtml(coach.intro);
+  html += `</div>`;
+
+  // Steps
+  coach.steps.forEach((step, i) => {
+    html += `<div class="coach-step-card">`;
+    html += `<div class="coach-step-num">Step ${i + 1} of ${coach.steps.length}</div>`;
+    html += `<div class="coach-step-heading">${escHtml(step.heading.replace(/^Step \d+ — /, ''))}</div>`;
+    html += `<div class="coach-step-body">${mdToHtml(step.body)}</div>`;
+    if (step.keyIdea) {
+      html += `<div class="coach-box coach-keyidea"><span class="coach-box-label">💡 Key Idea</span>${fmt(step.keyIdea)}</div>`;
+    }
+    if (step.applyElsewhere) {
+      html += `<div class="coach-box coach-apply"><span class="coach-box-label">🔁 Apply Elsewhere</span>${fmt(step.applyElsewhere)}</div>`;
+    }
+    if (step.watchOut) {
+      html += `<div class="coach-box coach-watchout"><span class="coach-box-label">⚠ Watch Out</span>${fmt(step.watchOut)}</div>`;
+    }
+    html += `</div>`;
+  });
+
+  // Application (final)
+  if (coach.application) {
+    html += `<div class="coach-application">`;
+    html += `<div class="coach-application-label">⭐ Applying This Framework</div>`;
+    html += mdToHtml(coach.application);
+    html += `</div>`;
+  }
+
+  // Q&A panel
+  html += `<div class="coach-qa">
+    <div class="coach-qa-label">Your Questions on This Coach</div>
+    <div class="coach-qa-hint">Add questions as you work through the walkthrough. Click Copy to send them to Claude Code chat, then type <strong>answer coach ${coachId}</strong> to get responses saved to <code>coach-cases/${coach.folder}/answers.md</code>. Click Load Answers below to view them here.</div>
+    <textarea class="coach-qa-input" id="coach-qa-input-${coachId}" placeholder="e.g., Why did you assume a 10% discount rate instead of 12%?"></textarea>
+    <div class="coach-qa-list" id="coach-qa-list-${coachId}"></div>
+    <div class="coach-qa-controls">
+      <button class="coach-qa-btn primary" onclick="addCoachQuestion(${coachId})">Add Question</button>
+      <button class="coach-qa-btn" id="coach-qa-copy-${coachId}" onclick="copyCoachQuestions(${coachId})" style="display:none;">📋 Copy for Claude Code</button>
+      <button class="coach-qa-btn load" onclick="loadCoachAnswers(${coachId})">↻ Load Answers</button>
+    </div>
+    <div class="coach-qa-answers" id="coach-qa-answers-${coachId}"></div>
+  </div>`;
+
+  document.getElementById('coach-col').innerHTML = html;
+  renderCoachQuestions(coachId);
+  renderSidebar();
+}
+
+function showFromCoach() {
+  activeCoachId = null;
+  document.getElementById('coach-view').classList.remove('on');
+  if (activeTopic) {
+    document.getElementById('lesson-view').classList.add('on');
+  } else {
+    document.getElementById('welcome').classList.remove('off');
+  }
+  renderSidebar();
+}
+
+// Coach Q&A helpers (localStorage-based; mirrors topic Q&A pattern)
+function getCoachPQ(coachId) {
+  return JSON.parse(localStorage.getItem('vic_pq_coach') || '{}')[coachId] || [];
+}
+function saveCoachPQ(coachId, arr) {
+  const all = JSON.parse(localStorage.getItem('vic_pq_coach') || '{}');
+  all[coachId] = arr;
+  localStorage.setItem('vic_pq_coach', JSON.stringify(all));
+}
+function renderCoachQuestions(coachId) {
+  const questions = getCoachPQ(coachId);
+  const list = document.getElementById(`coach-qa-list-${coachId}`);
+  const copyBtn = document.getElementById(`coach-qa-copy-${coachId}`);
+  if (!list) return;
+  if (!questions.length) {
+    list.innerHTML = '';
+    if (copyBtn) copyBtn.style.display = 'none';
+    return;
+  }
+  list.innerHTML = questions.map((q, i) =>
+    `<div class="coach-qa-item">
+      <div class="q-text">${escHtml(q)}</div>
+      <button class="q-del" onclick="deleteCoachQuestion(${coachId}, ${i})" title="Delete">×</button>
+    </div>`
+  ).join('');
+  if (copyBtn) copyBtn.style.display = '';
+}
+function addCoachQuestion(coachId) {
+  const input = document.getElementById(`coach-qa-input-${coachId}`);
+  const val = input.value.trim();
+  if (!val) return;
+  const arr = getCoachPQ(coachId);
+  arr.push(val);
+  saveCoachPQ(coachId, arr);
+  input.value = '';
+  renderCoachQuestions(coachId);
+}
+function deleteCoachQuestion(coachId, idx) {
+  const arr = getCoachPQ(coachId);
+  arr.splice(idx, 1);
+  saveCoachPQ(coachId, arr);
+  renderCoachQuestions(coachId);
+}
+function copyCoachQuestions(coachId) {
+  const coach = COACH_DATA[coachId];
+  const questions = getCoachPQ(coachId);
+  if (!questions.length) return;
+  const text = `I'm working through the "${coach.title}" coaching case. Here are my questions:\n\n` +
+    questions.map((q, i) => `${i + 1}. ${q}`).join('\n') +
+    `\n\nPlease answer each one clearly and concisely as my value investing tutor. After answering, save the Q&A to coach-cases/${coach.folder}/answers.md`;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById(`coach-qa-copy-${coachId}`);
+    const orig = btn.textContent;
+    btn.textContent = '✓ Copied! Paste in Claude Code chat';
+    setTimeout(() => { btn.textContent = orig; }, 2400);
+  });
+}
+async function loadCoachAnswers(coachId) {
+  const coach = COACH_DATA[coachId];
+  if (!coach) return;
+  try {
+    const r = await fetch(`${API}/coach-cases/${coach.folder}/answers.md`);
+    if (r.status === 404) { toast('No answers file yet — copy your questions to Claude Code first'); return; }
+    const text = await r.text();
+    // Strip a leading header block if present
+    const body = text.replace(/^# .*\n(> .*\n)?(\n)?(---\n)?/m, '').trim();
+    const box = document.getElementById(`coach-qa-answers-${coachId}`);
+    if (box) {
+      box.innerHTML = mdToHtml(body);
+      box.classList.add('show');
+    }
+  } catch (e) {
+    toast('Could not load answers file');
+    console.error(e);
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+// NUMERICAL QUIZ VIEW (client-side auto-grading)
+// ═══════════════════════════════════════════════════════
+function showNumQuiz(numQuizId) {
+  const nq = NUM_QUIZ_DATA[numQuizId];
+  if (!nq) return;
+
+  activeNumQuizId = numQuizId;
+  activeTopic = null;
+  activeQuizId = null;
+  activeCaseId = null;
+  activeCoachId = null;
+
+  document.getElementById('welcome').classList.add('off');
+  document.getElementById('lesson-view').classList.remove('on');
+  document.getElementById('quiz-view').classList.remove('on');
+  document.getElementById('case-view').classList.remove('on');
+  document.getElementById('coach-view').classList.remove('on');
+  document.getElementById('num-quiz-view').classList.add('on');
+
+  document.getElementById('num-phase-pill').textContent = `Topics ${nq.topicIds.join(', ')}`;
+  document.getElementById('num-label').textContent = nq.title;
+
+  const nr = (ST.numQuizResponses || {})[String(numQuizId)] || { attempts: {} };
+
+  let html = '';
+
+  // Scenario
+  html += `<div class="num-scenario">`;
+  html += `<div class="num-scenario-label">Scenario</div>`;
+  html += mdToHtml(nq.scenario);
+  html += `</div>`;
+
+  html += `<div class="num-hint">Each question has a single numerical answer. Type your value, click <strong>Check</strong>, and the correct answer + a full worked explanation will appear. Answers accepted within ±5% tolerance.</div>`;
+
+  // Questions
+  nq.questions.forEach((q, i) => {
+    const prev = nr.attempts[String(i)] || {};
+    const inputVal = prev.value !== undefined ? prev.value : '';
+    const wasChecked = prev.value !== undefined;
+    const wasCorrect = prev.correct === true;
+
+    html += `<div class="num-q-block" id="num-q-${numQuizId}-${i}">`;
+    html += `<div class="num-q-num">Question ${i + 1} of ${nq.questions.length}</div>`;
+    html += `<div class="num-q-prompt">${mdToHtml(q.prompt)}</div>`;
+    html += `<div class="num-q-input-row">
+      <input type="number" step="any" class="num-q-input" id="num-input-${numQuizId}-${i}" placeholder="Your answer" value="${inputVal}">
+      <span class="num-q-unit">${escHtml(q.unit || '')}</span>
+      <button class="num-q-check" onclick="checkNumQuestion(${numQuizId}, ${i})">Check</button>
+    </div>`;
+    html += `<div class="num-result ${wasChecked ? (wasCorrect ? 'correct show' : 'wrong show') : ''}" id="num-result-${numQuizId}-${i}">`;
+    if (wasChecked) {
+      html += wasCorrect
+        ? `✓ Correct. Canonical answer: <strong>${q.answer}${q.unit ? ' ' + q.unit : ''}</strong>`
+        : `✗ Not within tolerance. Canonical answer: <strong>${q.answer}${q.unit ? ' ' + q.unit : ''}</strong>. Your answer: ${inputVal}${q.unit ? ' ' + q.unit : ''}`;
+    }
+    html += `</div>`;
+    html += `<div class="num-explanation ${wasChecked ? 'show' : ''}" id="num-explanation-${numQuizId}-${i}">`;
+    html += `<div class="num-explanation-label">Worked Solution</div>`;
+    html += mdToHtml(q.explanation);
+    html += `</div>`;
+    html += `</div>`;
+  });
+
+  // Score panel
+  html += `<div class="num-score" id="num-score-${numQuizId}">
+    <div class="num-score-label">Your Score</div>
+    <div class="num-score-value" id="num-score-value-${numQuizId}">–</div>
+    <div class="num-score-band" id="num-score-band-${numQuizId}"></div>
+  </div>`;
+
+  document.getElementById('num-col').innerHTML = html;
+
+  // If already completed, show score panel
+  if (nr.completedAt) {
+    updateNumScore(numQuizId);
+  }
+}
+
+function checkNumQuestion(numQuizId, qIdx) {
+  const nq = NUM_QUIZ_DATA[numQuizId];
+  if (!nq) return;
+  const q = nq.questions[qIdx];
+  const input = document.getElementById(`num-input-${numQuizId}-${qIdx}`);
+  const resultEl = document.getElementById(`num-result-${numQuizId}-${qIdx}`);
+  const explanationEl = document.getElementById(`num-explanation-${numQuizId}-${qIdx}`);
+
+  const raw = input.value.trim();
+  if (raw === '') { toast('Enter a number first'); return; }
+  const userVal = parseFloat(raw);
+  if (isNaN(userVal)) { toast('Enter a valid number'); return; }
+
+  const tolerance = q.tolerance || 0.05;
+  const canonical = q.answer;
+  // Absolute tolerance for numbers near zero; relative otherwise
+  const allowedDelta = Math.max(Math.abs(canonical) * tolerance, 0.01);
+  const correct = Math.abs(userVal - canonical) <= allowedDelta;
+
+  // Update UI
+  resultEl.className = 'num-result show ' + (correct ? 'correct' : 'wrong');
+  resultEl.innerHTML = correct
+    ? `✓ Correct. Canonical answer: <strong>${canonical}${q.unit ? ' ' + q.unit : ''}</strong>`
+    : `✗ Not within tolerance. Canonical answer: <strong>${canonical}${q.unit ? ' ' + q.unit : ''}</strong>. Your answer: ${userVal}${q.unit ? ' ' + q.unit : ''}`;
+  explanationEl.classList.add('show');
+
+  // Persist
+  ST.numQuizResponses = ST.numQuizResponses || {};
+  ST.numQuizResponses[String(numQuizId)] = ST.numQuizResponses[String(numQuizId)] || { attempts: {} };
+  ST.numQuizResponses[String(numQuizId)].attempts[String(qIdx)] = { value: userVal, correct };
+
+  // Check if all attempted
+  const attempts = ST.numQuizResponses[String(numQuizId)].attempts;
+  const allAttempted = nq.questions.every((_, i) => attempts[String(i)] !== undefined);
+  if (allAttempted && !ST.numQuizResponses[String(numQuizId)].completedAt) {
+    finaliseNumQuiz(numQuizId);
+  } else {
+    pushState();
+    renderSidebar();
+  }
+}
+
+function finaliseNumQuiz(numQuizId) {
+  const nq = NUM_QUIZ_DATA[numQuizId];
+  const nr = ST.numQuizResponses[String(numQuizId)];
+  const attempts = nr.attempts;
+  const total = nq.questions.length;
+  const score = Object.values(attempts).filter(a => a.correct).length;
+
+  nr.score = score;
+  nr.total = total;
+  nr.completedAt = new Date().toISOString();
+  pushState();
+
+  updateNumScore(numQuizId);
+  renderSidebar();
+}
+
+function updateNumScore(numQuizId) {
+  const nq = NUM_QUIZ_DATA[numQuizId];
+  const nr = (ST.numQuizResponses || {})[String(numQuizId)] || {};
+  const score = nr.score || 0;
+  const total = nq.questions.length;
+  const pct = Math.round((score / total) * 100);
+
+  let band = '';
+  if (pct >= 88) band = 'Exceptional — you have the mechanics. Return to the case studies with confidence.';
+  else if (pct >= 75) band = 'Strong — a few gaps to close. Review the questions you missed, then proceed.';
+  else if (pct >= 50) band = 'Developing — you understand the concepts but the arithmetic still trips you up. Re-read the coach and try again.';
+  else band = 'Foundational — spend more time on Coach 1 before proceeding. The mechanics are not yet automatic.';
+
+  const scoreEl = document.getElementById(`num-score-${numQuizId}`);
+  const valEl = document.getElementById(`num-score-value-${numQuizId}`);
+  const bandEl = document.getElementById(`num-score-band-${numQuizId}`);
+  if (scoreEl) scoreEl.classList.add('show');
+  if (valEl) valEl.textContent = `${score} / ${total}   (${pct}%)`;
+  if (bandEl) bandEl.textContent = band;
+}
+
+function showFromNumQuiz() {
+  activeNumQuizId = null;
+  document.getElementById('num-quiz-view').classList.remove('on');
   if (activeTopic) {
     document.getElementById('lesson-view').classList.add('on');
   } else {

@@ -58,6 +58,16 @@ class TestStateExampleJSON(unittest.TestCase):
             data = json.load(f)
         self.assertIn('caseResponses', data)
 
+    def test_has_coach_visits_key(self):
+        with open(self._path()) as f:
+            data = json.load(f)
+        self.assertIn('coachVisits', data)
+
+    def test_has_num_quiz_responses_key(self):
+        with open(self._path()) as f:
+            data = json.load(f)
+        self.assertIn('numQuizResponses', data)
+
     def test_completed_is_empty_list(self):
         with open(self._path()) as f:
             data = json.load(f)
@@ -164,6 +174,18 @@ class TestQuizAndCaseFolders(unittest.TestCase):
         self.assertTrue(
             os.path.isdir(os.path.join(CASE_STUDIES_DIR, 'cs-01-topics-1-3')),
             'case-studies/cs-01-topics-1-3/ not found',
+        )
+
+    def test_coach_cases_dir_exists(self):
+        self.assertTrue(
+            os.path.isdir(os.path.join(ROOT, 'coach-cases')),
+            'coach-cases/ directory not found',
+        )
+
+    def test_coach_01_folder_exists(self):
+        self.assertTrue(
+            os.path.isdir(os.path.join(ROOT, 'coach-cases', 'coach-01-topics-1-3')),
+            'coach-cases/coach-01-topics-1-3/ not found',
         )
 
 

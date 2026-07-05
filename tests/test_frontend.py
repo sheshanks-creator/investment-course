@@ -36,6 +36,12 @@ class TestJSDataObjects(unittest.TestCase):
     def test_LESSONS_present(self):
         self.assertIn('LESSONS', self.src)
 
+    def test_COACH_DATA_present(self):
+        self.assertIn('COACH_DATA', self.src)
+
+    def test_NUM_QUIZ_DATA_present(self):
+        self.assertIn('NUM_QUIZ_DATA', self.src)
+
 
 class TestJSFunctions(unittest.TestCase):
     """Key functions must be declared in index.html."""
@@ -84,6 +90,18 @@ class TestJSFunctions(unittest.TestCase):
     def test_showFromCase(self):
         self.assertTrue(self._has('showFromCase'), 'showFromCase not found')
 
+    def test_showCoach(self):
+        self.assertTrue(self._has('showCoach'), 'showCoach not found')
+
+    def test_showNumQuiz(self):
+        self.assertTrue(self._has('showNumQuiz'), 'showNumQuiz not found')
+
+    def test_checkNumQuestion(self):
+        self.assertTrue(self._has('checkNumQuestion'), 'checkNumQuestion not found')
+
+    def test_addCoachQuestion(self):
+        self.assertTrue(self._has('addCoachQuestion'), 'addCoachQuestion not found')
+
     def test_fetchState(self):
         self.assertIn('fetchState', self.src)
 
@@ -122,6 +140,12 @@ class TestCSSVariables(unittest.TestCase):
 
     def test_ok_variable(self):
         self.assertIn('--ok:', self.src)
+
+    def test_teal_variable(self):
+        self.assertIn('--teal:', self.src)
+
+    def test_green_variable(self):
+        self.assertIn('--green:', self.src)
 
 
 class TestAPIEndpointStrings(unittest.TestCase):
@@ -171,6 +195,12 @@ class TestHTMLStructure(unittest.TestCase):
 
     def test_has_case_view(self):
         self.assertIn('case-view', self.src)
+
+    def test_has_coach_view(self):
+        self.assertIn('coach-view', self.src)
+
+    def test_has_num_quiz_view(self):
+        self.assertIn('num-quiz-view', self.src)
 
     def test_quiz_submit_button(self):
         self.assertIn('btn-submit-quiz', self.src)
