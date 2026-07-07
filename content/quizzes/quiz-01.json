@@ -1,0 +1,19 @@
+{
+  "id": 1,
+  "title": "Quiz 1 — Core Foundations",
+  "topicIds": [
+    1,
+    2,
+    3
+  ],
+  "folder": "quiz-01-topics-1-3",
+  "questions": [
+    "Define intrinsic value in your own words. What exactly is being measured, and why does this definition change how you should approach an investment decision?",
+    "A company reports ₹80 crore in net profit this year, and a friend says the company should be worth roughly ₹800 crore (10× earnings). What is wrong with this reasoning, and what would you actually need to know to estimate intrinsic value?",
+    "Explain margin of safety in your own words. Why does Buffett argue that precision in valuation is unnecessary — even counterproductive — if you have a genuinely wide margin of safety?",
+    "A stock is down 45% from its 52-week high. A colleague argues this automatically gives it a margin of safety. Do you agree? Walk through your reasoning carefully.",
+    "What structural advantage does a longer time horizon give an individual investor over most institutional fund managers? Why can't most professionals simply choose to adopt a 10-year view?",
+    "Amazon's stock fell 90% between 1999 and 2001 while the business was simultaneously building real long-term economic value. What does this episode reveal about the relationship between price and intrinsic value? What would a rational long-horizon investor have done differently?",
+    "You are analyzing a consumer goods company with a dominant brand, stable demand, minimal capital requirements, and 30 years of consistent market leadership. Its stock has just fallen 25% after a disappointing quarterly earnings report. Using all three concepts from this quiz — intrinsic value, margin of safety, and time horizon — explain how you would think about this situation."
+  ]
+}

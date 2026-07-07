@@ -1,14 +1,12 @@
-# Topic 10: Investing vs Trading vs Speculation
+# Topic 10: Investing vs trading vs speculation
 
-**Phase 1 — Core Foundations | Estimated reading time: ~8 minutes**
+**~10 min read**
 
 ---
 
 ## A Quick Orientation
 
 Before proceeding to the next phase of this curriculum — which goes deeper into financial statements and business analysis — it is worth establishing a clear vocabulary. Three activities often get conflated under the word "investing." They are fundamentally different in their logic, their required skills, and their failure modes. Confusing them is one of the most reliable paths to poor outcomes.
-
----
 
 ## Three Different Activities
 
@@ -18,8 +16,6 @@ Before proceeding to the next phase of this curriculum — which goes deeper int
 
 **Speculation** means buying an asset based on the expectation that someone else will pay more for it later — without a principled basis for estimating what it is actually worth or why another buyer will want it. Speculation is not necessarily irrational — sometimes momentum is predictable — but it has no analytical foundation in business value and is better described as a bet than an investment.
 
----
-
 ## Why the Distinction Matters
 
 Each activity has its own logic and appropriate analytical tools. Applying the wrong tools produces predictably bad results.
@@ -28,15 +24,11 @@ A trader trying to analyse a stock the way an investor does — estimating ten-y
 
 The confusion is most dangerous during market bubbles. In a rising market, speculation generates returns indistinguishable from — or better than — genuine investment returns. This validates the wrong behaviour. The speculator concludes they were "investing," when in fact the only thing that worked was rising prices. When prices stop rising, the distinction becomes catastrophic.
 
----
-
 ## A Real Company to Make This Concrete: The Dot-Com Era
 
 In 1999, a plausible-sounding investment thesis existed for almost every technology company: the internet was transforming commerce; these companies were early movers; first-mover advantages would compound. Millions of people who thought they were investing were speculating.
 
 The distinction: genuine investors were asking "what cash flows will this business produce, and are those cash flows worth more than the current price?" Most participants were not asking this question — because the honest answer for most dot-com companies was "none for many years, if ever." They were speculating that prices would keep rising, which worked until it didn't. Investors in businesses with durable economics — Buffett's portfolio, for instance — suffered much smaller losses and recovered faster because their returns were grounded in business performance, not price momentum.
-
----
 
 ## The Most Common Mistake
 
@@ -44,12 +36,4 @@ The most dangerous error is mistaking the source of returns. When an investment 
 
 Understanding the actual source of past returns is necessary to predict whether they will continue. If you got the right answer for the wrong reason, you are flying blind going forward.
 
----
-
-## Reflection Question
-
-Look at the last three financial decisions you made — purchases of stocks, funds, real estate, or anything else. Were they investments, trades, or speculations by the definitions in this lesson? Were you honest with yourself at the time about which category each belonged to? Does re-examining them through this lens change how you evaluate the decision?
-
----
-
-*Phase 1 complete. Next: Phase 2 — Reading Financial Statements*
+REFLECTION:Look at the last three financial decisions you made — purchases of stocks, funds, real estate, or anything else. Were they investments, trades, or speculations by the definitions in this lesson? Were you honest with yourself at the time about which category each belonged to? Does re-examining them through this lens change how you evaluate the decision?

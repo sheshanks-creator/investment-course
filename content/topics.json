@@ -1,0 +1,602 @@
+[
+  {
+    "id": 1,
+    "title": "What is intrinsic value (and what it is not)",
+    "folder": "01-what-is-intrinsic-value-and-what-it-is-not"
+  },
+  {
+    "id": 2,
+    "title": "Margin of safety (why it matters more than precision)",
+    "folder": "02-margin-of-safety-why-it-matters-more-than-precision"
+  },
+  {
+    "id": 3,
+    "title": "Time horizon as an edge",
+    "folder": "03-time-horizon-as-an-edge"
+  },
+  {
+    "id": 4,
+    "title": "Circle of competence",
+    "folder": "04-circle-of-competence"
+  },
+  {
+    "id": 5,
+    "title": "Second-order thinking",
+    "folder": "05-second-order-thinking"
+  },
+  {
+    "id": 6,
+    "title": "Inversion in investing",
+    "folder": "06-inversion-in-investing"
+  },
+  {
+    "id": 7,
+    "title": "Probabilistic thinking vs certainty",
+    "folder": "07-probabilistic-thinking-vs-certainty"
+  },
+  {
+    "id": 8,
+    "title": "Opportunity cost in capital allocation",
+    "folder": "08-opportunity-cost-in-capital-allocation"
+  },
+  {
+    "id": 9,
+    "title": "Why most investors underperform",
+    "folder": "09-why-most-investors-underperform"
+  },
+  {
+    "id": 10,
+    "title": "Investing vs trading vs speculation",
+    "folder": "10-investing-vs-trading-vs-speculation"
+  },
+  {
+    "id": 11,
+    "title": "How income statements lie",
+    "folder": "11-how-income-statements-lie"
+  },
+  {
+    "id": 12,
+    "title": "Revenue quality vs revenue growth",
+    "folder": "12-revenue-quality-vs-revenue-growth"
+  },
+  {
+    "id": 13,
+    "title": "Gross margin vs operating margin",
+    "folder": "13-gross-margin-vs-operating-margin"
+  },
+  {
+    "id": 14,
+    "title": "Operating leverage (friend and enemy)",
+    "folder": "14-operating-leverage-friend-and-enemy"
+  },
+  {
+    "id": 15,
+    "title": "Balance sheet strength vs cosmetic strength",
+    "folder": "15-balance-sheet-strength-vs-cosmetic-strength"
+  },
+  {
+    "id": 16,
+    "title": "Working capital",
+    "folder": "16-working-capital"
+  },
+  {
+    "id": 17,
+    "title": "Cash flow vs reported earnings",
+    "folder": "17-cash-flow-vs-reported-earnings"
+  },
+  {
+    "id": 18,
+    "title": "Free cash flow quality",
+    "folder": "18-free-cash-flow-quality"
+  },
+  {
+    "id": 19,
+    "title": "Maintenance capex vs growth capex",
+    "folder": "19-maintenance-capex-vs-growth-capex"
+  },
+  {
+    "id": 20,
+    "title": "Accounting red flags investors miss",
+    "folder": "20-accounting-red-flags-investors-miss"
+  },
+  {
+    "id": 21,
+    "title": "What makes a business 'high quality'",
+    "folder": "21-what-makes-a-business-high-quality"
+  },
+  {
+    "id": 22,
+    "title": "Sustainable vs temporary competitive advantage",
+    "folder": "22-sustainable-vs-temporary-competitive-advantage"
+  },
+  {
+    "id": 23,
+    "title": "Pricing power (real vs claimed)",
+    "folder": "23-pricing-power-real-vs-claimed"
+  },
+  {
+    "id": 24,
+    "title": "Brand as a moat",
+    "folder": "24-brand-as-a-moat"
+  },
+  {
+    "id": 25,
+    "title": "Switching costs",
+    "folder": "25-switching-costs"
+  },
+  {
+    "id": 26,
+    "title": "Network effects",
+    "folder": "26-network-effects"
+  },
+  {
+    "id": 27,
+    "title": "Cost leadership and scale advantages",
+    "folder": "27-cost-leadership-and-scale-advantages"
+  },
+  {
+    "id": 28,
+    "title": "Intangible assets (licenses, IP, regulation)",
+    "folder": "28-intangible-assets-licenses-ip-regulation"
+  },
+  {
+    "id": 29,
+    "title": "Moat erosion signals",
+    "folder": "29-moat-erosion-signals"
+  },
+  {
+    "id": 30,
+    "title": "Why most moats fade",
+    "folder": "30-why-most-moats-fade"
+  },
+  {
+    "id": 31,
+    "title": "Management incentives and behavior",
+    "folder": "31-management-incentives-and-behavior"
+  },
+  {
+    "id": 32,
+    "title": "Capital allocation skill as the CEO's main job",
+    "folder": "32-capital-allocation-skill-as-the-ceo-s-main-job"
+  },
+  {
+    "id": 33,
+    "title": "Reinvestment vs dividends vs buybacks",
+    "folder": "33-reinvestment-vs-dividends-vs-buybacks"
+  },
+  {
+    "id": 34,
+    "title": "When buybacks destroy value",
+    "folder": "34-when-buybacks-destroy-value"
+  },
+  {
+    "id": 35,
+    "title": "When dilution is actually good",
+    "folder": "35-when-dilution-is-actually-good"
+  },
+  {
+    "id": 36,
+    "title": "M&A: value creation vs empire building",
+    "folder": "36-m-a-value-creation-vs-empire-building"
+  },
+  {
+    "id": 37,
+    "title": "Reading shareholder letters effectively",
+    "folder": "37-reading-shareholder-letters-effectively"
+  },
+  {
+    "id": 38,
+    "title": "Founder-led vs professional management",
+    "folder": "38-founder-led-vs-professional-management"
+  },
+  {
+    "id": 39,
+    "title": "Skin in the game",
+    "folder": "39-skin-in-the-game"
+  },
+  {
+    "id": 40,
+    "title": "Red flags in management communication",
+    "folder": "40-red-flags-in-management-communication"
+  },
+  {
+    "id": 41,
+    "title": "ROE: when it lies",
+    "folder": "41-roe-when-it-lies"
+  },
+  {
+    "id": 42,
+    "title": "ROIC: the most important metric",
+    "folder": "42-roic-the-most-important-metric"
+  },
+  {
+    "id": 43,
+    "title": "ROCE vs ROIC",
+    "folder": "43-roce-vs-roic"
+  },
+  {
+    "id": 44,
+    "title": "Incremental returns on capital",
+    "folder": "44-incremental-returns-on-capital"
+  },
+  {
+    "id": 45,
+    "title": "Capital intensity",
+    "folder": "45-capital-intensity"
+  },
+  {
+    "id": 46,
+    "title": "Unit economics",
+    "folder": "46-unit-economics"
+  },
+  {
+    "id": 47,
+    "title": "Scale benefits and diseconomies",
+    "folder": "47-scale-benefits-and-diseconomies"
+  },
+  {
+    "id": 48,
+    "title": "Cash conversion cycles",
+    "folder": "48-cash-conversion-cycles"
+  },
+  {
+    "id": 49,
+    "title": "Reinvestment runway",
+    "folder": "49-reinvestment-runway"
+  },
+  {
+    "id": 50,
+    "title": "Why growth without returns is useless",
+    "folder": "50-why-growth-without-returns-is-useless"
+  },
+  {
+    "id": 51,
+    "title": "Price vs value",
+    "folder": "51-price-vs-value"
+  },
+  {
+    "id": 52,
+    "title": "Why valuation is a range, not a point",
+    "folder": "52-why-valuation-is-a-range-not-a-point"
+  },
+  {
+    "id": 53,
+    "title": "Discount rates (what really matters)",
+    "folder": "53-discount-rates-what-really-matters"
+  },
+  {
+    "id": 54,
+    "title": "DCF: what matters and what doesn't",
+    "folder": "54-dcf-what-matters-and-what-doesn-t"
+  },
+  {
+    "id": 55,
+    "title": "Reverse DCF thinking",
+    "folder": "55-reverse-dcf-thinking"
+  },
+  {
+    "id": 56,
+    "title": "Relative valuation traps",
+    "folder": "56-relative-valuation-traps"
+  },
+  {
+    "id": 57,
+    "title": "When to ignore valuation",
+    "folder": "57-when-to-ignore-valuation"
+  },
+  {
+    "id": 58,
+    "title": "Multiple expansion vs business performance",
+    "folder": "58-multiple-expansion-vs-business-performance"
+  },
+  {
+    "id": 59,
+    "title": "Terminal value assumptions",
+    "folder": "59-terminal-value-assumptions"
+  },
+  {
+    "id": 60,
+    "title": "Valuation in cyclical businesses",
+    "folder": "60-valuation-in-cyclical-businesses"
+  },
+  {
+    "id": 61,
+    "title": "Cyclical vs secular businesses",
+    "folder": "61-cyclical-vs-secular-businesses"
+  },
+  {
+    "id": 62,
+    "title": "Commodity businesses and mean reversion",
+    "folder": "62-commodity-businesses-and-mean-reversion"
+  },
+  {
+    "id": 63,
+    "title": "Financial businesses (banks, NBFCs, insurers)",
+    "folder": "63-financial-businesses-banks-nbfcs-insurers"
+  },
+  {
+    "id": 64,
+    "title": "Asset-light vs asset-heavy models",
+    "folder": "64-asset-light-vs-asset-heavy-models"
+  },
+  {
+    "id": 65,
+    "title": "Platform businesses",
+    "folder": "65-platform-businesses"
+  },
+  {
+    "id": 66,
+    "title": "Subscription models",
+    "folder": "66-subscription-models"
+  },
+  {
+    "id": 67,
+    "title": "Regulated industries",
+    "folder": "67-regulated-industries"
+  },
+  {
+    "id": 68,
+    "title": "Winner-take-most markets",
+    "folder": "68-winner-take-most-markets"
+  },
+  {
+    "id": 69,
+    "title": "Fragmented industries and consolidation",
+    "folder": "69-fragmented-industries-and-consolidation"
+  },
+  {
+    "id": 70,
+    "title": "Technology as enabler vs moat",
+    "folder": "70-technology-as-enabler-vs-moat"
+  },
+  {
+    "id": 71,
+    "title": "Behavioral biases in investing",
+    "folder": "71-behavioral-biases-in-investing"
+  },
+  {
+    "id": 72,
+    "title": "Confirmation bias",
+    "folder": "72-confirmation-bias"
+  },
+  {
+    "id": 73,
+    "title": "Loss aversion",
+    "folder": "73-loss-aversion"
+  },
+  {
+    "id": 74,
+    "title": "Overconfidence",
+    "folder": "74-overconfidence"
+  },
+  {
+    "id": 75,
+    "title": "Recency bias",
+    "folder": "75-recency-bias"
+  },
+  {
+    "id": 76,
+    "title": "Narrative fallacy",
+    "folder": "76-narrative-fallacy"
+  },
+  {
+    "id": 77,
+    "title": "FOMO and envy",
+    "folder": "77-fomo-and-envy"
+  },
+  {
+    "id": 78,
+    "title": "How great investors stay rational",
+    "folder": "78-how-great-investors-stay-rational"
+  },
+  {
+    "id": 79,
+    "title": "Boredom as an edge",
+    "folder": "79-boredom-as-an-edge"
+  },
+  {
+    "id": 80,
+    "title": "Emotional discipline during drawdowns",
+    "folder": "80-emotional-discipline-during-drawdowns"
+  },
+  {
+    "id": 81,
+    "title": "Concentration vs diversification",
+    "folder": "81-concentration-vs-diversification"
+  },
+  {
+    "id": 82,
+    "title": "Position sizing frameworks",
+    "folder": "82-position-sizing-frameworks"
+  },
+  {
+    "id": 83,
+    "title": "Portfolio turnover",
+    "folder": "83-portfolio-turnover"
+  },
+  {
+    "id": 84,
+    "title": "Cash as an option",
+    "folder": "84-cash-as-an-option"
+  },
+  {
+    "id": 85,
+    "title": "Rebalancing logic",
+    "folder": "85-rebalancing-logic"
+  },
+  {
+    "id": 86,
+    "title": "Correlation vs diversification",
+    "folder": "86-correlation-vs-diversification"
+  },
+  {
+    "id": 87,
+    "title": "Risk of ruin",
+    "folder": "87-risk-of-ruin"
+  },
+  {
+    "id": 88,
+    "title": "When to add vs when to cut",
+    "folder": "88-when-to-add-vs-when-to-cut"
+  },
+  {
+    "id": 89,
+    "title": "Portfolio construction mistakes",
+    "folder": "89-portfolio-construction-mistakes"
+  },
+  {
+    "id": 90,
+    "title": "Long-term compounding math",
+    "folder": "90-long-term-compounding-math"
+  },
+  {
+    "id": 91,
+    "title": "How great investors find ideas",
+    "folder": "91-how-great-investors-find-ideas"
+  },
+  {
+    "id": 92,
+    "title": "Screens vs qualitative discovery",
+    "folder": "92-screens-vs-qualitative-discovery"
+  },
+  {
+    "id": 93,
+    "title": "Under-researched companies",
+    "folder": "93-under-researched-companies"
+  },
+  {
+    "id": 94,
+    "title": "Spin-offs and special situations",
+    "folder": "94-spin-offs-and-special-situations"
+  },
+  {
+    "id": 95,
+    "title": "Small-cap inefficiencies",
+    "folder": "95-small-cap-inefficiencies"
+  },
+  {
+    "id": 96,
+    "title": "Temporary bad news vs permanent impairment",
+    "folder": "96-temporary-bad-news-vs-permanent-impairment"
+  },
+  {
+    "id": 97,
+    "title": "Mispriced risk",
+    "folder": "97-mispriced-risk"
+  },
+  {
+    "id": 98,
+    "title": "Inflection points",
+    "folder": "98-inflection-points"
+  },
+  {
+    "id": 99,
+    "title": "When to be contrarian",
+    "folder": "99-when-to-be-contrarian"
+  },
+  {
+    "id": 100,
+    "title": "Knowing when NOT to invest",
+    "folder": "100-knowing-when-not-to-invest"
+  },
+  {
+    "id": 101,
+    "title": "What makes a good investment thesis",
+    "folder": "101-what-makes-a-good-investment-thesis"
+  },
+  {
+    "id": 102,
+    "title": "Difference between story and thesis",
+    "folder": "102-difference-between-story-and-thesis"
+  },
+  {
+    "id": 103,
+    "title": "Key variables that matter",
+    "folder": "103-key-variables-that-matter"
+  },
+  {
+    "id": 104,
+    "title": "Disconfirming evidence",
+    "folder": "104-disconfirming-evidence"
+  },
+  {
+    "id": 105,
+    "title": "Variant perception",
+    "folder": "105-variant-perception"
+  },
+  {
+    "id": 106,
+    "title": "Base rates vs narratives",
+    "folder": "106-base-rates-vs-narratives"
+  },
+  {
+    "id": 107,
+    "title": "Thesis decay over time",
+    "folder": "107-thesis-decay-over-time"
+  },
+  {
+    "id": 108,
+    "title": "Sell discipline",
+    "folder": "108-sell-discipline"
+  },
+  {
+    "id": 109,
+    "title": "Post-mortems",
+    "folder": "109-post-mortems"
+  },
+  {
+    "id": 110,
+    "title": "Learning from mistakes",
+    "folder": "110-learning-from-mistakes"
+  },
+  {
+    "id": 111,
+    "title": "How Buffett thinks about businesses",
+    "folder": "111-how-buffett-thinks-about-businesses"
+  },
+  {
+    "id": 112,
+    "title": "How Munger thinks about problems",
+    "folder": "112-how-munger-thinks-about-problems"
+  },
+  {
+    "id": 113,
+    "title": "Long-term vs short-term advantage",
+    "folder": "113-long-term-vs-short-term-advantage"
+  },
+  {
+    "id": 114,
+    "title": "Incentives drive outcomes",
+    "folder": "114-incentives-drive-outcomes"
+  },
+  {
+    "id": 115,
+    "title": "Simplicity on the far side of complexity",
+    "folder": "115-simplicity-on-the-far-side-of-complexity"
+  },
+  {
+    "id": 116,
+    "title": "Building your personal investing philosophy",
+    "folder": "116-building-your-personal-investing-philosophy"
+  },
+  {
+    "id": 117,
+    "title": "Creating your decision checklist",
+    "folder": "117-creating-your-decision-checklist"
+  },
+  {
+    "id": 118,
+    "title": "Designing your yearly investing cycle",
+    "folder": "118-designing-your-yearly-investing-cycle"
+  },
+  {
+    "id": 119,
+    "title": "Writing your personal annual letter",
+    "folder": "119-writing-your-personal-annual-letter"
+  },
+  {
+    "id": 120,
+    "title": "What lifelong compounding really means",
+    "folder": "120-what-lifelong-compounding-really-means"
+  }
+]

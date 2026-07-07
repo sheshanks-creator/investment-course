@@ -1,6 +1,8 @@
 # Test Cases — Value Investing Course
 
-118 test cases across three suites. Run with `python3 tests/run_tests.py`.
+158 test cases across four suites. Run with `python3 tests/run_tests.py`.
+
+> Note: this catalogue documents the original three suites in full detail (Suites 1–3). Tests added later for the Coach/Numerical Quiz module and the content-as-data refactor are summarised in Suite 4 at the bottom.
 
 ---
 
@@ -283,3 +285,45 @@ python3 tests/run_tests.py --no-api
 ```
 
 The pre-commit hook runs the full suite automatically before every `git commit`. The machine-generated pass/fail report is written to `tests/test-report.md` and committed alongside your changes.
+
+---
+
+## Suite 4 — Content Schema Validation (`test_content_schema.py`)
+
+These tests validate the `content/` tree — the guardrail that keeps hand-written or AI-generated content structurally sound. No server required.
+
+### Manifest & topics.json
+
+| # | Name | Description | Expected Result |
+|---|------|-------------|-----------------|
+| 1 | Manifest has required keys | Parse `content/manifest.json` | Contains `lessonTopics`, `quizzes`, `cases`, `coaches`, `numQuizzes` |
+| 2 | All referenced files exist | Check every `file` entry in the manifest against disk | No missing files |
+| 3 | IDs unique per type | Collect ids within each content type | No duplicates |
+| 4 | lessonTopics are valid topic ids | Cross-check against `topics.json` | Every listed id exists |
+| 5 | Lesson files exist for lessonTopics | Check `topics/<folder>/lesson.md` for each listed topic | Every lesson file exists on disk |
+| 6 | topics.json has 120 topics | Count entries | Exactly 120 |
+| 7 | Every topic has required keys | Inspect each entry | `id`, `title`, `folder` present |
+| 8 | IDs sequential 1–120 | Sort ids | Exactly 1..120 |
+| 9 | Folders match id prefix | Check folder naming | Every folder starts with the zero-padded topic id |
+
+### Per-type schemas
+
+| # | Name | Description | Expected Result |
+|---|------|-------------|-----------------|
+| 10 | Quiz required keys | Load each quiz JSON | `id`, `title`, `topicIds`, `folder`, `questions` present |
+| 11 | Quiz questions non-empty | Inspect question strings | At least one question; each is a substantial string |
+| 12 | Quiz topicIds valid | Cross-check against topics.json | All ids exist |
+| 13 | Case required keys | Load each case JSON | `id`, `title`, `subtitle`, `topicIds`, `folder`, `rubric`, `scenario`, `questions` present |
+| 14 | Case rubric shape | Inspect rubric | `dimensions` (name/max/desc) and `grades` (min/label/note) well-formed |
+| 15 | Case scenario substantial | Measure scenario length | Longer than 1,000 characters |
+| 16 | Case topicIds valid | Cross-check against topics.json | All ids exist |
+| 17 | Coach required keys | Load each coach JSON | `id`, `title`, `subtitle`, `topicIds`, `folder`, `intro`, `steps`, `application` present |
+| 18 | Coach steps complete | Inspect every step | `heading`, `body`, `keyIdea`, `applyElsewhere`, `watchOut` all present and non-empty |
+| 19 | Coach topicIds valid | Cross-check against topics.json | All ids exist |
+| 20 | NumQuiz required keys | Load each numerical quiz JSON | `id`, `title`, `subtitle`, `topicIds`, `folder`, `scenario`, `questions` present |
+| 21 | NumQuiz answers are numbers | Inspect every `answer` | int or float, never a string |
+| 22 | NumQuiz tolerances sane | Inspect every `tolerance` | Greater than 0 and at most 0.5 |
+| 23 | NumQuiz explanations present | Inspect every `explanation` | Present and longer than 50 characters |
+| 24 | NumQuiz topicIds valid | Cross-check against topics.json | All ids exist |
+
+Suites 1–3 also gained tests along the way (Coach/NumQuiz functions and views, `--teal`/`--green` CSS variables, `coachVisits`/`numQuizResponses` state keys, `coach-cases/` folder checks) — see the suite files for the authoritative list.

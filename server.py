@@ -15,135 +15,19 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib.parse import urlparse
 import anthropic
 
-PORT = int(os.environ.get('COURSE_PORT', 8080))
+PORT = int(os.environ.get('COURSE_PORT') or os.environ.get('PORT') or 8080)
 BASE = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE, 'data')
 STATE_FILE = os.environ.get('COURSE_STATE', os.path.join(DATA_DIR, 'state.json'))
 os.makedirs(DATA_DIR, exist_ok=True)
 
-# ── All 120 topic titles (for lesson generation context) ────────────────
-TOPIC_TITLES = {
-    1:"What is intrinsic value (and what it is not)",
-    2:"Margin of safety (why it matters more than precision)",
-    3:"Time horizon as an edge",
-    4:"Circle of competence",
-    5:"Second-order thinking",
-    6:"Inversion in investing",
-    7:"Probabilistic thinking vs certainty",
-    8:"Opportunity cost in capital allocation",
-    9:"Why most investors underperform",
-    10:"Investing vs trading vs speculation",
-    11:"How income statements lie",
-    12:"Revenue quality vs revenue growth",
-    13:"Gross margin vs operating margin",
-    14:"Operating leverage (friend and enemy)",
-    15:"Balance sheet strength vs cosmetic strength",
-    16:"Working capital",
-    17:"Cash flow vs reported earnings",
-    18:"Free cash flow quality",
-    19:"Maintenance capex vs growth capex",
-    20:"Accounting red flags investors miss",
-    21:"What makes a business 'high quality'",
-    22:"Sustainable vs temporary competitive advantage",
-    23:"Pricing power (real vs claimed)",
-    24:"Brand as a moat",
-    25:"Switching costs",
-    26:"Network effects",
-    27:"Cost leadership and scale advantages",
-    28:"Intangible assets (licenses, IP, regulation)",
-    29:"Moat erosion signals",
-    30:"Why most moats fade",
-    31:"Management incentives and behavior",
-    32:"Capital allocation skill as the CEO's main job",
-    33:"Reinvestment vs dividends vs buybacks",
-    34:"When buybacks destroy value",
-    35:"When dilution is actually good",
-    36:"M&A: value creation vs empire building",
-    37:"Reading shareholder letters effectively",
-    38:"Founder-led vs professional management",
-    39:"Skin in the game",
-    40:"Red flags in management communication",
-    41:"ROE: when it lies",
-    42:"ROIC: the most important metric",
-    43:"ROCE vs ROIC",
-    44:"Incremental returns on capital",
-    45:"Capital intensity",
-    46:"Unit economics",
-    47:"Scale benefits and diseconomies",
-    48:"Cash conversion cycles",
-    49:"Reinvestment runway",
-    50:"Why growth without returns is useless",
-    51:"Price vs value",
-    52:"Why valuation is a range, not a point",
-    53:"Discount rates (what really matters)",
-    54:"DCF: what matters and what doesn't",
-    55:"Reverse DCF thinking",
-    56:"Relative valuation traps",
-    57:"When to ignore valuation",
-    58:"Multiple expansion vs business performance",
-    59:"Terminal value assumptions",
-    60:"Valuation in cyclical businesses",
-    61:"Cyclical vs secular businesses",
-    62:"Commodity businesses and mean reversion",
-    63:"Financial businesses (banks, NBFCs, insurers)",
-    64:"Asset-light vs asset-heavy models",
-    65:"Platform businesses",
-    66:"Subscription models",
-    67:"Regulated industries",
-    68:"Winner-take-most markets",
-    69:"Fragmented industries and consolidation",
-    70:"Technology as enabler vs moat",
-    71:"Behavioral biases in investing",
-    72:"Confirmation bias",
-    73:"Loss aversion",
-    74:"Overconfidence",
-    75:"Recency bias",
-    76:"Narrative fallacy",
-    77:"FOMO and envy",
-    78:"How great investors stay rational",
-    79:"Boredom as an edge",
-    80:"Emotional discipline during drawdowns",
-    81:"Concentration vs diversification",
-    82:"Position sizing frameworks",
-    83:"Portfolio turnover",
-    84:"Cash as an option",
-    85:"Rebalancing logic",
-    86:"Correlation vs diversification",
-    87:"Risk of ruin",
-    88:"When to add vs when to cut",
-    89:"Portfolio construction mistakes",
-    90:"Long-term compounding math",
-    91:"How great investors find ideas",
-    92:"Screens vs qualitative discovery",
-    93:"Under-researched companies",
-    94:"Spin-offs and special situations",
-    95:"Small-cap inefficiencies",
-    96:"Temporary bad news vs permanent impairment",
-    97:"Mispriced risk",
-    98:"Inflection points",
-    99:"When to be contrarian",
-    100:"Knowing when NOT to invest",
-    101:"What makes a good investment thesis",
-    102:"Difference between story and thesis",
-    103:"Key variables that matter",
-    104:"Disconfirming evidence",
-    105:"Variant perception",
-    106:"Base rates vs narratives",
-    107:"Thesis decay over time",
-    108:"Sell discipline",
-    109:"Post-mortems",
-    110:"Learning from mistakes",
-    111:"How Buffett thinks about businesses",
-    112:"How Munger thinks about problems",
-    113:"Long-term vs short-term advantage",
-    114:"Incentives drive outcomes",
-    115:"Simplicity on the far side of complexity",
-    116:"Building your personal investing philosophy",
-    117:"Creating your decision checklist",
-    118:"Designing your yearly investing cycle",
-    119:"Writing your personal annual letter",
-    120:"What lifelong compounding really means",
-}
+# ── Topic titles — single source of truth is content/topics.json ────────
+def _load_topic_titles():
+    path = os.path.join(BASE, 'content', 'topics.json')
+    with open(path, encoding='utf-8') as f:
+        return {t['id']: t['title'] for t in json.load(f)}
+
+TOPIC_TITLES = _load_topic_titles()
 
 def slugify(text):
     return re.sub(r'[^a-z0-9]+', '-', text.lower()).strip('-')
@@ -444,6 +328,23 @@ class Handler(BaseHTTPRequestHandler):
                 f.write(f"# Q&A Log — Topic {topic['id']}: {topic['title']}\n\n")
                 f.write("> Questions and answers from your study sessions.\n\n---\n\n")
                 f.write("*No questions yet.*\n")
+
+        # Register the lesson in the content manifest so the app loads it
+        self._register_lesson_in_manifest(topic['id'])
+
+    def _register_lesson_in_manifest(self, topic_id):
+        manifest_path = os.path.join(BASE, 'content', 'manifest.json')
+        try:
+            with open(manifest_path, encoding='utf-8') as f:
+                manifest = json.load(f)
+        except Exception:
+            return
+        topics = manifest.setdefault('lessonTopics', [])
+        if topic_id not in topics:
+            topics.append(topic_id)
+            topics.sort()
+            with open(manifest_path, 'w', encoding='utf-8') as f:
+                json.dump(manifest, f, ensure_ascii=False, indent=2)
 
     def _save_quiz(self, topics, content):
         ids = '-'.join(str(t['id']) for t in topics)

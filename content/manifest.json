@@ -1,0 +1,46 @@
+{
+  "lessonTopics": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "quizzes": [
+    {
+      "id": 1,
+      "file": "quizzes/quiz-01.json"
+    }
+  ],
+  "cases": [
+    {
+      "id": 1,
+      "file": "cases/cs-01.json"
+    },
+    {
+      "id": 2,
+      "file": "cases/cs-02.json"
+    },
+    {
+      "id": 3,
+      "file": "cases/cs-03.json"
+    }
+  ],
+  "coaches": [
+    {
+      "id": 1,
+      "file": "coaches/coach-01.json"
+    }
+  ],
+  "numQuizzes": [
+    {
+      "id": 1,
+      "file": "num-quizzes/num-01.json"
+    }
+  ]
+}

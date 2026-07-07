@@ -1,14 +1,12 @@
-# Topic 6: Inversion in Investing
+# Topic 6: Inversion in investing
 
-**Phase 1 — Core Foundations | Estimated reading time: ~8 minutes**
+**~10 min read**
 
 ---
 
 ## A Quick Orientation
 
 You've learned to think about what makes a business valuable and what could make a thesis wrong. This lesson introduces a specific and powerful tool for stress-testing any analysis: *inversion*. The mathematician Carl Jacobi's maxim — "invert, always invert" — was Munger's favourite mental model, and for good reason. Thinking backwards from failure is often the fastest route to clarity.
-
----
 
 ## What Inversion Means
 
@@ -18,8 +16,6 @@ This is not pessimism. It is a structured form of honesty. Most investment analy
 
 Inversion reverses the flow. You start by building the *bear case* first — the clearest, most honest argument for why this investment will fail. You steel-man it. Then you ask whether your actual view can withstand that bear case. This forces you to engage with disconfirming evidence before you are emotionally committed to the thesis.
 
----
-
 ## Three Inversions Every Investor Should Run
 
 **First: What would destroy this business?** Not hypothetically — specifically. Which competitive threat is most credible? Which regulatory change would hurt it most? If management made the worst possible capital allocation decision, what would it look like? Getting specific forces you to think about each risk's probability and magnitude.
@@ -28,15 +24,11 @@ Inversion reverses the flow. You start by building the *bear case* first — the
 
 **Third: What would make me wrong?** Identify the one or two pieces of information that, if they proved true, would change your entire thesis. If you cannot specify what would change your mind, your thesis is not falsifiable — and unfalsifiable theses are almost always driven by conviction rather than analysis.
 
----
-
 ## A Real Company to Make This Concrete: Buffett and Berkshire's Textile Mills
 
 In the 1960s, Buffett acquired control of Berkshire Hathaway, then primarily a textile manufacturer. He initially tried to make it work. But an honest inversion revealed a bleak picture: *what would have to be true for textiles to be a good long-run business?* The answers were devastating. Textiles are a commodity; customers buy on price. Labour costs cannot be reduced below certain limits. Foreign competition is structural, not cyclical. No amount of managerial excellence could overcome the underlying economics.
 
 This inversion eventually led Buffett to stop allocating new capital to the textile operations and redirect Berkshire's cash flows into insurance and other businesses. He said later that buying Berkshire was his worst investment decision — he was seduced by the apparent cheapness without inverting hard enough on whether the industry could ever generate real returns.
-
----
 
 ## The Most Common Mistake
 
@@ -44,12 +36,4 @@ The most common mistake is inverting without intellectual honesty. It is easy to
 
 True inversion requires giving the bear case its full force — not just listing risks to check a box, but genuinely asking whether each risk could be fatal. The test: if a smart, well-informed person arrived at a bear case for your investment, could you clearly and specifically refute each point? If not, the investment deserves more scrutiny before you commit capital.
 
----
-
-## Reflection Question
-
-Take an investment thesis you currently hold or find interesting. Write down the three strongest arguments *against* it. Don't rebut them yet — just let them sit. Does confronting those arguments change how you feel about the investment? Which of those arguments would you find hardest to answer? That is the risk most worth understanding.
-
----
-
-*Next: Topic 7 — Probabilistic Thinking vs Certainty*
+REFLECTION:Take an investment thesis you currently hold or find interesting. Write down the three strongest arguments *against* it. Don't rebut them yet — just let them sit. Does confronting those arguments change how you feel about the investment? Which of those arguments would you find hardest to answer? That is the risk most worth understanding.

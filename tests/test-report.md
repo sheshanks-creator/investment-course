@@ -1,9 +1,9 @@
 # Test Report — Value Investing Course
 
-**Run date:** 2026-07-05 08:28
+**Run date:** 2026-07-07 21:44
 **Duration:** 0.6s
 **Result:** ✅ ALL PASS
-**Summary:** 134 passed · 0 failed · 0 skipped · 134 total
+**Summary:** 158 passed · 0 failed · 0 skipped · 158 total
 
 ---
 
@@ -145,6 +145,60 @@
 | showQuiz | ✅ PASS |  |
 | submitCaseStudy | ✅ PASS |  |
 | submitQuiz | ✅ PASS |  |
+
+## ✅ Schema — case study files (4/4)
+
+| Test | Status | Detail |
+|------|--------|--------|
+| case required keys | ✅ PASS |  |
+| case rubric shape | ✅ PASS |  |
+| case scenario substantial | ✅ PASS |  |
+| case topic ids valid | ✅ PASS |  |
+
+## ✅ Schema — coach files (3/3)
+
+| Test | Status | Detail |
+|------|--------|--------|
+| coach required keys | ✅ PASS |  |
+| coach steps complete | ✅ PASS |  |
+| coach topic ids valid | ✅ PASS |  |
+
+## ✅ Schema — content manifest (5/5)
+
+| Test | Status | Detail |
+|------|--------|--------|
+| all referenced files exist | ✅ PASS |  |
+| ids unique per type | ✅ PASS |  |
+| lesson files exist for all lesson topics | ✅ PASS |  |
+| lesson topics are valid topic ids | ✅ PASS |  |
+| manifest has required keys | ✅ PASS |  |
+
+## ✅ Schema — numerical quiz files (5/5)
+
+| Test | Status | Detail |
+|------|--------|--------|
+| num quiz answers are numbers | ✅ PASS |  |
+| num quiz questions have explanations | ✅ PASS |  |
+| num quiz required keys | ✅ PASS |  |
+| num quiz tolerances sane | ✅ PASS |  |
+| num quiz topic ids valid | ✅ PASS |  |
+
+## ✅ Schema — quiz files (3/3)
+
+| Test | Status | Detail |
+|------|--------|--------|
+| quiz questions non empty | ✅ PASS |  |
+| quiz required keys | ✅ PASS |  |
+| quiz topic ids valid | ✅ PASS |  |
+
+## ✅ Schema — topics.json (4/4)
+
+| Test | Status | Detail |
+|------|--------|--------|
+| every topic has required keys | ✅ PASS |  |
+| folders match id prefix | ✅ PASS |  |
+| has 120 topics | ✅ PASS |  |
+| ids sequential 1 to 120 | ✅ PASS |  |
 
 ## ✅ API — CORS & OPTIONS preflight (3/3)
 

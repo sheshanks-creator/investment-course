@@ -1,0 +1,70 @@
+{
+  "id": 1,
+  "title": "Numerical Quiz 1 — Valuation Mechanics",
+  "subtitle": "Marico Ltd.",
+  "topicIds": [
+    1,
+    2,
+    3
+  ],
+  "folder": "num-01-topics-1-3",
+  "scenario": "## Marico Ltd. — the scenario for this quiz\n\nMarico is an Indian FMCG company best known for **Parachute coconut oil** (~55% market share) and **Saffola edible oils** (~70% share in premium refined oils). It also owns Nihar, Livon, Set Wet, and Beardo. Like Britannia in the coach case, Marico is a capital-light, brand-driven, high-ROE business — but the numbers are different so you can't just copy answers from the coach case.\n\n**Financials to work with (FY2023–24, simplified for this quiz):**\n\n| Metric | Value |\n|---|---|\n| Revenue | ₹9,650 crore |\n| Operating Profit (EBITDA) | ₹1,930 crore (20% margin) |\n| Depreciation & Amortisation | ₹110 crore |\n| PAT | ₹1,470 crore |\n| Capital Expenditure | ₹85 crore |\n| Change in Working Capital | +₹90 crore (i.e. WC *rose* — cash tied up) |\n| Shareholders' Equity | ₹3,600 crore |\n| Dividend Payout Ratio | 80% (Marico pays out most of its profit) |\n| 15-year PAT CAGR | ~13% |\n| Current Market Cap | ~₹72,500 crore |\n| Current Price-to-Earnings | ~49× |\n\n**A note on tolerance:** each question accepts your answer within **±5%** of the canonical value. So if the answer is 100, anything between 95 and 105 will be marked correct. This gives you room for rounding — you don't need to compute to two decimals.\n\n**All amounts are in ₹ crore unless otherwise specified.** Percentages should be entered as numbers (e.g., 12.5, not 0.125). Multiples like P/E should be entered as numbers (e.g., 49, not 49×).",
+  "questions": [
+    {
+      "prompt": "**Q1 — Free Cash Flow.** Using the four-bridge method (PAT + D&A − Capex − ΔWC), what is Marico's FCF for FY2023–24?",
+      "answer": 1385,
+      "unit": "crore",
+      "tolerance": 0.05,
+      "explanation": "**Step-by-step:**\n\n- Start with PAT: **₹1,470 cr**\n- **Add D&A** (non-cash charge): +₹110 cr → ₹1,580 cr\n- **Subtract Capex** (real cash out): −₹85 cr → ₹1,495 cr\n- **Adjust Working Capital**: WC rose by ₹90 cr, so ₹90 cr of cash is tied up → subtract: ₹1,495 − ₹90 = **₹1,405 cr**\n\nThe canonical answer is ~₹1,385–₹1,405 cr depending on rounding. Either is within tolerance.\n\n**FCF / PAT = 1,405 / 1,470 = 96%.** Very high — Marico converts almost all reported profit into cash. Same pattern as Britannia."
+    },
+    {
+      "prompt": "**Q2 — Return on Equity.** ROE = PAT / Shareholders' Equity. What is Marico's ROE (as a percentage)?",
+      "answer": 40.8,
+      "unit": "%",
+      "tolerance": 0.05,
+      "explanation": "**Formula:** ROE = PAT / Equity = ₹1,470 cr / ₹3,600 cr = **0.408 = 40.8%**\n\n**What this means:** Marico earns 40.8 paise of profit for every ₹1 of shareholders' capital tied up in the business, every year. This is exceptionally high — global average is 12–15%, Indian FMCG average is 25–30%.\n\n**High ROE signals:** brand pricing power, capital-light operations, and negative working capital (retailers/distributors fund the business)."
+    },
+    {
+      "prompt": "**Q3 — Sustainable growth ceiling (Gordon growth math).** A business can sustainably grow at ROE × retention ratio without external capital. Marico's payout is 80%, so retention is 20%. What is Marico's sustainable growth ceiling (as a percentage)?",
+      "answer": 8.16,
+      "unit": "%",
+      "tolerance": 0.05,
+      "explanation": "**Formula:** Sustainable growth = ROE × Retention ratio\n\n- ROE = 40.8% (from Q2)\n- Retention ratio = 1 − dividend payout = 1 − 0.80 = 0.20 (20%)\n- Sustainable growth = 40.8% × 20% = **8.16%**\n\n**What this means:** Even though Marico earns 40% on equity, it can only grow at ~8% a year internally because it *chooses* to pay out 80% of profits as dividends. If Marico retained more (say 60%), sustainable growth ceiling would rise to 40.8% × 60% = ~24%.\n\n**Historical PAT CAGR was 13%** — higher than the current sustainable growth. That gap was closed by (a) reducing dividend payout in earlier years, and (b) small acquisitions. Forward growth is likely constrained closer to 8–10% unless payout drops."
+    },
+    {
+      "prompt": "**Q4 — Present value of a single future cash flow.** ₹1,000 crore arriving 5 years from now, at a 10% discount rate. What is the present value (rounded to the nearest crore)?",
+      "answer": 621,
+      "unit": "crore",
+      "tolerance": 0.05,
+      "explanation": "**Formula:** PV = FV / (1 + r)^n\n\n- FV = ₹1,000 cr\n- r = 10% = 0.10\n- n = 5 years\n- (1.10)^5 = 1.6105\n- PV = 1,000 / 1.6105 = **₹620.9 cr ≈ ₹621 cr**\n\n**Interpretation:** A rupee arriving in 5 years is worth about 62 paise today at a 10% discount rate. That \"haircut\" is the price of time and risk.\n\n**Extension:** At 8% discount rate, the same ₹1,000 cr would be worth ~₹681 cr today. At 12%, ~₹567 cr. **Discount rate has huge leverage on present values, especially for long-dated cash flows.**"
+    },
+    {
+      "prompt": "**Q5 — Terminal value using Gordon growth formula.** Assume Marico's FCF grows at 5% forever after year 15, and the discount rate is 10%. Marico's FCF in year 16 (the first \"terminal\" year) is projected to be ₹4,000 crore. What is the terminal value (nominal, before discounting back)?",
+      "answer": 80000,
+      "unit": "crore",
+      "tolerance": 0.05,
+      "explanation": "**Formula:** Terminal Value = FCF(t+1) / (r − g)\n\n- FCF in year 16 = ₹4,000 cr\n- r = 10% = 0.10\n- g (terminal growth) = 5% = 0.05\n- Terminal Value = 4,000 / (0.10 − 0.05) = 4,000 / 0.05 = **₹80,000 cr**\n\n**What this represents:** the present value (at end of year 15) of *all* cash flows from year 16 to infinity, growing at 5% forever.\n\n**Critical sensitivity:** If g = 6% instead of 5%, terminal value = 4,000 / 0.04 = ₹1,00,000 cr — a 25% increase from a 1% change in growth assumption. If g = 4%, TV = 4,000 / 0.06 = ₹66,667 cr — a 17% decrease. **Terminal value is where DCFs go wrong most often.** Always stress-test."
+    },
+    {
+      "prompt": "**Q6 — Margin of Safety percentage.** Suppose you've computed Marico's intrinsic value at ₹58,000 crore. The current market cap is ₹72,500 crore. What is the margin of safety (as a percentage)? Enter a negative number if the market is above intrinsic value.",
+      "answer": -25,
+      "unit": "%",
+      "tolerance": 0.05,
+      "explanation": "**Formula:** MoS % = (Intrinsic Value − Market Price) / Intrinsic Value\n\n- IV = ₹58,000 cr\n- Market cap = ₹72,500 cr\n- MoS = (58,000 − 72,500) / 58,000 = −14,500 / 58,000 = **−25%**\n\n**Interpretation:** The market is trading 25% *above* your fair-value estimate. There is *no* margin of safety at the current price — in fact you\\'d be paying a premium.\n\n**What would you need?** For a 20% margin of safety, market cap would need to fall to 58,000 × (1 − 0.20) = ₹46,400 cr. That\\'s 36% below the current price — a significant drawdown would need to happen.\n\n**Value investor discipline:** if MoS is negative or under 15%, you wait. You don\\'t \"buy anyway because the business is high quality.\" The whole point of Topics 1–3 is that quality is a *given*; price is the variable."
+    },
+    {
+      "prompt": "**Q7 — CAGR from start and end values.** An investor bought Marico in 2013 at ₹200 per share. In 2023, the stock was at ₹520. What is the CAGR of the stock price over these 10 years (as a percentage)?",
+      "answer": 10.0,
+      "unit": "%",
+      "tolerance": 0.05,
+      "explanation": "**Formula:** CAGR = (End / Start)^(1/n) − 1\n\n- Start = ₹200\n- End = ₹520\n- n = 10 years\n- CAGR = (520 / 200)^(1/10) − 1 = (2.60)^(0.1) − 1\n\nTo compute (2.60)^(0.1):\n- ln(2.60) = 0.955\n- 0.955 × 0.1 = 0.0955\n- e^0.0955 = 1.100\n\nSo CAGR = 1.100 − 1 = **10.0%**\n\n**Interpretation:** ₹1 invested became ₹2.60 over 10 years, growing at 10% per year compounded. Not spectacular for an FMCG stock — typical Indian nominal GDP growth range.\n\n**Add dividends** (Marico pays ~2% yield): total return CAGR ≈ 12%. Still modest for the risk taken."
+    },
+    {
+      "prompt": "**Q8 — Return decomposition over a holding period.** An investor buys Marico today at 49× PAT. They expect PAT to grow 12% CAGR for 10 years, and the exit P/E to be 30× (multiple contraction as growth matures). What is the expected total return multiple over 10 years? (Enter as a multiple — e.g., if answer is 2×, enter 2.)",
+      "answer": 1.9,
+      "unit": "×",
+      "tolerance": 0.05,
+      "explanation": "**Formula:** Total return = Earnings growth × Multiple change\n\n**Step 1 — Earnings growth over 10 years:**\n- (1.12)^10 = 3.106\n- So PAT is 3.106× its current level\n\n**Step 2 — Multiple change:**\n- Exit multiple / Entry multiple = 30 / 49 = 0.612\n\n**Step 3 — Total return multiple:**\n- 3.106 × 0.612 = **1.90×**\n\n**Interpretation:** ₹1 invested becomes ₹1.90 over 10 years. That's a CAGR of (1.90)^(0.1) − 1 = **6.6%** — well below the 10% you should demand.\n\n**The lesson:** paying 49× is expensive. Even if earnings grow at 12% for a decade (excellent execution), *multiple contraction alone* eats most of the return. You need either:\n- (a) Lower entry multiple, or\n- (b) Faster earnings growth, or\n- (c) Higher exit multiple (dangerous assumption)\n\n**This is why entry price matters so much.** Same business, same 10-year holding period, but different entry P/E gives dramatically different outcomes."
+    }
+  ]
+}

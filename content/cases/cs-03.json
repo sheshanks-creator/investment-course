@@ -1,0 +1,70 @@
+{
+  "id": 3,
+  "title": "Case Study 3 — When the Brand Breaks",
+  "subtitle": "Nestlé India Ltd. — the Maggi crisis (June 2015)",
+  "topicIds": [
+    1,
+    2,
+    3
+  ],
+  "folder": "cs-03-topics-1-3",
+  "rubric": {
+    "dimensions": [
+      {
+        "name": "Framework Accuracy",
+        "max": 3,
+        "desc": "Concepts from Topics 1–3 applied correctly and precisely"
+      },
+      {
+        "name": "Case Specificity",
+        "max": 3,
+        "desc": "Uses the actual numbers and facts provided — not generic principles"
+      },
+      {
+        "name": "Analytical Depth",
+        "max": 3,
+        "desc": "Surfaces non-obvious economic insights beyond surface observations"
+      },
+      {
+        "name": "Intellectual Honesty",
+        "max": 2,
+        "desc": "States assumptions; acknowledges what would change the answer"
+      },
+      {
+        "name": "Synthesis",
+        "max": 2,
+        "desc": "Connects multiple frameworks or draws cross-concept conclusions"
+      }
+    ],
+    "maxPerQuestion": 13,
+    "grades": [
+      {
+        "min": 88,
+        "label": "Exceptional",
+        "note": "Practitioner-level thinking — ready for real capital allocation decisions"
+      },
+      {
+        "min": 75,
+        "label": "Strong",
+        "note": "Solid analyst-level reasoning with good depth"
+      },
+      {
+        "min": 50,
+        "label": "Developing",
+        "note": "Frameworks present but applied mechanically; depth lacking"
+      },
+      {
+        "min": 0,
+        "label": "Foundational",
+        "note": "Significant conceptual gaps; re-read Topics 1–3 before proceeding"
+      }
+    ]
+  },
+  "scenario": "## Background\n\nNestlé India Ltd. is the Indian subsidiary of Nestlé S.A., the Swiss food and beverage giant. Founded in India in 1912, by 2015 it operated some of the country's most loved consumer brands — Nescafé, KitKat, Munch, Milkmaid, Cerelac, and most importantly **Maggi instant noodles**, a product so culturally embedded that \"Maggi\" had become the generic Hindi word for instant noodles in the same way \"Xerox\" became the generic word for photocopying.\n\nMaggi alone accounted for roughly **30% of Nestlé India's revenue** and was the country's #1 noodle brand with ~70% market share. The company had compounded earnings at ~17% CAGR over the previous 15 years. ROE consistently exceeded 50%. The stock traded at 35–45× earnings throughout this period — an \"expensive\" multiple that long-term shareholders had been rewarded for paying.\n\nThen, on **June 5, 2015**, the Food Safety and Standards Authority of India (FSSAI) issued a nationwide ban on Maggi noodles after government laboratories alleged the product contained **excess lead** above permissible limits. Within a week, retailers cleared Maggi from shelves across India. Nestlé India initiated a voluntary recall of roughly **38,000 tonnes of inventory worth ₹320 crore**. State governments imposed criminal complaints against Nestlé executives. The country's most trusted food brand became, almost overnight, a symbol of food contamination.\n\n## A Note on Metrics Used Here\n\nRead these once before the financial snapshot:\n\n- **PAT (Profit After Tax)** — the bottom-line profit reported by the company in its income statement, after deducting all expenses, interest, and taxes. Also called \"net profit.\"\n- **ROE (Return on Equity)** — net profit divided by shareholders' equity. Measures how much profit the company generates per rupee of capital that shareholders have invested. A 50% ROE means the company earns ₹0.50 for every ₹1 of equity capital, every year.\n- **P/E (Price-to-Earnings ratio)** — market price per share divided by earnings per share. A P/E of 40 means investors are paying ₹40 for every ₹1 of current annual earnings. Equivalent to \"years of current earnings the price represents.\"\n- **Working capital** — current assets (cash, receivables, inventory) minus current liabilities (payables, short-term debt). The cash a business needs to keep tied up in day-to-day operations. *Negative* working capital means suppliers and customers effectively fund the business — a sign of unusually strong pricing power.\n- **Operating margin** — operating profit divided by revenue. The percentage of every rupee of sales that becomes operating profit before interest and tax. Higher and more stable margins generally indicate stronger competitive position.\n- **Dividend payout ratio** — dividends paid divided by net profit. A 60% payout ratio means the company returns 60 paise of every rupee of profit to shareholders as dividends.\n- **FMCG** — Fast-Moving Consumer Goods. Low-price, high-frequency purchase items (food, soap, beverages) where the same customer buys repeatedly throughout the year.\n\n## Financial Snapshot — Before vs During the Crisis\n\n| Metric | CY2014 (pre-crisis) | CY2015 (crisis year) | Notes |\n|---|---|---|---|\n| Revenue | ₹9,855 crore | ₹8,123 crore (−18%) | Maggi off shelves for 5 months |\n| PAT | ₹1,184 crore | ₹563 crore (−52%) | First quarterly loss in 17 years |\n| Operating margin | 21.4% | 12.8% | Recall costs + fixed-cost deleverage |\n| ROE | ~58% | ~30% | Temporarily depressed |\n| Working capital | Strongly negative | Strongly negative | Unchanged — suppliers still fund operations |\n| Net debt | ₹0 (net cash position) | ₹0 (net cash position) | Unchanged |\n| Dividend per share | ₹48.5 | ₹48.5 | **Maintained through the crisis** |\n| Stock price (peak/trough) | ~₹7,200 (May 2015) | ~₹5,200 (July 2015) | **−28% from peak** in 7 weeks |\n| Market cap at trough | ~₹50,000 crore | | |\n| Brand-rebuild marketing spend | | ₹450+ crore | One-time |\n\n## What Actually Happened to the Business\n\n**The product:** Subsequent re-testing by independent labs in five countries (USA, UK, Singapore, Canada, Australia) found Maggi well within lead limits. The Bombay High Court, in August 2015, set aside the FSSAI ban, calling it \"arbitrary.\" Maggi returned to shelves in **November 2015** after a court-supervised retesting process. By June 2016 — twelve months after the ban — Maggi had recovered to roughly **50% of its pre-crisis market share**. By FY2018 it had reclaimed ~60%, and by FY2020 was effectively back to dominance.\n\n**The economics:** Nestlé India's revenue recovered to pre-crisis levels by FY2017. By FY2018, revenue exceeded the FY2014 peak. By FY2023, revenue had nearly *doubled* the pre-crisis level. The brand survived. The pricing power held. The distribution network — over 4 million retail outlets — never went away.\n\n**The stock:** A long-term investor who *bought at the July 2015 trough of ~₹5,200* held a stock that crossed ₹10,000 by 2017, ₹15,000 by 2020, and ₹20,000+ by 2021 — roughly **4× in six years**, in addition to dividends. An investor who *sold during the crisis* locked in a 28% loss on a business that had not been impaired.\n\n## What Was Happening in the Market\n\nDuring the crisis months (June–October 2015), the dominant narrative in business media was that Nestlé India had lost the trust of Indian consumers permanently. Brokerage analysts cut price targets aggressively. Several large mutual funds reduced or eliminated their positions, citing \"headline risk\" and \"uncertainty around regulatory exposure.\" Foreign institutional investors were heavy net sellers throughout Q3 and Q4 2015.\n\nThe stock dropped not because the long-run business had changed, but because most professional investors *could not afford* to be seen owning a stock at the centre of a national food-safety scandal. Holding through the storm would have invited career risk — questions from clients and Investment Committees about why they continued to hold a \"problematic\" name. Selling, even at a 28% loss, was the *career-safe* option regardless of whether it was the *value-correct* option.\n\n## The Investor's Question\n\nIf you had been analysing Nestlé India in July 2015 with the stock down 28% from its peak, you would have faced a clean version of the question Topics 1–3 are built to answer. The brand was genuinely damaged in the short term. Revenue was genuinely down 50% on a run-rate basis. The first quarterly loss in 17 years was real. But none of these things told you what the business was *worth* over the next decade. What told you that was the durability of the underlying franchise: the distribution depth, the consumer habit, the absence of any credible substitute at scale, the parent company's commitment to relaunching cleanly.\n\nThe question is not \"should you have known Maggi would come back?\" It is: what would a rational application of intrinsic value, margin of safety, and time horizon have told you to do at the moment everyone else was selling — and what specifically would have allowed you to act on it?",
+  "questions": [
+    "Estimate Nestlé India's intrinsic value in mid-2015 at the moment the stock had fallen to ~₹5,200 (market cap ~₹50,000 crore). Walk through your reasoning concretely: what is the *normalised* earnings power of the business (i.e., what would earnings look like once Maggi has returned and is rebuilt to most of its prior share)? What discount rate and growth rate would you use, and why? You do not need a precise final number — you need a defensible *range*. Show the calculation, not just the conclusion.",
+    "A market commentator in July 2015 said: \"Nestlé is still trading at 35× earnings even after the crash. That is not a margin of safety — that is just a slightly less expensive expensive stock.\" Engage seriously with this argument. Under what specific conditions is this commentator right? Under what specific conditions does the post-crash valuation offer genuine margin of safety — and what would the *correct* P/E denominator be to use? (Hint: re-read Topic 2 on how reported earnings can hide the true earnings power of a business at a moment of disruption.)",
+    "A long-horizon individual investor and an institutional fund manager were both looking at Nestlé India in July 2015 with identical information. The individual bought; the fund manager sold. Both were rational *given their constraints*. Explain — using Topic 3 — what structural constraints made the fund manager's decision rational for the fund even though it was wrong for the underlying business. Then explain what the individual investor specifically *had* that the fund manager did not. Be precise about the source of the individual's edge — it is not \"patience\" or \"long-term thinking\" in the abstract.",
+    "Apply each of the three frameworks separately and explicitly to defend or reject the following statement: *\"Buying Nestlé India at ₹5,200 in July 2015 was a textbook value investment, but only if you could correctly distinguish a temporary impairment from a permanent one.\"* What specific evidence in the case would help you make that distinction in real time, without the benefit of hindsight? What evidence — if it had appeared — would have correctly told you it was a permanent impairment instead?"
+  ]
+}

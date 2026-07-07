@@ -76,6 +76,12 @@ SUITE_LABELS = {
     'TestDocsFolder':           'Content — docs/ folder',
     'TestQuizAndCaseFolders':   'Content — quiz & case folders',
     'TestProjectRootFiles':     'Content — project root files',
+    'TestManifest':             'Schema — content manifest',
+    'TestTopicsJSON':           'Schema — topics.json',
+    'TestQuizSchemas':          'Schema — quiz files',
+    'TestCaseSchemas':          'Schema — case study files',
+    'TestCoachSchemas':         'Schema — coach files',
+    'TestNumQuizSchemas':       'Schema — numerical quiz files',
 }
 
 STATUS_ICON = {'PASS': '✅', 'FAIL': '❌', 'ERROR': '💥', 'SKIP': '⏭️'}
@@ -151,9 +157,9 @@ def main():
     result = CollectingResult()
 
     # ── Content & Frontend tests (no server needed) ───────────────────────
-    from tests import test_content, test_frontend
+    from tests import test_content, test_frontend, test_content_schema
 
-    for module in (test_content, test_frontend):
+    for module in (test_content, test_frontend, test_content_schema):
         loader = unittest.TestLoader()
         suite  = loader.loadTestsFromModule(module)
         suite.run(result)
