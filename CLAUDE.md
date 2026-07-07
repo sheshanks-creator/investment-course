@@ -145,6 +145,8 @@ Topics 1–10 are authored. Topics 11–120 are AI-generated on demand when the 
 
 **Content cadence:** every 3-topic group gets a quiz + case study. Coach walkthroughs and numerical quizzes are added on demand — when the user hits a mechanics wall — not by default.
 
+**Authoring workflows:** `/author-batch <first-topic-id>` authors the next 3 lessons + quiz + case study; `/author-coach <X>-<Y>` authors a coach walkthrough + numerical quiz for a topic group. Both live in `.claude/commands/` and are bound by `docs/content-standards.md`. Always run the test suite after authoring — the schema suite validates every content file.
+
 ---
 
 ## Tests
