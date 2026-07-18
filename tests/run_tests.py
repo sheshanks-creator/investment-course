@@ -82,6 +82,11 @@ SUITE_LABELS = {
     'TestCaseSchemas':          'Schema — case study files',
     'TestCoachSchemas':         'Schema — coach files',
     'TestNumQuizSchemas':       'Schema — numerical quiz files',
+    'TestMicroSchemas':         'Schema — micro-content files',
+    'TestDrillTemplates':       'Digest — numeric drill templates',
+    'TestEscaping':             'Digest — MarkdownV2 escaping',
+    'TestSelector':             'Digest — weighted selector',
+    'TestDigestBuild':          'Digest — full digest builds',
 }
 
 STATUS_ICON = {'PASS': '✅', 'FAIL': '❌', 'ERROR': '💥', 'SKIP': '⏭️'}
@@ -157,9 +162,9 @@ def main():
     result = CollectingResult()
 
     # ── Content & Frontend tests (no server needed) ───────────────────────
-    from tests import test_content, test_frontend, test_content_schema
+    from tests import test_content, test_frontend, test_content_schema, test_digest
 
-    for module in (test_content, test_frontend, test_content_schema):
+    for module in (test_content, test_frontend, test_content_schema, test_digest):
         loader = unittest.TestLoader()
         suite  = loader.loadTestsFromModule(module)
         suite.run(result)

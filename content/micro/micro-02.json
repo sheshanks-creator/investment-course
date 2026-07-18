@@ -1,0 +1,59 @@
+{
+  "topicId": 2,
+  "items": [
+    {
+      "type": "card",
+      "concept": "margin-of-safety",
+      "text": "Margin of safety is a specific ratio, not a feeling: MoS = (Intrinsic Value − Price) / Intrinsic Value. If you estimate a business is worth ₹58,000cr and it trades at ₹43,500cr, MoS = 25%. The gap is your protection against being wrong — about growth, margins, or the future generally. No articulated number = no margin of safety, just optimism."
+    },
+    {
+      "type": "card",
+      "concept": "cheapness-vs-mos",
+      "text": "Down 45% from the 52-week high is NOT a margin of safety. The high may itself have been sentiment-driven madness — falling 45% from a delusional price can still leave a stock expensive. MoS is always measured against your independent estimate of intrinsic value, never against price history. A stock can fall 80% and be dear; another can sit at its all-time high and be cheap."
+    },
+    {
+      "type": "card",
+      "concept": "margin-of-safety",
+      "text": "Why a fat margin of safety makes precision unnecessary: if you estimate a range of ₹60–80 and the price is ₹30, it doesn't matter whether the true answer is ₹62 or ₹79 — even a 30% analytical error leaves you buying below value. Precision matters only when the gap is thin. That's why Graham hunted for the obviously cheap, not the precisely valued."
+    },
+    {
+      "type": "mcq",
+      "concept": "cheapness-vs-mos",
+      "text": "A colleague: 'This stock is down 45% from its high — that's automatic margin of safety.' Best response?",
+      "options": [
+        "Agree — big drops mean big safety",
+        "The high may have been mispriced; MoS is price vs intrinsic value, not vs history",
+        "Wait for a 60% drop to be safe",
+        "Check the 200-day moving average first"
+      ],
+      "correctIndex": 1,
+      "explanation": "Margin of safety is anchored to your estimate of intrinsic value. Price history — highs, lows, averages — is not evidence of value."
+    },
+    {
+      "type": "mcq",
+      "concept": "margin-of-safety",
+      "text": "You estimate intrinsic value at ₹800/share; the stock trades at ₹600. What is the margin of safety?",
+      "options": [
+        "33%, because 600 must rise 33% to reach 800",
+        "25%, the discount of price to value",
+        "20%",
+        "Cannot compute without the P/E"
+      ],
+      "correctIndex": 1,
+      "explanation": "MoS = (IV − P) / IV = (800−600)/800 = 25%. The upside-to-price (33%) is a different number — don't confuse the two denominators."
+    },
+    {
+      "type": "mcq",
+      "concept": "normalised-earnings",
+      "text": "A quality firm's margins compress from 21% to 16% on a one-off input-cost spike; the stock falls 35%. Its headline P/E barely drops. Where might the hidden margin of safety be?",
+      "options": [
+        "There is none — the P/E proves it's still expensive",
+        "In normalised earnings: at recovered margins the true P/E is far lower",
+        "In the dividend yield",
+        "In the falling share price alone"
+      ],
+      "correctIndex": 1,
+      "explanation": "Reported earnings are depressed, inflating the P/E. Recompute on normalised margins: if earnings recover ~30%, the real multiple is far cheaper than the headline."
+    }
+  ]
+}

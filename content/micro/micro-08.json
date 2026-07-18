@@ -1,0 +1,59 @@
+{
+  "topicId": 8,
+  "items": [
+    {
+      "type": "card",
+      "concept": "opportunity-cost",
+      "text": "Every investment is silently measured against the best alternative you could have made instead. Buying stock A at a likely 9% return isn't 'making 9%' — it's LOSING 4% a year if a comparable-risk alternative offered 13%. Munger runs everything against his best available idea: 'It's your alternatives that matter.' Cash, index funds, and your existing holdings are all live alternatives."
+    },
+    {
+      "type": "card",
+      "concept": "hurdle-rate",
+      "text": "A hurdle rate turns opportunity cost into a discipline: 'I don't part with cash for less than X% expected return.' For Indian equities a sensible personal hurdle is ~12–15% — above the ~7% risk-free bond, above the ~11–12% index expectation, or it isn't worth single-stock risk. The hurdle's power is what it makes you skip: mediocre ideas that would silently displace better future ones."
+    },
+    {
+      "type": "card",
+      "concept": "opportunity-cost",
+      "text": "The costliest opportunity-cost error is invisible: capital parked in a 'fine' 8% idea isn't available when the fat pitch arrives at panic prices. This is why Buffett holds cash that 'yields nothing' — it's an option on future bargains. Opportunity cost isn't only about comparing today's ideas; it's about the price of being fully committed when tomorrow's better idea shows up."
+    },
+    {
+      "type": "mcq",
+      "concept": "opportunity-cost",
+      "text": "Stock A offers ~9% expected return. An index fund at similar risk offers ~12%. Buying A means:",
+      "options": [
+        "Earning 9% — a positive outcome",
+        "Effectively losing ~3%/yr versus your real alternative",
+        "Diversifying, which beats returns",
+        "Nothing — comparisons are irrelevant"
+      ],
+      "correctIndex": 1,
+      "explanation": "Returns are judged against alternatives foregone. An idea must beat your best available option, not just beat zero."
+    },
+    {
+      "type": "mcq",
+      "concept": "hurdle-rate",
+      "text": "Main purpose of a personal hurdle rate (say 14%)?",
+      "options": [
+        "Bragging rights",
+        "It forces you to skip mediocre ideas so capital is free for exceptional ones",
+        "It guarantees 14% returns",
+        "Tax efficiency"
+      ],
+      "correctIndex": 1,
+      "explanation": "A hurdle is a rejection filter. Its value is in the ideas it screens OUT — protecting capital for asymmetric opportunities."
+    },
+    {
+      "type": "mcq",
+      "concept": "opportunity-cost",
+      "text": "Why does Buffett tolerate large cash balances 'earning nothing'?",
+      "options": [
+        "Fear of all equities",
+        "Cash is an option on future bargains — its value appears at panic prices",
+        "Regulatory requirements",
+        "To pay dividends"
+      ],
+      "correctIndex": 1,
+      "explanation": "Cash's return isn't its yield; it's the ability to act when others can't. The 2008-style fat pitch can only be hit with dry powder."
+    }
+  ]
+}

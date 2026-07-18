@@ -20,6 +20,10 @@ echo ""
 if python3 tests/run_tests.py; then
     # Tests passed — stage the updated report so it's included in the commit
     git add tests/test-report.md
+    # Refresh the learner sync file for the Telegram digest (no-op if no state)
+    if [ -f "data/state.json" ]; then
+        python3 scripts/export_learner_sync.py && git add sync/learner.json
+    fi
     exit 0
 else
     echo ""

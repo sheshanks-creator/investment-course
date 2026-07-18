@@ -1,0 +1,41 @@
+name: Telegram micro-digest
+
+on:
+  schedule:
+    # 02:30 UTC = 08:00 IST → morning digest
+    - cron: '30 2 * * *'
+    # 13:00 UTC = 18:30 IST → evening digest
+    - cron: '0 13 * * *'
+  workflow_dispatch:
+    inputs:
+      slot:
+        description: 'Which digest to send'
+        required: true
+        default: 'morning'
+        type: choice
+        options:
+          - morning
+          - evening
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Determine slot
+        id: slot
+        run: |
+          if [ -n "${{ github.event.inputs.slot }}" ]; then
+            echo "slot=${{ github.event.inputs.slot }}" >> "$GITHUB_OUTPUT"
+          elif [ "$(date -u +%H)" -lt 12 ]; then
+            echo "slot=morning" >> "$GITHUB_OUTPUT"
+          else
+            echo "slot=evening" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Send digest
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python3 scripts/send_digest.py --slot "${{ steps.slot.outputs.slot }}"

@@ -1,0 +1,59 @@
+{
+  "topicId": 10,
+  "items": [
+    {
+      "type": "card",
+      "concept": "investing-vs-speculation",
+      "text": "Graham's line: an investment operation, on thorough analysis, promises safety of principal and an adequate return; everything else is speculation. The test isn't the asset — it's the operation. Buying a great company with no view of value is speculation; buying a boring bond after real analysis is investing. Ask of every position: am I relying on the business's cash flows, or on someone paying me more later?"
+    },
+    {
+      "type": "card",
+      "concept": "investing-vs-speculation",
+      "text": "Three distinct activities, honestly labelled: INVESTING — returns from the asset's own cash generation over years. TRADING — returns from price moves over days/months, betting on flows and sentiment. SPECULATION — returns dependent on a greater fool paying more, with no cash-flow anchor. None is illegal; the damage comes from doing one while believing you're doing another — e.g. 'long-term investing' in a story stock you never valued."
+    },
+    {
+      "type": "card",
+      "concept": "investor-behaviour",
+      "text": "A practical honesty test for any holding: if the market closed for five years tomorrow, would you still be happy owning this? If yes, your return comes from the business — investing. If the thought terrifies you, your return was always going to come from selling to someone else — label it accordingly and size it accordingly."
+    },
+    {
+      "type": "mcq",
+      "concept": "investing-vs-speculation",
+      "text": "Per Graham, what makes an operation an INVESTMENT?",
+      "options": [
+        "Holding longer than one year",
+        "Buying blue-chip companies only",
+        "Thorough analysis + safety of principal + adequate return",
+        "Using no leverage"
+      ],
+      "correctIndex": 2,
+      "explanation": "Graham's definition is about the operation's process, not the asset or duration. Absent analysis and a margin of safety, it's speculation regardless of what's bought."
+    },
+    {
+      "type": "mcq",
+      "concept": "investing-vs-speculation",
+      "text": "You buy a loss-making story stock 'for the long term' without estimating its value. Which activity is this, honestly labelled?",
+      "options": [
+        "Investing — the horizon is long",
+        "Trading — everything is trading",
+        "Speculation — returns depend on someone paying more, with no valuation anchor",
+        "Arbitrage"
+      ],
+      "correctIndex": 2,
+      "explanation": "Duration doesn't convert speculation into investing. Without a cash-flow-anchored value estimate, the exit depends on a greater fool."
+    },
+    {
+      "type": "mcq",
+      "concept": "investing-vs-speculation",
+      "text": "The 'market closed for five years' test primarily reveals:",
+      "options": [
+        "Your liquidity needs",
+        "Whether your expected return comes from the business or from selling to others",
+        "Your tax bracket",
+        "Broker quality"
+      ],
+      "correctIndex": 1,
+      "explanation": "If you'd happily hold with no quotes, the business's cash generation is your return source — the defining mark of investing."
+    }
+  ]
+}

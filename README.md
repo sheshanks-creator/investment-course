@@ -89,6 +89,40 @@ Same as quizzes, but for case studies:
 
 ---
 
+## Telegram micro-digests
+
+Twice-daily adaptive micro-learning on your phone: morning (8:00 IST) — a weakness-targeted concept card, an MCQ quiz poll, a numeric drill with a tap-to-reveal answer, and one of your own highlights resurfaced; evening (18:30 IST) — a shorter MCQ + drill. Sent by a GitHub Actions workflow, so it works even when your computer is off.
+
+### One-time setup (~5 minutes)
+
+1. **Create the bot.** In Telegram, message **@BotFather** → send `/newbot` → pick a name (e.g. "Value Investing Coach") and a username ending in `bot`. BotFather replies with a **token** like `1234567890:AAF...` — copy it.
+
+2. **Get your chat id.** Send any message (e.g. "hi") to your new bot. Then open this URL in a browser, with your token substituted:
+   ```
+   https://api.telegram.org/bot<YOUR_TOKEN>/getUpdates
+   ```
+   In the JSON response, find `"chat":{"id":123456789,...}` — that number is your **chat id**.
+
+3. **Add both as GitHub secrets.** In your repo: **Settings → Secrets and variables → Actions → New repository secret**:
+   - `TELEGRAM_BOT_TOKEN` = the token from step 1
+   - `TELEGRAM_CHAT_ID` = the number from step 2
+
+4. **Push and test.** Push the repo, then go to **Actions → Telegram micro-digest → Run workflow**, pick `morning`, and run it. The digest should arrive on your phone within a minute.
+
+After that, digests arrive automatically at 8:00 and 18:30 IST every day.
+
+### How it adapts
+
+Digest content is weighted toward your weak areas as recorded in `learner-profile.md` (updated by Claude Code every time it evaluates a quiz or case study). Your highlights and progress flow to the digest via `sync/learner.json`, which the pre-commit hook refreshes automatically — so the digests get smarter every time you commit and push.
+
+### Testing locally
+
+```bash
+python3 scripts/send_digest.py --slot morning --dry-run    # prints instead of sending
+```
+
+---
+
 ## Project structure
 
 ```

@@ -1,0 +1,150 @@
+{
+  "exportedAt": "2026-07-18",
+  "completed": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "availableThrough": 10,
+  "weakConcepts": [
+    {
+      "concept": "explicit-framework-application",
+      "severity": 3
+    },
+    {
+      "concept": "margin-of-safety",
+      "severity": 3
+    },
+    {
+      "concept": "normalised-earnings",
+      "severity": 2
+    },
+    {
+      "concept": "dcf-mechanics",
+      "severity": 2
+    },
+    {
+      "concept": "return-decomposition",
+      "severity": 2
+    },
+    {
+      "concept": "institutional-constraints",
+      "severity": 2
+    }
+  ],
+  "highlights": [
+    {
+      "topicId": 1,
+      "text": "intrinsic value is the present value of all the cash a business will generate from now until it stops existing, discounted back to today.",
+      "note": "Find Definition of cash"
+    },
+    {
+      "topicId": 1,
+      "text": "A business exists to produce cash. Not accounting profits, not revenue, not growth — cash. Specifically, cash that can be taken out of the business and given to owners without impairing the company's ability to keep operating.",
+      "note": ""
+    },
+    {
+      "topicId": 2,
+      "text": "if you can never know intrinsic value exactly, how do you decide when to buy?",
+      "note": ""
+    },
+    {
+      "topicId": 2,
+      "text": "Things you couldn't anticipate will happen: a new competitor emerges, management makes a bad acquisition, a recession slows growth, a regulatory change alters the industry.",
+      "note": ""
+    },
+    {
+      "topicId": 2,
+      "text": "Graham and Buffett's insight was to deliberately aim for obvious, fat margins of safety — situations where the business is so clearly undervalued that precision is unnecessary. Buffett's phrase: \"I don't need to know a man's exact weight to know he's fat.\"",
+      "note": "This skill is key"
+    },
+    {
+      "topicId": 2,
+      "text": "Investors frequently confuse cheapness with margin of safety. A stock trading at a low P/E ratio, near its 52-week low, or down 40% from its peak can seem to offer a margin of safety. It doesn't — not automatically.",
+      "note": ""
+    },
+    {
+      "topicId": 3,
+      "text": "The earlier years of that stream are usually visible and widely understood. The later years — the part that requires real conviction about the durability of the business — are what most investors discount too heavily or ignore entirely.",
+      "note": ""
+    },
+    {
+      "topicId": 4,
+      "text": "Your circle of competence is the domain in which you have real, hard-won understanding — not just familiarity, not surface-level knowledge, but the ability to reason from first principles about how a business works, what drives its economics, and what could threaten it.",
+      "note": ""
+    },
+    {
+      "topicId": 4,
+      "text": "Reading a company's annual report does not put the company in your circle",
+      "note": ""
+    },
+    {
+      "topicId": 4,
+      "text": "Do I understand it well enough to value it?",
+      "note": ""
+    },
+    {
+      "topicId": 4,
+      "text": "Do I know what I don't know about it?\" If the answer is uncertain, you are at or beyond your border.",
+      "note": ""
+    },
+    {
+      "topicId": 4,
+      "text": "The most common mistake is confusing familiarity with understanding. An engineer assumes they understand semiconductor companies because they work in the industry. A doctor assumes they understand biotech because they use the treatments. A consumer assumes they understand retail because they shop.",
+      "note": ""
+    },
+    {
+      "topicId": 5,
+      "text": "The most common mistake is believing that second-order thinking means being contrarian — betting against the crowd as a matter of habit. This is wrong and dangerous. Second-order thinking does not mean the first-order interpretation is always wrong. Sometimes bad news is simply bad news.",
+      "note": ""
+    },
+    {
+      "topicId": 6,
+      "text": "\"what would have to be true for this investment to fail",
+      "note": ""
+    },
+    {
+      "topicId": 6,
+      "text": "Evidence that supports the thesis gets weighted heavily; evidence against it gets explained away.",
+      "note": ""
+    },
+    {
+      "topicId": 6,
+      "text": "First: What would destroy this business?",
+      "note": ""
+    },
+    {
+      "topicId": 6,
+      "text": "Second: What does the current price imply?",
+      "note": ""
+    },
+    {
+      "topicId": 6,
+      "text": "Third: What would make me wrong?",
+      "note": ""
+    },
+    {
+      "topicId": 7,
+      "text": "Investors who demand certainty before acting will always be too late — certainty, by the time it arrives, has already been priced in.",
+      "note": ""
+    },
+    {
+      "topicId": 7,
+      "text": "we usually mean we have constructed a narrative that feels coherent — not that we have genuinely reasoned about the range of outcomes and their probabilities.",
+      "note": ""
+    },
+    {
+      "topicId": 7,
+      "text": "The concept that resolves this is expected value: the probability-weighted average of all possible outcomes. An investment has a 70% chance of returning 40% and a 30% chance of losing 20%. The expected value is (0.7 × 40%) + (0.3 × −20%) = +22%. The fact that the investment might lose money does not make it a bad investment — what matters is the expected value across all outcomes.",
+      "note": "This is the scenario modelling to figure out what will happen"
+    },
+    {
+      "topicId": 7,
+      "text": "The most dangerous mistake is demanding certainty before investing — because certainty is always priced in. By the time an investment feels safe, every other market participant has also concluded it feels safe, and the price reflects that consensus. The expected value has been arbitraged away.",
+      "note": ""
+    }
+  ]
+}

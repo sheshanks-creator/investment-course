@@ -1,0 +1,59 @@
+{
+  "topicId": 4,
+  "items": [
+    {
+      "type": "card",
+      "concept": "circle-of-competence",
+      "text": "Buffett: 'The size of the circle is not very important; knowing its boundaries is vital.' A small, sharply-defined circle beats a large fuzzy one. Most investors fail not because they know too little, but because they don't know where their knowledge ends — and position sizes never reflect that. The most expensive words in investing: 'I basically understand this.'"
+    },
+    {
+      "type": "card",
+      "concept": "competence-boundaries",
+      "text": "Buffett refused Microsoft for 30 years despite Bill Gates personally explaining the business to him. Access and friendship didn't expand his circle — only analytical confidence could, and he judged he couldn't predict 20-year tech dynamics. When he finally bought Apple in 2016, he explicitly reframed it as a consumer-brand business with switching costs — a lens he already possessed. Circles expand by honest reframing, not by force."
+    },
+    {
+      "type": "card",
+      "concept": "circle-of-competence",
+      "text": "The circle expands through work, not time: primary filings read across a full cycle, several companies in the same industry compared, operators and customers talked to, and at least one downturn watched closely. Ten years of passively skimming headlines adds nothing. And the harder discipline isn't expanding the circle — it's declining opportunities just outside it when they're exciting."
+    },
+    {
+      "type": "mcq",
+      "concept": "circle-of-competence",
+      "text": "Per Buffett, what matters most about your circle of competence?",
+      "options": [
+        "Making it as large as possible",
+        "Knowing precisely where its boundary is",
+        "Focusing it on technology, where returns are",
+        "Keeping it secret from competitors"
+      ],
+      "correctIndex": 1,
+      "explanation": "Boundary-knowledge beats size. Catastrophic losses come from unknowingly stepping outside the circle, not from a circle being small."
+    },
+    {
+      "type": "mcq",
+      "concept": "competence-boundaries",
+      "text": "Zomato looks simple (an app you use daily) but is four businesses with different economics — food delivery, quick commerce, B2B supplies, dining. The circle-of-competence lesson?",
+      "options": [
+        "Consumer familiarity with a product ≠ understanding the business",
+        "Apps are always outside everyone's circle",
+        "Conglomerates can't be valued",
+        "Use the segment with the best story"
+      ],
+      "correctIndex": 0,
+      "explanation": "Using a product daily creates an illusion of understanding. Competence means knowing each segment's unit economics — not being a customer."
+    },
+    {
+      "type": "mcq",
+      "concept": "competence-boundaries",
+      "text": "Which is the strongest evidence a business is INSIDE your circle?",
+      "options": [
+        "You've held the stock for 3 years",
+        "You can name the CEO and product line",
+        "You can forecast roughly how it makes money in 10 years and what breaks it",
+        "Analysts you trust cover it"
+      ],
+      "correctIndex": 2,
+      "explanation": "The test is predictive: can you describe the durable economics and the failure modes? Ownership, familiarity, and borrowed conviction all fail that test."
+    }
+  ]
+}

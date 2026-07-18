@@ -1,0 +1,59 @@
+{
+  "topicId": 9,
+  "items": [
+    {
+      "type": "card",
+      "concept": "underperformance-causes",
+      "text": "Dalbar's long-running studies: the average equity-fund INVESTOR earns several points less per year than the average equity FUND. Same vehicles, worse results — because investors buy after rises and sell after falls. The gap isn't an information problem; it's a behaviour problem. The market transfers wealth from the impatient to the patient without any skill involved."
+    },
+    {
+      "type": "card",
+      "concept": "investor-behaviour",
+      "text": "The behaviour gap in one line: your returns = fund returns − (cost of your entries and exits). Every switch driven by a headline, every 'wait for clarity', every chase of last year's winner subtracts. The implication is uncomfortable: for most people, improving temperament raises returns more than improving analysis ever will."
+    },
+    {
+      "type": "card",
+      "concept": "underperformance-causes",
+      "text": "Fees compound in reverse. A 1.5% annual expense drag on a 12% gross return doesn't cost 1.5% — over 30 years it consumes roughly a THIRD of your final corpus, because the fee eats the compounding base every year. Check any fund: gross return, minus expense ratio, minus your own behaviour gap. That's the real number, and it's why costs and patience beat cleverness."
+    },
+    {
+      "type": "mcq",
+      "concept": "underperformance-causes",
+      "text": "Average fund investors earn notably less than the funds they invest in. Primary cause?",
+      "options": [
+        "Funds hide their true returns",
+        "Timing: investors buy after rallies, sell after falls",
+        "Taxes alone",
+        "Index construction flaws"
+      ],
+      "correctIndex": 1,
+      "explanation": "The behaviour gap: flows chase recent performance in and panic out at lows. The vehicle performs; the passenger keeps jumping off."
+    },
+    {
+      "type": "mcq",
+      "concept": "investor-behaviour",
+      "text": "Which change most reliably improves a typical individual investor's long-run returns?",
+      "options": [
+        "A faster news feed",
+        "More frequent portfolio checks",
+        "Fewer, calmer decisions — cutting the behaviour gap",
+        "More sophisticated valuation models"
+      ],
+      "correctIndex": 2,
+      "explanation": "Most underperformance is self-inflicted through activity. Temperament and inactivity compound better than added cleverness."
+    },
+    {
+      "type": "mcq",
+      "concept": "underperformance-causes",
+      "text": "Roughly what does a 1.5%/yr fee do to a 30-year corpus compounding at 12% gross?",
+      "options": [
+        "Costs about 1.5% of the final amount",
+        "Costs ~5%",
+        "Consumes roughly a third of the final corpus",
+        "Nothing if returns are high"
+      ],
+      "correctIndex": 2,
+      "explanation": "Fees subtract from the compounding base annually: 12% vs 10.5% over 30 years ≈ 30× vs 20× money. The drag compounds just like returns do."
+    }
+  ]
+}

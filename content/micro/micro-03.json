@@ -1,0 +1,59 @@
+{
+  "topicId": 3,
+  "items": [
+    {
+      "type": "card",
+      "concept": "institutional-constraints",
+      "text": "Your edge over professionals isn't intelligence — it's structure. A fund manager reports quarterly, faces client redemptions, and risks their career holding an unloved position through a 40% drawdown, even when they're right. So they hug benchmarks. You have no clients, no benchmark, no quarterly review. You can hold a sound thesis through three ugly years — an action that would get a professional fired. That freedom IS the edge."
+    },
+    {
+      "type": "card",
+      "concept": "time-horizon",
+      "text": "Amazon 1999–2001: the stock fell 90% while the business grew MORE valuable — warehouses built, customers added, unit economics improving. Price and intrinsic value moved in opposite directions for two years. Lesson: price can be a completely unreliable signal of what's happening to business value, for long stretches, in either direction. Long-horizon investors price the business, not the stock."
+    },
+    {
+      "type": "card",
+      "concept": "compounding-math",
+      "text": "CAGR = (End/Start)^(1/years) − 1. It's the smoothed annual rate that turns the start value into the end value. ₹1 at 15% for 20 years = ₹16. At 25%, ₹86. The gap between good and great compounding is enormous over long horizons — which is why durability of returns matters more than one spectacular year."
+    },
+    {
+      "type": "mcq",
+      "concept": "institutional-constraints",
+      "text": "Why can't most fund managers simply choose a 10-year view, even when they agree it works?",
+      "options": [
+        "They lack the analytical training",
+        "Regulations forbid holding stocks that long",
+        "Quarterly reporting + client redemptions make interim underperformance career-fatal",
+        "Long-term data isn't available to them"
+      ],
+      "correctIndex": 2,
+      "explanation": "It's structural, not intellectual: clients redeem during drawdowns, so managers who lag for two years lose assets and jobs — even if ultimately right."
+    },
+    {
+      "type": "mcq",
+      "concept": "time-horizon",
+      "text": "During 1999–2001 Amazon's stock fell 90%. What was its intrinsic value most plausibly doing?",
+      "options": [
+        "Falling roughly in line with the stock",
+        "Rising — infrastructure, customers and unit economics were improving",
+        "Flat — nothing changes in two years",
+        "Undefined for loss-making firms"
+      ],
+      "correctIndex": 1,
+      "explanation": "The business compounded value while sentiment collapsed. Price and value can diverge for years — the long-horizon investor's opportunity."
+    },
+    {
+      "type": "mcq",
+      "concept": "compounding-math",
+      "text": "A stock goes from ₹200 to ₹520 in 10 years. Roughly what CAGR is that?",
+      "options": [
+        "16% — (520−200)/200 ÷ 10",
+        "26%",
+        "10% — (2.6)^(1/10) − 1",
+        "5.2%"
+      ],
+      "correctIndex": 2,
+      "explanation": "CAGR = (520/200)^(0.1) − 1 = 2.6^0.1 − 1 ≈ 10%. Dividing total return by years (option A) ignores compounding and overstates the rate."
+    }
+  ]
+}

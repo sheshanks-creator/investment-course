@@ -20,14 +20,16 @@ Author course content for the 3-topic batch starting at topic $ARGUMENTS.
 
 4. **Write the case study** to `content/cases/cs-NN.json` (next free case id). Real Indian company relevant to the batch topics, full scenario with metric definitions and financial table; folder `cs-NN-topics-X-Y`; create `case-studies/cs-NN-topics-X-Y/` with `.gitkeep`.
 
-5. **Update `content/manifest.json`:** append the three topic ids to `lessonTopics`, add the quiz and case entries.
+5. **Write the micro-content files** — one `content/micro/micro-NN.json` per new topic (~3 cards + 3 MCQs each, per the "Micro content" section of the standards; mind the Telegram limits).
 
-6. **Verify:** run `source venv/bin/activate && python3 tests/run_tests.py`. All tests, especially the schema suite, must pass.
+6. **Update `content/manifest.json`:** append the three topic ids to `lessonTopics`, add the quiz, case, and micro entries.
 
-7. **Update state availability** if the user asked to unlock the batch: set `availableThrough` in `data/state.json` to the last topic id of the batch.
+7. **Verify:** run `source venv/bin/activate && python3 tests/run_tests.py`. All tests, especially the schema suite, must pass.
 
-8. **Commit** with a message describing the batch (pre-commit re-runs tests).
+8. **Update state availability** if the user asked to unlock the batch: set `availableThrough` in `data/state.json` to the last topic id of the batch.
 
-9. **Report back:** one-paragraph summary per lesson, the quiz's synthesis questions, and the case study company + why it fits the topics. Flag anything where you deviated from the standards and why.
+9. **Commit** with a message describing the batch (pre-commit re-runs tests).
+
+10. **Report back:** one-paragraph summary per lesson, the quiz's synthesis questions, and the case study company + why it fits the topics. Flag anything where you deviated from the standards and why.
 
 Do NOT copy question patterns verbatim from existing quizzes — vary the scenarios while keeping the difficulty ladder.

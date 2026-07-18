@@ -176,6 +176,64 @@ class TestCoachSchemas(unittest.TestCase):
             self.assertEqual(invalid, [], f"{item['file']} invalid topicIds: {invalid}")
 
 
+class TestMicroSchemas(unittest.TestCase):
+    """Micro-content bank for Telegram digests. MCQ limits come from the
+    Telegram Bot API: poll question <=300 chars, option <=100, explanation <=200."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.manifest = _load('manifest.json')
+        cls.topic_ids = {t['id'] for t in _load('topics.json')}
+
+    def test_micro_files_exist(self):
+        for entry in self.manifest.get('micro', []):
+            self.assertTrue(os.path.exists(os.path.join(CONTENT, entry['file'])),
+                            f"missing micro file: {entry['file']}")
+
+    def test_micro_topic_ids_valid(self):
+        for entry in self.manifest.get('micro', []):
+            self.assertIn(entry['topicId'], self.topic_ids)
+            data = _load(entry['file'])
+            self.assertEqual(data['topicId'], entry['topicId'],
+                             f"{entry['file']} topicId mismatch with manifest")
+
+    def test_micro_items_have_types_and_concepts(self):
+        for entry in self.manifest.get('micro', []):
+            data = _load(entry['file'])
+            self.assertGreater(len(data['items']), 0, f"{entry['file']} has no items")
+            for i, item in enumerate(data['items']):
+                self.assertIn(item['type'], ('card', 'mcq'),
+                              f"{entry['file']} item {i} bad type")
+                self.assertTrue(item.get('concept', '').strip(),
+                                f"{entry['file']} item {i} missing concept")
+                self.assertTrue(item.get('text', '').strip(),
+                                f"{entry['file']} item {i} missing text")
+
+    def test_micro_mcq_telegram_limits(self):
+        for entry in self.manifest.get('micro', []):
+            data = _load(entry['file'])
+            for i, item in enumerate(data['items']):
+                if item['type'] != 'mcq':
+                    continue
+                where = f"{entry['file']} item {i}"
+                self.assertLessEqual(len(item['text']), 295, f'{where} question too long for poll')
+                opts = item.get('options', [])
+                self.assertGreaterEqual(len(opts), 3, f'{where} needs >=3 options')
+                self.assertLessEqual(len(opts), 10, f'{where} too many options')
+                for o in opts:
+                    self.assertLessEqual(len(o), 100, f'{where} option >100 chars: {o[:40]}')
+                ci = item.get('correctIndex')
+                self.assertIsInstance(ci, int, f'{where} correctIndex missing')
+                self.assertTrue(0 <= ci < len(opts), f'{where} correctIndex out of range')
+                self.assertLessEqual(len(item.get('explanation', '')), 200,
+                                     f'{where} explanation >200 chars')
+
+    def test_micro_bank_covers_all_lesson_topics(self):
+        micro_topics = {e['topicId'] for e in self.manifest.get('micro', [])}
+        missing = [t for t in self.manifest['lessonTopics'] if t not in micro_topics]
+        self.assertEqual(missing, [], f'Lesson topics without micro content: {missing}')
+
+
 class TestNumQuizSchemas(unittest.TestCase):
 
     @classmethod

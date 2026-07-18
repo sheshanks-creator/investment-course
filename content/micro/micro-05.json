@@ -1,0 +1,59 @@
+{
+  "topicId": 5,
+  "items": [
+    {
+      "type": "card",
+      "concept": "second-order-thinking",
+      "text": "First-order: 'The company turned profitable, the stock should rise.' Second-order: profitability changes competitor behaviour (rivals now fight harder or exit), management incentives (protect margins vs invest), and the shareholder register (growth funds out, value funds in). Howard Marks: 'First-level thinking says: it's a good company, buy. Second-level thinking says: it's a good company, but everyone thinks so — so it's overpriced. Sell.'"
+    },
+    {
+      "type": "card",
+      "concept": "second-order-thinking",
+      "text": "The second-order question that most improves analysis: 'and then what?' Rains fail → food inflation → RBI raises rates → discretionary demand slows → your retailer's same-store sales dip three quarters later. Markets usually price the first link fast and the third link slowly. Your edge lives two links down the chain."
+    },
+    {
+      "type": "card",
+      "concept": "incentives",
+      "text": "Munger: 'Show me the incentive and I'll show you the outcome.' When a management guides aggressively, ask what their bonus vests on. When a broker recommends a stock, ask who pays them. When a company changes its reported metric ('adjusted EBITDA'), ask what the old metric would have shown. Incentives don't just influence behaviour — over time they ARE behaviour."
+    },
+    {
+      "type": "mcq",
+      "concept": "second-order-thinking",
+      "text": "'Zomato turned profitable, bears proven wrong, stock will keep rising.' Which is the strongest SECOND-order question?",
+      "options": [
+        "Was the profit bigger than consensus?",
+        "How does profitability change what Swiggy, Amazon and the new shareholders do next?",
+        "What was the exact EPS?",
+        "Did the CEO celebrate publicly?"
+      ],
+      "correctIndex": 1,
+      "explanation": "Second-order thinking asks how the event changes other actors' behaviour — competitors, capital, incentives — not just what the event was."
+    },
+    {
+      "type": "mcq",
+      "concept": "second-order-thinking",
+      "text": "A government cuts fuel taxes. First-order: airlines profit. A second-order effect to check?",
+      "options": [
+        "Airlines' fonts on tickets change",
+        "Competitors add capacity/cut fares, competing away much of the gain",
+        "Fuel tax cuts never matter",
+        "Airline CEOs get raises"
+      ],
+      "correctIndex": 1,
+      "explanation": "In competitive, commoditised industries, input-cost windfalls are usually competed away through fares. The structure of competition eats the first-order gain."
+    },
+    {
+      "type": "mcq",
+      "concept": "incentives",
+      "text": "A management team's bonuses vest on revenue growth, not returns on capital. What behaviour should you EXPECT over time?",
+      "options": [
+        "Disciplined, high-ROIC growth",
+        "Growth at any price — acquisitions and capex even at poor returns",
+        "Higher dividends",
+        "Conservative balance sheets"
+      ],
+      "correctIndex": 1,
+      "explanation": "People optimise what they're paid for. Revenue-linked pay reliably produces empire-building; check the incentive structure before trusting the strategy."
+    }
+  ]
+}

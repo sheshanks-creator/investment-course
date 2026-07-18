@@ -1,9 +1,9 @@
 # Test Report — Value Investing Course
 
-**Run date:** 2026-07-18 07:21
-**Duration:** 3.7s
+**Run date:** 2026-07-18 12:24
+**Duration:** 0.6s
 **Result:** ✅ ALL PASS
-**Summary:** 158 passed · 0 failed · 0 skipped · 158 total
+**Summary:** 178 passed · 0 failed · 0 skipped · 178 total
 
 ---
 
@@ -173,6 +173,16 @@
 | lesson topics are valid topic ids | ✅ PASS |  |
 | manifest has required keys | ✅ PASS |  |
 
+## ✅ Schema — micro-content files (5/5)
+
+| Test | Status | Detail |
+|------|--------|--------|
+| micro bank covers all lesson topics | ✅ PASS |  |
+| micro files exist | ✅ PASS |  |
+| micro items have types and concepts | ✅ PASS |  |
+| micro mcq telegram limits | ✅ PASS |  |
+| micro topic ids valid | ✅ PASS |  |
+
 ## ✅ Schema — numerical quiz files (5/5)
 
 | Test | Status | Detail |
@@ -199,6 +209,41 @@
 | folders match id prefix | ✅ PASS |  |
 | has 120 topics | ✅ PASS |  |
 | ids sequential 1 to 120 | ✅ PASS |  |
+
+## ✅ Digest — full digest builds (5/5)
+
+| Test | Status | Detail |
+|------|--------|--------|
+| digest deterministic per date slot | ✅ PASS |  |
+| digests vary across dates | ✅ PASS |  |
+| evening digest is shorter | ✅ PASS |  |
+| morning digest has parts | ✅ PASS |  |
+| poll payloads within telegram limits | ✅ PASS |  |
+
+## ✅ Digest — numeric drill templates (5/5)
+
+| Test | Status | Detail |
+|------|--------|--------|
+| all templates produce numbers | ✅ PASS |  |
+| cagr math | ✅ PASS |  |
+| fcf bridge math | ✅ PASS |  |
+| margin of safety math | ✅ PASS |  |
+| templates are deterministic per seed | ✅ PASS |  |
+
+## ✅ Digest — MarkdownV2 escaping (2/2)
+
+| Test | Status | Detail |
+|------|--------|--------|
+| escapes markdownv2 specials | ✅ PASS |  |
+| plain text unchanged | ✅ PASS |  |
+
+## ✅ Digest — weighted selector (3/3)
+
+| Test | Status | Detail |
+|------|--------|--------|
+| pick weighted deterministic | ✅ PASS |  |
+| pick weighted empty | ✅ PASS |  |
+| weak concepts are upweighted | ✅ PASS |  |
 
 ## ✅ API — CORS & OPTIONS preflight (3/3)
 

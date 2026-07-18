@@ -42,10 +42,11 @@ The application is a **single-page course player**: `index.html` (app shell), `s
 
 ```
 content/
-  manifest.json            ← index: lessonTopics[] + {quizzes,cases,coaches,numQuizzes}[{id,file}]
+  manifest.json            ← index: lessonTopics[] + {quizzes,cases,coaches,numQuizzes}[{id,file}] + micro[{topicId,file}]
   topics.json              ← all 120 {id, title, folder} — single source of truth (client AND server)
   quizzes/quiz-NN.json     cases/cs-NN.json
   coaches/coach-NN.json    num-quizzes/num-NN.json
+  micro/micro-NN.json      ← per-topic cards + MCQs for the Telegram digests
 topics/NN-slug/lesson.md   ← lesson content; header (through first ---) is stripped on load
 ```
 
@@ -121,6 +122,8 @@ Standard library only (except `anthropic`). No framework.
 
 **Evaluation style:** hold a very high bar. Evaluations are markdown rendered by `mdToHtml` — bold, tables, lists, blockquotes, `###` headings all render; use them. Numerical quizzes need no evaluation workflow — they are auto-graded client-side.
 
+**After every evaluation, update `learner-profile.md`:** add/adjust rows in the Weak concepts table (concept ids from `docs/content-standards.md` vocabulary, severity 1–3, one-line evidence, date), and move genuinely improved concepts to Strengths. The Telegram digest sender weights micro-content by this table, so keeping it honest is what makes the digests adaptive.
+
 The case study evaluation rubric is in `docs/quiz-evaluation-rubric.md`.
 
 ---
@@ -163,7 +166,18 @@ Topics 1–10 are authored. Topics 11–120 are AI-generated on demand when the 
 
 **Content cadence:** every 3-topic group gets a quiz + case study. Coach walkthroughs and numerical quizzes are added on demand — when the user hits a mechanics wall — not by default.
 
-**Authoring workflows:** `/author-batch <first-topic-id>` authors the next 3 lessons + quiz + case study; `/author-coach <X>-<Y>` authors a coach walkthrough + numerical quiz for a topic group. Both live in `.claude/commands/` and are bound by `docs/content-standards.md`. Always run the test suite after authoring — the schema suite validates every content file.
+**Authoring workflows:** `/author-batch <first-topic-id>` authors the next 3 lessons + quiz + case study + micro files; `/author-coach <X>-<Y>` authors a coach walkthrough + numerical quiz for a topic group; `/author-micro <topic-id>` authors just a topic's micro-content file. All live in `.claude/commands/` and are bound by `docs/content-standards.md`. Always run the test suite after authoring — the schema suite validates every content file.
+
+---
+
+## Telegram micro-digests
+
+Twice-daily adaptive micro-learning pushed to the user's phone (morning 8:00 IST full digest: weakness-targeted card + MCQ quiz poll + numeric drill + resurfaced highlight; evening 18:30 IST short: MCQ + drill).
+
+- **Sender:** `scripts/send_digest.py` (stdlib only). Deterministic per (date, slot) — no persisted send-state. Weakness weighting: concept weight = 1 + severity from `sync/learner.json`. Eight parameterised numeric drill templates generate infinite variants with computed answers behind `||spoiler||`. MCQs go out as native Telegram quiz polls (auto-graded on-device). Test locally: `python3 scripts/send_digest.py --slot morning --dry-run`.
+- **Learner sync:** `scripts/export_learner_sync.py` reads `data/state.json` + `learner-profile.md` → `sync/learner.json` (committed). The pre-commit hook refreshes it automatically, so digests adapt "as of last push".
+- **Delivery:** `.github/workflows/micro-digest.yml` — two cron schedules + `workflow_dispatch` for manual test sends. Requires repo secrets `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` (setup steps in README).
+- **Never add an LLM call to the sender** — it must stay a dumb, reliable script; intelligence lives in the content bank and the learner profile.
 
 ---
 

@@ -1,0 +1,59 @@
+{
+  "topicId": 1,
+  "items": [
+    {
+      "type": "card",
+      "concept": "intrinsic-value",
+      "text": "Intrinsic value = the present value of all cash a business will generate from now until it stops existing. Not profit, not revenue — cash that owners could take out without impairing operations. Example: a pharmacy earning ₹40L cash/year for 20 more years is 'worth' the discounted sum of those 20 payments, regardless of what a buyer offers you today. Price is an opinion; intrinsic value is an estimate of a fact."
+    },
+    {
+      "type": "card",
+      "concept": "cash-vs-profit",
+      "text": "Reported profit and cash are not the same thing. A company can report ₹100cr PAT while generating only ₹30cr of spendable cash — because profits are absorbed by inventory build-up, unpaid receivables, and equipment replacement. When you hear 'earnings', always ask: how much of this becomes cash that could reach shareholders? That ratio (FCF/PAT) is one of the fastest quality checks in investing."
+    },
+    {
+      "type": "card",
+      "concept": "valuation-range",
+      "text": "Intrinsic value is a range, never a point. If your DCF says a business is worth exactly ₹847 per share, you have false precision — change the growth assumption by 1% and the answer moves 15%. Professionals say 'worth ₹700–950' and only act when the price is well outside that band. Buffett: 'I don't need to know a man's exact weight to know he's fat.'"
+    },
+    {
+      "type": "mcq",
+      "concept": "intrinsic-value",
+      "text": "A company reports ₹80cr net profit. A friend says it should be worth 10× that = ₹800cr. What's the core flaw?",
+      "options": [
+        "10× is too low — quality firms deserve 20×",
+        "Profit ≠ cash; one year says nothing about durability or growth",
+        "He should use revenue, not profit",
+        "Nothing — that's how valuation works"
+      ],
+      "correctIndex": 1,
+      "explanation": "A multiple on one year of accounting profit ignores cash conversion, growth trajectory, and durability — the three things intrinsic value is actually made of."
+    },
+    {
+      "type": "mcq",
+      "concept": "cash-vs-profit",
+      "text": "Pidilite converts ~₹8 of every ₹10 of net profit into free cash flow. A typical steel maker converts ~₹4. What mostly explains the gap?",
+      "options": [
+        "Steel makers pay more tax",
+        "Adhesives sell at higher prices",
+        "Steel needs heavy ongoing capex and working capital; adhesives don't",
+        "Pidilite has better accountants"
+      ],
+      "correctIndex": 2,
+      "explanation": "Capital intensity is the difference: heavy industry must reinvest most profits in plant and inventory just to keep running. Capital-light brands keep the cash."
+    },
+    {
+      "type": "mcq",
+      "concept": "price-vs-value",
+      "text": "A stock's price falls 30% in a month with no news about the business. What happened to its intrinsic value?",
+      "options": [
+        "It fell 30% too",
+        "It fell, but less than 30%",
+        "Almost nothing — price moved, value didn't",
+        "Impossible to say without the chart"
+      ],
+      "correctIndex": 2,
+      "explanation": "Intrinsic value is the PV of future cash flows. If nothing changed about the business's cash generation, value is untouched — only the market's opinion moved."
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "topicId": 7,
+  "items": [
+    {
+      "type": "card",
+      "concept": "expected-value",
+      "text": "Never assign a probability to a verdict ('will the case go our way?'). Decompose the event into cash-flow outcomes: e.g. duty <5% → value ₹900; 5–15% → ₹720; 15–40% → ₹380; punitive → ₹180. Weight each by probability, sum to expected value, then compare EV to the market price. The thesis is never 'X will happen' — it's 'the market's implied odds differ from mine, and the payoff is asymmetric.'"
+    },
+    {
+      "type": "card",
+      "concept": "base-rates",
+      "text": "Anchor to the base rate BEFORE your opinion enters: how did comparable situations historically resolve? If similar anti-dumping cases went badly 70% of the time, start at 70% — then adjust for case-specifics only with reasons you can articulate ('India's cost structure makes a dumping finding harder: 70→55%'). If you can't state why, you don't get the adjustment. That rule separates calibrated judgement from gut feel."
+    },
+    {
+      "type": "card",
+      "concept": "variant-perception",
+      "text": "If your probability estimate merely equals the consensus, it's already in the price — accuracy alone earns nothing. Edge requires variant perception: your odds differ from the market's AND you can name specifically why the market is wrong (anchoring on a scary headline, structural sellers, horizon limits). The job isn't computing the 'true' probability; it's locating the gap between price-implied probability and defensible probability."
+    },
+    {
+      "type": "mcq",
+      "concept": "expected-value",
+      "text": "Scenario values/odds: ₹900 (25%), ₹720 (35%), ₹380 (30%), ₹180 (10%). Expected value?",
+      "options": [
+        "₹545",
+        "₹609",
+        "₹660",
+        "₹720"
+      ],
+      "correctIndex": 1,
+      "explanation": "EV = 225 + 252 + 114 + 18 = ₹609. Probability-weighted sum of scenario values — the number you compare against today's price."
+    },
+    {
+      "type": "mcq",
+      "concept": "base-rates",
+      "text": "You're handicapping a legal outcome. Comparable historical cases went badly ~70% of the time, but you feel 'this one is different.' Correct process?",
+      "options": [
+        "Trust the feeling — every case is unique",
+        "Use 70% as the prior; adjust only with specific, articulable differences",
+        "Average your feeling with 70%",
+        "Ignore history; markets are forward-looking"
+      ],
+      "correctIndex": 1,
+      "explanation": "Outside view first, inside view second. Base rates anchor you; adjustments must each carry a stated reason and size, or they're just bias."
+    },
+    {
+      "type": "mcq",
+      "concept": "variant-perception",
+      "text": "Your careful analysis says 40% chance of a bad outcome. The market also implies 40%. What's your edge?",
+      "options": [
+        "Large — your analysis was rigorous",
+        "None — matching consensus is already priced; edge needs a defensible difference",
+        "Depends on the stock's beta",
+        "Edge doesn't relate to probabilities"
+      ],
+      "correctIndex": 1,
+      "explanation": "Being right along with everyone pays nothing. Returns come from justified disagreement with price-implied odds — variant perception."
+    }
+  ]
+}

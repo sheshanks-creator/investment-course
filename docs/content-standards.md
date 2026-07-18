@@ -61,6 +61,19 @@ House style for all course content: lessons, quizzes, case studies, coach walkth
 - The 8 questions must ladder through the paired coach's steps in the same order.
 - Verify the arithmetic. Every `answer` must be recomputed independently before committing.
 
+## Micro content (`content/micro/micro-NN.json`) — Telegram digests
+
+- One file per topic: `{topicId, items[]}`. Each item: `type` (`card` | `mcq`), `concept` (from the vocabulary below), `text`, and for MCQs: `options[]`, `correctIndex`, `explanation`.
+- **Cards**: 3–4 sentences of plain text (no markdown — the sender escapes everything). Restate one concept with a *fresh* example not used in the lesson. Standalone — readable with zero context on a phone.
+- **MCQs** ship as native Telegram quiz polls, so hard API limits apply (schema-tested): question ≤295 chars, 3–4 options of ≤100 chars each, explanation ≤200 chars. Wrong options should be *plausible* errors (e.g. the non-compounded CAGR), not filler.
+- ~3 cards + ~3 MCQs per topic. Every lesson topic must have a micro file (schema-enforced).
+
+### Concept vocabulary (shared ids)
+
+Used by micro items, `learner-profile.md`, and the digest sender's weakness weighting. Add new ids here first.
+
+`intrinsic-value` · `price-vs-value` · `cash-vs-profit` · `fcf-bridge` · `normalised-earnings` · `valuation-range` · `margin-of-safety` · `cheapness-vs-mos` · `time-horizon` · `institutional-constraints` · `compounding-math` · `circle-of-competence` · `competence-boundaries` · `second-order-thinking` · `incentives` · `inversion` · `pre-mortem` · `probabilistic-thinking` · `expected-value` · `base-rates` · `variant-perception` · `opportunity-cost` · `hurdle-rate` · `investor-behaviour` · `underperformance-causes` · `investing-vs-speculation` · `dcf-mechanics` · `discount-rate` · `terminal-value` · `roe` · `sustainable-growth` · `cagr` · `return-decomposition` · `explicit-framework-application`
+
 ---
 
 ## Pipeline for any authoring session

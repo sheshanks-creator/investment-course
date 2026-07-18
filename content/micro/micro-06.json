@@ -1,0 +1,59 @@
+{
+  "topicId": 6,
+  "items": [
+    {
+      "type": "card",
+      "concept": "inversion",
+      "text": "Munger's habit, borrowed from algebra's Jacobi: 'Invert, always invert.' Instead of 'how do I pick winners?', ask 'what reliably destroys investors?' — leverage, overpaying, businesses outside your circle, selling in panics. Avoid the reliable destroyers and winning largely takes care of itself. It's easier to be consistently not-stupid than occasionally brilliant."
+    },
+    {
+      "type": "card",
+      "concept": "pre-mortem",
+      "text": "Before any significant investment, run the pre-mortem: 'It's three years from now and this position lost 60%. Write the story of what happened.' The exercise forces your brain from advocacy into detection — and typically surfaces the one risk your thesis conveniently ignored. If you can't write a plausible failure story, you don't understand the position; if you can, you now know exactly what to monitor."
+    },
+    {
+      "type": "card",
+      "concept": "inversion",
+      "text": "Inversion applied to portfolio reviews: instead of asking 'what should I buy?', periodically ask 'if I were forced to sell one holding today, which and why?' The question reverses your default of defending what you own, and often reveals that your weakest position is held for narrative comfort, not expected value."
+    },
+    {
+      "type": "mcq",
+      "concept": "inversion",
+      "text": "Which question is the best example of inversion applied to stock selection?",
+      "options": [
+        "Which stock will rise most this year?",
+        "What conditions would make this business worthless — and how likely are they?",
+        "What's the price target?",
+        "Which fund managers own it?"
+      ],
+      "correctIndex": 1,
+      "explanation": "Inversion starts from failure and works backwards. Mapping the destruction scenarios first is how you find risks the bull story hides."
+    },
+    {
+      "type": "mcq",
+      "concept": "pre-mortem",
+      "text": "The key difference between a pre-mortem and ordinary 'risk factors' listing?",
+      "options": [
+        "Pre-mortems are longer",
+        "You assume the failure HAS happened and explain it — switching the brain from advocacy to detection",
+        "Pre-mortems only cover macro risks",
+        "There is no real difference"
+      ],
+      "correctIndex": 1,
+      "explanation": "Assuming the loss already occurred defeats optimism bias. Generic risk lists get written to be dismissed; failure narratives get taken seriously."
+    },
+    {
+      "type": "mcq",
+      "concept": "inversion",
+      "text": "Munger: it's easier to be consistently not-stupid than occasionally brilliant. In practice this means:",
+      "options": [
+        "Never take any risk",
+        "Systematically eliminate known error patterns — leverage, overpaying, panic selling",
+        "Copy brilliant investors' trades",
+        "Trade less than once a year"
+      ],
+      "correctIndex": 1,
+      "explanation": "The reliable path to good outcomes is removing the classic destroyers of capital, not hunting for streaks of genius."
+    }
+  ]
+}

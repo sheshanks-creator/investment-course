@@ -42,5 +42,17 @@
       "id": 1,
       "file": "num-quizzes/num-01.json"
     }
+  ],
+  "micro": [
+    { "topicId": 1, "file": "micro/micro-01.json" },
+    { "topicId": 2, "file": "micro/micro-02.json" },
+    { "topicId": 3, "file": "micro/micro-03.json" },
+    { "topicId": 4, "file": "micro/micro-04.json" },
+    { "topicId": 5, "file": "micro/micro-05.json" },
+    { "topicId": 6, "file": "micro/micro-06.json" },
+    { "topicId": 7, "file": "micro/micro-07.json" },
+    { "topicId": 8, "file": "micro/micro-08.json" },
+    { "topicId": 9, "file": "micro/micro-09.json" },
+    { "topicId": 10, "file": "micro/micro-10.json" }
   ]
 }
