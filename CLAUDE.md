@@ -106,15 +106,33 @@ Standard library only (except `anthropic`). No framework.
 
 ---
 
-## Evaluation workflow (Claude Code's role)
+## Claude Code workflows (typed in chat by the user)
 
-When the user types **`evaluate quiz N`** or **`evaluate case study N`**:
+**`evaluate quiz N`** / **`evaluate case study N`**:
 1. Read `quizzes/quiz-0N-topics-X-Y/responses.md` or `case-studies/cs-0N-topics-X-Y/responses.md`
-2. Evaluate each answer and replace the `*Pending — type "evaluate ..." in Claude Code.*` placeholder under each `**Evaluation:**` heading with detailed feedback
-3. Replace the `*Pending evaluation.*` line under `## Overall Assessment` with a summary
-4. Save the file — the user clicks **Load Evaluation** in the browser to fetch and display it
+2. Evaluate each answer and replace the `*Pending — type "evaluate ..." in Claude Code.*` placeholder under each `**Evaluation:**` heading with detailed feedback. Score case studies per question against the rubric embedded in the file (5 dimensions, 13 pts/question) and show a score table.
+3. Replace the `*Pending evaluation.*` line under `## Overall Assessment` with a summary (for case studies: total score, per-question table, strongest area, biggest gap, specific practice instructions)
+4. Change the file's `**Status:** submitted` line to `**Status:** evaluated`
+5. Save — the user clicks **Load Evaluation** in the browser to fetch and display it
 
-The evaluation rubric for case studies is in `docs/quiz-evaluation-rubric.md`.
+**`answer coach N`**: the user pastes questions captured in the Coach view's Q&A panel. Answer them as a value-investing tutor and save to `coach-cases/coach-0N-topics-X-Y/answers.md`. The user clicks **Load Answers** in the Coach view to display the file.
+
+**Topic Q&A** (user pastes "I'm studying Topic N… here are my questions"): answer in chat, then append to `topics/NN-slug/qa.md` in the existing `**Q [date]:** … **A:** …` format.
+
+**Evaluation style:** hold a very high bar. Evaluations are markdown rendered by `mdToHtml` — bold, tables, lists, blockquotes, `###` headings all render; use them. Numerical quizzes need no evaluation workflow — they are auto-graded client-side.
+
+The case study evaluation rubric is in `docs/quiz-evaluation-rubric.md`.
+
+---
+
+## Student context
+
+One student (the repo owner), building value-investing skill from scratch. Known weak areas from past evaluations (Quiz 1: 2026-05-11, Case Study 1: 2026-05-27 — see the `responses.md` files for detail):
+- **Applies frameworks by intuition, not explicitly** — reaches for adjectives ("expensive", "high quality") instead of calculating; evaluations should push for numbers and named frameworks
+- **Institutional-constraints concept** (why professionals can't hold long horizons) was the biggest quiz miss
+- **Valuation mechanics confidence** — this is why Coach 1 (Britannia walkthrough) and Numerical Quiz 1 (Marico) exist; the student works through them before re-attempting open-ended cases
+
+When evaluating or authoring, target these gaps deliberately. Keep the difficulty honest — the student explicitly asked for a very high bar.
 
 ---
 
@@ -161,3 +179,24 @@ Topics 1–10 are authored. Topics 11–120 are AI-generated on demand when the 
 Human-readable descriptions of every test case are in `tests/test-cases.md`. The auto-generated pass/fail report is in `tests/test-report.md` (committed automatically by the pre-commit hook).
 
 The pre-commit hook (`scripts/pre-commit.sh`, installed to `.git/hooks/pre-commit`) runs the full suite and stages the updated report before every commit. To skip in an emergency: `git commit --no-verify`.
+
+---
+
+## Roadmap (agreed 2026-05-27)
+
+Phases 0–1 are DONE (content-as-data refactor + content engine). Two phases are specced and awaiting implementation — pick them up when the user asks:
+
+**Phase 2 — Adaptive learning loop**
+1. `learner-profile.md` at repo root: structured gap entries `{concept, evidence, severity, date}`, updated by Claude as part of every `evaluate quiz/case N` workflow. Seed it from the existing Quiz 1 and Case Study 1 evaluations (see Student context above).
+2. Review queue in `ST.reviewQueue` with SM-2-lite spaced-repetition scheduling. Sources: missed quiz questions, weak concepts, highlights older than 30 days, journal revisit dates.
+3. Daily warm-up view on app open: one re-asked missed question, one highlight re-read, one numeric drill.
+4. Infinite numeric drills: parameterise the 8 numerical-quiz question types as client-side template functions (randomised inputs, computed canonical answers).
+5. `/author-coach` reads the learner profile and weights weak dimensions (the command already instructs this).
+
+**Phase 3 — Applied investing journal**
+1. `journal/<company-slug>/thesis.md` + a new app view using the Coach-1 8-step checklist as structured sections: thesis statement, key assumptions with confidence %, valuation range, margin of safety, falsifiers, predicted outcomes.
+2. New endpoint `POST /api/save-thesis` mirroring `handle_save_case_responses` in `server.py`.
+3. Chat workflow `review thesis <slug>`: critique against the case-study rubric + learner profile; findings feed the profile.
+4. Quarterly revisit dates pushed into the Phase-2 review queue; a revisit log section in each thesis tracks how assumptions aged.
+
+New app views should follow the established pattern: data object + manifest entry, `#<name>-view` div, `show<Name>()` with mutual view exclusion, sidebar entry in `renderSidebar`, a theme colour pair in `:root`, schema tests, and rows in `test-cases.md`.
