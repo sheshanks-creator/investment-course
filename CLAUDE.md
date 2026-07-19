@@ -181,6 +181,20 @@ Twice-daily adaptive micro-learning pushed to the user's phone (morning 8:00 IST
 
 ---
 
+## Research bridge (wealth-agents integration)
+
+Weaves the user's real stock research (the separate **wealth-agents** project + Obsidian vault) into the course. Full details: `docs/research-bridge.md`.
+
+- **Privacy boundary (critical):** research **content** is read live and local only — never copied into the repo, never committed. Only `sync/watchlist.json` (company names + concept tags, no prose/conviction/sizing) is committed so the cloud digest can personalise. Requires the repo to stay private. `config/research-sources.json` and `research-index.json` are gitignored.
+- **`scripts/research_lib.py`** — shared config/classification/index/path-safety, imported by the scanner, exporter, and `server.py`.
+- **`scripts/scan_research.py`** → `research-index.json`: classifies every `.md` under the configured roots; the index is also the read/unread ledger (content-hash change resets `read`). Runs in the pre-commit hook.
+- **Server endpoints:** `GET /api/research-index`, `GET /api/research/<id>` (path-safelisted to configured roots — traversal rejected), `POST /api/research/mark-read`.
+- **App:** "📁 My Research" sidebar section + `#research-view` / `showResearch()`, `--violet` theme; thesis section→topic banner links to `loadTopic`.
+- **Digest:** `scripts/export_watchlist.py` → `sync/watchlist.json`; the sender personalises the morning research task to a real watchlist company when the day's concept matches.
+- Degrades gracefully: absent config ⇒ feature hidden, generic exercises. Never point tests at the user's real files — use temp fixtures (`tests/test_research_bridge.py`).
+
+---
+
 ## Tests
 
 158 tests across four suites in `tests/`:

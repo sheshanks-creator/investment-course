@@ -24,6 +24,10 @@ if python3 tests/run_tests.py; then
     if [ -f "data/state.json" ]; then
         python3 scripts/export_learner_sync.py && git add sync/learner.json
     fi
+    # Refresh the watchlist (tickers only) from the research index if present
+    if [ -f "research-index.json" ]; then
+        python3 scripts/export_watchlist.py && git add sync/watchlist.json
+    fi
     exit 0
 else
     echo ""

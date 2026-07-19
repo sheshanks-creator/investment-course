@@ -1,0 +1,84 @@
+{
+  "watchlist": [
+    {
+      "company": "ATLASSIAN",
+      "market": "US",
+      "concepts": [
+        "base-rates",
+        "circle-of-competence",
+        "expected-value",
+        "inversion",
+        "second-order-thinking"
+      ],
+      "topics": [],
+      "hasThesis": false,
+      "docCount": 2
+    },
+    {
+      "company": "COUPANG",
+      "market": "US",
+      "concepts": [
+        "base-rates",
+        "circle-of-competence"
+      ],
+      "topics": [],
+      "hasThesis": false,
+      "docCount": 1
+    },
+    {
+      "company": "PIDILITE",
+      "market": "IN",
+      "concepts": [
+        "base-rates",
+        "circle-of-competence",
+        "expected-value",
+        "explicit-framework-application",
+        "inversion",
+        "pre-mortem",
+        "second-order-thinking",
+        "variant-perception"
+      ],
+      "topics": [],
+      "hasThesis": false,
+      "docCount": 4
+    },
+    {
+      "company": "POKARNA",
+      "market": "US",
+      "concepts": [
+        "base-rates",
+        "circle-of-competence",
+        "expected-value",
+        "explicit-framework-application",
+        "inversion",
+        "margin-of-safety",
+        "pre-mortem",
+        "second-order-thinking",
+        "variant-perception"
+      ],
+      "topics": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "hasThesis": true,
+      "docCount": 5
+    },
+    {
+      "company": "SPACEX",
+      "market": "US",
+      "concepts": [
+        "base-rates",
+        "circle-of-competence"
+      ],
+      "topics": [],
+      "hasThesis": false,
+      "docCount": 1
+    }
+  ]
+}

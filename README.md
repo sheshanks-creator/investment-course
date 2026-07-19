@@ -123,6 +123,22 @@ python3 scripts/send_digest.py --slot morning --dry-run    # prints instead of s
 
 ---
 
+## My Research (optional — link your own stock research)
+
+If you keep investment research in markdown (e.g. the companion **wealth-agents** project + an Obsidian vault), the course can surface it in a "📁 My Research" sidebar view and personalise your digest exercises to the stocks you actually track.
+
+```bash
+cp config/research-sources.json.example config/research-sources.json
+# edit the paths to point at your thesis / vault-analyses / sources folders
+python3 scripts/scan_research.py        # builds research-index.json
+```
+
+Then start the server and open the app — "My Research" appears with an unread badge; each thesis links its sections to the course topics they exercise.
+
+**Privacy:** your research content is read live and stays on your machine — it is never committed. Only a minimal watchlist (`sync/watchlist.json`: company names + concept tags, no thesis text) is committed so the cloud digest can personalise, which is why the course repo should stay **private**. See [docs/research-bridge.md](docs/research-bridge.md) for the full design.
+
+---
+
 ## Project structure
 
 ```

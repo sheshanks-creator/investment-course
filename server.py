@@ -10,10 +10,19 @@ Open:     http://localhost:8080
 import json
 import os
 import re
+import sys
 import datetime
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib.parse import urlparse
 import anthropic
+
+# Research-bridge helpers (config, index, path-safety). Optional feature:
+# if the module or config is absent, the endpoints simply return empty.
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'scripts'))
+try:
+    import research_lib
+except Exception:
+    research_lib = None
 
 PORT = int(os.environ.get('COURSE_PORT') or os.environ.get('PORT') or 8080)
 BASE = os.path.dirname(os.path.abspath(__file__))
@@ -118,6 +127,10 @@ class Handler(BaseHTTPRequestHandler):
             self.serve_file(os.path.join(BASE, 'index.html'))
         elif path == '/api/state':
             self.send_json(load_state())
+        elif path == '/api/research-index':
+            self.send_json(self.handle_research_index())
+        elif path.startswith('/api/research/'):
+            self.handle_research_file(path[len('/api/research/'):])
         else:
             fp = os.path.join(BASE, path.lstrip('/'))
             if os.path.isfile(fp):
@@ -149,12 +162,54 @@ class Handler(BaseHTTPRequestHandler):
                 self.send_json(self.handle_save_case_responses(body))
             elif path == '/api/evaluate-quiz':
                 self.send_json(self.handle_evaluate_quiz(body))
+            elif path == '/api/research/mark-read':
+                self.send_json(self.handle_research_mark_read(body))
             else:
                 self.send_json({'error': 'Not found'}, 404)
         except Exception as e:
             import traceback
             print(f'\n[ERROR] {path}\n{traceback.format_exc()}')
             self.send_json({'error': str(e)}, 500)
+
+    # ── Research bridge ───────────────────────────────────────────────────
+    def handle_research_index(self):
+        """Return the research index without file paths (paths stay server-side)."""
+        if research_lib is None:
+            return {'entries': [], 'enabled': False}
+        index = research_lib.load_index()
+        safe = []
+        for e in index.get('entries', []):
+            safe.append({k: v for k, v in e.items() if k != 'path'})
+        return {'entries': safe, 'enabled': bool(research_lib.configured_roots())}
+
+    def handle_research_file(self, fid):
+        """Return one research file's raw markdown, path-safelisted via the index."""
+        if research_lib is None:
+            self.send_json({'error': 'research disabled'}, 404)
+            return
+        entry = research_lib.entry_by_id(research_lib.load_index(), fid)
+        if not entry or not research_lib.path_is_safe(entry['path']) \
+                or not os.path.isfile(entry['path']):
+            self.send_json({'error': 'not found'}, 404)
+            return
+        with open(entry['path'], encoding='utf-8') as f:
+            content = f.read()
+        self.send_json({'id': fid, 'title': entry['title'],
+                        'ticker': entry['ticker'], 'type': entry['type'],
+                        'content': content})
+
+    def handle_research_mark_read(self, body):
+        if research_lib is None:
+            return {'ok': False}
+        fid = body.get('id')
+        index = research_lib.load_index()
+        entry = research_lib.entry_by_id(index, fid)
+        if entry:
+            entry['read'] = True
+            entry['readAt'] = datetime.datetime.now().isoformat()
+            research_lib.save_index(index)
+            return {'ok': True}
+        return {'ok': False}
 
     # ── Chat ──────────────────────────────────────────────────────────────
     def handle_chat(self, body):

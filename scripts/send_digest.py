@@ -29,6 +29,45 @@ import urllib.parse
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CONTENT = os.path.join(ROOT, 'content')
 SYNC_FILE = os.path.join(ROOT, 'sync', 'learner.json')
+WATCHLIST_FILE = os.path.join(ROOT, 'sync', 'watchlist.json')
+
+# Personalised research prompts keyed by concept — used when a watchlist company
+# covers the day's concept. Reference the user's OWN research, no data supplied.
+WATCHLIST_TASKS = {
+    'variant-perception': "Re-read your variant-perception note: what specifically do you believe that the market doesn't? Is that gap still real, or has the market caught up?",
+    'expected-value': "Re-open your research and rebuild the scenario table from memory: bull / base / bear outcomes and rough odds. Does the probability-weighted value still beat today's price?",
+    'pre-mortem': "Re-read your pre-mortem. It's a year on — have any of the failure paths you named started to show up in the numbers or the news?",
+    'margin-of-safety': "Look up the current price and re-state your intrinsic-value range. What's the margin of safety today — and is it wide enough to still act?",
+    'base-rates': "Check one base rate you relied on (historical growth, industry odds). Does the latest data still support the anchor you used?",
+    'circle-of-competence': "Be honest: can you still explain this business in one sentence and name what breaks it? If a part has gone fuzzy, that's your next research task.",
+    'second-order-thinking': "Pick one recent development for this company and ask 'and then what?' two links deep. Has a second-order effect started that the price hasn't caught?",
+    'inversion': "List the 2-3 things that would most reliably destroy this position. Are any of them closer to happening than when you wrote the thesis?",
+    'explicit-framework-application': "Re-open your thesis and check: did you actually apply intrinsic value, margin of safety, and time horizon explicitly — or lean on the story? Fix one gap.",
+}
+
+
+def load_watchlist():
+    try:
+        return load_json(WATCHLIST_FILE).get('watchlist', [])
+    except (FileNotFoundError, ValueError):
+        return []
+
+
+def personalised_exercise(rng, concept, watchlist):
+    """If a watchlist company covers `concept`, return a personalised task text;
+    else None (caller falls back to the generic pre-authored exercise)."""
+    task = WATCHLIST_TASKS.get(concept)
+    if not task:
+        return None
+    matches = [c for c in watchlist if concept in c.get('concepts', [])]
+    if not matches:
+        return None
+    co = rng.choice(matches)
+    tag = 'thesis' if co.get('hasThesis') else 'research'
+    return (f'*{esc("🔎 5-min research task — " + co["company"] + " (your watchlist)")}*\n\n'
+            f'{esc("You have " + tag + " on " + co["company"] + ". Today\'s lens: " + concept.replace("-", " ") + ".")}\n\n'
+            f'{esc(task)}\n\n'
+            f'{esc("Open it in the My Research tab. (~5 min)")}')
 
 
 # ── Loading ──────────────────────────────────────────────────────────────
@@ -334,13 +373,18 @@ def build_digest(date_str, slot):
                 f'_{esc(hl["text"])}_{note}\n\n'
                 f'{esc("Still true? Still important? 30 seconds of re-reading beats an hour of forgetting.")}'))
 
-        # 5. 5-minute research exercise on a real stock (the commute task)
+        # 5. 5-minute research exercise (personalised to the user's watchlist
+        #    when possible, else a generic pre-authored task on a real stock)
         rng = make_rng(date_str, slot, 'exercise')
         ex = pick_weighted(rng, exercises, weights)
         if ex:
-            parts.append(('message',
-                f'*{esc("🔎 5-min research task — " + ex["stock"])}*\n\n'
-                f'{esc(ex["text"])}'))
+            personal = personalised_exercise(rng, ex['concept'], load_watchlist())
+            if personal:
+                parts.append(('message', personal))
+            else:
+                parts.append(('message',
+                    f'*{esc("🔎 5-min research task — " + ex["stock"])}*\n\n'
+                    f'{esc(ex["text"])}'))
     else:
         # Evening: shorter — MCQ poll + drill (different salts → different picks)
         parts.append(('message', header))

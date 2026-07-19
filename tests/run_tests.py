@@ -87,6 +87,10 @@ SUITE_LABELS = {
     'TestEscaping':             'Digest — MarkdownV2 escaping',
     'TestSelector':             'Digest — weighted selector',
     'TestDigestBuild':          'Digest — full digest builds',
+    'TestClassification':       'Research — source classification',
+    'TestScanAndIndex':         'Research — scan & index ledger',
+    'TestGracefulDegradation':  'Research — graceful degradation',
+    'TestWatchlistPersonalisation': 'Research — digest personalisation',
 }
 
 STATUS_ICON = {'PASS': '✅', 'FAIL': '❌', 'ERROR': '💥', 'SKIP': '⏭️'}
@@ -162,9 +166,11 @@ def main():
     result = CollectingResult()
 
     # ── Content & Frontend tests (no server needed) ───────────────────────
-    from tests import test_content, test_frontend, test_content_schema, test_digest
+    from tests import (test_content, test_frontend, test_content_schema,
+                       test_digest, test_research_bridge)
 
-    for module in (test_content, test_frontend, test_content_schema, test_digest):
+    for module in (test_content, test_frontend, test_content_schema,
+                   test_digest, test_research_bridge):
         loader = unittest.TestLoader()
         suite  = loader.loadTestsFromModule(module)
         suite.run(result)

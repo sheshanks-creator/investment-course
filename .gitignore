@@ -26,6 +26,12 @@ data/state.json
 progress.json
 quizzes/*/responses.md
 case-studies/*/responses.md
+coach-cases/*/answers.md
+
+# Research bridge — machine-specific paths + live index of private positions.
+# sync/watchlist.json is intentionally NOT ignored (tickers only, for the digest).
+config/research-sources.json
+research-index.json
 
 # Logs
 *.log

@@ -1,0 +1,8 @@
+{
+  "_comment": "Copy to research-sources.json (gitignored) and set the paths to YOUR machine. Points the course at the markdown research produced by the wealth-agents project + Obsidian vault. If this file is absent, the 'My Research' feature simply does not appear and digests fall back to generic exercises.",
+  "roots": [
+    { "path": "/Users/yourname/Documents/wealth-agents/thesis", "kind": "thesis" },
+    { "path": "/Users/yourname/Documents/Obsidian/your-vault/wiki/analyses", "kind": "analyses" },
+    { "path": "/Users/yourname/Documents/Obsidian/your-vault/raw/sources/investing", "kind": "source" }
+  ]
+}

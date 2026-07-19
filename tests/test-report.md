@@ -1,9 +1,9 @@
 # Test Report — Value Investing Course
 
-**Run date:** 2026-07-19 18:06
+**Run date:** 2026-07-19 22:04
 **Duration:** 0.6s
 **Result:** ✅ ALL PASS
-**Summary:** 181 passed · 0 failed · 0 skipped · 181 total
+**Summary:** 196 passed · 0 failed · 0 skipped · 196 total
 
 ---
 
@@ -247,6 +247,41 @@
 | pick weighted deterministic | ✅ PASS |  |
 | pick weighted empty | ✅ PASS |  |
 | weak concepts are upweighted | ✅ PASS |  |
+
+## ✅ Research — source classification (6/6)
+
+| Test | Status | Detail |
+|------|--------|--------|
+| company strips suffix | ✅ PASS |  |
+| market detection | ✅ PASS |  |
+| template excluded | ✅ PASS |  |
+| thesis filename | ✅ PASS |  |
+| ticker extraction | ✅ PASS |  |
+| types from filenames | ✅ PASS |  |
+
+## ✅ Research — graceful degradation (1/1)
+
+| Test | Status | Detail |
+|------|--------|--------|
+| no config means no roots | ✅ PASS |  |
+
+## ✅ Research — scan & index ledger (4/4)
+
+| Test | Status | Detail |
+|------|--------|--------|
+| path safety | ✅ PASS |  |
+| scan finds and classifies | ✅ PASS |  |
+| sha change resets read | ✅ PASS |  |
+| thesis section map | ✅ PASS |  |
+
+## ✅ Research — digest personalisation (4/4)
+
+| Test | Status | Detail |
+|------|--------|--------|
+| empty watchlist returns none | ✅ PASS |  |
+| matching concept personalises | ✅ PASS |  |
+| no sensitive fields referenced | ✅ PASS |  |
+| unmatched concept returns none | ✅ PASS |  |
 
 ## ✅ API — CORS & OPTIONS preflight (3/3)
 
