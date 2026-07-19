@@ -4,17 +4,17 @@
     {
       "type": "card",
       "concept": "margin-of-safety",
-      "text": "Margin of safety is a specific ratio, not a feeling: MoS = (Intrinsic Value − Price) / Intrinsic Value. If you estimate a business is worth ₹58,000cr and it trades at ₹43,500cr, MoS = 25%. The gap is your protection against being wrong — about growth, margins, or the future generally. No articulated number = no margin of safety, just optimism."
+      "text": "Margin of safety is just the gap between what a business is worth and what you pay. Worth ₹58,000cr, trading at ₹43,500cr? You're buying at a 25% discount — and that gap is your cushion if you've judged the future slightly wrong. The formula: (value − price) ÷ value. If you can't state the number, you don't have a margin of safety — just hope."
     },
     {
       "type": "card",
       "concept": "cheapness-vs-mos",
-      "text": "Down 45% from the 52-week high is NOT a margin of safety. The high may itself have been sentiment-driven madness — falling 45% from a delusional price can still leave a stock expensive. MoS is always measured against your independent estimate of intrinsic value, never against price history. A stock can fall 80% and be dear; another can sit at its all-time high and be cheap."
+      "text": "A stock down 45% from its high is NOT automatically 'safe'. That high might have been madness to begin with — fall 45% from a crazy price and you can still be overpaying. Safety is measured against what the business is worth, never against where the price used to be. A stock can drop 80% and still be dear; another can sit at an all-time high and be a bargain."
     },
     {
       "type": "card",
       "concept": "margin-of-safety",
-      "text": "Why a fat margin of safety makes precision unnecessary: if you estimate a range of ₹60–80 and the price is ₹30, it doesn't matter whether the true answer is ₹62 or ₹79 — even a 30% analytical error leaves you buying below value. Precision matters only when the gap is thin. That's why Graham hunted for the obviously cheap, not the precisely valued."
+      "text": "A big margin of safety means you don't need to be precise. If a business is worth somewhere around ₹60–80 and you can buy at ₹30, it doesn't matter whether the real answer is ₹62 or ₹79 — you're miles below either. Precision only matters when you're paying close to full value. That's why the classic move is to hunt for the obviously cheap, not the exactly-measured."
     },
     {
       "type": "mcq",
@@ -54,6 +54,12 @@
       ],
       "correctIndex": 1,
       "explanation": "Reported earnings are depressed, inflating the P/E. Recompute on normalised margins: if earnings recover ~30%, the real multiple is far cheaper than the headline."
+    },
+    {
+      "type": "exercise",
+      "concept": "cheapness-vs-mos",
+      "stock": "Asian Paints",
+      "text": "Open Asian Paints on screener.in. Find today's P/E (price ÷ per-share profit) and its 5-year median P/E, both shown on the page. Is the stock cheaper or dearer than its own history? Important catch: a below-average P/E is only a hint, not a margin of safety — that still depends on what the business is truly worth. Write one line: cheaper or dearer than usual, and does that alone justify buying? (~5 min)"
     }
   ]
 }

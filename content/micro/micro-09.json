@@ -4,17 +4,17 @@
     {
       "type": "card",
       "concept": "underperformance-causes",
-      "text": "Dalbar's long-running studies: the average equity-fund INVESTOR earns several points less per year than the average equity FUND. Same vehicles, worse results — because investors buy after rises and sell after falls. The gap isn't an information problem; it's a behaviour problem. The market transfers wealth from the impatient to the patient without any skill involved."
+      "text": "Studies of real investors keep finding the same thing: the average person in a fund earns noticeably less than the fund itself. Same investment, worse result — because people pile in after it's risen and bail after it's fallen. It's not an information gap, it's a behaviour gap. The market quietly moves money from the jumpy to the patient, no skill required."
     },
     {
       "type": "card",
       "concept": "investor-behaviour",
-      "text": "The behaviour gap in one line: your returns = fund returns − (cost of your entries and exits). Every switch driven by a headline, every 'wait for clarity', every chase of last year's winner subtracts. The implication is uncomfortable: for most people, improving temperament raises returns more than improving analysis ever will."
+      "text": "Here's the whole thing in one line: your return = the fund's return − whatever your buying and selling cost you. Every headline-driven switch, every 'I'll wait for things to calm down', every chase of last year's winner chips away at it. The uncomfortable truth: for most people, a calmer temperament adds more to returns than any amount of extra analysis."
     },
     {
       "type": "card",
       "concept": "underperformance-causes",
-      "text": "Fees compound in reverse. A 1.5% annual expense drag on a 12% gross return doesn't cost 1.5% — over 30 years it consumes roughly a THIRD of your final corpus, because the fee eats the compounding base every year. Check any fund: gross return, minus expense ratio, minus your own behaviour gap. That's the real number, and it's why costs and patience beat cleverness."
+      "text": "Fees compound against you. A 1.5%-a-year charge on a 12% return doesn't cost you 1.5% — over 30 years it can quietly eat about a THIRD of your final pot, because it nibbles the growing base every single year. So check any fund's expense ratio (its annual fee). Low costs and patience beat cleverness far more often than anyone expects."
     },
     {
       "type": "mcq",
@@ -54,6 +54,12 @@
       ],
       "correctIndex": 2,
       "explanation": "Fees subtract from the compounding base annually: 12% vs 10.5% over 30 years ≈ 30× vs 20× money. The drag compounds just like returns do."
+    },
+    {
+      "type": "exercise",
+      "concept": "underperformance-causes",
+      "stock": "a fund you hold",
+      "text": "Look up the expense ratio (annual fee) of one mutual fund or index fund you own — it's on the fund page at valueresearchonline.com or the AMC's site. Is it above ~0.5%? Now picture that fee skimmed off every year for 20 years, compounding against you and costing a real slice of your final corpus. Write the number down. If it's a pricey active fund, ask: has it actually beaten a cheap index fund after fees? (~5 min)"
     }
   ]
 }

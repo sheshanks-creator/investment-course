@@ -4,17 +4,17 @@
     {
       "type": "card",
       "concept": "institutional-constraints",
-      "text": "Your edge over professionals isn't intelligence — it's structure. A fund manager reports quarterly, faces client redemptions, and risks their career holding an unloved position through a 40% drawdown, even when they're right. So they hug benchmarks. You have no clients, no benchmark, no quarterly review. You can hold a sound thesis through three ugly years — an action that would get a professional fired. That freedom IS the edge."
+      "text": "Your real edge over the pros isn't brains — it's freedom. A fund manager reports every three months and loses clients (and their job) if they trail the market for a year or two, even when they're ultimately right. So they cling to safe, index-like bets. You answer to no one. You can hold a good idea through three ugly years — the exact move that would get a professional fired. That patience is the edge."
     },
     {
       "type": "card",
       "concept": "time-horizon",
-      "text": "Amazon 1999–2001: the stock fell 90% while the business grew MORE valuable — warehouses built, customers added, unit economics improving. Price and intrinsic value moved in opposite directions for two years. Lesson: price can be a completely unreliable signal of what's happening to business value, for long stretches, in either direction. Long-horizon investors price the business, not the stock."
+      "text": "Between 1999 and 2001 Amazon's stock fell 90% — while the business was actually getting stronger: more warehouses, more customers, better economics. Price and true worth moved in opposite directions for two whole years. The lesson: price can be a wildly misleading signal of how a business is really doing, for long stretches. Long-term investors buy the business, not the ticker."
     },
     {
       "type": "card",
       "concept": "compounding-math",
-      "text": "CAGR = (End/Start)^(1/years) − 1. It's the smoothed annual rate that turns the start value into the end value. ₹1 at 15% for 20 years = ₹16. At 25%, ₹86. The gap between good and great compounding is enormous over long horizons — which is why durability of returns matters more than one spectacular year."
+      "text": "Compounding rewards patience unfairly. ₹1 growing 15% a year becomes ₹16 over 20 years; at 25% it becomes ₹86. Same 20 years, five times the money — because each year's growth builds on the last. This is why a steady, durable return matters far more than one dazzling year. (The shorthand for that annual rate is CAGR: the smooth yearly pace that gets you from start to finish.)"
     },
     {
       "type": "mcq",
@@ -54,6 +54,12 @@
       ],
       "correctIndex": 2,
       "explanation": "CAGR = (520/200)^(0.1) − 1 = 2.6^0.1 − 1 ≈ 10%. Dividing total return by years (option A) ignores compounding and overstates the rate."
+    },
+    {
+      "type": "exercise",
+      "concept": "compounding-math",
+      "stock": "Pidilite Industries",
+      "text": "On screener.in, open Pidilite. Find its 10-year Profit growth (CAGR) and its 10-year stock-price CAGR — both are shown on the page. Are they roughly similar? Over long periods a stock's return tends to track how fast the underlying profits grew — proof that owning the business, not trading the price, is what pays. Note the two numbers and how close they are. (~5 min)"
     }
   ]
 }

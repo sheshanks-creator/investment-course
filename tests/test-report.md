@@ -1,9 +1,9 @@
 # Test Report — Value Investing Course
 
-**Run date:** 2026-07-18 12:24
+**Run date:** 2026-07-19 18:06
 **Duration:** 0.6s
 **Result:** ✅ ALL PASS
-**Summary:** 178 passed · 0 failed · 0 skipped · 178 total
+**Summary:** 181 passed · 0 failed · 0 skipped · 181 total
 
 ---
 
@@ -173,11 +173,13 @@
 | lesson topics are valid topic ids | ✅ PASS |  |
 | manifest has required keys | ✅ PASS |  |
 
-## ✅ Schema — micro-content files (5/5)
+## ✅ Schema — micro-content files (7/7)
 
 | Test | Status | Detail |
 |------|--------|--------|
+| every topic has one exercise | ✅ PASS |  |
 | micro bank covers all lesson topics | ✅ PASS |  |
+| micro exercises well formed | ✅ PASS |  |
 | micro files exist | ✅ PASS |  |
 | micro items have types and concepts | ✅ PASS |  |
 | micro mcq telegram limits | ✅ PASS |  |
@@ -210,7 +212,7 @@
 | has 120 topics | ✅ PASS |  |
 | ids sequential 1 to 120 | ✅ PASS |  |
 
-## ✅ Digest — full digest builds (5/5)
+## ✅ Digest — full digest builds (6/6)
 
 | Test | Status | Detail |
 |------|--------|--------|
@@ -218,6 +220,7 @@
 | digests vary across dates | ✅ PASS |  |
 | evening digest is shorter | ✅ PASS |  |
 | morning digest has parts | ✅ PASS |  |
+| morning digest includes research exercise | ✅ PASS |  |
 | poll payloads within telegram limits | ✅ PASS |  |
 
 ## ✅ Digest — numeric drill templates (5/5)

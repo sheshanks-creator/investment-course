@@ -63,10 +63,12 @@ House style for all course content: lessons, quizzes, case studies, coach walkth
 
 ## Micro content (`content/micro/micro-NN.json`) — Telegram digests
 
-- One file per topic: `{topicId, items[]}`. Each item: `type` (`card` | `mcq`), `concept` (from the vocabulary below), `text`, and for MCQs: `options[]`, `correctIndex`, `explanation`.
+- One file per topic: `{topicId, items[]}`. Each item: `type` (`card` | `mcq` | `exercise`), `concept` (from the vocabulary below), `text`, plus type-specific fields.
 - **Cards**: 3–4 sentences of plain text (no markdown — the sender escapes everything). Restate one concept with a *fresh* example not used in the lesson. Standalone — readable with zero context on a phone.
+  - **Plain-language rule (important):** these are read half-awake on a commute. Lead with the plain-English idea; never open with a technical term. If a term is unavoidable, define it in the same breath — "its expense ratio (annual fee)", "earnings yield (100 ÷ P/E)". Avoid unexplained jargon (EBITDA, drawdown, unit economics, PV, corpus, vesting) unless defined inline. Write like a smart friend explaining on a walk, not like a textbook. Feedback that a card "felt like a lot of jargon" is a defect to fix, not a style choice.
 - **MCQs** ship as native Telegram quiz polls, so hard API limits apply (schema-tested): question ≤295 chars, 3–4 options of ≤100 chars each, explanation ≤200 chars. Wrong options should be *plausible* errors (e.g. the non-compounded CAGR), not filler.
-- ~3 cards + ~3 MCQs per topic. Every lesson topic must have a micro file (schema-enforced).
+- **Exercises**: a 5-minute research task on a *real, specific stock* the learner can look up (default tool: screener.in; funds via valueresearchonline.com). Fields: `stock` (company name), `concept`, `text`. The task must be concrete ("find X, compare to Y, write one line concluding Z"), doable in ~5 min, and reinforce the topic's concept through real data — this directly counters the "reaches for adjectives instead of numbers" gap. Keep `text` ≤700 chars; end with "(~5 min)". One exercise per topic (schema-enforced).
+- ~3 cards + ~3 MCQs + 1 exercise per topic. Every lesson topic must have a micro file (schema-enforced).
 
 ### Concept vocabulary (shared ids)
 

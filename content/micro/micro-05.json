@@ -4,17 +4,17 @@
     {
       "type": "card",
       "concept": "second-order-thinking",
-      "text": "First-order: 'The company turned profitable, the stock should rise.' Second-order: profitability changes competitor behaviour (rivals now fight harder or exit), management incentives (protect margins vs invest), and the shareholder register (growth funds out, value funds in). Howard Marks: 'First-level thinking says: it's a good company, buy. Second-level thinking says: it's a good company, but everyone thinks so — so it's overpriced. Sell.'"
+      "text": "First-order thinking stops at the obvious: 'profits are up, buy.' Second-order asks what happens next — do rivals now attack harder, does management get complacent, does the crowd already know this so it's priced in? Howard Marks' version: 'It's a good company — but everyone knows that, so it's expensive. Sell.' The money is made by seeing one step past the obvious."
     },
     {
       "type": "card",
       "concept": "second-order-thinking",
-      "text": "The second-order question that most improves analysis: 'and then what?' Rains fail → food inflation → RBI raises rates → discretionary demand slows → your retailer's same-store sales dip three quarters later. Markets usually price the first link fast and the third link slowly. Your edge lives two links down the chain."
+      "text": "The most useful two words in analysis: 'and then?' Poor monsoon → food prices rise → the central bank hikes interest rates → people spend less on non-essentials → a retailer's sales dip three quarters later. Markets price the first link fast and the later links slowly. Your edge lives two or three links down that chain, where others stop looking."
     },
     {
       "type": "card",
       "concept": "incentives",
-      "text": "Munger: 'Show me the incentive and I'll show you the outcome.' When a management guides aggressively, ask what their bonus vests on. When a broker recommends a stock, ask who pays them. When a company changes its reported metric ('adjusted EBITDA'), ask what the old metric would have shown. Incentives don't just influence behaviour — over time they ARE behaviour."
+      "text": "Munger: 'Show me the incentive and I'll show you the outcome.' If a boss's bonus depends on sales growth, expect them to chase growth — even bad growth. If a company suddenly starts reporting a flattering new profit figure, ask what the old, plainer number would have shown. People quietly bend toward whatever they're rewarded for. So always check what's being rewarded."
     },
     {
       "type": "mcq",
@@ -54,6 +54,12 @@
       ],
       "correctIndex": 1,
       "explanation": "People optimise what they're paid for. Revenue-linked pay reliably produces empire-building; check the incentive structure before trusting the strategy."
+    },
+    {
+      "type": "exercise",
+      "concept": "second-order-thinking",
+      "stock": "Asian Paints",
+      "text": "Asian Paints long earned fat margins in a near-monopoly. In 2024 a deep-pocketed rival, Birla Opus, entered. First-order reaction: 'new competition, sell.' Your task on screener.in: check Asian Paints' operating margin (OPM %) over the last 2-3 years — is there real damage yet, or is the market pricing fear ahead of the facts? Then ask the second-order question: what could the incumbent do that a new entrant can't easily counter? (~5 min)"
     }
   ]
 }

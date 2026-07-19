@@ -4,17 +4,17 @@
     {
       "type": "card",
       "concept": "investing-vs-speculation",
-      "text": "Graham's line: an investment operation, on thorough analysis, promises safety of principal and an adequate return; everything else is speculation. The test isn't the asset — it's the operation. Buying a great company with no view of value is speculation; buying a boring bond after real analysis is investing. Ask of every position: am I relying on the business's cash flows, or on someone paying me more later?"
+      "text": "Graham's definition still cuts cleanest: investing is buying after real analysis, expecting your money back plus a fair return; everything else is speculation. It's about the process, not the asset. Buy a great company with no idea what it's worth? Speculation. Analyse a boring bond carefully? Investing. Ask of every position: am I counting on the business's cash, or on someone paying me more later?"
     },
     {
       "type": "card",
       "concept": "investing-vs-speculation",
-      "text": "Three distinct activities, honestly labelled: INVESTING — returns from the asset's own cash generation over years. TRADING — returns from price moves over days/months, betting on flows and sentiment. SPECULATION — returns dependent on a greater fool paying more, with no cash-flow anchor. None is illegal; the damage comes from doing one while believing you're doing another — e.g. 'long-term investing' in a story stock you never valued."
+      "text": "Three activities, honestly labelled. INVESTING: your return comes from the business's own cash, over years. TRADING: from short-term price moves and sentiment. SPECULATION: from a greater fool paying more, with no anchor in value. None is illegal — the damage comes from doing one while telling yourself you're doing another, like 'long-term investing' in a hot stock you never actually valued."
     },
     {
       "type": "card",
       "concept": "investor-behaviour",
-      "text": "A practical honesty test for any holding: if the market closed for five years tomorrow, would you still be happy owning this? If yes, your return comes from the business — investing. If the thought terrifies you, your return was always going to come from selling to someone else — label it accordingly and size it accordingly."
+      "text": "A quick honesty test for anything you own: if the market shut for five years starting tomorrow, would you still be happy holding it? If yes, your return comes from the business itself — that's investing. If the thought scares you, your return was always going to depend on selling to someone else — so call it what it is, and size it small."
     },
     {
       "type": "mcq",
@@ -54,6 +54,12 @@
       ],
       "correctIndex": 1,
       "explanation": "If you'd happily hold with no quotes, the business's cash generation is your return source — the defining mark of investing."
+    },
+    {
+      "type": "exercise",
+      "concept": "investing-vs-speculation",
+      "stock": "Ola Electric",
+      "text": "Take a recently hyped stock — say Ola Electric, or any hot IPO you've eyed. Apply the 'market shut for 5 years' test: would you happily own it with no price quotes until 2031? Then answer honestly: does your expected gain come from the business's future cash, or from selling to someone more excited later? Naming that out loud is the line between investing and speculating — and it decides how big a position is sensible. (~5 min)"
     }
   ]
 }

@@ -4,17 +4,17 @@
     {
       "type": "card",
       "concept": "expected-value",
-      "text": "Never assign a probability to a verdict ('will the case go our way?'). Decompose the event into cash-flow outcomes: e.g. duty <5% → value ₹900; 5–15% → ₹720; 15–40% → ₹380; punitive → ₹180. Weight each by probability, sum to expected value, then compare EV to the market price. The thesis is never 'X will happen' — it's 'the market's implied odds differ from mine, and the payoff is asymmetric.'"
+      "text": "Don't bet on a yes/no verdict — break the event into money outcomes. Say a company awaits a tariff ruling: light duty → worth ₹900; medium → ₹720; heavy → ₹380; brutal → ₹180. Weight each by how likely it is, add them up, and compare that total to today's price. Your thesis is never 'X will happen' — it's 'my odds differ from the market's, and the payoff is lopsided in my favour.'"
     },
     {
       "type": "card",
       "concept": "base-rates",
-      "text": "Anchor to the base rate BEFORE your opinion enters: how did comparable situations historically resolve? If similar anti-dumping cases went badly 70% of the time, start at 70% — then adjust for case-specifics only with reasons you can articulate ('India's cost structure makes a dumping finding harder: 70→55%'). If you can't state why, you don't get the adjustment. That rule separates calibrated judgement from gut feel."
+      "text": "Before trusting your own opinion, ask how these situations usually turn out. If similar court cases went badly 70% of the time, start at 70% — then move off it only for reasons you can actually name ('India's costs are lower, so a penalty is less likely: 70→55'). No stated reason, no adjustment. Starting from that historical 'base rate' is what separates disciplined judgement from a hunch."
     },
     {
       "type": "card",
       "concept": "variant-perception",
-      "text": "If your probability estimate merely equals the consensus, it's already in the price — accuracy alone earns nothing. Edge requires variant perception: your odds differ from the market's AND you can name specifically why the market is wrong (anchoring on a scary headline, structural sellers, horizon limits). The job isn't computing the 'true' probability; it's locating the gap between price-implied probability and defensible probability."
+      "text": "If your estimate simply matches the crowd's, it's already baked into the price — being right along with everyone earns nothing. Real edge needs two things together: your view differs from the market's, AND you can say precisely why the market is wrong (it's fixated on a scary headline, forced sellers are dumping, everyone's too impatient). The job isn't finding the 'true' odds — it's finding where the price's odds are wrong."
     },
     {
       "type": "mcq",
@@ -54,6 +54,12 @@
       ],
       "correctIndex": 1,
       "explanation": "Being right along with everyone pays nothing. Returns come from justified disagreement with price-implied odds — variant perception."
+    },
+    {
+      "type": "exercise",
+      "concept": "base-rates",
+      "stock": "Infosys",
+      "text": "On screener.in, open Infosys and find its 10-year and 5-year Sales growth (both shown as CAGR). That history is your 'base rate' — the anchor. Next time you read an analyst predicting 15% growth, you can judge it instantly: in line with the last decade, or wishful? Write down the two growth numbers; they're the reality check you bring to any bullish forecast on IT services. (~5 min)"
     }
   ]
 }

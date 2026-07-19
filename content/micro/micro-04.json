@@ -4,17 +4,17 @@
     {
       "type": "card",
       "concept": "circle-of-competence",
-      "text": "Buffett: 'The size of the circle is not very important; knowing its boundaries is vital.' A small, sharply-defined circle beats a large fuzzy one. Most investors fail not because they know too little, but because they don't know where their knowledge ends — and position sizes never reflect that. The most expensive words in investing: 'I basically understand this.'"
+      "text": "Buffett: what matters isn't how big your circle of knowledge is, but knowing exactly where its edge lies. A small, well-understood patch beats a big fuzzy one. Most people don't lose money because they know too little — they lose because they don't realise they've wandered past what they actually understand. The most expensive phrase in investing: 'I basically get it.'"
     },
     {
       "type": "card",
       "concept": "competence-boundaries",
-      "text": "Buffett refused Microsoft for 30 years despite Bill Gates personally explaining the business to him. Access and friendship didn't expand his circle — only analytical confidence could, and he judged he couldn't predict 20-year tech dynamics. When he finally bought Apple in 2016, he explicitly reframed it as a consumer-brand business with switching costs — a lens he already possessed. Circles expand by honest reframing, not by force."
+      "text": "For 30 years Buffett refused to buy Microsoft — even though Bill Gates was a close friend who explained it to him personally. Friendship didn't make it understandable to him. When he finally bought Apple in 2016, he treated it not as a tech company but as a consumer brand people won't switch away from — a lens he already trusted. Your circle grows by honestly reframing, not by forcing yourself in."
     },
     {
       "type": "card",
       "concept": "circle-of-competence",
-      "text": "The circle expands through work, not time: primary filings read across a full cycle, several companies in the same industry compared, operators and customers talked to, and at least one downturn watched closely. Ten years of passively skimming headlines adds nothing. And the harder discipline isn't expanding the circle — it's declining opportunities just outside it when they're exciting."
+      "text": "You widen your circle through real work, not calendar time: reading a company's actual filings across good years and bad, comparing several rivals in the same industry, talking to people who use or sell the product, and watching how the business behaves in a downturn. Skimming headlines for ten years teaches nothing. And the harder skill is saying no to exciting things just outside your circle."
     },
     {
       "type": "mcq",
@@ -54,6 +54,12 @@
       ],
       "correctIndex": 2,
       "explanation": "The test is predictive: can you describe the durable economics and the failure modes? Ownership, familiarity, and borrowed conviction all fail that test."
+    },
+    {
+      "type": "exercise",
+      "concept": "circle-of-competence",
+      "stock": "Divi's Laboratories",
+      "text": "Open Divi's Laboratories on screener.in and read the short business description. Now try to say, in ONE plain sentence, how it makes money — and one thing that could seriously hurt it. If you can't, that's not a failing; it's honest evidence the business sits outside your circle today. The whole skill is knowing which side of that line a company falls on before you ever risk money on it. (~5 min)"
     }
   ]
 }

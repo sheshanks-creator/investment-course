@@ -202,12 +202,30 @@ class TestMicroSchemas(unittest.TestCase):
             data = _load(entry['file'])
             self.assertGreater(len(data['items']), 0, f"{entry['file']} has no items")
             for i, item in enumerate(data['items']):
-                self.assertIn(item['type'], ('card', 'mcq'),
+                self.assertIn(item['type'], ('card', 'mcq', 'exercise'),
                               f"{entry['file']} item {i} bad type")
                 self.assertTrue(item.get('concept', '').strip(),
                                 f"{entry['file']} item {i} missing concept")
                 self.assertTrue(item.get('text', '').strip(),
                                 f"{entry['file']} item {i} missing text")
+
+    def test_micro_exercises_well_formed(self):
+        """Research exercises need a named stock and a task that fits one
+        Telegram message comfortably."""
+        for entry in self.manifest.get('micro', []):
+            data = _load(entry['file'])
+            for i, item in enumerate(data['items']):
+                if item['type'] != 'exercise':
+                    continue
+                where = f"{entry['file']} item {i}"
+                self.assertTrue(item.get('stock', '').strip(), f'{where} exercise missing stock')
+                self.assertLessEqual(len(item['text']), 700, f'{where} exercise text too long')
+
+    def test_every_topic_has_one_exercise(self):
+        for entry in self.manifest.get('micro', []):
+            data = _load(entry['file'])
+            n = sum(1 for it in data['items'] if it['type'] == 'exercise')
+            self.assertGreaterEqual(n, 1, f"{entry['file']} has no research exercise")
 
     def test_micro_mcq_telegram_limits(self):
         for entry in self.manifest.get('micro', []):

@@ -285,6 +285,7 @@ def build_digest(date_str, slot):
 
     cards = [it for it in bank if it['type'] == 'card']
     mcqs = [it for it in bank if it['type'] == 'mcq']
+    exercises = [it for it in bank if it['type'] == 'exercise']
 
     slot_label = 'Morning' if slot == 'morning' else 'Evening'
     nice_date = datetime.date.fromisoformat(date_str).strftime('%a %d %b')
@@ -332,6 +333,14 @@ def build_digest(date_str, slot):
                 f'*{esc("🔖 You highlighted this — Topic " + str(hl["topicId"]) + ": " + topic)}*\n\n'
                 f'_{esc(hl["text"])}_{note}\n\n'
                 f'{esc("Still true? Still important? 30 seconds of re-reading beats an hour of forgetting.")}'))
+
+        # 5. 5-minute research exercise on a real stock (the commute task)
+        rng = make_rng(date_str, slot, 'exercise')
+        ex = pick_weighted(rng, exercises, weights)
+        if ex:
+            parts.append(('message',
+                f'*{esc("🔎 5-min research task — " + ex["stock"])}*\n\n'
+                f'{esc(ex["text"])}'))
     else:
         # Evening: shorter — MCQ poll + drill (different salts → different picks)
         parts.append(('message', header))

@@ -95,6 +95,12 @@ class TestDigestBuild(unittest.TestCase):
         self.assertIn('poll', kinds)
         self.assertGreaterEqual(len(parts), 3)
 
+    def test_morning_digest_includes_research_exercise(self):
+        parts = sd.build_digest('2026-07-18', 'morning')
+        texts = [payload for kind, payload in parts if kind == 'message']
+        self.assertTrue(any('research task' in t for t in texts),
+                        'Morning digest should include a research exercise')
+
     def test_evening_digest_is_shorter(self):
         morning = sd.build_digest('2026-07-18', 'morning')
         evening = sd.build_digest('2026-07-18', 'evening')

@@ -4,17 +4,17 @@
     {
       "type": "card",
       "concept": "opportunity-cost",
-      "text": "Every investment is silently measured against the best alternative you could have made instead. Buying stock A at a likely 9% return isn't 'making 9%' — it's LOSING 4% a year if a comparable-risk alternative offered 13%. Munger runs everything against his best available idea: 'It's your alternatives that matter.' Cash, index funds, and your existing holdings are all live alternatives."
+      "text": "Every investment is quietly judged against the best thing you could have done instead. A stock likely to return 9% isn't 'making you 9%' if a similar-risk index fund would have made 12% — you're effectively 3% behind. Munger judges every idea against his best available one. Cash, an index fund, and the stocks you already own are all real alternatives competing for the same rupee."
     },
     {
       "type": "card",
       "concept": "hurdle-rate",
-      "text": "A hurdle rate turns opportunity cost into a discipline: 'I don't part with cash for less than X% expected return.' For Indian equities a sensible personal hurdle is ~12–15% — above the ~7% risk-free bond, above the ~11–12% index expectation, or it isn't worth single-stock risk. The hurdle's power is what it makes you skip: mediocre ideas that would silently displace better future ones."
+      "text": "A 'hurdle rate' is a simple rule: 'I won't tie up money for less than X% expected return.' In India, ~12–15% is sensible — comfortably above the ~7% a government bond pays, or you're taking single-stock risk for nothing. The power of a hurdle is in what it makes you skip: the merely-okay ideas that would quietly crowd out better ones later."
     },
     {
       "type": "card",
       "concept": "opportunity-cost",
-      "text": "The costliest opportunity-cost error is invisible: capital parked in a 'fine' 8% idea isn't available when the fat pitch arrives at panic prices. This is why Buffett holds cash that 'yields nothing' — it's an option on future bargains. Opportunity cost isn't only about comparing today's ideas; it's about the price of being fully committed when tomorrow's better idea shows up."
+      "text": "The most expensive mistake is invisible: money tied up in a 'fine' idea isn't there when a genuinely great one appears at panic prices. That's why Buffett happily sits on cash that 'earns nothing' — it's really an option to pounce on future bargains. Opportunity cost isn't just comparing today's choices; it's the price of being fully invested when tomorrow's better pitch arrives."
     },
     {
       "type": "mcq",
@@ -54,6 +54,12 @@
       ],
       "correctIndex": 1,
       "explanation": "Cash's return isn't its yield; it's the ability to act when others can't. The 2008-style fat pitch can only be hit with dry powder."
+    },
+    {
+      "type": "exercise",
+      "concept": "opportunity-cost",
+      "stock": "Titan",
+      "text": "Open Titan on screener.in and note its P/E. Flip it into an 'earnings yield': 100 ÷ P/E. So a P/E of 50 = a 2% earnings yield. Compare that to the ~7% a bank fixed deposit pays today. If you're accepting 2% now, you're betting profits grow fast enough to justify it. Write one line: what growth would make that trade worth it versus just earning 7% risk-free? (~5 min)"
     }
   ]
 }

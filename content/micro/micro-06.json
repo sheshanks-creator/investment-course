@@ -4,17 +4,17 @@
     {
       "type": "card",
       "concept": "inversion",
-      "text": "Munger's habit, borrowed from algebra's Jacobi: 'Invert, always invert.' Instead of 'how do I pick winners?', ask 'what reliably destroys investors?' — leverage, overpaying, businesses outside your circle, selling in panics. Avoid the reliable destroyers and winning largely takes care of itself. It's easier to be consistently not-stupid than occasionally brilliant."
+      "text": "Munger's trick, borrowed from a mathematician: instead of asking 'how do I win?', ask 'how do I reliably lose?' — then avoid that. The classic ways investors blow up: borrowing to buy, overpaying, buying things they don't understand, and panic-selling at the bottom. Dodge those few reliable killers and good outcomes mostly take care of themselves. It's easier to be steadily sensible than occasionally brilliant."
     },
     {
       "type": "card",
       "concept": "pre-mortem",
-      "text": "Before any significant investment, run the pre-mortem: 'It's three years from now and this position lost 60%. Write the story of what happened.' The exercise forces your brain from advocacy into detection — and typically surfaces the one risk your thesis conveniently ignored. If you can't write a plausible failure story, you don't understand the position; if you can, you now know exactly what to monitor."
+      "text": "Before you buy, run a 'pre-mortem'. Imagine it's three years later and the position has halved — now write the story of what went wrong. This flips your brain from cheerleader to detective and almost always surfaces the one risk your excitement was skipping over. Can't write a believable failure story? You don't understand it yet. Can? You now know exactly what to watch."
     },
     {
       "type": "card",
       "concept": "inversion",
-      "text": "Inversion applied to portfolio reviews: instead of asking 'what should I buy?', periodically ask 'if I were forced to sell one holding today, which and why?' The question reverses your default of defending what you own, and often reveals that your weakest position is held for narrative comfort, not expected value."
+      "text": "Turn inversion on your own portfolio: instead of 'what should I buy?', ask 'if I had to sell one holding today, which — and why?' It breaks your instinct to defend what you already own, and usually exposes the position you're keeping for comfort or a nice story rather than because the numbers still make sense."
     },
     {
       "type": "mcq",
@@ -54,6 +54,12 @@
       ],
       "correctIndex": 1,
       "explanation": "The reliable path to good outcomes is removing the classic destroyers of capital, not hunting for streaks of genius."
+    },
+    {
+      "type": "exercise",
+      "concept": "pre-mortem",
+      "stock": "Zomato",
+      "text": "Pick Zomato (or any stock you're tempted by). Spend 5 minutes writing a 3-line pre-mortem: 'It's 2028, this position lost half its value — what happened?' Force yourself to name concrete causes: a Reliance-backed rival, quick-commerce losses never turning profitable, new regulation. If you can write it easily, you've just found the exact things to monitor. If you can't, you don't yet understand the risk. (~5 min)"
     }
   ]
 }

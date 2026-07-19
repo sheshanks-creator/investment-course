@@ -4,17 +4,17 @@
     {
       "type": "card",
       "concept": "intrinsic-value",
-      "text": "Intrinsic value = the present value of all cash a business will generate from now until it stops existing. Not profit, not revenue — cash that owners could take out without impairing operations. Example: a pharmacy earning ₹40L cash/year for 20 more years is 'worth' the discounted sum of those 20 payments, regardless of what a buyer offers you today. Price is an opinion; intrinsic value is an estimate of a fact."
+      "text": "What is a business really worth? Add up all the cash it will ever hand back to its owners over its life, counting money years away as a bit less valuable than money today. That total is its 'intrinsic value' — and it has nothing to do with today's share price. Price is just the last number someone was willing to pay. Value is what the business actually produces."
     },
     {
       "type": "card",
       "concept": "cash-vs-profit",
-      "text": "Reported profit and cash are not the same thing. A company can report ₹100cr PAT while generating only ₹30cr of spendable cash — because profits are absorbed by inventory build-up, unpaid receivables, and equipment replacement. When you hear 'earnings', always ask: how much of this becomes cash that could reach shareholders? That ratio (FCF/PAT) is one of the fastest quality checks in investing."
+      "text": "'Profit' on paper and cash in the bank aren't the same. A company can report ₹100 of profit but only truly pocket ₹30 — the rest gets stuck in unsold stock, bills customers haven't paid yet, or new machines it had to buy. So when you see 'earnings', ask the better question: how much of it turned into real, spendable cash?"
     },
     {
       "type": "card",
       "concept": "valuation-range",
-      "text": "Intrinsic value is a range, never a point. If your DCF says a business is worth exactly ₹847 per share, you have false precision — change the growth assumption by 1% and the answer moves 15%. Professionals say 'worth ₹700–950' and only act when the price is well outside that band. Buffett: 'I don't need to know a man's exact weight to know he's fat.'"
+      "text": "You can never pin a business's worth to the exact rupee — so don't try. Good investors say 'worth roughly ₹700–950', not 'exactly ₹847', and only buy when the price sits clearly below that range. Being roughly right and buying cheap beats being precisely wrong. As Buffett puts it: you don't need a man's exact weight to know he's overweight."
     },
     {
       "type": "mcq",
@@ -54,6 +54,12 @@
       ],
       "correctIndex": 2,
       "explanation": "Intrinsic value is the PV of future cash flows. If nothing changed about the business's cash generation, value is untouched — only the market's opinion moved."
+    },
+    {
+      "type": "exercise",
+      "concept": "cash-vs-profit",
+      "stock": "Nestlé India",
+      "text": "Open Nestlé India on screener.in. In the annual numbers, find 'Net Profit' and 'Cash from Operating Activities' for the latest year. Are they roughly similar, or far apart? A company whose profit reliably shows up as real operating cash is higher quality than one where the two drift apart. Jot down which side Nestlé falls on — that's the cash-vs-profit check in the real world. (~5 min)"
     }
   ]
 }
