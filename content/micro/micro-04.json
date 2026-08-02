@@ -4,12 +4,12 @@
     {
       "type": "card",
       "concept": "circle-of-competence",
-      "text": "Buffett: what matters isn't how big your circle of knowledge is, but knowing exactly where its edge lies. A small, well-understood patch beats a big fuzzy one. Most people don't lose money because they know too little — they lose because they don't realise they've wandered past what they actually understand. The most expensive phrase in investing: 'I basically get it.'"
+      "text": "Buffett: what matters isn't how big your circle of knowledge is, but knowing exactly where its edge lies. A small, well-understood patch beats a big fuzzy one. Most people don't lose money because they know too little, they lose because they don't realise they've wandered past what they actually understand. The most expensive phrase in investing: 'I basically get it.'"
     },
     {
       "type": "card",
       "concept": "competence-boundaries",
-      "text": "For 30 years Buffett refused to buy Microsoft — even though Bill Gates was a close friend who explained it to him personally. Friendship didn't make it understandable to him. When he finally bought Apple in 2016, he treated it not as a tech company but as a consumer brand people won't switch away from — a lens he already trusted. Your circle grows by honestly reframing, not by forcing yourself in."
+      "text": "For 30 years Buffett refused to buy Microsoft, even though Bill Gates was a close friend who explained it to him personally. Friendship didn't make it understandable to him. When he finally bought Apple in 2016, he treated it not as a tech company but as a consumer brand people won't switch away from, a lens he already trusted. Your circle grows by honestly reframing, not by forcing yourself in."
     },
     {
       "type": "card",
@@ -32,7 +32,7 @@
     {
       "type": "mcq",
       "concept": "competence-boundaries",
-      "text": "Zomato looks simple (an app you use daily) but is four businesses with different economics — food delivery, quick commerce, B2B supplies, dining. The circle-of-competence lesson?",
+      "text": "Zomato looks simple (an app you use daily) but is four businesses with different economics, food delivery, quick commerce, B2B supplies, dining. The circle-of-competence lesson?",
       "options": [
         "Consumer familiarity with a product ≠ understanding the business",
         "Apps are always outside everyone's circle",
@@ -40,7 +40,7 @@
         "Use the segment with the best story"
       ],
       "correctIndex": 0,
-      "explanation": "Using a product daily creates an illusion of understanding. Competence means knowing each segment's unit economics — not being a customer."
+      "explanation": "Using a product daily creates an illusion of understanding. Competence means knowing each segment's unit economics, not being a customer."
     },
     {
       "type": "mcq",
@@ -59,7 +59,7 @@
       "type": "exercise",
       "concept": "circle-of-competence",
       "stock": "Divi's Laboratories",
-      "text": "Open Divi's Laboratories on screener.in and read the short business description. Now try to say, in ONE plain sentence, how it makes money — and one thing that could seriously hurt it. If you can't, that's not a failing; it's honest evidence the business sits outside your circle today. The whole skill is knowing which side of that line a company falls on before you ever risk money on it. (~5 min)"
+      "text": "Open Divi's Laboratories on screener.in and read the short business description. Now try to say, in ONE plain sentence, how it makes money, and one thing that could seriously hurt it. If you can't, that's not a failing; it's honest evidence the business sits outside your circle today. The whole skill is knowing which side of that line a company falls on before you ever risk money on it. (~5 min)"
     }
   ]
 }

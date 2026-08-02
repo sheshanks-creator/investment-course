@@ -4,17 +4,17 @@
     {
       "type": "card",
       "concept": "expected-value",
-      "text": "Don't bet on a yes/no verdict — break the event into money outcomes. Say a company awaits a tariff ruling: light duty → worth ₹900; medium → ₹720; heavy → ₹380; brutal → ₹180. Weight each by how likely it is, add them up, and compare that total to today's price. Your thesis is never 'X will happen' — it's 'my odds differ from the market's, and the payoff is lopsided in my favour.'"
+      "text": "Don't bet on a yes/no verdict, break the event into money outcomes. Say a company awaits a tariff ruling: light duty → worth ₹900; medium → ₹720; heavy → ₹380; brutal → ₹180. Weight each by how likely it is, add them up, and compare that total to today's price. Your thesis is never 'X will happen', it's 'my odds differ from the market's, and the payoff is lopsided in my favour.'"
     },
     {
       "type": "card",
       "concept": "base-rates",
-      "text": "Before trusting your own opinion, ask how these situations usually turn out. If similar court cases went badly 70% of the time, start at 70% — then move off it only for reasons you can actually name ('India's costs are lower, so a penalty is less likely: 70→55'). No stated reason, no adjustment. Starting from that historical 'base rate' is what separates disciplined judgement from a hunch."
+      "text": "Before trusting your own opinion, ask how these situations usually turn out. If similar court cases went badly 70% of the time, start at 70%, then move off it only for reasons you can actually name ('India's costs are lower, so a penalty is less likely: 70→55'). No stated reason, no adjustment. Starting from that historical 'base rate' is what separates disciplined judgement from a hunch."
     },
     {
       "type": "card",
       "concept": "variant-perception",
-      "text": "If your estimate simply matches the crowd's, it's already baked into the price — being right along with everyone earns nothing. Real edge needs two things together: your view differs from the market's, AND you can say precisely why the market is wrong (it's fixated on a scary headline, forced sellers are dumping, everyone's too impatient). The job isn't finding the 'true' odds — it's finding where the price's odds are wrong."
+      "text": "If your estimate simply matches the crowd's, it's already baked into the price, being right along with everyone earns nothing. Real edge needs two things together: your view differs from the market's, AND you can say precisely why the market is wrong (it's fixated on a scary headline, forced sellers are dumping, everyone's too impatient). The job isn't finding the 'true' odds, it's finding where the price's odds are wrong."
     },
     {
       "type": "mcq",
@@ -27,14 +27,14 @@
         "₹720"
       ],
       "correctIndex": 1,
-      "explanation": "EV = 225 + 252 + 114 + 18 = ₹609. Probability-weighted sum of scenario values — the number you compare against today's price."
+      "explanation": "EV = 225 + 252 + 114 + 18 = ₹609. Probability-weighted sum of scenario values, the number you compare against today's price."
     },
     {
       "type": "mcq",
       "concept": "base-rates",
       "text": "You're handicapping a legal outcome. Comparable historical cases went badly ~70% of the time, but you feel 'this one is different.' Correct process?",
       "options": [
-        "Trust the feeling — every case is unique",
+        "Trust the feeling, every case is unique",
         "Use 70% as the prior; adjust only with specific, articulable differences",
         "Average your feeling with 70%",
         "Ignore history; markets are forward-looking"
@@ -47,19 +47,19 @@
       "concept": "variant-perception",
       "text": "Your careful analysis says 40% chance of a bad outcome. The market also implies 40%. What's your edge?",
       "options": [
-        "Large — your analysis was rigorous",
-        "None — matching consensus is already priced; edge needs a defensible difference",
+        "Large, your analysis was rigorous",
+        "None, matching consensus is already priced; edge needs a defensible difference",
         "Depends on the stock's beta",
         "Edge doesn't relate to probabilities"
       ],
       "correctIndex": 1,
-      "explanation": "Being right along with everyone pays nothing. Returns come from justified disagreement with price-implied odds — variant perception."
+      "explanation": "Being right along with everyone pays nothing. Returns come from justified disagreement with price-implied odds, variant perception."
     },
     {
       "type": "exercise",
       "concept": "base-rates",
       "stock": "Infosys",
-      "text": "On screener.in, open Infosys and find its 10-year and 5-year Sales growth (both shown as CAGR). That history is your 'base rate' — the anchor. Next time you read an analyst predicting 15% growth, you can judge it instantly: in line with the last decade, or wishful? Write down the two growth numbers; they're the reality check you bring to any bullish forecast on IT services. (~5 min)"
+      "text": "On screener.in, open Infosys and find its 10-year and 5-year Sales growth (both shown as CAGR). That history is your 'base rate', the anchor. Next time you read an analyst predicting 15% growth, you can judge it instantly: in line with the last decade, or wishful? Write down the two growth numbers; they're the reality check you bring to any bullish forecast on IT services. (~5 min)"
     }
   ]
 }

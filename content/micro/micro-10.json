@@ -9,12 +9,12 @@
     {
       "type": "card",
       "concept": "investing-vs-speculation",
-      "text": "Three activities, honestly labelled. INVESTING: your return comes from the business's own cash, over years. TRADING: from short-term price moves and sentiment. SPECULATION: from a greater fool paying more, with no anchor in value. None is illegal — the damage comes from doing one while telling yourself you're doing another, like 'long-term investing' in a hot stock you never actually valued."
+      "text": "Three activities, honestly labelled. INVESTING: your return comes from the business's own cash, over years. TRADING: from short-term price moves and sentiment. SPECULATION: from a greater fool paying more, with no anchor in value. None is illegal, the damage comes from doing one while telling yourself you're doing another, like 'long-term investing' in a hot stock you never actually valued."
     },
     {
       "type": "card",
       "concept": "investor-behaviour",
-      "text": "A quick honesty test for anything you own: if the market shut for five years starting tomorrow, would you still be happy holding it? If yes, your return comes from the business itself — that's investing. If the thought scares you, your return was always going to depend on selling to someone else — so call it what it is, and size it small."
+      "text": "A quick honesty test for anything you own: if the market shut for five years starting tomorrow, would you still be happy holding it? If yes, your return comes from the business itself, that's investing. If the thought scares you, your return was always going to depend on selling to someone else, so call it what it is, and size it small."
     },
     {
       "type": "mcq",
@@ -34,9 +34,9 @@
       "concept": "investing-vs-speculation",
       "text": "You buy a loss-making story stock 'for the long term' without estimating its value. Which activity is this, honestly labelled?",
       "options": [
-        "Investing — the horizon is long",
-        "Trading — everything is trading",
-        "Speculation — returns depend on someone paying more, with no valuation anchor",
+        "Investing, the horizon is long",
+        "Trading, everything is trading",
+        "Speculation, returns depend on someone paying more, with no valuation anchor",
         "Arbitrage"
       ],
       "correctIndex": 2,
@@ -53,13 +53,13 @@
         "Broker quality"
       ],
       "correctIndex": 1,
-      "explanation": "If you'd happily hold with no quotes, the business's cash generation is your return source — the defining mark of investing."
+      "explanation": "If you'd happily hold with no quotes, the business's cash generation is your return source, the defining mark of investing."
     },
     {
       "type": "exercise",
       "concept": "investing-vs-speculation",
       "stock": "Ola Electric",
-      "text": "Take a recently hyped stock — say Ola Electric, or any hot IPO you've eyed. Apply the 'market shut for 5 years' test: would you happily own it with no price quotes until 2031? Then answer honestly: does your expected gain come from the business's future cash, or from selling to someone more excited later? Naming that out loud is the line between investing and speculating — and it decides how big a position is sensible. (~5 min)"
+      "text": "Take a recently hyped stock, say Ola Electric, or any hot IPO you've eyed. Apply the 'market shut for 5 years' test: would you happily own it with no price quotes until 2031? Then answer honestly: does your expected gain come from the business's future cash, or from selling to someone more excited later? Naming that out loud is the line between investing and speculating, and it decides how big a position is sensible. (~5 min)"
     }
   ]
 }

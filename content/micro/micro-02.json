@@ -4,30 +4,30 @@
     {
       "type": "card",
       "concept": "margin-of-safety",
-      "text": "Margin of safety is just the gap between what a business is worth and what you pay. Worth ₹58,000cr, trading at ₹43,500cr? You're buying at a 25% discount — and that gap is your cushion if you've judged the future slightly wrong. The formula: (value − price) ÷ value. If you can't state the number, you don't have a margin of safety — just hope."
+      "text": "Margin of safety is just the gap between what a business is worth and what you pay. Worth ₹58,000cr, trading at ₹43,500cr? You're buying at a 25% discount, and that gap is your cushion if you've judged the future slightly wrong. The formula: (value − price) ÷ value. If you can't state the number, you don't have a margin of safety, just hope."
     },
     {
       "type": "card",
       "concept": "cheapness-vs-mos",
-      "text": "A stock down 45% from its high is NOT automatically 'safe'. That high might have been madness to begin with — fall 45% from a crazy price and you can still be overpaying. Safety is measured against what the business is worth, never against where the price used to be. A stock can drop 80% and still be dear; another can sit at an all-time high and be a bargain."
+      "text": "A stock down 45% from its high is NOT automatically 'safe'. That high might have been madness to begin with, fall 45% from a crazy price and you can still be overpaying. Safety is measured against what the business is worth, never against where the price used to be. A stock can drop 80% and still be dear; another can sit at an all-time high and be a bargain."
     },
     {
       "type": "card",
       "concept": "margin-of-safety",
-      "text": "A big margin of safety means you don't need to be precise. If a business is worth somewhere around ₹60–80 and you can buy at ₹30, it doesn't matter whether the real answer is ₹62 or ₹79 — you're miles below either. Precision only matters when you're paying close to full value. That's why the classic move is to hunt for the obviously cheap, not the exactly-measured."
+      "text": "A big margin of safety means you don't need to be precise. If a business is worth somewhere around ₹60–80 and you can buy at ₹30, it doesn't matter whether the real answer is ₹62 or ₹79, you're miles below either. Precision only matters when you're paying close to full value. That's why the classic move is to hunt for the obviously cheap, not the exactly-measured."
     },
     {
       "type": "mcq",
       "concept": "cheapness-vs-mos",
-      "text": "A colleague: 'This stock is down 45% from its high — that's automatic margin of safety.' Best response?",
+      "text": "A colleague: 'This stock is down 45% from its high, that's automatic margin of safety.' Best response?",
       "options": [
-        "Agree — big drops mean big safety",
+        "Agree, big drops mean big safety",
         "The high may have been mispriced; MoS is price vs intrinsic value, not vs history",
         "Wait for a 60% drop to be safe",
         "Check the 200-day moving average first"
       ],
       "correctIndex": 1,
-      "explanation": "Margin of safety is anchored to your estimate of intrinsic value. Price history — highs, lows, averages — is not evidence of value."
+      "explanation": "Margin of safety is anchored to your estimate of intrinsic value. Price history, highs, lows, averages, is not evidence of value."
     },
     {
       "type": "mcq",
@@ -40,14 +40,14 @@
         "Cannot compute without the P/E"
       ],
       "correctIndex": 1,
-      "explanation": "MoS = (IV − P) / IV = (800−600)/800 = 25%. The upside-to-price (33%) is a different number — don't confuse the two denominators."
+      "explanation": "MoS = (IV − P) / IV = (800−600)/800 = 25%. The upside-to-price (33%) is a different number, don't confuse the two denominators."
     },
     {
       "type": "mcq",
       "concept": "normalised-earnings",
       "text": "A quality firm's margins compress from 21% to 16% on a one-off input-cost spike; the stock falls 35%. Its headline P/E barely drops. Where might the hidden margin of safety be?",
       "options": [
-        "There is none — the P/E proves it's still expensive",
+        "There is none, the P/E proves it's still expensive",
         "In normalised earnings: at recovered margins the true P/E is far lower",
         "In the dividend yield",
         "In the falling share price alone"
@@ -59,7 +59,7 @@
       "type": "exercise",
       "concept": "cheapness-vs-mos",
       "stock": "Asian Paints",
-      "text": "Open Asian Paints on screener.in. Find today's P/E (price ÷ per-share profit) and its 5-year median P/E, both shown on the page. Is the stock cheaper or dearer than its own history? Important catch: a below-average P/E is only a hint, not a margin of safety — that still depends on what the business is truly worth. Write one line: cheaper or dearer than usual, and does that alone justify buying? (~5 min)"
+      "text": "Open Asian Paints on screener.in. Find today's P/E (price ÷ per-share profit) and its 5-year median P/E, both shown on the page. Is the stock cheaper or dearer than its own history? Important catch: a below-average P/E is only a hint, not a margin of safety, that still depends on what the business is truly worth. Write one line: cheaper or dearer than usual, and does that alone justify buying? (~5 min)"
     }
   ]
 }

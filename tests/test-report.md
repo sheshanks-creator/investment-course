@@ -1,9 +1,9 @@
 # Test Report — Value Investing Course
 
-**Run date:** 2026-07-19 22:04
+**Run date:** 2026-08-02 16:39
 **Duration:** 0.6s
 **Result:** ✅ ALL PASS
-**Summary:** 196 passed · 0 failed · 0 skipped · 196 total
+**Summary:** 197 passed · 0 failed · 0 skipped · 197 total
 
 ---
 
@@ -173,7 +173,7 @@
 | lesson topics are valid topic ids | ✅ PASS |  |
 | manifest has required keys | ✅ PASS |  |
 
-## ✅ Schema — micro-content files (7/7)
+## ✅ Schema — micro-content files (8/8)
 
 | Test | Status | Detail |
 |------|--------|--------|
@@ -183,6 +183,7 @@
 | micro files exist | ✅ PASS |  |
 | micro items have types and concepts | ✅ PASS |  |
 | micro mcq telegram limits | ✅ PASS |  |
+| micro style no emdash or buzzwords | ✅ PASS |  |
 | micro topic ids valid | ✅ PASS |  |
 
 ## ✅ Schema — numerical quiz files (5/5)

@@ -4,17 +4,17 @@
     {
       "type": "card",
       "concept": "inversion",
-      "text": "Munger's trick, borrowed from a mathematician: instead of asking 'how do I win?', ask 'how do I reliably lose?' — then avoid that. The classic ways investors blow up: borrowing to buy, overpaying, buying things they don't understand, and panic-selling at the bottom. Dodge those few reliable killers and good outcomes mostly take care of themselves. It's easier to be steadily sensible than occasionally brilliant."
+      "text": "Munger's trick, borrowed from a mathematician: instead of asking 'how do I win?', ask 'how do I reliably lose?', then avoid that. The classic ways investors blow up: borrowing to buy, overpaying, buying things they don't understand, and panic-selling at the bottom. Dodge those few reliable killers and good outcomes mostly take care of themselves. It's easier to be steadily sensible than occasionally brilliant."
     },
     {
       "type": "card",
       "concept": "pre-mortem",
-      "text": "Before you buy, run a 'pre-mortem'. Imagine it's three years later and the position has halved — now write the story of what went wrong. This flips your brain from cheerleader to detective and almost always surfaces the one risk your excitement was skipping over. Can't write a believable failure story? You don't understand it yet. Can? You now know exactly what to watch."
+      "text": "Before you buy, run a 'pre-mortem'. Imagine it's three years later and the position has halved, now write the story of what went wrong. This flips your brain from cheerleader to detective and almost always surfaces the one risk your excitement was skipping over. Can't write a believable failure story? You don't understand it yet. Can? You now know exactly what to watch."
     },
     {
       "type": "card",
       "concept": "inversion",
-      "text": "Turn inversion on your own portfolio: instead of 'what should I buy?', ask 'if I had to sell one holding today, which — and why?' It breaks your instinct to defend what you already own, and usually exposes the position you're keeping for comfort or a nice story rather than because the numbers still make sense."
+      "text": "Turn inversion on your own portfolio: instead of 'what should I buy?', ask 'if I had to sell one holding today, which, and why?' It breaks your instinct to defend what you already own, and usually exposes the position you're keeping for comfort or a nice story rather than because the numbers still make sense."
     },
     {
       "type": "mcq",
@@ -22,7 +22,7 @@
       "text": "Which question is the best example of inversion applied to stock selection?",
       "options": [
         "Which stock will rise most this year?",
-        "What conditions would make this business worthless — and how likely are they?",
+        "What conditions would make this business worthless, and how likely are they?",
         "What's the price target?",
         "Which fund managers own it?"
       ],
@@ -35,7 +35,7 @@
       "text": "The key difference between a pre-mortem and ordinary 'risk factors' listing?",
       "options": [
         "Pre-mortems are longer",
-        "You assume the failure HAS happened and explain it — switching the brain from advocacy to detection",
+        "You assume the failure HAS happened and explain it, switching the brain from advocacy to detection",
         "Pre-mortems only cover macro risks",
         "There is no real difference"
       ],
@@ -48,7 +48,7 @@
       "text": "Munger: it's easier to be consistently not-stupid than occasionally brilliant. In practice this means:",
       "options": [
         "Never take any risk",
-        "Systematically eliminate known error patterns — leverage, overpaying, panic selling",
+        "Systematically eliminate known error patterns, leverage, overpaying, panic selling",
         "Copy brilliant investors' trades",
         "Trade less than once a year"
       ],
@@ -59,7 +59,7 @@
       "type": "exercise",
       "concept": "pre-mortem",
       "stock": "Zomato",
-      "text": "Pick Zomato (or any stock you're tempted by). Spend 5 minutes writing a 3-line pre-mortem: 'It's 2028, this position lost half its value — what happened?' Force yourself to name concrete causes: a Reliance-backed rival, quick-commerce losses never turning profitable, new regulation. If you can write it easily, you've just found the exact things to monitor. If you can't, you don't yet understand the risk. (~5 min)"
+      "text": "Pick Zomato (or any stock you're tempted by). Spend 5 minutes writing a 3-line pre-mortem: 'It's 2028, this position lost half its value, what happened?' Force yourself to name concrete causes: a Reliance-backed rival, quick-commerce losses never turning profitable, new regulation. If you can write it easily, you've just found the exact things to monitor. If you can't, you don't yet understand the risk. (~5 min)"
     }
   ]
 }

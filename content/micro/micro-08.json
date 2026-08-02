@@ -4,27 +4,27 @@
     {
       "type": "card",
       "concept": "opportunity-cost",
-      "text": "Every investment is quietly judged against the best thing you could have done instead. A stock likely to return 9% isn't 'making you 9%' if a similar-risk index fund would have made 12% — you're effectively 3% behind. Munger judges every idea against his best available one. Cash, an index fund, and the stocks you already own are all real alternatives competing for the same rupee."
+      "text": "Every investment is quietly judged against the best thing you could have done instead. A stock likely to return 9% isn't 'making you 9%' if a similar-risk index fund would have made 12%, you're effectively 3% behind. Munger judges every idea against his best available one. Cash, an index fund, and the stocks you already own are all real alternatives competing for the same rupee."
     },
     {
       "type": "card",
       "concept": "hurdle-rate",
-      "text": "A 'hurdle rate' is a simple rule: 'I won't tie up money for less than X% expected return.' In India, ~12–15% is sensible — comfortably above the ~7% a government bond pays, or you're taking single-stock risk for nothing. The power of a hurdle is in what it makes you skip: the merely-okay ideas that would quietly crowd out better ones later."
+      "text": "A 'hurdle rate' is a simple rule: 'I won't tie up money for less than X% expected return.' In India, ~12–15% is sensible, comfortably above the ~7% a government bond pays, or you're taking single-stock risk for nothing. The power of a hurdle is in what it makes you skip: the merely-okay ideas that would quietly crowd out better ones later."
     },
     {
       "type": "card",
       "concept": "opportunity-cost",
-      "text": "The most expensive mistake is invisible: money tied up in a 'fine' idea isn't there when a genuinely great one appears at panic prices. That's why Buffett happily sits on cash that 'earns nothing' — it's really an option to pounce on future bargains. Opportunity cost isn't just comparing today's choices; it's the price of being fully invested when tomorrow's better pitch arrives."
+      "text": "The most expensive mistake is invisible: money tied up in a 'fine' idea isn't there when a genuinely great one appears at panic prices. That's why Buffett happily sits on cash that 'earns nothing', it's really an option to pounce on future bargains. Opportunity cost works across time too: money committed today is unavailable when tomorrow's better pitch arrives."
     },
     {
       "type": "mcq",
       "concept": "opportunity-cost",
       "text": "Stock A offers ~9% expected return. An index fund at similar risk offers ~12%. Buying A means:",
       "options": [
-        "Earning 9% — a positive outcome",
+        "Earning 9%, a positive outcome",
         "Effectively losing ~3%/yr versus your real alternative",
         "Diversifying, which beats returns",
-        "Nothing — comparisons are irrelevant"
+        "Nothing, comparisons are irrelevant"
       ],
       "correctIndex": 1,
       "explanation": "Returns are judged against alternatives foregone. An idea must beat your best available option, not just beat zero."
@@ -40,7 +40,7 @@
         "Tax efficiency"
       ],
       "correctIndex": 1,
-      "explanation": "A hurdle is a rejection filter. Its value is in the ideas it screens OUT — protecting capital for asymmetric opportunities."
+      "explanation": "A hurdle is a rejection filter. Its value is in the ideas it screens OUT, protecting capital for asymmetric opportunities."
     },
     {
       "type": "mcq",
@@ -48,7 +48,7 @@
       "text": "Why does Buffett tolerate large cash balances 'earning nothing'?",
       "options": [
         "Fear of all equities",
-        "Cash is an option on future bargains — its value appears at panic prices",
+        "Cash is an option on future bargains, its value appears at panic prices",
         "Regulatory requirements",
         "To pay dividends"
       ],

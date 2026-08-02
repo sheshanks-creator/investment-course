@@ -4,7 +4,7 @@ Telegram micro-learning digest sender.
 
 Composes an adaptive micro-digest from the content/micro/ bank,
 sync/learner.json (weak concepts + highlights), and parameterised
-numeric drill templates — then sends it via the Telegram Bot API.
+numeric drill templates, then sends it via the Telegram Bot API.
 
 Stdlib only. Deterministic per (date, slot) so the GitHub Action needs
 no persisted state: the same day always produces the same digest, and
@@ -31,18 +31,18 @@ CONTENT = os.path.join(ROOT, 'content')
 SYNC_FILE = os.path.join(ROOT, 'sync', 'learner.json')
 WATCHLIST_FILE = os.path.join(ROOT, 'sync', 'watchlist.json')
 
-# Personalised research prompts keyed by concept — used when a watchlist company
+# Personalised research prompts keyed by concept, used when a watchlist company
 # covers the day's concept. Reference the user's OWN research, no data supplied.
 WATCHLIST_TASKS = {
     'variant-perception': "Re-read your variant-perception note: what specifically do you believe that the market doesn't? Is that gap still real, or has the market caught up?",
     'expected-value': "Re-open your research and rebuild the scenario table from memory: bull / base / bear outcomes and rough odds. Does the probability-weighted value still beat today's price?",
-    'pre-mortem': "Re-read your pre-mortem. It's a year on — have any of the failure paths you named started to show up in the numbers or the news?",
-    'margin-of-safety': "Look up the current price and re-state your intrinsic-value range. What's the margin of safety today — and is it wide enough to still act?",
+    'pre-mortem': "Re-read your pre-mortem. It's a year on. Have any of the failure paths you named started to show up in the numbers or the news?",
+    'margin-of-safety': "Look up the current price and re-state your intrinsic-value range. What's the margin of safety today, and is it wide enough to still act?",
     'base-rates': "Check one base rate you relied on (historical growth, industry odds). Does the latest data still support the anchor you used?",
     'circle-of-competence': "Be honest: can you still explain this business in one sentence and name what breaks it? If a part has gone fuzzy, that's your next research task.",
     'second-order-thinking': "Pick one recent development for this company and ask 'and then what?' two links deep. Has a second-order effect started that the price hasn't caught?",
     'inversion': "List the 2-3 things that would most reliably destroy this position. Are any of them closer to happening than when you wrote the thesis?",
-    'explicit-framework-application': "Re-open your thesis and check: did you actually apply intrinsic value, margin of safety, and time horizon explicitly — or lean on the story? Fix one gap.",
+    'explicit-framework-application': "Re-open your thesis and check: did you actually apply intrinsic value, margin of safety, and time horizon explicitly, or did you lean on the story? Fix one gap.",
 }
 
 
@@ -64,7 +64,7 @@ def personalised_exercise(rng, concept, watchlist):
         return None
     co = rng.choice(matches)
     tag = 'thesis' if co.get('hasThesis') else 'research'
-    return (f'*{esc("🔎 5-min research task — " + co["company"] + " (your watchlist)")}*\n\n'
+    return (f'*{esc("🔎 5-min research task: " + co["company"] + " (your watchlist)")}*\n\n'
             f'{esc("You have " + tag + " on " + co["company"] + ". Today\'s lens: " + concept.replace("-", " ") + ".")}\n\n'
             f'{esc(task)}\n\n'
             f'{esc("Open it in the My Research tab. (~5 min)")}')
@@ -328,7 +328,7 @@ def build_digest(date_str, slot):
 
     slot_label = 'Morning' if slot == 'morning' else 'Evening'
     nice_date = datetime.date.fromisoformat(date_str).strftime('%a %d %b')
-    header = f'*{esc("📈 " + slot_label + " micro-digest")}* — {esc(nice_date)}'
+    header = f'*{esc("📈 " + slot_label + " micro-digest (" + nice_date + ")")}*'
 
     if slot == 'morning':
         # 1. Weakness-targeted concept card
@@ -356,7 +356,7 @@ def build_digest(date_str, slot):
         rng = make_rng(date_str, slot, 'drill')
         name, q, ans, sol = pick_drill(rng, learner)
         parts.append(('message',
-            f'*{esc("🧮 Numeric drill — " + name)}*\n\n'
+            f'*{esc("🧮 Numeric drill: " + name)}*\n\n'
             f'{esc(q)}\n\n'
             f'{esc("Tap to reveal the answer:")}\n'
             f'||{esc(sol)}||'))
@@ -369,7 +369,7 @@ def build_digest(date_str, slot):
             topic = titles.get(hl['topicId'], '')
             note = f'\n\n{esc("Your note: " + hl["note"])}' if hl.get('note') else ''
             parts.append(('message',
-                f'*{esc("🔖 You highlighted this — Topic " + str(hl["topicId"]) + ": " + topic)}*\n\n'
+                f'*{esc("🔖 From your highlights, Topic " + str(hl["topicId"]) + ": " + topic)}*\n\n'
                 f'_{esc(hl["text"])}_{note}\n\n'
                 f'{esc("Still true? Still important? 30 seconds of re-reading beats an hour of forgetting.")}'))
 
@@ -383,10 +383,10 @@ def build_digest(date_str, slot):
                 parts.append(('message', personal))
             else:
                 parts.append(('message',
-                    f'*{esc("🔎 5-min research task — " + ex["stock"])}*\n\n'
+                    f'*{esc("🔎 5-min research task: " + ex["stock"])}*\n\n'
                     f'{esc(ex["text"])}'))
     else:
-        # Evening: shorter — MCQ poll + drill (different salts → different picks)
+        # Evening: shorter, MCQ poll + drill (different salts → different picks)
         parts.append(('message', header))
 
         rng = make_rng(date_str, slot, 'mcq')
@@ -402,7 +402,7 @@ def build_digest(date_str, slot):
         rng = make_rng(date_str, slot, 'drill')
         name, q, ans, sol = pick_drill(rng, learner)
         parts.append(('message',
-            f'*{esc("🧮 Numeric drill — " + name)}*\n\n'
+            f'*{esc("🧮 Numeric drill: " + name)}*\n\n'
             f'{esc(q)}\n\n'
             f'{esc("Tap to reveal the answer:")}\n'
             f'||{esc(sol)}||'))
@@ -427,7 +427,7 @@ def main():
 
     parts = build_digest(date_str, args.slot)
     if not parts:
-        print('No content available for digest — nothing sent.')
+        print('No content available for digest. Nothing sent.')
         return 0
 
     for kind, payload in parts:

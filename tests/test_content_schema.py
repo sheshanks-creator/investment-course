@@ -227,6 +227,24 @@ class TestMicroSchemas(unittest.TestCase):
             n = sum(1 for it in data['items'] if it['type'] == 'exercise')
             self.assertGreaterEqual(n, 1, f"{entry['file']} has no research exercise")
 
+    def test_micro_style_no_emdash_or_buzzwords(self):
+        """Enforce the writing-style rule on Telegram-sent content:
+        no em-dashes, no AI-cliche buzzwords (docs/content-standards.md)."""
+        banned = ['delve', 'intricate', 'tapestry', 'realm', 'fostering',
+                  'testament', 'game-changer', 'game changer', 'beacon']
+        for entry in self.manifest.get('micro', []):
+            data = _load(entry['file'])
+            for i, item in enumerate(data['items']):
+                blob = ' '.join([
+                    item.get('text', ''),
+                    ' '.join(item.get('options', []) or []),
+                    item.get('explanation', ''),
+                ]).lower()
+                where = f"{entry['file']} item {i}"
+                self.assertNotIn('—', blob, f'{where} contains an em-dash')
+                for b in banned:
+                    self.assertNotIn(b, blob, f'{where} contains banned word: {b}')
+
     def test_micro_mcq_telegram_limits(self):
         for entry in self.manifest.get('micro', []):
             data = _load(entry['file'])

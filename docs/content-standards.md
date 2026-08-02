@@ -4,6 +4,20 @@ House style for all course content: lessons, quizzes, case studies, coach walkth
 
 ---
 
+## Writing style (binding, all content + all Telegram output)
+
+Write naturally, directly, without pretension. This applies to every lesson, quiz, case, coach, micro card, exercise, and Telegram message. It matches the user's `writing-style` memory.
+
+1. **Plain verbs.** Use "is", "has", "makes". Not "features", "boasts", "serves as", "leverages". Write "The company has no debt", not "The company boasts a pristine balance sheet".
+2. **No forced drama.** No rhetorical questions for effect ("The result? A game-changer."). No negation formula ("It's not just an X, it's a Y").
+3. **No unearned superlatives.** Skip "breathtaking", "world-class", "mind-blowing". State facts neutrally.
+4. **No AI-cliché words:** delve, intricate, tapestry, realm, fostering, testament, game-changer, beacon.
+5. **No em-dashes (—).** Use commas, periods, colons, or parentheses. (En-dashes in numeric ranges like ₹700–950 or 3–4 are fine.)
+6. **Natural flow.** Use "it", "they", "this" instead of repeating long noun phrases. No throat-clearing intros or wrap-up summaries.
+7. **Cite specifics.** Name the company, filing, or study. No vague "industry reports suggest" or "experts note". If a source is unknown, state the fact plainly or flag it as unverified.
+
+---
+
 ## Universal rules
 
 1. **Define metrics before using them.** The student is building financial literacy — never assume a term is known. Every scenario that uses financial metrics gets a "Note on Metrics" section that defines each term (PAT, ROE, P/E, GOV, take rate, working capital…) in one or two plain-English sentences *before* the first number appears. Terms already defined in an earlier item for the *same topic group* don't need re-definition; terms from earlier phases do.

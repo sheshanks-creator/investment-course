@@ -4,7 +4,7 @@
     {
       "type": "card",
       "concept": "second-order-thinking",
-      "text": "First-order thinking stops at the obvious: 'profits are up, buy.' Second-order asks what happens next — do rivals now attack harder, does management get complacent, does the crowd already know this so it's priced in? Howard Marks' version: 'It's a good company — but everyone knows that, so it's expensive. Sell.' The money is made by seeing one step past the obvious."
+      "text": "First-order thinking stops at the obvious: 'profits are up, buy.' Second-order asks what happens next, do rivals now attack harder, does management get complacent, does the crowd already know this so it's priced in? Howard Marks' version: 'It's a good company, but everyone knows that, so it's expensive. Sell.' The money is made by seeing one step past the obvious."
     },
     {
       "type": "card",
@@ -14,7 +14,7 @@
     {
       "type": "card",
       "concept": "incentives",
-      "text": "Munger: 'Show me the incentive and I'll show you the outcome.' If a boss's bonus depends on sales growth, expect them to chase growth — even bad growth. If a company suddenly starts reporting a flattering new profit figure, ask what the old, plainer number would have shown. People quietly bend toward whatever they're rewarded for. So always check what's being rewarded."
+      "text": "Munger: 'Show me the incentive and I'll show you the outcome.' If a boss's bonus depends on sales growth, expect them to chase growth, even bad growth. If a company suddenly starts reporting a flattering new profit figure, ask what the old, plainer number would have shown. People quietly bend toward whatever they're rewarded for. So always check what's being rewarded."
     },
     {
       "type": "mcq",
@@ -27,7 +27,7 @@
         "Did the CEO celebrate publicly?"
       ],
       "correctIndex": 1,
-      "explanation": "Second-order thinking asks how the event changes other actors' behaviour — competitors, capital, incentives — not just what the event was."
+      "explanation": "Second-order thinking asks how the event changes other actors' behaviour, competitors, capital, incentives, not just what the event was."
     },
     {
       "type": "mcq",
@@ -48,7 +48,7 @@
       "text": "A management team's bonuses vest on revenue growth, not returns on capital. What behaviour should you EXPECT over time?",
       "options": [
         "Disciplined, high-ROIC growth",
-        "Growth at any price — acquisitions and capex even at poor returns",
+        "Growth at any price, acquisitions and capex even at poor returns",
         "Higher dividends",
         "Conservative balance sheets"
       ],
@@ -59,7 +59,7 @@
       "type": "exercise",
       "concept": "second-order-thinking",
       "stock": "Asian Paints",
-      "text": "Asian Paints long earned fat margins in a near-monopoly. In 2024 a deep-pocketed rival, Birla Opus, entered. First-order reaction: 'new competition, sell.' Your task on screener.in: check Asian Paints' operating margin (OPM %) over the last 2-3 years — is there real damage yet, or is the market pricing fear ahead of the facts? Then ask the second-order question: what could the incumbent do that a new entrant can't easily counter? (~5 min)"
+      "text": "Asian Paints long earned fat margins in a near-monopoly. In 2024 a deep-pocketed rival, Birla Opus, entered. First-order reaction: 'new competition, sell.' Your task on screener.in: check Asian Paints' operating margin (OPM %) over the last 2-3 years, is there real damage yet, or is the market pricing fear ahead of the facts? Then ask the second-order question: what could the incumbent do that a new entrant can't easily counter? (~5 min)"
     }
   ]
 }
