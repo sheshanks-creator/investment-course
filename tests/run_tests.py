@@ -83,6 +83,7 @@ SUITE_LABELS = {
     'TestCoachSchemas':         'Schema — coach files',
     'TestNumQuizSchemas':       'Schema — numerical quiz files',
     'TestMicroSchemas':         'Schema — micro-content files',
+    'TestWritingStyle':         'Style — no em-dash / buzzwords',
     'TestDrillTemplates':       'Digest — numeric drill templates',
     'TestEscaping':             'Digest — MarkdownV2 escaping',
     'TestSelector':             'Digest — weighted selector',

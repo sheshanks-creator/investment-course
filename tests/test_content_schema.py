@@ -1,7 +1,8 @@
-"""Content schema validation — no server required.
+"""Content schema validation. No server required.
 Validates the content/ tree: manifest integrity, per-type schemas,
 topic references, and lesson file existence. This is the guardrail
 that keeps generated content structurally sound."""
+import glob
 import json
 import os
 import unittest
@@ -9,6 +10,9 @@ import unittest
 from tests.helpers import ROOT
 
 CONTENT = os.path.join(ROOT, 'content')
+
+BANNED_WORDS = ['delve', 'intricate', 'tapestry', 'realm', 'fostering',
+                'testament', 'game-changer', 'game changer', 'beacon']
 
 
 def _load(relpath):
@@ -230,8 +234,6 @@ class TestMicroSchemas(unittest.TestCase):
     def test_micro_style_no_emdash_or_buzzwords(self):
         """Enforce the writing-style rule on Telegram-sent content:
         no em-dashes, no AI-cliche buzzwords (docs/content-standards.md)."""
-        banned = ['delve', 'intricate', 'tapestry', 'realm', 'fostering',
-                  'testament', 'game-changer', 'game changer', 'beacon']
         for entry in self.manifest.get('micro', []):
             data = _load(entry['file'])
             for i, item in enumerate(data['items']):
@@ -242,8 +244,9 @@ class TestMicroSchemas(unittest.TestCase):
                 ]).lower()
                 where = f"{entry['file']} item {i}"
                 self.assertNotIn('—', blob, f'{where} contains an em-dash')
-                for b in banned:
+                for b in BANNED_WORDS:
                     self.assertNotIn(b, blob, f'{where} contains banned word: {b}')
+
 
     def test_micro_mcq_telegram_limits(self):
         for entry in self.manifest.get('micro', []):
@@ -268,6 +271,40 @@ class TestMicroSchemas(unittest.TestCase):
         micro_topics = {e['topicId'] for e in self.manifest.get('micro', [])}
         missing = [t for t in self.manifest['lessonTopics'] if t not in micro_topics]
         self.assertEqual(missing, [], f'Lesson topics without micro content: {missing}')
+
+
+class TestWritingStyle(unittest.TestCase):
+    """Writing-style rule (docs/content-standards.md) across ALL learner-facing
+    content: every content/*.json file and every lesson.md. No em-dashes, no
+    AI-cliche buzzwords."""
+
+    def _content_json_files(self):
+        files = []
+        for sub in ('quizzes', 'cases', 'coaches', 'num-quizzes', 'micro'):
+            files += glob.glob(os.path.join(CONTENT, sub, '*.json'))
+        return files
+
+    def _lesson_files(self):
+        return glob.glob(os.path.join(ROOT, 'topics', '*', 'lesson.md'))
+
+    def test_content_json_has_no_emdash(self):
+        offenders = [os.path.relpath(p, ROOT) for p in self._content_json_files()
+                     if '—' in open(p, encoding='utf-8').read()]
+        self.assertEqual(offenders, [], f'em-dash in content: {offenders}')
+
+    def test_lessons_have_no_emdash(self):
+        offenders = [os.path.relpath(p, ROOT) for p in self._lesson_files()
+                     if '—' in open(p, encoding='utf-8').read()]
+        self.assertEqual(offenders, [], f'em-dash in lessons: {offenders}')
+
+    def test_no_banned_words_in_content_or_lessons(self):
+        offenders = []
+        for p in self._content_json_files() + self._lesson_files():
+            low = open(p, encoding='utf-8').read().lower()
+            for b in BANNED_WORDS:
+                if b in low:
+                    offenders.append((os.path.relpath(p, ROOT), b))
+        self.assertEqual(offenders, [], f'banned words found: {offenders}')
 
 
 class TestNumQuizSchemas(unittest.TestCase):

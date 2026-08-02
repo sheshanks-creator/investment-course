@@ -43,7 +43,7 @@
     },
     {
       "topicId": 1,
-      "text": "A business exists to produce cash. Not accounting profits, not revenue, not growth — cash. Specifically, cash that can be taken out of the business and given to owners without impairing the company's ability to keep operating.",
+      "text": "A business exists to produce cash. Not accounting profits, not revenue, not growth, cash. Specifically, cash that can be taken out of the business and given to owners without impairing the company's ability to keep operating.",
       "note": ""
     },
     {
@@ -58,22 +58,22 @@
     },
     {
       "topicId": 2,
-      "text": "Graham and Buffett's insight was to deliberately aim for obvious, fat margins of safety — situations where the business is so clearly undervalued that precision is unnecessary. Buffett's phrase: \"I don't need to know a man's exact weight to know he's fat.\"",
+      "text": "Graham and Buffett's insight was to deliberately aim for obvious, fat margins of safety, situations where the business is so clearly undervalued that precision is unnecessary. Buffett's phrase: \"I don't need to know a man's exact weight to know he's fat.\"",
       "note": "This skill is key"
     },
     {
       "topicId": 2,
-      "text": "Investors frequently confuse cheapness with margin of safety. A stock trading at a low P/E ratio, near its 52-week low, or down 40% from its peak can seem to offer a margin of safety. It doesn't — not automatically.",
+      "text": "Investors frequently confuse cheapness with margin of safety. A stock trading at a low P/E ratio, near its 52-week low, or down 40% from its peak can seem to offer a margin of safety. It doesn't, not automatically.",
       "note": ""
     },
     {
       "topicId": 3,
-      "text": "The earlier years of that stream are usually visible and widely understood. The later years — the part that requires real conviction about the durability of the business — are what most investors discount too heavily or ignore entirely.",
+      "text": "The earlier years of that stream are usually visible and widely understood. The later years, the part that requires real conviction about the durability of the business, are what most investors discount too heavily or ignore entirely.",
       "note": ""
     },
     {
       "topicId": 4,
-      "text": "Your circle of competence is the domain in which you have real, hard-won understanding — not just familiarity, not surface-level knowledge, but the ability to reason from first principles about how a business works, what drives its economics, and what could threaten it.",
+      "text": "Your circle of competence is the domain in which you have real, hard-won understanding, not just familiarity, not surface-level knowledge, but the ability to reason from first principles about how a business works, what drives its economics, and what could threaten it.",
       "note": ""
     },
     {
@@ -98,7 +98,7 @@
     },
     {
       "topicId": 5,
-      "text": "The most common mistake is believing that second-order thinking means being contrarian — betting against the crowd as a matter of habit. This is wrong and dangerous. Second-order thinking does not mean the first-order interpretation is always wrong. Sometimes bad news is simply bad news.",
+      "text": "The most common mistake is believing that second-order thinking means being contrarian, betting against the crowd as a matter of habit. This is wrong and dangerous. Second-order thinking does not mean the first-order interpretation is always wrong. Sometimes bad news is simply bad news.",
       "note": ""
     },
     {
@@ -128,22 +128,22 @@
     },
     {
       "topicId": 7,
-      "text": "Investors who demand certainty before acting will always be too late — certainty, by the time it arrives, has already been priced in.",
+      "text": "Investors who demand certainty before acting will always be too late, certainty, by the time it arrives, has already been priced in.",
       "note": ""
     },
     {
       "topicId": 7,
-      "text": "we usually mean we have constructed a narrative that feels coherent — not that we have genuinely reasoned about the range of outcomes and their probabilities.",
+      "text": "we usually mean we have constructed a narrative that feels coherent, not that we have genuinely reasoned about the range of outcomes and their probabilities.",
       "note": ""
     },
     {
       "topicId": 7,
-      "text": "The concept that resolves this is expected value: the probability-weighted average of all possible outcomes. An investment has a 70% chance of returning 40% and a 30% chance of losing 20%. The expected value is (0.7 × 40%) + (0.3 × −20%) = +22%. The fact that the investment might lose money does not make it a bad investment — what matters is the expected value across all outcomes.",
+      "text": "The concept that resolves this is expected value: the probability-weighted average of all possible outcomes. An investment has a 70% chance of returning 40% and a 30% chance of losing 20%. The expected value is (0.7 × 40%) + (0.3 × −20%) = +22%. The fact that the investment might lose money does not make it a bad investment, what matters is the expected value across all outcomes.",
       "note": "This is the scenario modelling to figure out what will happen"
     },
     {
       "topicId": 7,
-      "text": "The most dangerous mistake is demanding certainty before investing — because certainty is always priced in. By the time an investment feels safe, every other market participant has also concluded it feels safe, and the price reflects that consensus. The expected value has been arbitraged away.",
+      "text": "The most dangerous mistake is demanding certainty before investing, because certainty is always priced in. By the time an investment feels safe, every other market participant has also concluded it feels safe, and the price reflects that consensus. The expected value has been arbitraged away.",
       "note": ""
     }
   ]

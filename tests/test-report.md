@@ -1,9 +1,9 @@
 # Test Report — Value Investing Course
 
-**Run date:** 2026-08-02 16:39
+**Run date:** 2026-08-02 17:14
 **Duration:** 0.6s
 **Result:** ✅ ALL PASS
-**Summary:** 197 passed · 0 failed · 0 skipped · 197 total
+**Summary:** 200 passed · 0 failed · 0 skipped · 200 total
 
 ---
 
@@ -212,6 +212,14 @@
 | folders match id prefix | ✅ PASS |  |
 | has 120 topics | ✅ PASS |  |
 | ids sequential 1 to 120 | ✅ PASS |  |
+
+## ✅ Style — no em-dash / buzzwords (3/3)
+
+| Test | Status | Detail |
+|------|--------|--------|
+| content json has no emdash | ✅ PASS |  |
+| lessons have no emdash | ✅ PASS |  |
+| no banned words in content or lessons | ✅ PASS |  |
 
 ## ✅ Digest — full digest builds (6/6)
 
